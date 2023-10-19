@@ -117,3 +117,34 @@ If you're interested in joining, check out their Instagram to learn more!
 9⃣ 💬 Oratory/Debate Club 🗯
 
 1. Arabic Debate Club & Public Speaking - https://www.instagram.com/iium_adc/
+
+📝 For your information! Kalau nak beli tiket bus yang direct ambik/stop dalam uia boleh lah beli dengan club negeri korang. Nanti nak balik mid sem atau raya next sem boleh lah contact diorang. 
+
+Also states club sometimes beri bantuan makanan dan bantuan banjir kepada students senegeri! Make sure to follow them!
+
+1.  Johor - Johor Student Association UIAM (JOSA) - https://www.instagram.com/iiumjosa/
+
+2.  Kedah - Persatuan Siswa Anak Kedah (PESAK) - https://www.instagram.com/pesakuiam/
+
+3.  Kelantan - Persatuan Darul Naim IIUM (PERDANA) - https://www.instagram.com/perdanauiam/
+
+4.  Melaka - Ikatan Mahasiswa Anak Melaka (IMAM) - https://www.instagram.com/imam_uiam/
+
+5.  Negeri Sembilan - Persatuan Mahasiswa Anak Negeri Sembilan (PERMANIS) - https://www.instagram.com/permanisuiam/
+
+6.  Pahang - Majlis Mahasiswa Anak Pahang UIAM (MAMPAN) - https://www.instagram.com/mampanuiam/
+
+7.  Perak - Sekretariat Mahasiswa Perak (SPARK) - https://www.instagram.com/sparkiium/
+
+8.  Perlis - Persatuan Mahasiswa Perlis (PERMAPS) - https://www.instagram.com/permapsuiam/
+
+9.  Pulau Pinang - Gabungan Anak Pulau Pinang (GAPP) - https://www.instagram.com/gappuiam/
+
+10.  Sabah - Ikatan Anak-anak Sabah IIUM (IKAS) - https://www.instagram.com/ikasiium/
+
+11.  Sarawak - IIUM Kenyalang Union (IKON) - https://www.instagram.com/ikoniium/ (Telegram = https://t.me/IKONOfficial)
+
+12.  Selangor - Persatuan Mahasiswa Selangor (PERMAS) - https://www.instagram.com/permas_uiam/
+
+13.  Terengganu - Persatuan Mahasiswa Anak Terengganu UIAM (PERMATA) - https://www.instagram.com/permatauiam/
+Telegram = http://t.me/joinchat/AAAAAE7fRdUvo1KEKfm3aw
