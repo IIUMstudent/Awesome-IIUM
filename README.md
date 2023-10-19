@@ -2,6 +2,44 @@
 
 Selamat datang! We are excited to present this curated collection of resources for the International Islamic University Malaysia (IIUM) community. Whether you're a current student, a distinguished faculty member, or a proud alumnus, we've gathered everything you need, all in one place! From official portals to student activities, and from research publications to community service, dive in and discover what makes IIUM truly awesome.
 
+# Awesome IIUM
+
+This repository is a collection of resources for students of the International Islamic University Malaysia (IIUM). 
+
+*Read this in other languages: [Melayu](/translation/README.my.md), [中文](/translation/README.zh.md), [العربية](/translation/README.ar.md), [日本語](/translation/README.jp.md)*
+
+![IIUM Logo](logo.png)
+## LEADING THE WAY
+
+## Purpose
+The purpose of this repository is to provide a comprehensive list of resources that will be beneficial for IIUM students. This includes academic resources, student life information, and other useful links.
+
+## How to Use
+To use this repository, simply navigate through the files and folders. Each folder contains a different category of resources. Click on the links provided to access the resources.
+
+## Contributing
+We welcome contributions from everyone. If you have a resource to add or an improvement to suggest, please follow the contribution guidelines below.
+
+### Contribution Guidelines
+1. Fork this repository.
+2. Create a new branch for your changes.
+3. Make your changes in your branch.
+4. Submit a pull request with your changes.
+
+We appreciate your contributions and look forward to seeing this repository grow with your help!
+
+## License
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Folders Structure
+- Academic Resources: Contains resources related to academics, such as textbooks, online courses, and study guides.
+- Student Life: Information about student life at IIUM, including clubs, events, and campus facilities.
+- Campus Facilities: Details about the facilities available on campus, such as libraries, study rooms, and sports facilities.
+- Other Resources: Any other resources that don't fit into the above categories.
+
+Each folder contains a README file with more information about the resources in that folder.
+
+
 ## Contents
 
 - [IIUM Official Websites and Portals](#iium-official-websites-and-portals)
