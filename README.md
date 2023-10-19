@@ -4,7 +4,7 @@ Selamat datang! We are excited to present this curated collection of resources f
 
 # Awesome IIUM
 
-This repository is a collection of resources for students of the International Islamic University Malaysia (IIUM). 
+This repository is a collection of resources for members of the International Islamic University Malaysia (IIUM). 
 
 *Read this in other languages: [Melayu](/translation/README.my.md), [中文](/translation/README.zh.md), [العربية](/translation/README.ar.md), [日本語](/translation/README.jp.md)*
 
@@ -29,7 +29,7 @@ We welcome contributions from everyone. If you have a resource to add or an impr
 We appreciate your contributions and look forward to seeing this repository grow with your help!
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the Creative Commons License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Folders Structure
 - Academic Resources: Contains resources related to academics, such as textbooks, online courses, and study guides.
@@ -44,7 +44,7 @@ Each folder contains a README file with more information about the resources in 
 
 - [IIUM Official Websites and Portals](#iium-official-websites-and-portals)
 - [IIUM Academic Resources and Tools](#iium-academic-resources-and-tools)
-- [IIUM Student Activities and Clubs](#iium-student-activities-and-clubs)
+- [Students Life](/Student%20Life/README.md)
 - [IIUM Alumni Network and Career Opportunities](#iium-alumni-network-and-career-opportunities)
 - [IIUM News and Media](#iium-news-and-media)
 - [IIUM Research and Publications](#iium-research-and-publications)
@@ -60,13 +60,13 @@ This section provides a list of official websites and portals that offer various
 - [i-Ta'leem - Learning Management System](https://italeem.iium.edu.my/): Supports online teaching and learning activities such as course materials, assignments, quizzes, forums, etc.
 - [i-Viva - Postgraduate Viva Process](https://iviva.iium.edu.my/): Manages the viva process for postgraduate students such as nomination of supervisors, submission of research proposals, scheduling of viva sessions, etc.
 
-## IIUM Student Activities and Clubs
+## IIUM Academic Tools
 
-This section provides resources related to student activities and clubs in IIUM.
+This section provides resources related to application, tools and services for academics in IIUM.
 
-- [IIUM Student Organization - Student Societies and Clubs](https://club.iium.edu.my/) - Provides information and services for student societies and clubs under the Student Affairs and Development Division (STADD). It includes a list of registered societies and clubs, events calendar, student activity guidelines, web hosting, etc.
-- [Student’s Society - Club Categories](https://club.iium.edu.my/clubs-and-societies/) - Categorizes the student societies and clubs based on their types such as kulliyyah-based, mahallah representative, central, environment & animal welfare, sports, entrepreneurship, arts & culture, uniform bodies, etc. It also provides links to their respective websites or social media pages.
-- [Student Activities Guidelines and Procedures - Rules and Regulations](https://istack.iium.edu.my/books/student-activities-guidelines-and-procedures-011) - Contains the rules and regulations for student activities such as objectives, scope, definitions, procedures, forms, etc. It also covers topics such as student leadership development programme (SLDP), student activity fund (SAF), student activity award (SAA), etc.
+
+
+
 
 ## IIUM Alumni Network and Career Opportunities
 
@@ -118,17 +118,6 @@ Stay connected with IIUM through our official social media channels:
 
 Follow us to get the latest updates, news, and events from IIUM!
 
-## IIUM Student Groups on Telegram
-
-Join the conversation and stay updated with these public student groups on Telegram:
-
-- [IIUM TESL WORLD 🌍✨](https://t.me/+dyIQjAoVJSA4OTdl)
-- [IIUM Gombak Community](https://t.me/+vM82diHHT35lMzE1)
-- [IIUM Student Union (Kuantan)](https://t.me/s/SUPCIIUMKUANTANOFFICIAL/270)
-- [IIUM ENGLISH PROFICIENCY TEST (EPT)](https://t.me/+Xkv9IsxRUZ4yNWM9)
-
-Please remember to respect each group's rules and guidelines to maintain a respectful and productive environment.
-
 ## About Us
 
-We are a group of IIUM students passionate about making university resources more accessible to everyone. If you have any suggestions or feedback, feel free to reach out to us at [awesome-iium@iium.edu.my](mailto:awesome-iium@iium.edu.my). Let's make IIUM even more awesome together!
+We are a group of IIUM students passionate about making university resources more accessible to everyone. If you have any suggestions or feedback, feel free to reach out to us at [awesome-iium@iium.edu.my](mailto:awesome-iium@iium.edu.my)(Not Yet Implimented). Let's make IIUM even more awesome together!
