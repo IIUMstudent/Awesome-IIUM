@@ -42,6 +42,7 @@ Each folder contains a README file with more information about the resources in 
 
 ## Contents
 
+- [Recommendation](#Recommendation)
 - [IIUM Official Websites and Portals](#iium-official-websites-and-portals)
 - [IIUM Academic Resources and Tools](#iium-academic-resources-and-tools)
 - [Students Life](/Student%20Life/README.md)
@@ -50,6 +51,15 @@ Each folder contains a README file with more information about the resources in 
 - [IIUM Research and Publications](#iium-research-and-publications)
 - [IIUM Community Service and Outreach](#iium-community-service-and-outreach)
 - [IIUM Culture and Values](#iium-culture-and-values)
+
+
+## Recommendation 
+
+This section provides a list of recommendation for IIUM students.
+ - [IIUM Schedule App](https://github.com/iqfareez/iium_schedule_generator) - A web-based application that generates a schedule for IIUM students based on their course registration.
+ - [Moodle App](https://moodle.org/mobile/) - A mobile application that allows students to access their courses on Moodle.
+ - [Activity](/Student%20Life/Programs.md) - A list of active activities that are available in IIUM.
+
 
 ## IIUM Official Websites and Portals
 
