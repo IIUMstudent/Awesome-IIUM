@@ -56,7 +56,7 @@ Each folder contains a README file with more information about the resources in 
 ## Recommendation 
 
 This section provides a list of recommendation for IIUM students.
- - [IIUM Schedule App](https://github.com/iqfareez/iium_schedule_generator) - A web-based application that generates a schedule for IIUM students based on their course registration.
+ - [IIUM Schedule App](https://github.com/iqfareez/iium_schedule) - A web-based application that generates a schedule for IIUM students based on their course registration made now by graduated Fareez Iqmal.
  - [Moodle App](https://moodle.org/mobile/) - A mobile application that allows students to access their courses on Moodle.
  - [Activity](/Student%20Life/Programs.md) - A list of active activities that are available in IIUM.
 
