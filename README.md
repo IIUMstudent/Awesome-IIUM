@@ -73,7 +73,7 @@ This section provides a list of official websites and portals that offer various
 ## IIUM Academic Resources and Tools
 
 This section provides resources related to application, tools and services for academics in IIUM.
-To Check the Pre Registration Date for Gombak Campus and Kuantan Campus, [Click Here](/Academic%20Resources/Pre-reg%20Gombak-Kuantan.md)
+To Check the Pre Registration Date for Gombak Campus and Kuantan Campus, [Click Here](/Academic%20Resources/Pre-reg%20gombak-kuantan.md)
 To Check the Pre Registration Date for Pagoh Campus, [Click Here](/Academic%20Resources/Pre-reg%20pagoh.md)
 
 
