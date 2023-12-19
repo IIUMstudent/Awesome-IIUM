@@ -70,9 +70,10 @@ This section provides a list of official websites and portals that offer various
 - [i-Ta'leem - Learning Management System](https://italeem.iium.edu.my/): Supports online teaching and learning activities such as course materials, assignments, quizzes, forums, etc.
 - [i-Viva - Postgraduate Viva Process](https://iviva.iium.edu.my/): Manages the viva process for postgraduate students such as nomination of supervisors, submission of research proposals, scheduling of viva sessions, etc.
 
-## IIUM Academic Tools
+## IIUM Academic Resources and Tools
 
 This section provides resources related to application, tools and services for academics in IIUM.
+To Check the Pre Registration Date, [Click Here](/Academic%20Resources/Pre-reg.md)
 
 
 
