@@ -1,4 +1,4 @@
-# Welcome to Awesome-IIUM 🎓
+# Welcome to Awesome-IIUM 🎓 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 Selamat datang! We are excited to present this curated collection of resources for the International Islamic University Malaysia (IIUM) community. Whether you're a current student, distinguished faculty member, or proud alumnus, we've gathered everything you need, all in one place!
 
@@ -50,17 +50,7 @@ To use this repository:
 
 ## Contributing
 
-We welcome contributions from the IIUM community! Here's how you can contribute:
-
-1. **Fork** this repository.
-2. **Create a new branch**: `git checkout -b my-new-feature`.
-3. **Commit your changes**: `git commit -am 'Add some feature'`.
-4. **Push to the branch**: `git push origin my-new-feature`.
-5. Submit a **Pull Request**.
-
-For detailed instructions, please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file.
-
-We also encourage reporting issues or suggesting improvements via the Issues section of this repo.
+We welcome contributions from the community! Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) guide to get started.
 
 ---
 
@@ -120,7 +110,7 @@ This section provides information and services for community service and outreac
 
 ## License
 
-This project is licensed under the Creative Commons License. See the [LICENSE.md](LICENSE.md) file for more details.
+This project is licensed under the terms of the [Creative Commons Zero v1.0 Universal](LICENSE) license.
 
 ---
 
