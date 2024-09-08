@@ -1,4 +1,4 @@
-# 📝 Salam everyone!
+# 📝 Salam everyone
 
 It's highly recommended for students to participate in programs and join a club or society. Here's the list of clubs that exist on IIUM Gombak! If you're interested in joining, check out their Instagram to learn more!
 

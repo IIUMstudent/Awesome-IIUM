@@ -1,4 +1,4 @@
-## IIUM Student Activities and Clubs
+# IIUM Student Activities and Clubs
 
 This section provides resources related to student activities and clubs in IIUM.
 

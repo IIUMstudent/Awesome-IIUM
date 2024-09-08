@@ -1,6 +1,6 @@
 # IIUM Telegram Groups
 
-This document provides a list of various Telegram groups related to IIUM. 
+This document provides a list of various Telegram groups related to IIUM.
 
 ## IIUM Official
 

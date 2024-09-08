@@ -1,4 +1,4 @@
-📝⚡️⚡️LIST OF PROGRAMMES IN NOVEMBER (3rd Update)⚡️⚡️ 
+📝⚡️⚡️LIST OF PROGRAMMES IN NOVEMBER (3rd Update)⚡️⚡️
 
 ♥️ Please do share with other groups too! Let's join these events before submission and mid-semester weeks start!
 
@@ -14,7 +14,7 @@ Thursday, 16 November
 📻 IIUMFM Youtube/FB/IG/Tiktok
 🗣 [Talk] Sembang Kencang Belanjawan 2024 (5pm-7pm) Kenms Cafe
 🌯 Iftar Gathering [Sisters only] (6pm) IIUM Mosque *Free food
-🌯 Moscar Iftar (6.30pm) Mosque Foyer *Free food
+🌯 Moscar Iftar (6.30pm) Mosque Foyer*Free food
 🌯 Iftar Jamaie Harmoni (Brothers only) (6pm-8.30pm) Aikol Cafe *Free food
 🗣 Dialouge: The Forgotten Narative of Islam (7.45pm-10pm) Mini Audi
 🏆 [Competition] Nasyeed (8.30pm-11.15pm) Experimental Hall (Everyone welcome to watch)
@@ -43,7 +43,7 @@ Saturday, 18 November
 👥 IIUM SU Open Day (9am-5pm) Wadi Budi
 👨🏻‍🏫 [Workshop] ECESA JAVA workshop, (9am-1pm) LT2 KOE [Fee Rm5]
 👥 FCPC (Photography and Film club) Induction day (9am-12.30pm) ICC [Everyone welcome to know more about FCPC]
-🗂 Umission Club: General Meeting (9.30am-12.30pm) LTA Aikol 
+🗂 Umission Club: General Meeting (9.30am-12.30pm) LTA Aikol
 🇵🇸 Night for Palestine: Solidarity in Diversity (7.30pm-11.30pm) IIUM Main Staircase
 👨🏻‍🏫 [Career talk] Financial Management & career opportunity talk (7.45pm-10.45pm) Experimental Hall
 👳🏻‍♂️ Pembina: Daurah Mabit & Riadah (8pm-11.30pm) Surau Bilal *Brothers Only
