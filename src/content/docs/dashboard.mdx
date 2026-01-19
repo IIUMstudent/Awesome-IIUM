@@ -1,0 +1,39 @@
+---
+title: System Status Dashboard
+description:
+  Real-time health monitoring of IIUM official portals and student services.
+---
+
+import StatusDashboard from '../../components/StatusDashboard.astro';
+import Leaderboard from '../../components/Leaderboard.astro';
+import ActivityFeed from '../../components/ActivityFeed.astro';
+
+Monitoring the uptime of key university systems.
+
+<StatusDashboard />
+
+## 🏆 Hacker Hall of Fame
+
+Celebrating our top contributors who make Awesome-IIUM possible.
+
+<Leaderboard />
+
+## 📡 Recent Activity
+
+See what's happening in the community.
+
+<ActivityFeed />
+
+## 🛠️ About this Dashboard
+
+This dashboard is automatically updated every 15 minutes using GitHub Actions.
+It "pings" official IIUM servers to check if they are responding to requests.
+
+> [!NOTE] This is an unofficial monitor and may not perfectly reflect internal
+> network status. If a system is "OFFLINE", it means our external bot cannot
+> reach it.
+
+## 📡 Systems Monitored
+
+- **i-Ma'luum**: Student Portal (Course registration, exam results).
+- **i-Ta'leem**: Official LMS (Learning Management System).

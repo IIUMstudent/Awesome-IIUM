@@ -1,0 +1,40 @@
+name: System Status Monitor
+
+on:
+  schedule:
+    - cron: '*/15 * * * *' # Every 15 minutes
+  workflow_dispatch:
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Check Systems
+        run: |
+          mkdir -p public/api
+          
+          check_url() {
+            local name=$1
+            local url=$2
+            if curl -sL --max-time 10 "$url" > /dev/null; then
+              echo "{\"name\": \"$name\", \"status\": \"online\", \"timestamp\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}"
+            else
+              echo "{\"name\": \"$name\", \"status\": \"offline\", \"timestamp\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}"
+            fi
+          }
+          
+          echo "[" > public/api/status.json
+          check_url "i-Ma'luum" "https://imaluum.iium.edu.my/" >> public/api/status.json
+          echo "," >> public/api/status.json
+          check_url "i-Ta'leem" "https://italeem.iium.edu.my/" >> public/api/status.json
+          echo "]" >> public/api/status.json
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/api/status.json
+          git commit -m "chore: update system status [skip ci]" || exit 0
+          git push

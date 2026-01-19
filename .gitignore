@@ -1,0 +1,16 @@
+# OS junk
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Node
+node_modules/
+npm-debug.log
+
+# Python
+__pycache__/
+*.pyc
+
+# MkDocs
+site/
