@@ -3,7 +3,8 @@ import starlight from '@astrojs/starlight';
 import AstroPWA from '@vite-pwa/astro';
 
 export default defineConfig({
-	site: 'https://iiumstudent.github.io/Awesome-IIUM', // Needed for PWA and sitemap
+	site: 'https://iiumstudent.github.io',
+	base: '/Awesome-IIUM',
 	integrations: [
 		starlight({
 			title: 'Awesome IIUM',
