@@ -1,0 +1,98 @@
+---
+// StatusDashboard.astro
+---
+
+<div id="status-dashboard" class="not-content">
+  <div class="status-grid" id="status-grid">
+    <div class="loading">Loading system status...</div>
+  </div>
+</div>
+
+<script>
+  async function fetchStatus() {
+    try {
+      const response = await fetch('/api/status.json');
+      const data = await response.json();
+      const grid = document.getElementById('status-grid');
+      if (!grid) return;
+      
+      grid.innerHTML = data.map(sys => `
+        <div class="status-card ${sys.status}">
+          <div class="status-header">
+            <span class="status-dot"></span>
+            <h3>${sys.name}</h3>
+          </div>
+          <div class="status-body">
+            <span class="status-label">${sys.status.toUpperCase()}</span>
+            <span class="status-time">Last Checked: ${new Date(sys.timestamp).toLocaleTimeString()}</span>
+          </div>
+        </div>
+      `).join('');
+    } catch (e) {
+      console.error('Failed to fetch status', e);
+    }
+  }
+
+  fetchStatus();
+  setInterval(fetchStatus, 60000); // Refresh every minute
+</script>
+
+<style>
+  .status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .status-card {
+    background: var(--sl-color-bg-nav);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--sl-color-hairline-light);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .status-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  }
+  .status-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+  .status-header h3 {
+    margin: 0 !important;
+    font-size: 1.2rem !important;
+  }
+  .status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .online .status-dot { background: #10b981; box-shadow: 0 0 10px #10b981; }
+  .offline .status-dot { background: #ef4444; box-shadow: 0 0 10px #ef4444; }
+  
+  .status-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .status-label {
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  .online .status-label { color: #10b981; }
+  .offline .status-label { color: #ef4444; }
+  
+  .status-time {
+    font-size: 0.8rem;
+    color: var(--sl-color-gray-3);
+  }
+  .loading {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+  }
+</style>

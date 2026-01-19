@@ -1,28 +1,59 @@
 # Contributing to Awesome IIUM
 
-Thank you for considering contributing to this repository! Please follow the guidelines below to ensure that your contribution is valuable and easy to integrate.
+Thank you for your interest in contributing to Awesome IIUM! We aim to build the
+most comprehensive and high-quality resource for the IIUM community.
 
-## How to Contribute
+## 📋 Inclusion Criteria
 
-1. Fork the repository.
-2. Clone your fork and create a new branch for your feature or fix.
-3. Add your content in the appropriate section of the repository (e.g., `resources/` folder).
-4. Submit a pull request (PR) with a detailed description of your changes.
+To keep this list high-quality, please ensure your contribution:
 
-### Adding New Resources
+- **Is relevant to IIUM**: It should be useful for students, staff, or alumni.
+- **Is active**: The resource (link, app, group) should be currently active and
+  maintained.
+- **Adds value**: Avoid generic resources unless they have a specific use case
+  for IIUM (e.g., specific student discounts).
 
-- Ensure the resource is useful and relevant to IIUM students.
-- Use descriptive titles and check for broken links.
-- Add the resource to the appropriate category in `README.md`. If it fits multiple categories, choose the best one.
+## 📝 Style Guide
 
-### Reporting Issues
+- **Alphabetical Order**: Please keep the list sorted alphabetically within each
+  category.
+- **Format**: `[Name](Link) - Description.`
+  - **Name**: Capitalized correctly.
+  - **Link**: Direct link to the resource.
+  - **Description**: Short, clear, and ends with a period.
+- **No Self-Promotion**: If you are the author, please state it in the PR but
+  keep the description objective.
 
-- Navigate to the Issues tab of this repository.
-- Check if the issue has already been reported.
-- If not, create a new issue using the provided templates.
-  - Use the `bug_report.md` template for reporting broken links or incorrect information.
-  - Use the `feature_request.md` template for suggesting new sections or resources.
+## 🚀 How to Contribute
 
-## Code of Conduct
+1.  **Fork the repository**: Click the "Fork" button at the top right of this
+    page.
+2.  **Clone your fork**:
+    ```bash
+    git clone https://github.com/YOUR-USERNAME/Awesome-IIUM.git
+    cd Awesome-IIUM
+    ```
+3.  **Create a branch**:
+    ```bash
+    git checkout -b add-my-awesome-resource
+    ```
+4.  **Make your changes**: Add your resource to the appropriate file in
+    `contents/`.
+5.  **Commit your changes**:
+    ```bash
+    git commit -m "Add [Resource Name] to [Category]"
+    ```
+6.  **Push to your fork**:
+    ```bash
+    git push origin add-my-awesome-resource
+    ```
+7.  **Submit a Pull Request**: Go to the original repository and click "Compare
+    & pull request".
 
-This repository has a [Code of Conduct](CODE_OF_CONDUCT.md). By contributing, you agree to abide by it.
+## ⚠️ Issues
+
+If you find a broken link or outdated information, please
+[open an issue](https://github.com/iiumstudent/Awesome-IIUM/issues) describing
+the problem.
+
+Thank you for helping us make IIUM awesome! 🚀

@@ -1,0 +1,209 @@
+---
+/**
+ * ActivityFeed Component
+ * Shows recent activity from the GitHub repository
+ */
+interface Activity {
+  type: 'commit' | 'pr' | 'issue';
+  title: string;
+  user: string;
+  avatar: string;
+  url: string;
+  date: string;
+  icon: string;
+}
+
+async function fetchActivity(): Promise<Activity[]> {
+  const activities: Activity[] = [];
+  
+  try {
+    // Fetch recent commits
+    const commitsRes = await fetch(
+      'https://api.github.com/repos/iiumstudent/Awesome-IIUM/commits?per_page=3'
+    );
+    if (commitsRes.ok) {
+      const commits = await commitsRes.json();
+      for (const commit of commits) {
+        activities.push({
+          type: 'commit',
+          title: commit.commit.message.split('\n')[0].substring(0, 60),
+          user: commit.author?.login || commit.commit.author.name,
+          avatar: commit.author?.avatar_url || 'https://github.com/ghost.png',
+          url: commit.html_url,
+          date: new Date(commit.commit.author.date).toLocaleDateString(),
+          icon: '📝',
+        });
+      }
+    }
+
+    // Fetch recent pull requests
+    const prsRes = await fetch(
+      'https://api.github.com/repos/iiumstudent/Awesome-IIUM/pulls?state=all&per_page=2'
+    );
+    if (prsRes.ok) {
+      const prs = await prsRes.json();
+      for (const pr of prs) {
+        activities.push({
+          type: 'pr',
+          title: pr.title.substring(0, 60),
+          user: pr.user.login,
+          avatar: pr.user.avatar_url,
+          url: pr.html_url,
+          date: new Date(pr.created_at).toLocaleDateString(),
+          icon: '🔀',
+        });
+      }
+    }
+
+    // Sort by date (most recent first)
+    activities.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    
+    return activities.slice(0, 5);
+  } catch {
+    return [];
+  }
+}
+
+const activities = await fetchActivity();
+---
+
+<div class="activity-feed not-content">
+  <h3>📡 Recent Activity</h3>
+  
+  {activities.length > 0 ? (
+    <ul class="activity-list">
+      {activities.map((activity) => (
+        <li class={`activity-item activity-${activity.type}`}>
+          <img 
+            src={activity.avatar} 
+            alt={activity.user} 
+            class="avatar"
+            loading="lazy"
+          />
+          <div class="activity-content">
+            <a href={activity.url} target="_blank" rel="noopener">
+              <span class="icon">{activity.icon}</span>
+              <span class="title">{activity.title}</span>
+            </a>
+            <div class="meta">
+              <span class="user">@{activity.user}</span>
+              <span class="dot">•</span>
+              <span class="date">{activity.date}</span>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p class="no-activity">No recent activity</p>
+  )}
+  
+  <a href="https://github.com/iiumstudent/Awesome-IIUM/commits/master" class="view-all">
+    View all activity →
+  </a>
+</div>
+
+<style>
+  .activity-feed {
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+  }
+
+  .activity-feed h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .activity-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .activity-item {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--sl-color-hairline-light);
+  }
+
+  .activity-item:last-child {
+    border-bottom: none;
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .activity-content {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .activity-content a {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    text-decoration: none;
+    color: inherit;
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  .activity-content a:hover .title {
+    color: var(--sl-color-accent);
+  }
+
+  .icon {
+    flex-shrink: 0;
+  }
+
+  .title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: color 0.15s;
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    color: var(--sl-color-gray-3);
+  }
+
+  .dot {
+    opacity: 0.5;
+  }
+
+  .view-all {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--sl-color-hairline-light);
+    font-size: 0.875rem;
+    color: var(--sl-color-accent);
+    text-decoration: none;
+  }
+
+  .view-all:hover {
+    text-decoration: underline;
+  }
+
+  .no-activity {
+    text-align: center;
+    color: var(--sl-color-gray-3);
+    font-size: 0.875rem;
+    margin: 1rem 0;
+  }
+</style>
