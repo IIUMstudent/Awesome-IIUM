@@ -3,7 +3,7 @@
 > A curated list of resources, tools, and guides for the **International Islamic
 > University Malaysia (IIUM)** community.
 
-_Read this in other languages: [Behasa Melayu](translation/README.my.md),
+_Read this in other languages: [Bahasa Melayu](translation/README.my.md),
 [中文](translation/README.zh.md), [العربية](translation/README.ar.md),
 [日本語](translation/README.jp.md)_
 
