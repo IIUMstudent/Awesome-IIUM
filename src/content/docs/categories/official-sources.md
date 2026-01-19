@@ -12,7 +12,7 @@ The definitive reference of official IIUM digital services.
 ## 🔗 Core Student Portals
 
 | Portal | URL | Description |
-|--------|-----|-------------|
+| :----- | :-- | :---------- |
 | **i-Ma'luum** | [imaluum.iium.edu.my](https://imaluum.iium.edu.my/) | Student hub: results, MyMahallah, Pre-reg |
 | **i-Ta'leem** | [italeem.iium.edu.my](https://italeem.iium.edu.my/) | Moodle LMS (courses, assignments) |
 | **Pre-Reg** | [prereg1.iium.edu.my](http://prereg1.iium.edu.my/) | Course registration, add/drop |
@@ -22,7 +22,7 @@ The definitive reference of official IIUM digital services.
 ## 🏢 Administrative Centres
 
 | Centre | URL | Services |
-|--------|-----|----------|
+| :----- | :-- | :------- |
 | **CCSC** | [centre.iium.edu.my/ccsc](https://centre.iium.edu.my/ccsc) | Counselling & Career |
 | **Clinic** | [centre.iium.edu.my/clinic](https://centre.iium.edu.my/clinic) | Sejahtera Clinic |
 | **SDC** | [centre.iium.edu.my/sdc](https://centre.iium.edu.my/sdc) | Sports Development |
@@ -33,7 +33,7 @@ The definitive reference of official IIUM digital services.
 ## 📂 Divisions
 
 | Division | URL | Services |
-|----------|-----|----------|
+| :------- | :-- | :------- |
 | **RSD** | [division.iium.edu.my/rsd](https://division.iium.edu.my/rsd) | Residential/Mahallah |
 | **ITD** | [division.iium.edu.my/itd](https://division.iium.edu.my/itd) | IT Services |
 | **Library** | [division.iium.edu.my/lib](https://division.iium.edu.my/lib) | Dar al-Hikmah |
@@ -44,7 +44,7 @@ The definitive reference of official IIUM digital services.
 ## 🏫 Offices
 
 | Office | URL | Role |
-|--------|-----|------|
+| :----- | :-- | :--- |
 | **Mosque** | [office.iium.edu.my/mosque](https://office.iium.edu.my/mosque) | IIUM Mosque |
 | **OCAP** | [office.iium.edu.my/ocap](https://office.iium.edu.my/ocap) | Communication |
 | **IIUM Press** | [office.iium.edu.my/iiumpress](https://office.iium.edu.my/iiumpress) | Publications |
@@ -59,7 +59,7 @@ The definitive reference of official IIUM digital services.
 ### Gombak Campus
 
 | Kulliyyah | URL |
-|-----------|-----|
+| :-------- | :-- |
 | **KICT** | [kict.iium.edu.my](https://kict.iium.edu.my/) |
 | **KOE** | [koe.iium.edu.my](https://koe.iium.edu.my/) |
 | **KENMS** | [kenms.iium.edu.my](https://kenms.iium.edu.my/) |
@@ -71,7 +71,7 @@ The definitive reference of official IIUM digital services.
 ### Kuantan Campus
 
 | Kulliyyah | URL |
-|-----------|-----|
+| :-------- | :-- |
 | **KOM** | [kom.iium.edu.my](https://kom.iium.edu.my/) |
 | **KOD** | [kod.iium.edu.my](https://kod.iium.edu.my/) |
 | **KOP** | [kop.iium.edu.my](https://kop.iium.edu.my/) |
@@ -82,7 +82,7 @@ The definitive reference of official IIUM digital services.
 ### Pagoh Campus
 
 | Kulliyyah | URL |
-|-----------|-----|
+| :-------- | :-- |
 | **KLM** | [klm.iium.edu.my](https://klm.iium.edu.my/) |
 
 ---
@@ -90,7 +90,7 @@ The definitive reference of official IIUM digital services.
 ## 🔬 Institutes
 
 | Institute | URL | Focus |
-|-----------|-----|-------|
+| :-------- | :-- | :---- |
 | **ISTAC** | [iium.edu.my/v2/istac](https://www.iium.edu.my/v2/istac/) | Islamic Thought & Civilization |
 | **IIMU** | [iium.edu.my/v2/iimu](https://www.iium.edu.my/v2/iimu/) | Muslim Unity |
 | **INHART** | [iium.edu.my/v2/inhart](https://www.iium.edu.my/v2/inhart/) | Halal Research |
@@ -100,7 +100,7 @@ The definitive reference of official IIUM digital services.
 ## 📚 Academic Centres
 
 | Centre | URL |
-|--------|-----|
+| :----- | :-- |
 | **CELPAD** | [iium.edu.my/v2/celpad](https://www.iium.edu.my/v2/celpad/) |
 | **CPS** | [iium.edu.my/v2/cps](https://www.iium.edu.my/v2/cps/) |
 | **CFS** | [cfs.iium.edu.my](https://cfs.iium.edu.my/) |
@@ -110,7 +110,7 @@ The definitive reference of official IIUM digital services.
 ## 📰 News & Media
 
 | Service | URL |
-|---------|-----|
+| :------ | :-- |
 | **IIUM Today** | [news.iium.edu.my](https://news.iium.edu.my/) |
 | **Newsroom** | [newsroom.iium.edu.my](https://newsroom.iium.edu.my/) |
 | **IIUM Radio** | [radio.iium.edu.my](http://radio.iium.edu.my/) |
@@ -118,7 +118,7 @@ The definitive reference of official IIUM digital services.
 ## 📚 Research & Library
 
 | Service | URL |
-|---------|-----|
+| :------ | :-- |
 | **Research Portal** | [research.iium.edu.my](https://research.iium.edu.my/) |
 | **Library** | [lib.iium.edu.my](https://lib.iium.edu.my/) |
 | **IREP** | [irep.iium.edu.my](http://irep.iium.edu.my/) |
@@ -126,7 +126,7 @@ The definitive reference of official IIUM digital services.
 ## 👥 Community
 
 | Service | URL |
-|---------|-----|
+| :------ | :-- |
 | **Alumni** | [alumni.iium.edu.my](https://alumni.iium.edu.my/) |
 | **CENSERVE** | [censerve.iium.edu.my](https://censerve.iium.edu.my/) |
 
@@ -135,7 +135,7 @@ The definitive reference of official IIUM digital services.
 ## 💼 Other Services
 
 | Service | URL | Description |
-|---------|-----|-------------|
+| :------ | :-- | :---------- |
 | **HURIS** | [huris.iium.edu.my](https://huris.iium.edu.my/) | Job opportunities |
 | **EZPay** | [ezpay.iium.edu.my](https://ezpay.iium.edu.my/) | E-Payment |
 | **Bookshop** | [bookshop.iium.edu.my](https://bookshop.iium.edu.my/) | University bookshop |
@@ -146,7 +146,7 @@ The definitive reference of official IIUM digital services.
 ## ⚠️ Known Inactive URLs
 
 | URL | Status | Alternative |
-|-----|--------|-------------|
+| :--- | :----- | :---------- |
 | ~~exam.iium.edu.my~~ | ❌ Offline | Use i-Ma'luum |
 
 ---
@@ -154,6 +154,7 @@ The definitive reference of official IIUM digital services.
 ## 📍 Quick Reference
 
 **Most Used by Students:**
+
 1. **i-Ma'luum** → Results, Pre-reg, MyMahallah
 2. **i-Ta'leem** → LMS (Moodle)
 3. **prereg1** → Course registration
