@@ -1,31 +1,30 @@
-name: Awesome IIUM CI
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - uses: actions/checkout@v4
-      
-      - name: Configure Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.x
-          
-      - name: Install MkDocs Material
-        run: pip install mkdocs-material
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install, build, and upload
+        uses: withastro/action@v3
 
-      - name: Prepare Index
-        run: cp README.md index.md
-
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
-        run: mkdocs gh-deploy --force
-
+        id: deployment
+        uses: actions/deploy-pages@v4
