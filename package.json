@@ -1,5 +1,4 @@
 {
-	"name": "Awesome-IIUM",
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
