@@ -17,10 +17,13 @@ async function fetchActivity(): Promise<Activity[]> {
   const activities: Activity[] = [];
   
   try {
-    // Fetch recent commits
-    const commitsRes = await fetch(
-      'https://api.github.com/repos/iiumstudent/Awesome-IIUM/commits?per_page=3'
-    );
+    // Parallelize API fetches
+    const [commitsRes, prsRes] = await Promise.all([
+      fetch('https://api.github.com/repos/iiumstudent/Awesome-IIUM/commits?per_page=3'),
+      fetch('https://api.github.com/repos/iiumstudent/Awesome-IIUM/pulls?state=all&per_page=2'),
+    ]);
+
+    // Process commits
     if (commitsRes.ok) {
       const commits = await commitsRes.json();
       for (const commit of commits) {
@@ -36,10 +39,7 @@ async function fetchActivity(): Promise<Activity[]> {
       }
     }
 
-    // Fetch recent pull requests
-    const prsRes = await fetch(
-      'https://api.github.com/repos/iiumstudent/Awesome-IIUM/pulls?state=all&per_page=2'
-    );
+    // Process pull requests
     if (prsRes.ok) {
       const prs = await prsRes.json();
       for (const pr of prs) {
