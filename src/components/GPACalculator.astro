@@ -10,8 +10,8 @@
   
   <div id="courses-container">
     <div class="course-row" data-index="0">
-      <input type="text" class="course-name" placeholder="Course name" />
-      <select class="grade">
+      <input type="text" class="course-name" placeholder="Course name" aria-label="Course name" />
+      <select class="grade" aria-label="Grade">
         <option value="">Grade</option>
         <option value="4.00">A (4.00)</option>
         <option value="3.67">A- (3.67)</option>
@@ -25,14 +25,14 @@
         <option value="1.00">D (1.00)</option>
         <option value="0.00">F (0.00)</option>
       </select>
-      <select class="credits">
+      <select class="credits" aria-label="Credits">
         <option value="">Credits</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
       </select>
-      <button class="remove-btn" title="Remove course">×</button>
+      <button class="remove-btn" aria-label="Remove course">×</button>
     </div>
   </div>
 
@@ -73,7 +73,10 @@
 
   <div class="footer-actions">
     <button id="clear-all" class="btn-ghost">Clear All</button>
-    <button id="save-data" class="btn-secondary">💾 Save</button>
+    <div class="save-wrapper">
+      <span id="save-status" class="save-status" aria-live="polite"></span>
+      <button id="save-data" class="btn-secondary">💾 Save</button>
+    </div>
   </div>
 </div>
 
@@ -107,8 +110,8 @@
       row.className = 'course-row';
       row.dataset.index = courseIndex++;
       row.innerHTML = `
-        <input type="text" class="course-name" placeholder="Course name" />
-        <select class="grade">
+        <input type="text" class="course-name" placeholder="Course name" aria-label="Course name" />
+        <select class="grade" aria-label="Grade">
           <option value="">Grade</option>
           <option value="4.00">A (4.00)</option>
           <option value="3.67">A- (3.67)</option>
@@ -122,24 +125,31 @@
           <option value="1.00">D (1.00)</option>
           <option value="0.00">F (0.00)</option>
         </select>
-        <select class="credits">
+        <select class="credits" aria-label="Credits">
           <option value="">Credits</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
         </select>
-        <button class="remove-btn" title="Remove course">×</button>
+        <button class="remove-btn" aria-label="Remove course">×</button>
       `;
       container?.appendChild(row);
+
+      // Focus on the new course name input
+      const newInput = row.querySelector('.course-name');
+      if (newInput) {
+        newInput.focus();
+      }
     });
 
     // Remove course row
     container?.addEventListener('click', (e) => {
-      if (e.target.classList.contains('remove-btn')) {
+      const btn = e.target.closest('.remove-btn');
+      if (btn) {
         const rows = container.querySelectorAll('.course-row');
         if (rows.length > 1) {
-          e.target.closest('.course-row').remove();
+          btn.closest('.course-row').remove();
         }
       }
     });
@@ -205,7 +215,15 @@
         prevCredits: document.getElementById('prev-credits').value,
       };
       localStorage.setItem('iium-gpa-data', JSON.stringify(data));
-      alert('Data saved! Your cumulative GPA inputs will be restored next time.');
+
+      const status = document.getElementById('save-status');
+      if (status) {
+        status.textContent = 'Saved!';
+        status.classList.add('visible');
+        setTimeout(() => {
+          status.classList.remove('visible');
+        }, 2000);
+      }
     });
   });
 </script>
@@ -277,6 +295,9 @@
     font-size: 1.25rem;
     cursor: pointer;
     transition: color 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .remove-btn:hover {
@@ -404,5 +425,22 @@
     margin-top: 1.5rem;
     padding-top: 1rem;
     border-top: 1px solid var(--sl-color-hairline-light);
+  }
+
+  .save-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .save-status {
+    font-size: 0.875rem;
+    color: var(--sl-color-accent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .save-status.visible {
+    opacity: 1;
   }
 </style>
