@@ -52,23 +52,23 @@ maintainer: '@github-username'
 
 ### Kulliyyah Codes
 
-| Code          | Full Name                                                                         |
-| ------------- | --------------------------------------------------------------------------------- |
-| `AIKOL`       | Ahmad Ibrahim Kulliyyah of Laws                                                   |
+| Code | Full Name |
+|------|-----------|
+| `AIKOL` | Ahmad Ibrahim Kulliyyah of Laws |
 | `AHAS-KIRKHS` | AbdulHamid AbuSulayman Kulliyyah of Islamic Revealed Knowledge and Human Sciences |
-| `KAED`        | Kulliyyah of Architecture and Environmental Design                                |
-| `KAHS`        | Kulliyyah of Allied Health Sciences                                               |
-| `KENMS`       | Kulliyyah of Economics and Management Sciences                                    |
-| `KICT`        | Kulliyyah of Information and Communication Technology                             |
-| `KLM`         | Kulliyyah of Languages and Management                                             |
-| `KOD`         | Kulliyyah of Dentistry                                                            |
-| `KOE`         | Kulliyyah of Engineering                                                          |
-| `KOED`        | Kulliyyah of Education                                                            |
-| `KOM`         | Kulliyyah of Medicine                                                             |
-| `KON`         | Kulliyyah of Nursing                                                              |
-| `KOP`         | Kulliyyah of Pharmacy                                                             |
-| `KOS`         | Kulliyyah of Science                                                              |
-| `general`     | Cross-kulliyyah resources                                                         |
+| `KAED` | Kulliyyah of Architecture and Environmental Design |
+| `KAHS` | Kulliyyah of Allied Health Sciences |
+| `KENMS` | Kulliyyah of Economics and Management Sciences |
+| `KICT` | Kulliyyah of Information and Communication Technology |
+| `KLM` | Kulliyyah of Languages and Management |
+| `KOD` | Kulliyyah of Dentistry |
+| `KOE` | Kulliyyah of Engineering |
+| `KOED` | Kulliyyah of Education |
+| `KOM` | Kulliyyah of Medicine |
+| `KON` | Kulliyyah of Nursing |
+| `KOP` | Kulliyyah of Pharmacy |
+| `KOS` | Kulliyyah of Science |
+| `general` | Cross-kulliyyah resources |
 
 ---
 
@@ -83,10 +83,8 @@ maintainer: '@github-username'
 **Good Examples:**
 
 ```markdown
-- [i-Ma'luum](https://imaluum.iium.edu.my/) - Access course registration, exam
-  results, and generate your timetable.
-- [IIUM Schedule Maker](https://github.com/iiumschedule/iium-schedule-maker) -
-  Visualize and plan your semester timetable before registration opens.
+- [i-Ma'luum](https://imaluum.iium.edu.my/) - Access course registration, exam results, and generate your timetable.
+- [IIUM Schedule Maker](https://github.com/iiumschedule/iium-schedule-maker) - Visualize and plan your semester timetable before registration opens.
 ```
 
 **Bad Examples:**
@@ -102,13 +100,9 @@ Organize resources under clear headings:
 
 ```markdown
 ## 🏛 Official Portals
-
 ## 🛠 Tools & Utilities
-
 ## 📚 Learning Resources
-
 ## 👥 Communities
-
 ## 📱 Mobile Apps
 ```
 
@@ -123,7 +117,6 @@ The `verified: true` flag is reserved for:
 3. **Maintainer-confirmed** - Active development and support
 
 To request verification:
-
 1. Open a GitHub Issue with the "Verification Request" template
 2. Provide evidence of quality and usage
 3. A maintainer will review and approve
