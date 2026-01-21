@@ -5,46 +5,158 @@
  */
 
 interface Campus {
-  id: string;
-  name: string;
-  nameMs: string;
-  center: [number, number];
-  zoom: number;
-  color: string;
+	id: string;
+	name: string;
+	nameMs: string;
+	center: [number, number];
+	zoom: number;
+	color: string;
 }
 
 interface Location {
-  name: string;
-  type: 'kulliyyah' | 'library' | 'cafeteria' | 'mosque' | 'admin' | 'sport' | 'hostel';
-  coords: [number, number];
-  icon: string;
-  campus: string;
+	name: string;
+	type:
+		| 'kulliyyah'
+		| 'library'
+		| 'cafeteria'
+		| 'mosque'
+		| 'admin'
+		| 'sport'
+		| 'hostel';
+	coords: [number, number];
+	icon: string;
+	campus: string;
 }
 
 const campuses: Campus[] = [
-  { id: 'gombak', name: 'Main Campus (Gombak)', nameMs: 'Kampus Utama (Gombak)', center: [101.7313, 3.2513], zoom: 15, color: '#10b981' },
-  { id: 'kuantan', name: 'Kuantan Campus', nameMs: 'Kampus Kuantan', center: [103.4260, 3.8177], zoom: 15, color: '#3b82f6' },
-  { id: 'pagoh', name: 'Pagoh Campus', nameMs: 'Kampus Pagoh', center: [102.7681, 2.1494], zoom: 15, color: '#f59e0b' },
+	{
+		id: 'gombak',
+		name: 'Main Campus (Gombak)',
+		nameMs: 'Kampus Utama (Gombak)',
+		center: [101.7313, 3.2513],
+		zoom: 15,
+		color: '#10b981',
+	},
+	{
+		id: 'kuantan',
+		name: 'Kuantan Campus',
+		nameMs: 'Kampus Kuantan',
+		center: [103.426, 3.8177],
+		zoom: 15,
+		color: '#3b82f6',
+	},
+	{
+		id: 'pagoh',
+		name: 'Pagoh Campus',
+		nameMs: 'Kampus Pagoh',
+		center: [102.7681, 2.1494],
+		zoom: 15,
+		color: '#f59e0b',
+	},
 ];
 
 const locations: Location[] = [
-  // Gombak Campus
-  { name: 'KICT', type: 'kulliyyah', coords: [101.7340, 3.2520], icon: '💻', campus: 'gombak' },
-  { name: 'KENMS', type: 'kulliyyah', coords: [101.7300, 3.2530], icon: '📊', campus: 'gombak' },
-  { name: 'KOE', type: 'kulliyyah', coords: [101.7320, 3.2500], icon: '⚙️', campus: 'gombak' },
-  { name: 'KIRKHS', type: 'kulliyyah', coords: [101.7280, 3.2540], icon: '📚', campus: 'gombak' },
-  { name: 'Dar al-Hikmah Library', type: 'library', coords: [101.7310, 3.2515], icon: '📖', campus: 'gombak' },
-  { name: 'Main Mosque', type: 'mosque', coords: [101.7305, 3.2525], icon: '🕌', campus: 'gombak' },
-  { name: 'Mahallah Ali', type: 'hostel', coords: [101.7350, 3.2480], icon: '🏠', campus: 'gombak' },
-  { name: 'Mahallah Bilal', type: 'hostel', coords: [101.7360, 3.2490], icon: '🏠', campus: 'gombak' },
-  // Kuantan Campus
-  { name: 'KOM', type: 'kulliyyah', coords: [103.4270, 3.8180], icon: '🏥', campus: 'kuantan' },
-  { name: 'KOD', type: 'kulliyyah', coords: [103.4250, 3.8190], icon: '🦷', campus: 'kuantan' },
-  { name: 'KOP', type: 'kulliyyah', coords: [103.4280, 3.8170], icon: '💊', campus: 'kuantan' },
-  { name: 'Sultan Haji Ahmad Shah Library', type: 'library', coords: [103.4260, 3.8175], icon: '📖', campus: 'kuantan' },
-  // Pagoh Campus
-  { name: 'KLM', type: 'kulliyyah', coords: [102.7690, 2.1500], icon: '🗣️', campus: 'pagoh' },
-  { name: 'Pagoh Library', type: 'library', coords: [102.7680, 2.1490], icon: '📖', campus: 'pagoh' },
+	// Gombak Campus
+	{
+		name: 'KICT',
+		type: 'kulliyyah',
+		coords: [101.734, 3.252],
+		icon: '💻',
+		campus: 'gombak',
+	},
+	{
+		name: 'KENMS',
+		type: 'kulliyyah',
+		coords: [101.73, 3.253],
+		icon: '📊',
+		campus: 'gombak',
+	},
+	{
+		name: 'KOE',
+		type: 'kulliyyah',
+		coords: [101.732, 3.25],
+		icon: '⚙️',
+		campus: 'gombak',
+	},
+	{
+		name: 'KIRKHS',
+		type: 'kulliyyah',
+		coords: [101.728, 3.254],
+		icon: '📚',
+		campus: 'gombak',
+	},
+	{
+		name: 'Dar al-Hikmah Library',
+		type: 'library',
+		coords: [101.731, 3.2515],
+		icon: '📖',
+		campus: 'gombak',
+	},
+	{
+		name: 'Main Mosque',
+		type: 'mosque',
+		coords: [101.7305, 3.2525],
+		icon: '🕌',
+		campus: 'gombak',
+	},
+	{
+		name: 'Mahallah Ali',
+		type: 'hostel',
+		coords: [101.735, 3.248],
+		icon: '🏠',
+		campus: 'gombak',
+	},
+	{
+		name: 'Mahallah Bilal',
+		type: 'hostel',
+		coords: [101.736, 3.249],
+		icon: '🏠',
+		campus: 'gombak',
+	},
+	// Kuantan Campus
+	{
+		name: 'KOM',
+		type: 'kulliyyah',
+		coords: [103.427, 3.818],
+		icon: '🏥',
+		campus: 'kuantan',
+	},
+	{
+		name: 'KOD',
+		type: 'kulliyyah',
+		coords: [103.425, 3.819],
+		icon: '🦷',
+		campus: 'kuantan',
+	},
+	{
+		name: 'KOP',
+		type: 'kulliyyah',
+		coords: [103.428, 3.817],
+		icon: '💊',
+		campus: 'kuantan',
+	},
+	{
+		name: 'Sultan Haji Ahmad Shah Library',
+		type: 'library',
+		coords: [103.426, 3.8175],
+		icon: '📖',
+		campus: 'kuantan',
+	},
+	// Pagoh Campus
+	{
+		name: 'KLM',
+		type: 'kulliyyah',
+		coords: [102.769, 2.15],
+		icon: '🗣️',
+		campus: 'pagoh',
+	},
+	{
+		name: 'Pagoh Library',
+		type: 'library',
+		coords: [102.768, 2.149],
+		icon: '📖',
+		campus: 'pagoh',
+	},
 ];
 ---
 
@@ -86,19 +198,30 @@ const locations: Location[] = [
 <script type="module" define:vars={{ campuses, locations }}>
   // Dynamically load MapLibre GL JS
   async function loadMapLibre() {
-    // Add CSS
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css';
-    document.head.appendChild(link);
+    if (window.maplibregl) return window.maplibregl;
 
-    // Add JS
-    const script = document.createElement('script');
-    script.src = 'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js';
-    document.head.appendChild(script);
+    const scriptSrc = 'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js';
+    let script = document.querySelector(`script[src="${scriptSrc}"]`);
+
+    if (!script) {
+      // Add CSS
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css';
+      document.head.appendChild(link);
+
+      // Add JS
+      script = document.createElement('script');
+      script.src = scriptSrc;
+      document.head.appendChild(script);
+    }
 
     return new Promise((resolve) => {
-      script.onload = () => resolve(window.maplibregl);
+      if (window.maplibregl) {
+        resolve(window.maplibregl);
+      } else {
+        script.addEventListener('load', () => resolve(window.maplibregl));
+      }
     });
   }
 
