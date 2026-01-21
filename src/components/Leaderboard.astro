@@ -1,40 +1,29 @@
 ---
-// Leaderboard.astro
+import { getCachedContributors, type Contributor } from '../utils/github';
+
+const contributors = await getCachedContributors(12);
 ---
 
 <div id="leaderboard" class="not-content">
   <div class="leaderboard-container">
     <div id="contributor-list" class="contributor-list">
-      <div class="loading">Loading top contributors...</div>
+      {contributors ? (
+        contributors.map((user: Contributor, index: number) => (
+          <a href={user.html_url} target="_blank" class={`contributor-card rank-${index + 1}`}>
+            <div class="rank">#{index + 1}</div>
+            <img src={user.avatar_url} alt={user.login} class="avatar" />
+            <div class="info">
+              <span class="username">{user.login}</span>
+              <span class="contributions">{user.contributions} Contributions</span>
+            </div>
+          </a>
+        ))
+      ) : (
+        <div class="loading">Loading top contributors...</div>
+      )}
     </div>
   </div>
 </div>
-
-<script>
-  async function fetchContributors() {
-    try {
-      const response = await fetch('https://api.github.com/repos/iiumstudent/Awesome-IIUM/contributors?per_page=12');
-      const data = await response.json();
-      const list = document.getElementById('contributor-list');
-      if (!list) return;
-      
-      list.innerHTML = data.map((user, index) => `
-        <a href="${user.html_url}" target="_blank" class="contributor-card rank-${index + 1}">
-          <div class="rank">#${index + 1}</div>
-          <img src="${user.avatar_url}" alt="${user.login}" class="avatar" />
-          <div class="info">
-            <span class="username">${user.login}</span>
-            <span class="contributions">${user.contributions} Contributions</span>
-          </div>
-        </a>
-      `).join('');
-    } catch (e) {
-      console.error('Failed to fetch contributors', e);
-    }
-  }
-
-  fetchContributors();
-</script>
 
 <style>
   .contributor-list {

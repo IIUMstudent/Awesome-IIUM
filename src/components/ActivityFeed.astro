@@ -13,16 +13,15 @@ interface Activity {
   icon: string;
 }
 
+import { getCachedCommits, getCachedPulls } from '../utils/github';
+
 async function fetchActivity(): Promise<Activity[]> {
   const activities: Activity[] = [];
   
   try {
     // Fetch recent commits
-    const commitsRes = await fetch(
-      'https://api.github.com/repos/iiumstudent/Awesome-IIUM/commits?per_page=3'
-    );
-    if (commitsRes.ok) {
-      const commits = await commitsRes.json();
+    const commits = await getCachedCommits(3);
+    if (commits) {
       for (const commit of commits) {
         activities.push({
           type: 'commit',
@@ -37,11 +36,8 @@ async function fetchActivity(): Promise<Activity[]> {
     }
 
     // Fetch recent pull requests
-    const prsRes = await fetch(
-      'https://api.github.com/repos/iiumstudent/Awesome-IIUM/pulls?state=all&per_page=2'
-    );
-    if (prsRes.ok) {
-      const prs = await prsRes.json();
+    const prs = await getCachedPulls(2);
+    if (prs) {
       for (const pr of prs) {
         activities.push({
           type: 'pr',

@@ -10,16 +10,14 @@ interface RecentResource {
   date: string;
 }
 
+import { getCachedCommits } from '../utils/github';
+
 // Fetch recent commits from GitHub
 async function fetchRecentResources(): Promise<RecentResource[]> {
   try {
-    const response = await fetch(
-      'https://api.github.com/repos/iiumstudent/Awesome-IIUM/commits?per_page=20'
-    );
+    const commits = await getCachedCommits(20);
     
-    if (!response.ok) return [];
-    
-    const commits = await response.json();
+    if (!commits) return [];
     const sevenDaysAgo = new Date();
     sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
     
