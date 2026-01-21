@@ -323,10 +323,10 @@ const defaultCampus = "gombak";
     for (const prayer of prayers) {
       const time = currentTimes[prayer.key];
       if (!time) continue;
-      
+
       const [hours, minutes] = time.split(':').map(Number);
       const prayerMinutes = hours * 60 + minutes;
-      
+
       if (prayerMinutes > currentMinutes) {
         nextPrayer = prayer;
         nextTime = { hours, minutes };
@@ -342,7 +342,7 @@ const defaultCampus = "gombak";
     }
 
     document.getElementById('next-prayer-name').textContent = nextPrayer.name;
-    
+
     // Highlight current prayer
     document.querySelectorAll('.prayer-card').forEach(card => {
       card.classList.toggle('next', card.dataset.prayer === nextPrayer.key);
