@@ -4,13 +4,13 @@
 
 ## 🌍 Supported Languages
 
-| Code | Language          | Direction | Status     |
-| ---- | ----------------- | --------- | ---------- |
-| `en` | English           | LTR       | ✅ Primary |
-| `ms` | Bahasa Melayu     | LTR       | 🔄 Partial |
-| `ar` | العربية (Arabic)  | RTL       | 🔄 Partial |
-| `zh` | 中文 (Chinese)    | LTR       | 🔄 Partial |
-| `ja` | 日本語 (Japanese) | LTR       | 🔄 Partial |
+| Code | Language | Direction | Status |
+|------|----------|-----------|--------|
+| `en` | English | LTR | ✅ Primary |
+| `ms` | Bahasa Melayu | LTR | 🔄 Partial |
+| `ar` | العربية (Arabic) | RTL | 🔄 Partial |
+| `zh` | 中文 (Chinese) | LTR | 🔄 Partial |
+| `ja` | 日本語 (Japanese) | LTR | 🔄 Partial |
 
 ---
 
@@ -44,16 +44,16 @@ src/content/docs/
 
 ### What to Translate
 
-| Element         | Translate? | Notes                   |
-| --------------- | ---------- | ----------------------- |
-| Page titles     | ✅ Yes     | Use natural language    |
-| Descriptions    | ✅ Yes     | Adapt for local context |
-| Headings        | ✅ Yes     | Keep structure          |
-| Body text       | ✅ Yes     | Main content            |
-| Link text       | ✅ Yes     | But keep URLs           |
-| Code            | ❌ No      | Keep as-is              |
-| Brand names     | ❌ No      | "IIUM", "i-Ma'luum"     |
-| Technical terms | ⚠️ Maybe   | Use judgment            |
+| Element | Translate? | Notes |
+|---------|------------|-------|
+| Page titles | ✅ Yes | Use natural language |
+| Descriptions | ✅ Yes | Adapt for local context |
+| Headings | ✅ Yes | Keep structure |
+| Body text | ✅ Yes | Main content |
+| Link text | ✅ Yes | But keep URLs |
+| Code | ❌ No | Keep as-is |
+| Brand names | ❌ No | "IIUM", "i-Ma'luum" |
+| Technical terms | ⚠️ Maybe | Use judgment |
 
 ### What NOT to Translate
 
@@ -77,22 +77,21 @@ description: 'Koleksi sumber, alatan, dan panduan untuk komuniti IIUM.'
 ```
 
 **Style Notes:**
-
 - Use formal register (standard Bahasa Melayu)
 - Prefer Malay terms over English loans where natural
 - Keep IIUM terminology as-is
 
 **Common Translations:**
 
-| English   | Bahasa Melayu |
-| --------- | ------------- |
-| Resources | Sumber        |
-| Tools     | Alatan        |
-| Guide     | Panduan       |
-| Campus    | Kampus        |
-| Student   | Pelajar       |
-| Academic  | Akademik      |
-| Career    | Kerjaya       |
+| English | Bahasa Melayu |
+|---------|---------------|
+| Resources | Sumber |
+| Tools | Alatan |
+| Guide | Panduan |
+| Campus | Kampus |
+| Student | Pelajar |
+| Academic | Akademik |
+| Career | Kerjaya |
 
 ---
 
@@ -101,14 +100,12 @@ description: 'Koleksi sumber, alatan, dan panduan untuk komuniti IIUM.'
 ```yaml
 ---
 title: 'مصادر IIUM الرائعة'
-description:
-  'قائمة منسقة من الموارد والأدوات لمجتمع الجامعة الإسلامية العالمية بماليزيا.'
+description: 'قائمة منسقة من الموارد والأدوات لمجتمع الجامعة الإسلامية العالمية بماليزيا.'
 dir: rtl
 ---
 ```
 
 **Style Notes:**
-
 - Use Modern Standard Arabic (فصحى)
 - Right-to-left direction is automatic
 - Keep English acronyms and names
@@ -116,14 +113,14 @@ dir: rtl
 
 **Common Translations:**
 
-| English   | Arabic  |
-| --------- | ------- |
-| Resources | موارد   |
-| Tools     | أدوات   |
-| Guide     | دليل    |
-| Student   | طالب    |
-| Academic  | أكاديمي |
-| Library   | مكتبة   |
+| English | Arabic |
+|---------|--------|
+| Resources | موارد |
+| Tools | أدوات |
+| Guide | دليل |
+| Student | طالب |
+| Academic | أكاديمي |
+| Library | مكتبة |
 
 ---
 
@@ -137,21 +134,20 @@ description: '为马来西亚国际伊斯兰大学社区精心策划的资源、
 ```
 
 **Style Notes:**
-
 - Use Simplified Chinese (简体中文)
 - Keep technical terms in English where appropriate
 - Numbers can use Arabic numerals
 
 **Common Translations:**
 
-| English   | Chinese |
-| --------- | ------- |
-| Resources | 资源    |
-| Tools     | 工具    |
-| Guide     | 指南    |
-| Student   | 学生    |
-| Campus    | 校园    |
-| Academic  | 学术    |
+| English | Chinese |
+|---------|---------|
+| Resources | 资源 |
+| Tools | 工具 |
+| Guide | 指南 |
+| Student | 学生 |
+| Campus | 校园 |
+| Academic | 学术 |
 
 ---
 
@@ -165,21 +161,20 @@ description: 'マレーシア国際イスラム大学コミュニティのため
 ```
 
 **Style Notes:**
-
 - Use polite form (です/ます)
 - Mix of kanji, hiragana, katakana as natural
 - Technical terms often in katakana
 
 **Common Translations:**
 
-| English   | Japanese   |
-| --------- | ---------- |
-| Resources | リソース   |
-| Tools     | ツール     |
-| Guide     | ガイド     |
-| Student   | 学生       |
-| Campus    | キャンパス |
-| Academic  | 学術       |
+| English | Japanese |
+|---------|----------|
+| Resources | リソース |
+| Tools | ツール |
+| Guide | ガイド |
+| Student | 学生 |
+| Campus | キャンパス |
+| Academic | 学術 |
 
 ---
 
@@ -188,7 +183,6 @@ description: 'マレーシア国際イスラム大学コミュニティのため
 ### 1. Choose a File
 
 Start with high-impact pages:
-
 1. `index.md` - Homepage
 2. `categories/academics/index.md` - Academics overview
 3. `tools.md` - Tools page
@@ -240,7 +234,6 @@ Before submitting translations:
 ## 🤝 Contributing
 
 We especially need help with:
-
 - Completing Arabic translations
 - Expanding Bahasa Melayu coverage
 - Japanese natural language review
