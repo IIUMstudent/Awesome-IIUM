@@ -76,6 +76,22 @@ const defaultCampus = 'gombak';
 
     const today = new Date();
     const date = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
+    const cacheKey = `iium-prayer-times-${campusKey}-${date}`;
+
+    // Check cache first
+    try {
+      const cached = localStorage.getItem(cacheKey);
+      if (cached) {
+        const data = JSON.parse(cached);
+        if (data && data.code === 200) {
+          currentTimes = data.data.timings;
+          renderTimes(data.data);
+          return;
+        }
+      }
+    } catch (e) {
+      console.warn('Cache read error:', e);
+    }
     
     try {
       const res = await fetch(
@@ -84,6 +100,13 @@ const defaultCampus = 'gombak';
       const data = await res.json();
       
       if (data.code === 200) {
+        // Cache the successful response
+        try {
+          localStorage.setItem(cacheKey, JSON.stringify(data));
+        } catch (e) {
+          console.warn('Cache write error:', e);
+        }
+
         currentTimes = data.data.timings;
         renderTimes(data.data);
       }
