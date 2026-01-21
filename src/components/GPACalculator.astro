@@ -10,8 +10,8 @@
   
   <div id="courses-container">
     <div class="course-row" data-index="0">
-      <input type="text" class="course-name" placeholder="Course name" />
-      <select class="grade">
+      <input type="text" class="course-name" placeholder="Course name" aria-label="Course name" />
+      <select class="grade" aria-label="Grade">
         <option value="">Grade</option>
         <option value="4.00">A (4.00)</option>
         <option value="3.67">A- (3.67)</option>
@@ -25,14 +25,14 @@
         <option value="1.00">D (1.00)</option>
         <option value="0.00">F (0.00)</option>
       </select>
-      <select class="credits">
+      <select class="credits" aria-label="Credits">
         <option value="">Credits</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
       </select>
-      <button class="remove-btn" title="Remove course">×</button>
+      <button class="remove-btn" title="Remove course" aria-label="Remove course">×</button>
     </div>
   </div>
 
@@ -41,7 +41,7 @@
     <button id="calculate" class="btn-primary">Calculate GPA</button>
   </div>
 
-  <div id="results" class="results hidden">
+  <div id="results" class="results hidden" aria-live="polite">
     <div class="result-card">
       <span class="label">Semester GPA</span>
       <span id="semester-gpa" class="value">0.00</span>
@@ -65,7 +65,7 @@
         <input type="number" id="prev-credits" min="0" placeholder="e.g., 45" />
       </div>
     </div>
-    <div id="cgpa-result" class="result-card cgpa hidden">
+    <div id="cgpa-result" class="result-card cgpa hidden" aria-live="polite">
       <span class="label">New Cumulative GPA</span>
       <span id="new-cgpa" class="value">0.00</span>
     </div>
@@ -107,8 +107,8 @@
       row.className = 'course-row';
       row.dataset.index = courseIndex++;
       row.innerHTML = `
-        <input type="text" class="course-name" placeholder="Course name" />
-        <select class="grade">
+        <input type="text" class="course-name" placeholder="Course name" aria-label="Course name" />
+        <select class="grade" aria-label="Grade">
           <option value="">Grade</option>
           <option value="4.00">A (4.00)</option>
           <option value="3.67">A- (3.67)</option>
@@ -122,16 +122,17 @@
           <option value="1.00">D (1.00)</option>
           <option value="0.00">F (0.00)</option>
         </select>
-        <select class="credits">
+        <select class="credits" aria-label="Credits">
           <option value="">Credits</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
         </select>
-        <button class="remove-btn" title="Remove course">×</button>
+        <button class="remove-btn" title="Remove course" aria-label="Remove course">×</button>
       `;
       container?.appendChild(row);
+      row.querySelector('.course-name')?.focus();
     });
 
     // Remove course row
