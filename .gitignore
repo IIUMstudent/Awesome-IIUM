@@ -7,6 +7,8 @@ Thumbs.db
 # Node
 node_modules/
 npm-debug.log
+dist/
+.astro/
 
 # Python
 __pycache__/
@@ -14,3 +16,7 @@ __pycache__/
 
 # MkDocs
 site/
+
+# Astro
+.astro/
+dist/
