@@ -1,0 +1,21 @@
+
+> dev
+> astro dev
+
+▶ Astro collects anonymous usage data.
+  This information helps us improve Astro.
+  Run "astro telemetry disable" to opt-out.
+  https://astro.build/telemetry
+
+16:48:09 [types] Generated 1ms
+16:48:10 [content] Syncing content
+16:48:10 [content] Synced content
+
+ astro  v5.16.11 ready in 2699 ms
+
+┃ Local    http://localhost:4321/Awesome-IIUM
+┃ Network  use --host to expose
+
+16:48:10 watching for file changes...
+16:54:04 [200] /tools 558ms
+16:54:04 [ERROR] [router] Request URLs for public/ assets must also include your base. "/Awesome-IIUM/pwa-register.js" expected, but received "/pwa-register.js".

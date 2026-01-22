@@ -87,7 +87,7 @@
     const addBtn = document.getElementById('add-course');
     const calcBtn = document.getElementById('calculate');
     const clearBtn = document.getElementById('clear-all');
-    const saveBtn = document.getElementById('save-data');
+    const saveBtn = document.getElementById('save-data') as HTMLButtonElement | null;
     const resultsDiv = document.getElementById('results');
     const cgpaResultDiv = document.getElementById('cgpa-result');
 
@@ -205,9 +205,12 @@
 
     // Save data
     saveBtn?.addEventListener('click', () => {
+      const prevCgpaInput = document.getElementById('prev-cgpa') as HTMLInputElement | null;
+      const prevCreditsInput = document.getElementById('prev-credits') as HTMLInputElement | null;
+
       const data = {
-        prevCgpa: document.getElementById('prev-cgpa').value,
-        prevCredits: document.getElementById('prev-credits').value,
+        prevCgpa: prevCgpaInput?.value || '',
+        prevCredits: prevCreditsInput?.value || '',
       };
       localStorage.setItem('iium-gpa-data', JSON.stringify(data));
 
@@ -324,6 +327,14 @@
 
   .btn-primary:hover {
     filter: brightness(1.1);
+  }
+
+  .btn-primary:disabled,
+  .btn-secondary:disabled,
+  .btn-ghost:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    filter: grayscale(0.5);
   }
 
   .btn-secondary {
