@@ -73,7 +73,10 @@
 
   <div class="footer-actions">
     <button id="clear-all" class="btn-ghost">Clear All</button>
-    <button id="save-data" class="btn-secondary">💾 Save</button>
+    <div class="save-wrapper">
+      <span id="save-status" class="save-status" aria-live="polite"></span>
+      <button id="save-data" class="btn-secondary">💾 Save</button>
+    </div>
   </div>
 </div>
 
@@ -84,7 +87,7 @@
     const addBtn = document.getElementById('add-course');
     const calcBtn = document.getElementById('calculate');
     const clearBtn = document.getElementById('clear-all');
-    const saveBtn = document.getElementById('save-data');
+    const saveBtn = document.getElementById('save-data') as HTMLButtonElement | null;
     const resultsDiv = document.getElementById('results');
     const cgpaResultDiv = document.getElementById('cgpa-result');
 
@@ -137,10 +140,11 @@
 
     // Remove course row
     container?.addEventListener('click', (e) => {
-      if (e.target.classList.contains('remove-btn')) {
+      const btn = e.target.closest('.remove-btn');
+      if (btn) {
         const rows = container.querySelectorAll('.course-row');
         if (rows.length > 1) {
-          e.target.closest('.course-row').remove();
+          btn.closest('.course-row').remove();
         }
       }
     });
@@ -201,12 +205,23 @@
 
     // Save data
     saveBtn?.addEventListener('click', () => {
+      const prevCgpaInput = document.getElementById('prev-cgpa') as HTMLInputElement | null;
+      const prevCreditsInput = document.getElementById('prev-credits') as HTMLInputElement | null;
+
       const data = {
-        prevCgpa: document.getElementById('prev-cgpa').value,
-        prevCredits: document.getElementById('prev-credits').value,
+        prevCgpa: prevCgpaInput?.value || '',
+        prevCredits: prevCreditsInput?.value || '',
       };
       localStorage.setItem('iium-gpa-data', JSON.stringify(data));
-      alert('Data saved! Your cumulative GPA inputs will be restored next time.');
+
+      const originalText = saveBtn.textContent;
+      saveBtn.textContent = '✅ Saved!';
+      saveBtn.disabled = true;
+
+      setTimeout(() => {
+        saveBtn.textContent = originalText;
+        saveBtn.disabled = false;
+      }, 2000);
     });
   });
 </script>
@@ -278,6 +293,9 @@
     font-size: 1.25rem;
     cursor: pointer;
     transition: color 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .remove-btn:hover {
@@ -309,6 +327,14 @@
 
   .btn-primary:hover {
     filter: brightness(1.1);
+  }
+
+  .btn-primary:disabled,
+  .btn-secondary:disabled,
+  .btn-ghost:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    filter: grayscale(0.5);
   }
 
   .btn-secondary {
@@ -405,5 +431,22 @@
     margin-top: 1.5rem;
     padding-top: 1rem;
     border-top: 1px solid var(--sl-color-hairline-light);
+  }
+
+  .save-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .save-status {
+    font-size: 0.875rem;
+    color: var(--sl-color-accent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .save-status.visible {
+    opacity: 1;
   }
 </style>

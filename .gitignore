@@ -16,3 +16,7 @@ __pycache__/
 
 # MkDocs
 site/
+
+# Astro
+.astro/
+dist/

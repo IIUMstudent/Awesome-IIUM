@@ -1,3 +1,3 @@
-## 2026-01-22 - Build Artifacts Tracking
-**Learning:** The `dist/` directory was tracked in git despite being a build artifact. This caused massive diffs and suppressed tool outputs during verification.
-**Action:** Always check `git status` or `git ls-files` for build artifacts and use `git rm --cached -r <dir>` to remove them from the index if found.
+## 2026-01-21 - [SSG for Static Data]
+**Learning:** Client-side fetching for static data (like contributors) hurts LCP and requires layout shift handling. Astro components run at build time, making them perfect for pre-fetching this data.
+**Action:** Prefer top-level await fetch in Astro frontmatter for data that doesn't change frequently.
