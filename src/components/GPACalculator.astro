@@ -206,7 +206,15 @@
         prevCredits: document.getElementById('prev-credits').value,
       };
       localStorage.setItem('iium-gpa-data', JSON.stringify(data));
-      alert('Data saved! Your cumulative GPA inputs will be restored next time.');
+
+      const originalText = saveBtn.textContent;
+      saveBtn.textContent = '✅ Saved!';
+      saveBtn.disabled = true;
+
+      setTimeout(() => {
+        saveBtn.textContent = originalText;
+        saveBtn.disabled = false;
+      }, 2000);
     });
   });
 </script>
