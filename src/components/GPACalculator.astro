@@ -32,7 +32,7 @@
         <option value="3">3</option>
         <option value="4">4</option>
       </select>
-      <button class="remove-btn" aria-label="Remove course">×</button>
+      <button class="remove-btn" title="Remove course" aria-label="Remove course">×</button>
     </div>
   </div>
 
@@ -41,7 +41,7 @@
     <button id="calculate" class="btn-primary">Calculate GPA</button>
   </div>
 
-  <div id="results" class="results hidden">
+  <div id="results" class="results hidden" aria-live="polite">
     <div class="result-card">
       <span class="label">Semester GPA</span>
       <span id="semester-gpa" class="value">0.00</span>
@@ -65,7 +65,7 @@
         <input type="number" id="prev-credits" min="0" placeholder="e.g., 45" />
       </div>
     </div>
-    <div id="cgpa-result" class="result-card cgpa hidden">
+    <div id="cgpa-result" class="result-card cgpa hidden" aria-live="polite">
       <span class="label">New Cumulative GPA</span>
       <span id="new-cgpa" class="value">0.00</span>
     </div>
@@ -132,15 +132,10 @@
           <option value="3">3</option>
           <option value="4">4</option>
         </select>
-        <button class="remove-btn" aria-label="Remove course">×</button>
+        <button class="remove-btn" title="Remove course" aria-label="Remove course">×</button>
       `;
       container?.appendChild(row);
-
-      // Focus on the new course name input
-      const newInput = row.querySelector('.course-name');
-      if (newInput) {
-        newInput.focus();
-      }
+      row.querySelector('.course-name')?.focus();
     });
 
     // Remove course row
@@ -216,14 +211,14 @@
       };
       localStorage.setItem('iium-gpa-data', JSON.stringify(data));
 
-      const status = document.getElementById('save-status');
-      if (status) {
-        status.textContent = 'Saved!';
-        status.classList.add('visible');
-        setTimeout(() => {
-          status.classList.remove('visible');
-        }, 2000);
-      }
+      const originalText = saveBtn.textContent;
+      saveBtn.textContent = '✅ Saved!';
+      saveBtn.disabled = true;
+
+      setTimeout(() => {
+        saveBtn.textContent = originalText;
+        saveBtn.disabled = false;
+      }, 2000);
     });
   });
 </script>
