@@ -84,7 +84,7 @@
     const addBtn = document.getElementById('add-course');
     const calcBtn = document.getElementById('calculate');
     const clearBtn = document.getElementById('clear-all');
-    const saveBtn = document.getElementById('save-data');
+    const saveBtn = document.getElementById('save-data') as HTMLButtonElement | null;
     const resultsDiv = document.getElementById('results');
     const cgpaResultDiv = document.getElementById('cgpa-result');
 
@@ -201,9 +201,12 @@
 
     // Save data
     saveBtn?.addEventListener('click', () => {
+      const prevCgpaInput = document.getElementById('prev-cgpa') as HTMLInputElement | null;
+      const prevCreditsInput = document.getElementById('prev-credits') as HTMLInputElement | null;
+
       const data = {
-        prevCgpa: document.getElementById('prev-cgpa').value,
-        prevCredits: document.getElementById('prev-credits').value,
+        prevCgpa: prevCgpaInput?.value || '',
+        prevCredits: prevCreditsInput?.value || '',
       };
       localStorage.setItem('iium-gpa-data', JSON.stringify(data));
 
