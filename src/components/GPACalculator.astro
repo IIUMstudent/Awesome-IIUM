@@ -73,7 +73,10 @@
 
   <div class="footer-actions">
     <button id="clear-all" class="btn-ghost">Clear All</button>
-    <button id="save-data" class="btn-secondary">💾 Save</button>
+    <div class="save-wrapper">
+      <span id="save-status" class="save-status" aria-live="polite"></span>
+      <button id="save-data" class="btn-secondary">💾 Save</button>
+    </div>
   </div>
 </div>
 
@@ -137,10 +140,11 @@
 
     // Remove course row
     container?.addEventListener('click', (e) => {
-      if (e.target.classList.contains('remove-btn')) {
+      const btn = e.target.closest('.remove-btn');
+      if (btn) {
         const rows = container.querySelectorAll('.course-row');
         if (rows.length > 1) {
-          e.target.closest('.course-row').remove();
+          btn.closest('.course-row').remove();
         }
       }
     });
@@ -286,6 +290,9 @@
     font-size: 1.25rem;
     cursor: pointer;
     transition: color 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .remove-btn:hover {
@@ -413,5 +420,22 @@
     margin-top: 1.5rem;
     padding-top: 1rem;
     border-top: 1px solid var(--sl-color-hairline-light);
+  }
+
+  .save-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .save-status {
+    font-size: 0.875rem;
+    color: var(--sl-color-accent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .save-status.visible {
+    opacity: 1;
   }
 </style>
