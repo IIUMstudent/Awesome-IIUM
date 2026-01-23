@@ -1,12 +1,5 @@
 [
-	{
-		"name": "i-Ma'luum",
-		"status": "online",
-		"timestamp": "2026-01-21T11:54:56Z"
-	},
-	{
-		"name": "i-Ta'leem",
-		"status": "online",
-		"timestamp": "2026-01-21T11:54:57Z"
-	}
+{"name": "i-Ma'luum", "status": "online", "timestamp": "2026-01-23T08:34:55Z"}
+,
+{"name": "i-Ta'leem", "status": "online", "timestamp": "2026-01-23T08:35:00Z"}
 ]
