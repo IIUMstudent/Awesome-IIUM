@@ -5,49 +5,49 @@
  * Uses GitHub API to fetch recent commits
  */
 interface RecentResource {
-  title: string;
-  path: string;
-  date: string;
+	title: string;
+	path: string;
+	date: string;
 }
 
 // Fetch recent commits from GitHub
 async function fetchRecentResources(): Promise<RecentResource[]> {
-  try {
-    const response = await fetch(
-      'https://api.github.com/repos/iiumstudent/Awesome-IIUM/commits?per_page=20'
-    );
-    
-    if (!response.ok) return [];
-    
-    const commits = await response.json();
-    const sevenDaysAgo = new Date();
-    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
-    
-    const recentResources: RecentResource[] = [];
-    
-    for (const commit of commits) {
-      const commitDate = new Date(commit.commit.author.date);
-      if (commitDate < sevenDaysAgo) break;
-      
-      // Check if commit message indicates new content
-      const message = commit.commit.message.toLowerCase();
-      if (
-        message.includes('add') ||
-        message.includes('new') ||
-        message.includes('feat')
-      ) {
-        recentResources.push({
-          title: commit.commit.message.split('\n')[0],
-          path: commit.html_url,
-          date: commitDate.toLocaleDateString(),
-        });
-      }
-    }
-    
-    return recentResources.slice(0, 5);
-  } catch {
-    return [];
-  }
+	try {
+		const response = await fetch(
+			'https://api.github.com/repos/iiumstudent/Awesome-IIUM/commits?per_page=20',
+		);
+
+		if (!response.ok) return [];
+
+		const commits = await response.json();
+		const sevenDaysAgo = new Date();
+		sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+
+		const recentResources: RecentResource[] = [];
+
+		for (const commit of commits) {
+			const commitDate = new Date(commit.commit.author.date);
+			if (commitDate < sevenDaysAgo) break;
+
+			// Check if commit message indicates new content
+			const message = commit.commit.message.toLowerCase();
+			if (
+				message.includes('add') ||
+				message.includes('new') ||
+				message.includes('feat')
+			) {
+				recentResources.push({
+					title: commit.commit.message.split('\n')[0],
+					path: commit.html_url,
+					date: commitDate.toLocaleDateString(),
+				});
+			}
+		}
+
+		return recentResources.slice(0, 5);
+	} catch {
+		return [];
+	}
 }
 
 const resources = await fetchRecentResources();

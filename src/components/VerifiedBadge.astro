@@ -4,28 +4,28 @@
  * Displays a verification badge for official/trusted resources
  */
 interface Props {
-  text?: string;
-  variant?: 'verified' | 'featured' | 'official';
+	text?: string;
+	variant?: 'verified' | 'featured' | 'official';
 }
 
 const { text = 'Verified', variant = 'verified' } = Astro.props;
 
 const variants = {
-  verified: {
-    icon: '✓',
-    class: 'badge-verified',
-    title: 'This resource has been verified by maintainers',
-  },
-  featured: {
-    icon: '★',
-    class: 'badge-featured',
-    title: 'Featured resource',
-  },
-  official: {
-    icon: '🏛',
-    class: 'badge-official',
-    title: 'Official IIUM resource',
-  },
+	verified: {
+		icon: '✓',
+		class: 'badge-verified',
+		title: 'This resource has been verified by maintainers',
+	},
+	featured: {
+		icon: '★',
+		class: 'badge-featured',
+		title: 'Featured resource',
+	},
+	official: {
+		icon: '🏛',
+		class: 'badge-official',
+		title: 'Official IIUM resource',
+	},
 };
 
 const config = variants[variant];

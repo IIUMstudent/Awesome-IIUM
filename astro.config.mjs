@@ -1,6 +1,6 @@
-import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import AstroPWA from '@vite-pwa/astro';
+import { defineConfig } from 'astro/config';
 
 export default defineConfig({
 	site: 'https://iiumstudent.github.io',

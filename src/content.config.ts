@@ -10,7 +10,15 @@ const extendedDocsSchema = docsSchema({
 	extend: z.object({
 		// Resource categorization
 		resourceType: z
-			.enum(['portal', 'tool', 'community', 'library', 'app', 'guide', 'course'])
+			.enum([
+				'portal',
+				'tool',
+				'community',
+				'library',
+				'app',
+				'guide',
+				'course',
+			])
 			.optional(),
 		tags: z.array(z.string()).optional(),
 

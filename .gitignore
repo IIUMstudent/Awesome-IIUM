@@ -17,6 +17,6 @@ __pycache__/
 # MkDocs
 site/
 
-# Astro
+# Biome excludes
 .astro/
 dist/

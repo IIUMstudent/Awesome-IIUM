@@ -4,64 +4,70 @@
  * Shows recent activity from the GitHub repository
  */
 interface Activity {
-  type: 'commit' | 'pr' | 'issue';
-  title: string;
-  user: string;
-  avatar: string;
-  url: string;
-  date: string;
-  icon: string;
+	type: 'commit' | 'pr' | 'issue';
+	title: string;
+	user: string;
+	avatar: string;
+	url: string;
+	date: string;
+	icon: string;
 }
 
 async function fetchActivity(): Promise<Activity[]> {
-  const activities: Activity[] = [];
-  
-  try {
-    // Parallelize API fetches
-    const [commitsRes, prsRes] = await Promise.all([
-      fetch('https://api.github.com/repos/iiumstudent/Awesome-IIUM/commits?per_page=3'),
-      fetch('https://api.github.com/repos/iiumstudent/Awesome-IIUM/pulls?state=all&per_page=2'),
-    ]);
+	const activities: Activity[] = [];
 
-    // Process commits
-    if (commitsRes.ok) {
-      const commits = await commitsRes.json();
-      for (const commit of commits) {
-        activities.push({
-          type: 'commit',
-          title: commit.commit.message.split('\n')[0].substring(0, 60),
-          user: commit.author?.login || commit.commit.author.name,
-          avatar: commit.author?.avatar_url || 'https://github.com/ghost.png',
-          url: commit.html_url,
-          date: new Date(commit.commit.author.date).toLocaleDateString(),
-          icon: '📝',
-        });
-      }
-    }
+	try {
+		// Parallelize API fetches
+		const [commitsRes, prsRes] = await Promise.all([
+			fetch(
+				'https://api.github.com/repos/iiumstudent/Awesome-IIUM/commits?per_page=3',
+			),
+			fetch(
+				'https://api.github.com/repos/iiumstudent/Awesome-IIUM/pulls?state=all&per_page=2',
+			),
+		]);
 
-    // Process pull requests
-    if (prsRes.ok) {
-      const prs = await prsRes.json();
-      for (const pr of prs) {
-        activities.push({
-          type: 'pr',
-          title: pr.title.substring(0, 60),
-          user: pr.user.login,
-          avatar: pr.user.avatar_url,
-          url: pr.html_url,
-          date: new Date(pr.created_at).toLocaleDateString(),
-          icon: '🔀',
-        });
-      }
-    }
+		// Process commits
+		if (commitsRes.ok) {
+			const commits = await commitsRes.json();
+			for (const commit of commits) {
+				activities.push({
+					type: 'commit',
+					title: commit.commit.message.split('\n')[0].substring(0, 60),
+					user: commit.author?.login || commit.commit.author.name,
+					avatar: commit.author?.avatar_url || 'https://github.com/ghost.png',
+					url: commit.html_url,
+					date: new Date(commit.commit.author.date).toLocaleDateString(),
+					icon: '📝',
+				});
+			}
+		}
 
-    // Sort by date (most recent first)
-    activities.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-    
-    return activities.slice(0, 5);
-  } catch {
-    return [];
-  }
+		// Process pull requests
+		if (prsRes.ok) {
+			const prs = await prsRes.json();
+			for (const pr of prs) {
+				activities.push({
+					type: 'pr',
+					title: pr.title.substring(0, 60),
+					user: pr.user.login,
+					avatar: pr.user.avatar_url,
+					url: pr.html_url,
+					date: new Date(pr.created_at).toLocaleDateString(),
+					icon: '🔀',
+				});
+			}
+		}
+
+		// Sort by date (most recent first)
+		activities.sort(
+			(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+		);
+
+		return activities.slice(0, 5);
+	} catch {
+		return [];
+	}
 }
 
 const activities = await fetchActivity();
