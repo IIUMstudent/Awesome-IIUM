@@ -1,5 +1,7 @@
 ---
 // StatusDashboard.astro
+// biome-ignore lint/correctness/noUnusedVariables: used in define:vars
+const base = import.meta.env.BASE_URL;
 ---
 
 <div id="status-dashboard" class="not-content">
@@ -8,22 +10,33 @@
   </div>
 </div>
 
-<script>
+<script define:vars={{ base }}>
+  // Helper to prevent XSS
+  function escapeHtml(unsafe) {
+    return (unsafe || '')
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
   async function fetchStatus() {
     try {
-      const response = await fetch('/api/status.json');
+      const baseUrl = base.endsWith('/') ? base : base + '/';
+      const response = await fetch(`${baseUrl}api/status.json`);
       const data = await response.json();
       const grid = document.getElementById('status-grid');
       if (!grid) return;
       
       grid.innerHTML = data.map(sys => `
-        <div class="status-card ${sys.status}">
+        <div class="status-card ${escapeHtml(sys.status)}">
           <div class="status-header">
             <span class="status-dot"></span>
-            <h3>${sys.name}</h3>
+            <h3>${escapeHtml(sys.name)}</h3>
           </div>
           <div class="status-body">
-            <span class="status-label">${sys.status.toUpperCase()}</span>
+            <span class="status-label">${escapeHtml(sys.status.toUpperCase())}</span>
             <span class="status-time">Last Checked: ${new Date(sys.timestamp).toLocaleTimeString()}</span>
           </div>
         </div>
