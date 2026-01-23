@@ -28,6 +28,7 @@ interface Location {
 	campus: string;
 }
 
+// biome-ignore lint/correctness/noUnusedVariables: used in template and script
 const campuses: Campus[] = [
 	{
 		id: 'gombak',
@@ -55,6 +56,7 @@ const campuses: Campus[] = [
 	},
 ];
 
+// biome-ignore lint/correctness/noUnusedVariables: used in script
 const locations: Location[] = [
 	// Gombak Campus
 	{
@@ -329,10 +331,22 @@ const locations: Location[] = [
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMap);
-  } else {
-    initMap();
+  // Initialize map when visible
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          initMap();
+          observer.disconnect();
+        }
+      });
+    },
+    { rootMargin: '200px' },
+  ); // Load slightly before it comes into view
+
+  const container = document.getElementById('map-container');
+  if (container) {
+    observer.observe(container);
   }
 </script>
 
