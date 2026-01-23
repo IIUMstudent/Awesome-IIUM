@@ -1,19 +1,53 @@
 name: Link Checker
 
 on:
-  pull_request:
+  schedule:
+    # Run weekly on Sundays at 00:00 UTC
+    - cron: '0 0 * * 0'
+  workflow_dispatch: # Allow manual trigger
   push:
-    branches:
-      - main
+    paths:
+      - 'src/content/**/*.md'
+      - 'src/content/**/*.mdx'
 
 jobs:
-  linkChecker:
+  link-checker:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - name: Run link checker
-        uses: lycheeverse/lychee-action@v2.0.2
+      - name: Link Checker
+        uses: lycheeverse/lychee-action@v2
         with:
-          args: --verbose
+          args: >
+            --verbose
+            --no-progress
+            --exclude-path node_modules
+            --exclude-path dist
+            --exclude '.*localhost.*'
+            --exclude '.*127\.0\.0\.1.*'
+            --exclude-mail
+            --timeout 30
+            --max-retries 3
+            --accept 200,301,302,403
+            './src/content/**/*.md'
+            './src/content/**/*.mdx'
+            './*.md'
+          fail: false
+          output: ./lychee-report.md
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-check-report
+          path: ./lychee-report.md
+
+      - name: Create Issue From File
+        if: failure() && github.event_name == 'schedule'
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: '[Automated] Broken Links Detected'
+          content-filepath: ./lychee-report.md
+          labels: broken-link, maintenance

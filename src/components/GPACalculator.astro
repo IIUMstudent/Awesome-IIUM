@@ -1,0 +1,408 @@
+---
+/**
+ * GPA Calculator Component
+ * Interactive CGPA calculator using IIUM's grading scale
+ */
+---
+
+<div class="gpa-calculator not-content">
+  <h3>🧮 IIUM GPA Calculator</h3>
+  
+  <div id="courses-container">
+    <div class="course-row" data-index="0">
+      <input type="text" class="course-name" placeholder="Course name" />
+      <select class="grade">
+        <option value="">Grade</option>
+        <option value="4.00">A (4.00)</option>
+        <option value="3.67">A- (3.67)</option>
+        <option value="3.33">B+ (3.33)</option>
+        <option value="3.00">B (3.00)</option>
+        <option value="2.67">B- (2.67)</option>
+        <option value="2.33">C+ (2.33)</option>
+        <option value="2.00">C (2.00)</option>
+        <option value="1.67">C- (1.67)</option>
+        <option value="1.33">D+ (1.33)</option>
+        <option value="1.00">D (1.00)</option>
+        <option value="0.00">F (0.00)</option>
+      </select>
+      <select class="credits">
+        <option value="">Credits</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+      <button class="remove-btn" title="Remove course">×</button>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button id="add-course" class="btn-secondary">+ Add Course</button>
+    <button id="calculate" class="btn-primary">Calculate GPA</button>
+  </div>
+
+  <div id="results" class="results hidden">
+    <div class="result-card">
+      <span class="label">Semester GPA</span>
+      <span id="semester-gpa" class="value">0.00</span>
+    </div>
+    <div class="result-card total">
+      <span class="label">Total Credits</span>
+      <span id="total-credits" class="value">0</span>
+    </div>
+  </div>
+
+  <div class="cumulative-section">
+    <h4>📊 Cumulative GPA (Optional)</h4>
+    <p class="helper-text">Enter your previous CGPA to calculate your new cumulative GPA.</p>
+    <div class="cumulative-inputs">
+      <div class="input-group">
+        <label for="prev-cgpa">Previous CGPA</label>
+        <input type="number" id="prev-cgpa" step="0.01" min="0" max="4" placeholder="e.g., 3.50" />
+      </div>
+      <div class="input-group">
+        <label for="prev-credits">Previous Credits</label>
+        <input type="number" id="prev-credits" min="0" placeholder="e.g., 45" />
+      </div>
+    </div>
+    <div id="cgpa-result" class="result-card cgpa hidden">
+      <span class="label">New Cumulative GPA</span>
+      <span id="new-cgpa" class="value">0.00</span>
+    </div>
+  </div>
+
+  <div class="footer-actions">
+    <button id="clear-all" class="btn-ghost">Clear All</button>
+    <button id="save-data" class="btn-secondary">💾 Save</button>
+  </div>
+</div>
+
+<script>
+  // GPA Calculator Logic
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('courses-container');
+    const addBtn = document.getElementById('add-course');
+    const calcBtn = document.getElementById('calculate');
+    const clearBtn = document.getElementById('clear-all');
+    const saveBtn = document.getElementById('save-data');
+    const resultsDiv = document.getElementById('results');
+    const cgpaResultDiv = document.getElementById('cgpa-result');
+
+    let courseIndex = 1;
+
+    // Load saved data
+    const savedData = localStorage.getItem('iium-gpa-data');
+    if (savedData) {
+      try {
+        const data = JSON.parse(savedData);
+        // Restore previous CGPA inputs
+        if (data.prevCgpa) document.getElementById('prev-cgpa').value = data.prevCgpa;
+        if (data.prevCredits) document.getElementById('prev-credits').value = data.prevCredits;
+      } catch (e) {}
+    }
+
+    // Add new course row
+    addBtn?.addEventListener('click', () => {
+      const row = document.createElement('div');
+      row.className = 'course-row';
+      row.dataset.index = courseIndex++;
+      row.innerHTML = `
+        <input type="text" class="course-name" placeholder="Course name" />
+        <select class="grade">
+          <option value="">Grade</option>
+          <option value="4.00">A (4.00)</option>
+          <option value="3.67">A- (3.67)</option>
+          <option value="3.33">B+ (3.33)</option>
+          <option value="3.00">B (3.00)</option>
+          <option value="2.67">B- (2.67)</option>
+          <option value="2.33">C+ (2.33)</option>
+          <option value="2.00">C (2.00)</option>
+          <option value="1.67">C- (1.67)</option>
+          <option value="1.33">D+ (1.33)</option>
+          <option value="1.00">D (1.00)</option>
+          <option value="0.00">F (0.00)</option>
+        </select>
+        <select class="credits">
+          <option value="">Credits</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+        <button class="remove-btn" title="Remove course">×</button>
+      `;
+      container?.appendChild(row);
+    });
+
+    // Remove course row
+    container?.addEventListener('click', (e) => {
+      if (e.target.classList.contains('remove-btn')) {
+        const rows = container.querySelectorAll('.course-row');
+        if (rows.length > 1) {
+          e.target.closest('.course-row').remove();
+        }
+      }
+    });
+
+    // Calculate GPA
+    calcBtn?.addEventListener('click', () => {
+      const rows = container?.querySelectorAll('.course-row');
+      let totalPoints = 0;
+      let totalCredits = 0;
+
+      rows?.forEach((row) => {
+        const grade = parseFloat(row.querySelector('.grade').value);
+        const credits = parseInt(row.querySelector('.credits').value);
+        
+        if (!isNaN(grade) && !isNaN(credits)) {
+          totalPoints += grade * credits;
+          totalCredits += credits;
+        }
+      });
+
+      const semesterGpa = totalCredits > 0 ? (totalPoints / totalCredits).toFixed(2) : '0.00';
+      
+      document.getElementById('semester-gpa').textContent = semesterGpa;
+      document.getElementById('total-credits').textContent = totalCredits;
+      resultsDiv?.classList.remove('hidden');
+
+      // Calculate cumulative GPA if previous data provided
+      const prevCgpa = parseFloat(document.getElementById('prev-cgpa').value);
+      const prevCredits = parseInt(document.getElementById('prev-credits').value);
+
+      if (!isNaN(prevCgpa) && !isNaN(prevCredits) && prevCredits > 0) {
+        const prevPoints = prevCgpa * prevCredits;
+        const newTotalPoints = prevPoints + totalPoints;
+        const newTotalCredits = prevCredits + totalCredits;
+        const newCgpa = (newTotalPoints / newTotalCredits).toFixed(2);
+        
+        document.getElementById('new-cgpa').textContent = newCgpa;
+        cgpaResultDiv?.classList.remove('hidden');
+      }
+    });
+
+    // Clear all
+    clearBtn?.addEventListener('click', () => {
+      const rows = container?.querySelectorAll('.course-row');
+      rows?.forEach((row, i) => {
+        if (i > 0) row.remove();
+        else {
+          row.querySelector('.course-name').value = '';
+          row.querySelector('.grade').value = '';
+          row.querySelector('.credits').value = '';
+        }
+      });
+      document.getElementById('prev-cgpa').value = '';
+      document.getElementById('prev-credits').value = '';
+      resultsDiv?.classList.add('hidden');
+      cgpaResultDiv?.classList.add('hidden');
+    });
+
+    // Save data
+    saveBtn?.addEventListener('click', () => {
+      const data = {
+        prevCgpa: document.getElementById('prev-cgpa').value,
+        prevCredits: document.getElementById('prev-credits').value,
+      };
+      localStorage.setItem('iium-gpa-data', JSON.stringify(data));
+      alert('Data saved! Your cumulative GPA inputs will be restored next time.');
+    });
+  });
+</script>
+
+<style>
+  .gpa-calculator {
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .gpa-calculator h3 {
+    margin: 0 0 1.25rem 0;
+    font-size: 1.125rem;
+  }
+
+  .gpa-calculator h4 {
+    margin: 1.5rem 0 0.5rem 0;
+    font-size: 1rem;
+    border-top: 1px solid var(--sl-color-hairline-light);
+    padding-top: 1.5rem;
+  }
+
+  .helper-text {
+    font-size: 0.875rem;
+    color: var(--sl-color-gray-3);
+    margin: 0 0 1rem 0;
+  }
+
+  .course-row {
+    display: grid;
+    grid-template-columns: 1fr 120px 80px 36px;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 600px) {
+    .course-row {
+      grid-template-columns: 1fr 1fr;
+    }
+    .course-row .course-name {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .course-row input,
+  .course-row select {
+    padding: 0.5rem;
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 6px;
+    background: var(--sl-color-bg);
+    color: inherit;
+    font-size: 0.875rem;
+  }
+
+  .course-row input:focus,
+  .course-row select:focus {
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: -1px;
+  }
+
+  .remove-btn {
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--sl-color-gray-3);
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: color 0.15s;
+  }
+
+  .remove-btn:hover {
+    color: #ef4444;
+  }
+
+  .actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-ghost {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .btn-primary {
+    background: var(--sl-color-accent);
+    color: white;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    filter: brightness(1.1);
+  }
+
+  .btn-secondary {
+    background: var(--sl-color-bg);
+    border: 1px solid var(--sl-color-hairline-light);
+    color: inherit;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--sl-color-accent);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    border: none;
+    color: var(--sl-color-gray-3);
+  }
+
+  .btn-ghost:hover {
+    color: var(--sl-color-text);
+  }
+
+  .results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .results.hidden,
+  .cgpa.hidden {
+    display: none;
+  }
+
+  .result-card {
+    background: var(--sl-color-bg);
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .result-card.cgpa {
+    margin-top: 1rem;
+    background: linear-gradient(135deg, var(--sl-color-accent-low) 0%, var(--sl-color-bg) 100%);
+    border-color: var(--sl-color-accent);
+  }
+
+  .result-card .label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--sl-color-gray-3);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+  }
+
+  .result-card .value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--sl-color-accent);
+  }
+
+  .cumulative-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .input-group label {
+    font-size: 0.75rem;
+    color: var(--sl-color-gray-3);
+  }
+
+  .input-group input {
+    padding: 0.5rem;
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 6px;
+    background: var(--sl-color-bg);
+    color: inherit;
+    font-size: 0.875rem;
+  }
+
+  .footer-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--sl-color-hairline-light);
+  }
+</style>

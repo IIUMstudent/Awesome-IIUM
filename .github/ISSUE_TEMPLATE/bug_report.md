@@ -1,27 +1,23 @@
 ---
-name: Bug report
-about: Report a broken link or incorrect information
+name: 🐛 Bug Report
+about: Create a report to help us improve Awesome IIUM
+title: '[BUG] '
+labels: bug
+assignees: ''
 ---
 
-### Description of the issue
+**Describe the bug** A clear and concise description of what the bug is.
 
-A clear and concise description of the issue.
-
-### Steps to reproduce
+**To Reproduce** Steps to reproduce the behavior:
 
 1. Go to '...'
 2. Click on '...'
 3. Scroll down to '...'
 4. See error
 
-### Expected behavior
+**Expected behavior** A clear and concise description of what you expected to
+happen.
 
-What should happen?
+**Screenshots** If applicable, add screenshots to help explain your problem.
 
-### Screenshots
-
-If applicable, add screenshots.
-
-### Additional context
-
-Any other context about the problem.
+**Additional context** Add any other context about the problem here.

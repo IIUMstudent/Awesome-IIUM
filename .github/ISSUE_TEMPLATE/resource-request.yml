@@ -1,0 +1,115 @@
+name: 📚 Resource Suggestion
+description: Suggest a new resource to be added to Awesome IIUM
+title: '[Resource]: '
+labels: ['new resource', 'triage']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 📚 Suggest a New Resource
+        Thank you for helping us grow Awesome IIUM! Please fill out the form below.
+
+  - type: input
+    id: resource-name
+    attributes:
+      label: Resource Name
+      description: The name of the resource you're suggesting
+      placeholder: e.g., IIUM Course Planner
+    validations:
+      required: true
+
+  - type: input
+    id: resource-url
+    attributes:
+      label: Resource URL
+      description: The link to the resource
+      placeholder: https://example.com
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: Which category does this resource belong to?
+      options:
+        - Academics - General
+        - Academics - AIKOL (Laws)
+        - Academics - KIRKHS (Islamic Studies)
+        - Academics - KAED (Architecture)
+        - Academics - KENMS (Economics)
+        - Academics - KICT (IT)
+        - Academics - KOE (Engineering)
+        - Academics - KOED (Education)
+        - Academics - Medical (KOM/KOD/KON/KOP/KAHS)
+        - Academics - KOS (Science)
+        - Campus Life
+        - Career & Internships
+        - Developers
+    validations:
+      required: true
+
+  - type: dropdown
+    id: campus
+    attributes:
+      label: Campus
+      description: Which campus is this resource relevant to?
+      options:
+        - All campuses
+        - Gombak
+        - Kuantan
+        - Pagoh
+    validations:
+      required: true
+
+  - type: dropdown
+    id: resource-type
+    attributes:
+      label: Resource Type
+      description: What type of resource is this?
+      options:
+        - Portal (official website/system)
+        - Tool (utility/calculator)
+        - App (mobile/desktop application)
+        - Library (code library/API)
+        - Community (group/organization)
+        - Guide (tutorial/documentation)
+        - Course (learning material)
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Briefly describe what this resource does and why it's useful for IIUM students
+      placeholder: |
+        This tool helps students...
+        
+        Key features:
+        - Feature 1
+        - Feature 2
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: quality-checks
+    attributes:
+      label: Quality Checklist
+      description: Please confirm the following
+      options:
+        - label: The resource is currently accessible and working
+          required: true
+        - label: The resource is relevant to IIUM students/faculty
+          required: true
+        - label: The resource is free or accessible via IIUM credentials
+          required: true
+        - label: I have searched and confirmed this resource is not already listed
+          required: true
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional Information
+      description: Any other details (e.g., is it open source? who maintains it?)
+      placeholder: Optional

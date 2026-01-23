@@ -1,0 +1,339 @@
+---
+/**
+ * Prayer Times Widget
+ * Displays daily prayer times for IIUM campuses using Aladhan API
+ */
+
+interface PrayerTime {
+  name: string;
+  time: string;
+  arabic: string;
+}
+
+interface Campus {
+  name: string;
+  city: string;
+  lat: number;
+  lng: number;
+}
+
+const campuses: Record<string, Campus> = {
+  gombak: { name: 'Gombak', city: 'Gombak', lat: 3.2513, lng: 101.7313 },
+  kuantan: { name: 'Kuantan', city: 'Kuantan', lat: 3.8077, lng: 103.3260 },
+  pagoh: { name: 'Pagoh', city: 'Pagoh', lat: 2.1494, lng: 102.7181 },
+};
+
+// Default to Gombak
+const defaultCampus = 'gombak';
+---
+
+<div class="prayer-times not-content">
+  <div class="header">
+    <h3>🕌 Prayer Times</h3>
+    <select id="campus-selector" aria-label="Select campus">
+      <option value="gombak">Gombak</option>
+      <option value="kuantan">Kuantan</option>
+      <option value="pagoh">Pagoh</option>
+    </select>
+  </div>
+
+  <div id="hijri-date" class="hijri-date">Loading...</div>
+
+  <div id="prayer-grid" class="prayer-grid">
+    <div class="prayer-card loading">
+      <span class="prayer-name">Loading...</span>
+    </div>
+  </div>
+
+  <div id="next-prayer" class="next-prayer">
+    <span class="label">Next Prayer</span>
+    <span id="next-prayer-name" class="name">-</span>
+    <span id="countdown" class="countdown">--:--:--</span>
+  </div>
+
+  <p class="attribution">
+    Data from <a href="https://aladhan.com/" target="_blank" rel="noopener">Aladhan.com</a> 
+    • Method: JAKIM (Malaysia)
+  </p>
+</div>
+
+<script define:vars={{ campuses, defaultCampus }}>
+  const prayers = [
+    { key: 'Fajr', name: 'Subuh', arabic: 'الفجر' },
+    { key: 'Sunrise', name: 'Syuruk', arabic: 'الشروق' },
+    { key: 'Dhuhr', name: 'Zohor', arabic: 'الظهر' },
+    { key: 'Asr', name: 'Asar', arabic: 'العصر' },
+    { key: 'Maghrib', name: 'Maghrib', arabic: 'المغرب' },
+    { key: 'Isha', name: 'Isyak', arabic: 'العشاء' },
+  ];
+
+  let currentTimes = {};
+  let countdownInterval;
+
+  async function fetchPrayerTimes(campusKey) {
+    const campus = campuses[campusKey];
+    if (!campus) return;
+
+    const today = new Date();
+    const date = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
+    
+    try {
+      const res = await fetch(
+        `https://api.aladhan.com/v1/timings/${date}?latitude=${campus.lat}&longitude=${campus.lng}&method=3`
+      );
+      const data = await res.json();
+      
+      if (data.code === 200) {
+        currentTimes = data.data.timings;
+        renderTimes(data.data);
+      }
+    } catch (e) {
+      console.error('Failed to fetch prayer times:', e);
+      document.getElementById('prayer-grid').innerHTML = 
+        '<p class="error">Failed to load prayer times. Please try again.</p>';
+    }
+  }
+
+  function renderTimes(data) {
+    const grid = document.getElementById('prayer-grid');
+    const hijriDiv = document.getElementById('hijri-date');
+    
+    // Render Hijri date
+    const hijri = data.date.hijri;
+    hijriDiv.textContent = `${hijri.day} ${hijri.month.en} ${hijri.year} AH`;
+    
+    // Render prayer times
+    grid.innerHTML = prayers.map(prayer => `
+      <div class="prayer-card" data-prayer="${prayer.key}">
+        <span class="prayer-arabic">${prayer.arabic}</span>
+        <span class="prayer-name">${prayer.name}</span>
+        <span class="prayer-time">${data.timings[prayer.key]}</span>
+      </div>
+    `).join('');
+
+    updateNextPrayer();
+    startCountdown();
+  }
+
+  function updateNextPrayer() {
+    const now = new Date();
+    const currentMinutes = now.getHours() * 60 + now.getMinutes();
+    
+    let nextPrayer = null;
+    let nextTime = null;
+
+    for (const prayer of prayers) {
+      const time = currentTimes[prayer.key];
+      if (!time) continue;
+      
+      const [hours, minutes] = time.split(':').map(Number);
+      const prayerMinutes = hours * 60 + minutes;
+      
+      if (prayerMinutes > currentMinutes) {
+        nextPrayer = prayer;
+        nextTime = { hours, minutes };
+        break;
+      }
+    }
+
+    // If no prayer found today, next is Fajr tomorrow
+    if (!nextPrayer) {
+      nextPrayer = prayers[0];
+      const [hours, minutes] = currentTimes.Fajr?.split(':').map(Number) || [5, 30];
+      nextTime = { hours, minutes, tomorrow: true };
+    }
+
+    document.getElementById('next-prayer-name').textContent = nextPrayer.name;
+    
+    // Highlight current prayer
+    document.querySelectorAll('.prayer-card').forEach(card => {
+      card.classList.toggle('next', card.dataset.prayer === nextPrayer.key);
+    });
+
+    return { nextPrayer, nextTime };
+  }
+
+  function startCountdown() {
+    if (countdownInterval) clearInterval(countdownInterval);
+    
+    countdownInterval = setInterval(() => {
+      const { nextTime } = updateNextPrayer();
+      if (!nextTime) return;
+
+      const now = new Date();
+      let targetTime = new Date();
+      targetTime.setHours(nextTime.hours, nextTime.minutes, 0, 0);
+      
+      if (nextTime.tomorrow) {
+        targetTime.setDate(targetTime.getDate() + 1);
+      }
+
+      const diff = targetTime - now;
+      if (diff < 0) {
+        fetchPrayerTimes(document.getElementById('campus-selector').value);
+        return;
+      }
+
+      const hours = Math.floor(diff / 3600000);
+      const minutes = Math.floor((diff % 3600000) / 60000);
+      const seconds = Math.floor((diff % 60000) / 1000);
+
+      document.getElementById('countdown').textContent = 
+        `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }, 1000);
+  }
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', () => {
+    const selector = document.getElementById('campus-selector');
+    const savedCampus = localStorage.getItem('iium-prayer-campus') || defaultCampus;
+    
+    selector.value = savedCampus;
+    fetchPrayerTimes(savedCampus);
+
+    selector.addEventListener('change', (e) => {
+      const campus = e.target.value;
+      localStorage.setItem('iium-prayer-campus', campus);
+      fetchPrayerTimes(campus);
+    });
+  });
+</script>
+
+<style>
+  .prayer-times {
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .header select {
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 6px;
+    background: var(--sl-color-bg);
+    color: inherit;
+    font-size: 0.75rem;
+  }
+
+  .hijri-date {
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--sl-color-gray-3);
+    margin-bottom: 1rem;
+  }
+
+  .prayer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 500px) {
+    .prayer-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .prayer-card {
+    background: var(--sl-color-bg);
+    border: 1px solid var(--sl-color-hairline-light);
+    border-radius: 8px;
+    padding: 0.75rem;
+    text-align: center;
+    transition: all 0.2s;
+  }
+
+  .prayer-card.next {
+    border-color: var(--sl-color-accent);
+    background: var(--sl-color-accent-low);
+  }
+
+  .prayer-card.loading {
+    grid-column: 1 / -1;
+  }
+
+  .prayer-arabic {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--sl-color-gray-3);
+    margin-bottom: 0.125rem;
+  }
+
+  .prayer-name {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+
+  .prayer-time {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--sl-color-accent);
+    margin-top: 0.25rem;
+  }
+
+  .next-prayer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--sl-color-accent) 0%, #2563eb 100%);
+    border-radius: 8px;
+    color: white;
+  }
+
+  .next-prayer .label {
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.8;
+  }
+
+  .next-prayer .name {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0.25rem 0;
+  }
+
+  .next-prayer .countdown {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .attribution {
+    margin: 1rem 0 0 0;
+    font-size: 0.625rem;
+    color: var(--sl-color-gray-4);
+    text-align: center;
+  }
+
+  .attribution a {
+    color: inherit;
+  }
+
+  .error {
+    color: #ef4444;
+    text-align: center;
+    padding: 1rem;
+  }
+</style>
