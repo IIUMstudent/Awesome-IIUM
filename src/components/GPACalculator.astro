@@ -140,11 +140,25 @@
 
     // Remove course row
     container?.addEventListener('click', (e) => {
-      const btn = e.target.closest('.remove-btn');
+      const btn = (e.target as HTMLElement).closest('.remove-btn');
       if (btn) {
         const rows = container.querySelectorAll('.course-row');
-        if (rows.length > 1) {
-          btn.closest('.course-row').remove();
+        const activeRows = Array.from(rows).filter(
+          (r) => !r.classList.contains('removing'),
+        );
+
+        if (activeRows.length > 1) {
+          const row = btn.closest('.course-row');
+          const isReduced = window.matchMedia(
+            '(prefers-reduced-motion: reduce)',
+          ).matches;
+
+          if (isReduced) {
+            row.remove();
+          } else {
+            row.classList.add('removing');
+            row.addEventListener('animationend', () => row.remove());
+          }
         }
       }
     });
@@ -258,6 +272,42 @@
     grid-template-columns: 1fr 120px 80px 36px;
     gap: 0.5rem;
     margin-bottom: 0.5rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .course-row {
+      animation: slideIn 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .course-row.removing {
+      animation: slideOut 0.2s cubic-bezier(0.4, 0, 1, 1) forwards;
+      pointer-events: none;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideOut {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+      max-height: 150px;
+      margin-bottom: 0.5rem;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.95);
+      max-height: 0;
+      margin-bottom: 0;
+    }
   }
 
   @media (max-width: 600px) {
