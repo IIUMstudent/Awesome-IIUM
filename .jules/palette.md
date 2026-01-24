@@ -12,3 +12,7 @@ especially in dynamically generated rows where structure might be less obvious.
 
 **Learning:** Native `alert()` dialogs are disruptive and create a poor user experience by blocking the entire browser interface. For simple confirmations like "Data saved", inline feedback on the trigger element itself is far more effective.
 **Action:** Replace `alert()` calls with a temporary state change on the triggering button (e.g., changing text to "✅ Saved!", disabling the button) that automatically reverts after a short delay (e.g., 2000ms). This provides clear confirmation without interrupting the user's workflow.
+
+## 2026-01-23 - Focus Management in Dynamic Lists
+**Learning:** When deleting items from a list, the default browser behavior drops focus to the body, disorienting keyboard users.
+**Action:** Explicitly move focus to the nearest sibling element (next or previous) immediately after removing an item to preserve the user's navigation context.

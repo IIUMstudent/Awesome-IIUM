@@ -144,7 +144,17 @@
       if (btn) {
         const rows = container.querySelectorAll('.course-row');
         if (rows.length > 1) {
-          btn.closest('.course-row').remove();
+          const row = btn.closest('.course-row');
+          const nextRow = row.nextElementSibling;
+          const prevRow = row.previousElementSibling;
+
+          row.remove();
+
+          if (nextRow) {
+            nextRow.querySelector('.remove-btn')?.focus();
+          } else if (prevRow) {
+            prevRow.querySelector('.remove-btn')?.focus();
+          }
         }
       }
     });
