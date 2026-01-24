@@ -1,10 +1,47 @@
 ---
 // StatusDashboard.astro
+import fs from 'node:fs';
+import path from 'node:path';
+
+interface StatusItem {
+	name: string;
+	status: string;
+	timestamp: string;
+}
+
+const statusPath = path.resolve('./public/api/status.json');
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+let initialStatus: StatusItem[] = [];
+try {
+	const data = fs.readFileSync(statusPath, 'utf-8');
+	initialStatus = JSON.parse(data);
+} catch (e) {
+	console.error('Failed to load initial status', e);
+}
 ---
 
 <div id="status-dashboard" class="not-content">
   <div class="status-grid" id="status-grid">
-    <div class="loading">Loading system status...</div>
+    {
+      initialStatus.length > 0 ? (
+        initialStatus.map((sys) => (
+          <div class={`status-card ${sys.status}`}>
+            <div class="status-header">
+              <span class="status-dot" />
+              <h3>{sys.name}</h3>
+            </div>
+            <div class="status-body">
+              <span class="status-label">{sys.status.toUpperCase()}</span>
+              <span class="status-time">
+                Last Checked: {new Date(sys.timestamp).toLocaleTimeString()}
+              </span>
+            </div>
+          </div>
+        ))
+      ) : (
+        <div class="loading">Loading system status...</div>
+      )
+    }
   </div>
 </div>
 
