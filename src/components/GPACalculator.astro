@@ -144,7 +144,26 @@
       if (btn) {
         const rows = container.querySelectorAll('.course-row');
         if (rows.length > 1) {
-          btn.closest('.course-row').remove();
+          const row = btn.closest('.course-row');
+          const nextRow = row.nextElementSibling;
+          const prevRow = row.previousElementSibling;
+
+          // Determine where to move focus
+          let focusTarget = null;
+          if (nextRow?.classList.contains('course-row')) {
+            focusTarget = nextRow.querySelector('.remove-btn');
+          } else if (prevRow?.classList.contains('course-row')) {
+            focusTarget = prevRow.querySelector('.remove-btn');
+          } else {
+            focusTarget = addBtn;
+          }
+
+          // Animate and remove
+          row.classList.add('slide-out');
+          setTimeout(() => {
+            row.remove();
+            focusTarget?.focus();
+          }, 200);
         }
       }
     });
@@ -285,6 +304,15 @@
     outline-offset: -1px;
   }
 
+  .course-row.slide-out {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+    pointer-events: none;
+  }
+
   .remove-btn {
     padding: 0;
     border: none;
@@ -300,6 +328,11 @@
 
   .remove-btn:hover {
     color: #ef4444;
+  }
+
+  .remove-btn:focus-visible {
+    outline: 2px solid var(--sl-color-accent);
+    border-radius: 4px;
   }
 
   .actions {
