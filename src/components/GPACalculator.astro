@@ -144,7 +144,20 @@
       if (btn) {
         const rows = container.querySelectorAll('.course-row');
         if (rows.length > 1) {
-          btn.closest('.course-row').remove();
+          const currentRow = btn.closest('.course-row');
+
+          // Find the next element to focus before removing
+          // Prioritize the next row, then the previous row
+          let nextFocusTarget = currentRow.nextElementSibling?.querySelector('.remove-btn');
+          if (!nextFocusTarget) {
+            nextFocusTarget = currentRow.previousElementSibling?.querySelector('.remove-btn');
+          }
+
+          currentRow.remove();
+
+          if (nextFocusTarget) {
+            (nextFocusTarget as HTMLElement).focus();
+          }
         }
       }
     });
