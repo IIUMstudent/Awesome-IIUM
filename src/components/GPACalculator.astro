@@ -140,11 +140,30 @@
 
     // Remove course row
     container?.addEventListener('click', (e) => {
-      const btn = e.target.closest('.remove-btn');
+      const btn = e.target.closest('.remove-btn') as HTMLButtonElement | null;
       if (btn) {
         const rows = container.querySelectorAll('.course-row');
         if (rows.length > 1) {
-          btn.closest('.course-row').remove();
+          const currentRow = btn.closest('.course-row');
+
+          // Determine where to move focus
+          // UX: If deleting, move focus to next row's remove button (shifting up),
+          // or previous row's remove button if at the end.
+          let targetFocus = null;
+          const nextRow = currentRow.nextElementSibling;
+          const prevRow = currentRow.previousElementSibling;
+
+          if (nextRow && nextRow.classList.contains('course-row')) {
+            targetFocus = nextRow.querySelector('.remove-btn') as HTMLButtonElement | null;
+          } else if (prevRow && prevRow.classList.contains('course-row')) {
+            targetFocus = prevRow.querySelector('.remove-btn') as HTMLButtonElement | null;
+          }
+
+          currentRow.remove();
+
+          if (targetFocus) {
+            targetFocus.focus();
+          }
         }
       }
     });
@@ -300,6 +319,13 @@
 
   .remove-btn:hover {
     color: #ef4444;
+  }
+
+  .remove-btn:focus-visible {
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+    color: var(--sl-color-accent);
   }
 
   .actions {
