@@ -12,3 +12,7 @@ especially in dynamically generated rows where structure might be less obvious.
 
 **Learning:** Native `alert()` dialogs are disruptive and create a poor user experience by blocking the entire browser interface. For simple confirmations like "Data saved", inline feedback on the trigger element itself is far more effective.
 **Action:** Replace `alert()` calls with a temporary state change on the triggering button (e.g., changing text to "✅ Saved!", disabling the button) that automatically reverts after a short delay (e.g., 2000ms). This provides clear confirmation without interrupting the user's workflow.
+
+## 2026-01-26 - Focus Management on Deletion
+**Learning:** Removing a focused element drops focus to the `<body>`, disrupting keyboard navigation flow.
+**Action:** Always identify a logical fallback element (e.g., previous row's input) *before* removal and programmatically move focus there immediately after the element is removed.
