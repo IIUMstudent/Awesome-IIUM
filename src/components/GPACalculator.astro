@@ -156,7 +156,7 @@
 
     // Remove course row
     container?.addEventListener('click', (e) => {
-      const btn = e.target.closest('.remove-btn');
+      const btn = e.target.closest('.remove-btn') as HTMLButtonElement | null;
       if (btn) {
         const rows = container.querySelectorAll('.course-row');
         if (rows.length > 1) {
