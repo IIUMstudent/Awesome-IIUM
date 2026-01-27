@@ -144,7 +144,18 @@
       if (btn) {
         const rows = container.querySelectorAll('.course-row');
         if (rows.length > 1) {
-          btn.closest('.course-row').remove();
+          const currentRow = btn.closest('.course-row');
+          const nextRow = currentRow.nextElementSibling;
+          const prevRow = currentRow.previousElementSibling;
+
+          currentRow.remove();
+
+          // Manage focus after deletion
+          if (nextRow && nextRow.matches('.course-row')) {
+            (nextRow.querySelector('.remove-btn') as HTMLElement)?.focus();
+          } else if (prevRow && prevRow.matches('.course-row')) {
+            (prevRow.querySelector('.remove-btn') as HTMLElement)?.focus();
+          }
         }
       }
     });
