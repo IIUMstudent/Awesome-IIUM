@@ -1,4 +1,8 @@
-## 2026-01-23 - DOM XSS in StatusDashboard
-**Vulnerability:** The `StatusDashboard.astro` component used `innerHTML` to render status updates from an API endpoint without sanitizing the input. This could allow an attacker to inject malicious scripts if the API response was compromised.
-**Learning:** Even internal or "trusted" APIs should be treated as untrusted sources when rendering data into the DOM.
-**Prevention:** Always use output encoding/sanitization (e.g., `escapeHtml` helper) when using `innerHTML`, or prefer safer alternatives like `textContent` or framework-specific binding that handles escaping automatically.
+## 2026-01-24 - StatusDashboard XSS Vulnerability
+
+**Vulnerability:** Unsanitized data from internal API used in `innerHTML`
+assignment in `StatusDashboard.astro`. **Learning:** Even internal data sources
+(like `status.json`) should be treated as untrusted in client-side scripts to
+prevent XSS if the source is compromised. **Prevention:** Always sanitize data
+using an escape helper or use `textContent` / DOM creation methods instead of
+`innerHTML`.
