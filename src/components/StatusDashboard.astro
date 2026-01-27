@@ -6,7 +6,26 @@ const BASE_URL = import.meta.env.BASE_URL;
 
 <div id="status-dashboard" class="not-content">
   <div class="status-grid" id="status-grid">
-    <div class="loading">Loading system status...</div>
+    {
+      initialStatus.length > 0 ? (
+        initialStatus.map((sys) => (
+          <div class={`status-card ${sys.status}`}>
+            <div class="status-header">
+              <span class="status-dot" />
+              <h3>{sys.name}</h3>
+            </div>
+            <div class="status-body">
+              <span class="status-label">{sys.status.toUpperCase()}</span>
+              <span class="status-time">
+                Last Checked: {new Date(sys.timestamp).toLocaleTimeString()}
+              </span>
+            </div>
+          </div>
+        ))
+      ) : (
+        <div class="loading">Loading system status...</div>
+      )
+    }
   </div>
 </div>
 
