@@ -93,6 +93,19 @@
 
     let courseIndex = 1;
 
+    // Helper to update remove buttons state
+    const updateRemoveButtons = () => {
+      const rows = container?.querySelectorAll('.course-row');
+      const removeBtns = container?.querySelectorAll('.remove-btn');
+
+      if (rows && removeBtns) {
+        const shouldDisable = rows.length <= 1;
+        removeBtns.forEach((btn) => {
+          (btn as HTMLButtonElement).disabled = shouldDisable;
+        });
+      }
+    };
+
     // Load saved data
     const savedData = localStorage.getItem('iium-gpa-data');
     if (savedData) {
@@ -103,6 +116,8 @@
         if (data.prevCredits) document.getElementById('prev-credits').value = data.prevCredits;
       } catch (e) {}
     }
+
+    updateRemoveButtons();
 
     // Add new course row
     addBtn?.addEventListener('click', () => {
@@ -135,26 +150,31 @@
         <button class="remove-btn" title="Remove course" aria-label="Remove course">×</button>
       `;
       container?.appendChild(row);
-      row.querySelector('.course-name')?.focus();
+      updateRemoveButtons();
+      (row.querySelector('.course-name') as HTMLElement)?.focus();
     });
 
     // Remove course row
     container?.addEventListener('click', (e) => {
-      const btn = e.target.closest('.remove-btn');
+      const btn = e.target.closest('.remove-btn') as HTMLButtonElement | null;
       if (btn) {
-        const rows = container.querySelectorAll('.course-row');
-        // Count rows that are not currently being removed
-        const activeRows = Array.from(rows).filter((r) => !r.classList.contains('removing'));
+        const currentRow = btn.closest('.course-row');
+        const rows = Array.from(container.querySelectorAll('.course-row'));
 
-        if (activeRows.length > 1) {
-          const row = btn.closest('.course-row');
-          const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (rows.length > 1) {
+          const currentRow = btn.closest('.course-row');
 
-          if (isReduced) {
-            row.remove();
-          } else {
-            row.classList.add('removing');
-            row.addEventListener('animationend', () => row.remove());
+          // Find the next element to focus before removing
+          // Prioritize the next row, then the previous row
+          let nextFocusTarget = currentRow.nextElementSibling?.querySelector('.remove-btn');
+          if (!nextFocusTarget) {
+            nextFocusTarget = currentRow.previousElementSibling?.querySelector('.remove-btn');
+          }
+
+          currentRow.remove();
+
+          if (nextFocusTarget) {
+            (nextFocusTarget as HTMLElement).focus();
           }
         }
       }
@@ -212,6 +232,7 @@
       document.getElementById('prev-credits').value = '';
       resultsDiv?.classList.add('hidden');
       cgpaResultDiv?.classList.add('hidden');
+      updateRemoveButtons();
     });
 
     // Save data
@@ -344,6 +365,21 @@
 
   .gpa-calculator :global(.remove-btn:hover) {
     color: #ef4444;
+  }
+
+  .remove-btn:focus-visible {
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .remove-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .remove-btn:disabled:hover {
+    color: var(--sl-color-gray-3);
   }
 
   .actions {
