@@ -158,7 +158,9 @@
     container?.addEventListener('click', (e) => {
       const btn = e.target.closest('.remove-btn') as HTMLButtonElement | null;
       if (btn) {
-        const rows = container.querySelectorAll('.course-row');
+        const currentRow = btn.closest('.course-row');
+        const rows = Array.from(container.querySelectorAll('.course-row'));
+
         if (rows.length > 1) {
           const currentRow = btn.closest('.course-row');
 
