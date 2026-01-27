@@ -156,34 +156,23 @@
 
     // Remove course row
     container?.addEventListener('click', (e) => {
-      const target = e.target as HTMLElement;
-      const btn = target.closest('.remove-btn') as HTMLButtonElement | null;
+      const btn = e.target.closest('.remove-btn');
+      if (btn) {
+        const rows = container.querySelectorAll('.course-row');
+        if (rows.length > 1) {
+          const currentRow = btn.closest('.course-row');
 
-      if (btn && !btn.disabled) {
-        const row = btn.closest('.course-row');
-        const rows = Array.from(container?.querySelectorAll('.course-row') || []);
-
-        if (rows.length > 1 && row) {
-          const index = rows.indexOf(row);
-          let focusTarget = null;
-
-          if (index < rows.length - 1) {
-            focusTarget = rows[index + 1].querySelector('.remove-btn');
-          } else if (index > 0) {
-            focusTarget = rows[index - 1].querySelector('.remove-btn');
+          // Find the next element to focus before removing
+          // Prioritize the next row, then the previous row
+          let nextFocusTarget = currentRow.nextElementSibling?.querySelector('.remove-btn');
+          if (!nextFocusTarget) {
+            nextFocusTarget = currentRow.previousElementSibling?.querySelector('.remove-btn');
           }
 
-          row.remove();
-          updateRemoveButtons();
+          currentRow.remove();
 
-          if (focusTarget) {
-            const targetBtn = focusTarget as HTMLButtonElement;
-            if (targetBtn.disabled) {
-              const rowInput = targetBtn.closest('.course-row')?.querySelector('.course-name') as HTMLElement;
-              rowInput?.focus();
-            } else {
-              targetBtn.focus();
-            }
+          if (nextFocusTarget) {
+            (nextFocusTarget as HTMLElement).focus();
           }
         }
       }
