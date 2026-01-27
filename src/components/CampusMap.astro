@@ -28,7 +28,7 @@ interface Location {
 	campus: string;
 }
 
-// biome-ignore lint/correctness/noUnusedVariables: used in template and script
+// biome-ignore lint/correctness/noUnusedVariables: passed to client script via define:vars
 const campuses: Campus[] = [
 	{
 		id: 'gombak',
@@ -56,7 +56,7 @@ const campuses: Campus[] = [
 	},
 ];
 
-// biome-ignore lint/correctness/noUnusedVariables: used in script
+// biome-ignore lint/correctness/noUnusedVariables: passed to client script via define:vars
 const locations: Location[] = [
 	// Gombak Campus
 	{
@@ -210,11 +210,15 @@ const locations: Location[] = [
       const link = document.createElement('link');
       link.rel = 'stylesheet';
       link.href = 'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css';
+      link.integrity = 'sha384-MinO0mNliZ3vwppuPOUnGa+iq619pfMhLVUXfC4LHwSCvF9H+6P/KO4Q7qBOYV5V';
+      link.crossOrigin = 'anonymous';
       document.head.appendChild(link);
 
       // Add JS
       script = document.createElement('script');
       script.src = scriptSrc;
+      script.integrity = 'sha384-SYKAG6cglRMN0RVvhNeBY0r3FYKNOJtznwA0v7B5Vp9tr31xAHsZC0DqkQ/pZDmj';
+      script.crossOrigin = 'anonymous';
       document.head.appendChild(script);
     }
 
@@ -331,22 +335,19 @@ const locations: Location[] = [
     });
   }
 
-  // Initialize map when visible
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          initMap();
-          observer.disconnect();
-        }
-      });
-    },
-    { rootMargin: '200px' },
-  ); // Load slightly before it comes into view
+  // Lazy load map when it comes into view
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        initMap();
+        observer.disconnect();
+      }
+    });
+  }, { rootMargin: '200px' });
 
-  const container = document.getElementById('map-container');
-  if (container) {
-    observer.observe(container);
+  const mapContainer = document.getElementById('map-container');
+  if (mapContainer) {
+    observer.observe(mapContainer);
   }
 </script>
 
