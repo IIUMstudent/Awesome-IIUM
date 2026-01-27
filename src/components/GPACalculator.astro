@@ -285,24 +285,57 @@
     margin: 0 0 1rem 0;
   }
 
-  .course-row {
+  .gpa-calculator :global(.course-row) {
     display: grid;
     grid-template-columns: 1fr 120px 80px 36px;
     gap: 0.5rem;
     margin-bottom: 0.5rem;
   }
 
+  @media (prefers-reduced-motion: no-preference) {
+    .gpa-calculator :global(.course-row) {
+      animation: slideIn 0.3s ease-out;
+    }
+
+    .gpa-calculator :global(.course-row.removing) {
+      animation: slideOut 0.2s ease-in forwards;
+      pointer-events: none;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideOut {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+  }
+
   @media (max-width: 600px) {
-    .course-row {
+    .gpa-calculator :global(.course-row) {
       grid-template-columns: 1fr 1fr;
     }
-    .course-row .course-name {
+    .gpa-calculator :global(.course-row .course-name) {
       grid-column: 1 / -1;
     }
   }
 
-  .course-row input,
-  .course-row select {
+  .gpa-calculator :global(.course-row input),
+  .gpa-calculator :global(.course-row select) {
     padding: 0.5rem;
     border: 1px solid var(--sl-color-hairline-light);
     border-radius: 6px;
@@ -311,13 +344,13 @@
     font-size: 0.875rem;
   }
 
-  .course-row input:focus,
-  .course-row select:focus {
+  .gpa-calculator :global(.course-row input:focus),
+  .gpa-calculator :global(.course-row select:focus) {
     outline: 2px solid var(--sl-color-accent);
     outline-offset: -1px;
   }
 
-  .remove-btn {
+  .gpa-calculator :global(.remove-btn) {
     padding: 0;
     border: none;
     background: transparent;
@@ -330,7 +363,7 @@
     justify-content: center;
   }
 
-  .remove-btn:hover {
+  .gpa-calculator :global(.remove-btn:hover) {
     color: #ef4444;
   }
 
