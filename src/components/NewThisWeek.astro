@@ -26,6 +26,8 @@ async function fetchRecentResources(): Promise<RecentResource[]> {
 		const recentResources: RecentResource[] = [];
 
 		for (const commit of commits) {
+			if (recentResources.length >= 5) break;
+
 			const commitDate = new Date(commit.commit.author.date);
 			if (commitDate < sevenDaysAgo) break;
 
