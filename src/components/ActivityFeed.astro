@@ -13,6 +13,7 @@ interface Activity {
 	avatar: string;
 	url: string;
 	date: string;
+	timestamp: number;
 	icon: string;
 }
 
@@ -67,6 +68,7 @@ async function fetchActivity(): Promise<Activity[]> {
 					avatar: commit.author?.avatar_url || 'https://github.com/ghost.png',
 					url: commit.html_url,
 					date: new Date(commit.commit.author.date).toLocaleDateString(),
+					timestamp: new Date(commit.commit.author.date).getTime(),
 					icon: '📝',
 				});
 			}
@@ -83,15 +85,14 @@ async function fetchActivity(): Promise<Activity[]> {
 					avatar: pr.user.avatar_url,
 					url: pr.html_url,
 					date: new Date(pr.created_at).toLocaleDateString(),
+					timestamp: new Date(pr.created_at).getTime(),
 					icon: '🔀',
 				});
 			}
 		}
 
 		// Sort by date (most recent first)
-		activities.sort(
-			(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-		);
+		activities.sort((a, b) => b.timestamp - a.timestamp);
 
 		// Save to cache
 		try {
