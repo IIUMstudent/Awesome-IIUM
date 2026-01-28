@@ -1,0 +1,19 @@
+
+> @ dev /app
+> astro dev
+
+14:45:21 [types] Generated 1ms
+14:45:21 [content] Syncing content
+14:45:21 [content] Synced content
+
+ astro  v5.16.12 ready in 2100 ms
+
+┃ Local    http://localhost:4321/Awesome-IIUM
+┃ Network  use --host to expose
+
+14:45:21 watching for file changes...
+14:45:42 [200] /dashboard 498ms
+14:45:44 [200] /dashboard 39ms
+14:45:44 [ERROR] [router] Request URLs for public/ assets must also include your base. "/Awesome-IIUM/pwa-register.js" expected, but received "/pwa-register.js".
+14:45:44 [ERROR] [router] Request URLs for public/ assets must also include your base. "/Awesome-IIUM/api/status.json" expected, but received "/api/status.json".
+ ELIFECYCLE  Command failed with exit code 143.
