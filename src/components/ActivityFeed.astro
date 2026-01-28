@@ -1,4 +1,7 @@
 ---
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { join } from 'node:path';
+
 /**
  * ActivityFeed Component
  * Shows recent activity from the GitHub repository
@@ -10,11 +13,38 @@ interface Activity {
 	avatar: string;
 	url: string;
 	date: string;
+	timestamp: number;
 	icon: string;
 }
 
 async function fetchActivity(): Promise<Activity[]> {
+	const CACHE_DIR = join(
+		process.cwd(),
+		'node_modules',
+		'.cache',
+		'awesome-iium',
+	);
+	const CACHE_FILE = join(CACHE_DIR, 'activity-feed.json');
+	const CACHE_TTL = 3600 * 1000; // 1 hour
+
 	const activities: Activity[] = [];
+
+	// Try reading from cache
+	try {
+		const cachedData = await readFile(CACHE_FILE, 'utf-8');
+		const cache = JSON.parse(cachedData);
+		const now = Date.now();
+		if (now - cache.timestamp < CACHE_TTL) {
+			// Sort by date (most recent first) just in case
+			cache.data.sort(
+				(a: Activity, b: Activity) =>
+					new Date(b.date).getTime() - new Date(a.date).getTime(),
+			);
+			return cache.data.slice(0, 5);
+		}
+	} catch {
+		// Cache miss or error, proceed to fetch
+	}
 
 	try {
 		// Parallelize API fetches
@@ -38,6 +68,7 @@ async function fetchActivity(): Promise<Activity[]> {
 					avatar: commit.author?.avatar_url || 'https://github.com/ghost.png',
 					url: commit.html_url,
 					date: new Date(commit.commit.author.date).toLocaleDateString(),
+					timestamp: new Date(commit.commit.author.date).getTime(),
 					icon: '📝',
 				});
 			}
@@ -54,23 +85,51 @@ async function fetchActivity(): Promise<Activity[]> {
 					avatar: pr.user.avatar_url,
 					url: pr.html_url,
 					date: new Date(pr.created_at).toLocaleDateString(),
+					timestamp: new Date(pr.created_at).getTime(),
 					icon: '🔀',
 				});
 			}
 		}
 
 		// Sort by date (most recent first)
-		activities.sort(
-			(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-		);
+		activities.sort((a, b) => b.timestamp - a.timestamp);
+
+		// Save to cache
+		try {
+			await mkdir(CACHE_DIR, { recursive: true });
+			await writeFile(
+				CACHE_FILE,
+				JSON.stringify({
+					timestamp: Date.now(),
+					data: activities,
+				}),
+			);
+		} catch (e) {
+			console.error('Failed to write cache:', e);
+		}
 
 		return activities.slice(0, 5);
-	} catch {
+	} catch (e) {
+		console.error('ActivityFeed Error:', e);
+
+		// If fetch fails, try to use stale cache
+		try {
+			const cachedData = await readFile(CACHE_FILE, 'utf-8');
+			const cache = JSON.parse(cachedData);
+			cache.data.sort(
+				(a: Activity, b: Activity) =>
+					new Date(b.date).getTime() - new Date(a.date).getTime(),
+			);
+			return cache.data.slice(0, 5);
+		} catch {
+			// No cache available
+		}
+
 		return [];
 	}
 }
 
-// biome-ignore lint/correctness/noUnusedVariables: Used in template
+// biome-ignore lint/correctness/noUnusedVariables: used in template
 const activities = await fetchActivity();
 ---
 
