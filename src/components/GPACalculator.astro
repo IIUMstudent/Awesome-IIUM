@@ -158,23 +158,37 @@
     container?.addEventListener('click', (e) => {
       const btn = e.target.closest('.remove-btn') as HTMLButtonElement | null;
       if (btn) {
-        const currentRow = btn.closest('.course-row');
         const rows = Array.from(container.querySelectorAll('.course-row'));
 
         if (rows.length > 1) {
           const currentRow = btn.closest('.course-row');
+          if (!currentRow) return;
 
-          // Find the next element to focus before removing
-          // Prioritize the next row, then the previous row
-          let nextFocusTarget = currentRow.nextElementSibling?.querySelector('.remove-btn');
-          if (!nextFocusTarget) {
-            nextFocusTarget = currentRow.previousElementSibling?.querySelector('.remove-btn');
-          }
+          const executeRemoval = () => {
+            // Find the next element to focus before removing
+            // Prioritize the next row, then the previous row
+            let nextFocusTarget = currentRow.nextElementSibling?.querySelector('.remove-btn');
+            if (!nextFocusTarget) {
+              nextFocusTarget = currentRow.previousElementSibling?.querySelector('.remove-btn');
+            }
 
-          currentRow.remove();
+            currentRow.remove();
 
-          if (nextFocusTarget) {
-            (nextFocusTarget as HTMLElement).focus();
+            if (nextFocusTarget) {
+              (nextFocusTarget as HTMLElement).focus();
+            }
+            // Ensure buttons state is updated after removal
+            updateRemoveButtons();
+          };
+
+          const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+          if (prefersReducedMotion) {
+            executeRemoval();
+          } else {
+            currentRow.classList.add('removing');
+            // Match CSS animation duration (0.2s)
+            setTimeout(executeRemoval, 200);
           }
         }
       }
