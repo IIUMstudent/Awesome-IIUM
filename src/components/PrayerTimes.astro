@@ -4,6 +4,7 @@
  * Displays daily prayer times for IIUM campuses using Aladhan API
  */
 
+// biome-ignore lint/correctness/noUnusedVariables: unused interface
 interface PrayerTime {
 	name: string;
 	time: string;
@@ -17,6 +18,7 @@ interface Campus {
 	lng: number;
 }
 
+// biome-ignore lint/correctness/noUnusedVariables: passed to client script
 const campuses: Record<string, Campus> = {
 	gombak: { name: 'Gombak', city: 'Gombak', lat: 3.2513, lng: 101.7313 },
 	kuantan: { name: 'Kuantan', city: 'Kuantan', lat: 3.8077, lng: 103.326 },
@@ -24,6 +26,7 @@ const campuses: Record<string, Campus> = {
 };
 
 // Default to Gombak
+// biome-ignore lint/correctness/noUnusedVariables: passed to client script
 const defaultCampus = 'gombak';
 ---
 
@@ -58,6 +61,17 @@ const defaultCampus = 'gombak';
 </div>
 
 <script define:vars={{ campuses, defaultCampus }}>
+  // Helper to prevent XSS
+  function escapeHtml(unsafe) {
+    if (typeof unsafe !== 'string') return unsafe;
+    return unsafe
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
   const prayers = [
     { key: 'Fajr', name: 'Subuh', arabic: 'الفجر' },
     { key: 'Sunrise', name: 'Syuruk', arabic: 'الشروق' },
@@ -142,10 +156,10 @@ const defaultCampus = 'gombak';
     
     // Render prayer times
     grid.innerHTML = parsedPrayers.map(prayer => `
-      <div class="prayer-card" data-prayer="${prayer.key}">
-        <span class="prayer-arabic">${prayer.arabic}</span>
-        <span class="prayer-name">${prayer.name}</span>
-        <span class="prayer-time">${data.timings[prayer.key]}</span>
+      <div class="prayer-card" data-prayer="${escapeHtml(prayer.key)}">
+        <span class="prayer-arabic">${escapeHtml(prayer.arabic)}</span>
+        <span class="prayer-name">${escapeHtml(prayer.name)}</span>
+        <span class="prayer-time">${escapeHtml(data.timings[prayer.key])}</span>
       </div>
     `).join('');
 
