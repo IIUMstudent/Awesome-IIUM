@@ -1,5 +1,12 @@
 [
-{"name": "i-Ma'luum", "status": "online", "timestamp": "2026-01-28T15:50:56Z"}
-,
-{"name": "i-Ta'leem", "status": "online", "timestamp": "2026-01-28T15:50:58Z"}
+	{
+		"name": "i-Ma'luum",
+		"status": "online",
+		"timestamp": "2026-01-28T15:50:56Z"
+	},
+	{
+		"name": "i-Ta'leem",
+		"status": "online",
+		"timestamp": "2026-01-28T15:50:58Z"
+	}
 ]
