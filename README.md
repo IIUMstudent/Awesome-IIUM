@@ -12,25 +12,23 @@ _Read this in other languages: [Bahasa Melayu](translation/README.my.md),
   <br>
 </div>
 
-## 📖 Table of Contents
+## Table of Contents
 
-- [👋 Welcome](#-welcome) - Introduction to Awesome IIUM.
-- [📂 Contents](#-contents) - Explore organized categories of resources.
-  - [Academics](src/content/docs/categories/academics/index.md) - Academic resources and guides.
-  - [Campus Life](src/content/docs/categories/campus-life/index.md) - Campus facilities and student life.
-  - [Career & Internships](src/content/docs/categories/career/index.md) - Career prospects and internship opportunities.
-  - [Developers](src/content/docs/categories/developers/index.md) - Technical resources for developers.
-- [🌟 Quick Links](#-quick-links) - Jump directly to frequently used services.
-- [🤝 Contributing](#-contributing) - Guidelines on how to contribute to this list.
-- [📜 License](#-license) - Licensing information for this repository.
+- [Welcome](https://github.com/iiumstudent/Awesome-IIUM#welcome) - Introduction to Awesome IIUM.
+- [Academics](https://github.com/iiumstudent/Awesome-IIUM/blob/main/src/content/docs/categories/academics/index.md) - Academic resources and guides.
+- [Campus Life](https://github.com/iiumstudent/Awesome-IIUM/blob/main/src/content/docs/categories/campus-life/index.md) - Campus facilities and student life.
+- [Career & Internships](https://github.com/iiumstudent/Awesome-IIUM/blob/main/src/content/docs/categories/career/index.md) - Career prospects and internship opportunities.
+- [Developers](https://github.com/iiumstudent/Awesome-IIUM/blob/main/src/content/docs/categories/developers/index.md) - Technical resources for developers.
+- [Quick Links](https://github.com/iiumstudent/Awesome-IIUM#quick-links) - Jump directly to frequently used services.
+- [Contributing](https://github.com/iiumstudent/Awesome-IIUM#contributing) - Guidelines on how to contribute to this list.
 
-## 👋 Welcome
+## Welcome
 
 Whether you are a student, faculty member, or alumni, this repository is your
 one-stop shop for everything IIUM. We aim to collect high-quality resources,
 tools, and guides to make your university life easier and more productive.
 
-## 🌟 Quick Links
+## Quick Links
 
 | Service             | Description                      | URL                                                 |
 | :------------------ | :------------------------------- | :-------------------------------------------------- |
@@ -39,7 +37,7 @@ tools, and guides to make your university life easier and more productive.
 | **i-Ta'leem**       | Learning Management System (LMS) | [italeem.iium.edu.my](https://italeem.iium.edu.my/) |
 | **Course Schedule** | Official class timetable         | [my.iium.edu.my](https://my.iium.edu.my/)           |
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please read our
 [Contribution Guidelines](CONTRIBUTING.md) before submitting a pull request.
@@ -52,8 +50,3 @@ Thanks goes to these wonderful people
 <a href="https://github.com/iiumstudent/Awesome-IIUM/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=iiumstudent/Awesome-IIUM" />
 </a>
-
-## 📜 License
-
-This project is licensed under the
-[Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
