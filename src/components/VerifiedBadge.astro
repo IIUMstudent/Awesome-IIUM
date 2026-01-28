@@ -3,11 +3,13 @@
  * VerifiedBadge Component
  * Displays a verification badge for official/trusted resources
  */
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 interface Props {
 	text?: string;
 	variant?: 'verified' | 'featured' | 'official';
 }
 
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 const { text = 'Verified', variant = 'verified' } = Astro.props;
 
 const variants = {
@@ -28,6 +30,7 @@ const variants = {
 	},
 };
 
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 const config = variants[variant];
 ---
 

@@ -6,12 +6,12 @@ title: 'Academics'
 
 ## 🏛️ Official Portals
 
-- [Student Portal (i-Ma'luum)](https://imaluum.iium.edu.my/) - Main student hub for
-  exam results, MyMahallah, and Pre-reg links.
-- [i-Ta'leem](https://italeem.iium.edu.my/) - Moodle-based LMS for course materials,
-  assignments, and quizzes.
-- [IIUM Portal (my.iium)](https://my.iium.edu.my/) - Gateway to portals, password reset,
-  and account services.
+- [Student Portal (i-Ma'luum)](https://imaluum.iium.edu.my/) - Main student hub
+  for exam results, MyMahallah, and Pre-reg links.
+- [i-Ta'leem](https://italeem.iium.edu.my/) - Moodle-based LMS for course
+  materials, assignments, and quizzes.
+- [IIUM Portal (my.iium)](https://my.iium.edu.my/) - Gateway to portals,
+  password reset, and account services.
 - [Pre-Registration System](http://prereg1.iium.edu.my/) - Course registration,
   add/drop, and schedule viewing.
 
@@ -21,7 +21,8 @@ title: 'Academics'
   tool to help you visualize and plan your semester timetable.
 - [CGPA Calculator](https://github.com/zamzameir/iiumcgpa) - Calculate your GPA
   and CGPA easily.
-- **[Built-in GPA Calculator](/tools)** - Use our interactive calculator right here!
+- **[Built-in GPA Calculator](/tools)** - Use our interactive calculator right
+  here!
 
 ## 📚 Resources
 

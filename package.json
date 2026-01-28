@@ -1,16 +1,23 @@
 {
+	"name": "awesome-iium",
+	"version": "1.0.0",
+	"description": "A curated list of resources for IIUM",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/iiumstudent/Awesome-IIUM.git"
+	},
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"lint:md": "markdownlint 'src/**/*.md' --ignore node_modules",
-		"format:md": "prettier --write 'src/**/*.md'",
+		"lint:md": "markdownlint 'src/**/*.{md,mdx}' --ignore node_modules",
+		"format:md": "prettier --write 'src/**/*.{md,mdx}'",
 		"lint:js": "biome check .",
 		"format:js": "biome format --write .",
-		"lint": "npm-run-all lint:*",
-		"format": "npm-run-all format:*"
+		"lint": "pnpm run lint:js && pnpm run lint:md",
+		"format": "pnpm run format:js && pnpm run format:md"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.3.11",
