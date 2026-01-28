@@ -1,7 +1,28 @@
 ---
 // StatusDashboard.astro
+import fs from 'node:fs';
+import path from 'node:path';
+
 // biome-ignore lint/correctness/noUnusedVariables: passed to client script
 const BASE_URL = import.meta.env.BASE_URL;
+
+interface SystemStatus {
+	name: string;
+	status: string;
+	timestamp: string;
+}
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+let initialStatus: SystemStatus[] = [];
+
+try {
+	const statusPath = path.join(process.cwd(), 'public/api/status.json');
+	if (fs.existsSync(statusPath)) {
+		initialStatus = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
+	}
+} catch (e) {
+	console.error('Failed to load initial status', e);
+}
 ---
 
 <div id="status-dashboard" class="not-content">

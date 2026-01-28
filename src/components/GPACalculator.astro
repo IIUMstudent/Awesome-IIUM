@@ -1,81 +1,75 @@
----
-/**
- * GPA Calculator Component
- * Interactive CGPA calculator using IIUM's grading scale
- */
----
+<div class="gpa-calculator">
+  <h3>📊 GPA Calculator</h3>
+  <p class="helper-text">Calculate your semester GPA and see how it affects your CGPA.</p>
 
-<div class="gpa-calculator not-content">
-  <h3>🧮 IIUM GPA Calculator</h3>
-  
-  <div id="courses-container">
-    <div class="course-row" data-index="0">
-      <input type="text" class="course-name" placeholder="Course name" aria-label="Course name" />
-      <select class="grade" aria-label="Grade">
-        <option value="">Grade</option>
-        <option value="4.00">A (4.00)</option>
-        <option value="3.67">A- (3.67)</option>
-        <option value="3.33">B+ (3.33)</option>
-        <option value="3.00">B (3.00)</option>
-        <option value="2.67">B- (2.67)</option>
-        <option value="2.33">C+ (2.33)</option>
-        <option value="2.00">C (2.00)</option>
-        <option value="1.67">C- (1.67)</option>
-        <option value="1.33">D+ (1.33)</option>
-        <option value="1.00">D (1.00)</option>
-        <option value="0.00">F (0.00)</option>
-      </select>
-      <select class="credits" aria-label="Credits">
-        <option value="">Credits</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-      </select>
-      <button class="remove-btn" title="Remove course" aria-label="Remove course">×</button>
+  <div class="calculator-form">
+    <div id="courses-container">
+      <div class="course-row" data-index="0">
+        <input type="text" class="course-name" placeholder="Course name" aria-label="Course name" />
+        <select class="grade" aria-label="Grade">
+          <option value="">Grade</option>
+          <option value="4.00">A (4.00)</option>
+          <option value="3.67">A- (3.67)</option>
+          <option value="3.33">B+ (3.33)</option>
+          <option value="3.00">B (3.00)</option>
+          <option value="2.67">B- (2.67)</option>
+          <option value="2.33">C+ (2.33)</option>
+          <option value="2.00">C (2.00)</option>
+          <option value="1.67">C- (1.67)</option>
+          <option value="1.33">D+ (1.33)</option>
+          <option value="1.00">D (1.00)</option>
+          <option value="0.00">F (0.00)</option>
+        </select>
+        <select class="credits" aria-label="Credits">
+          <option value="">Credits</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+        <button type="button" class="remove-btn" title="Remove course" aria-label="Remove course">×</button>
+      </div>
     </div>
-  </div>
 
-  <div class="actions">
-    <button id="add-course" class="btn-secondary">+ Add Course</button>
-    <button id="calculate" class="btn-primary">Calculate GPA</button>
-  </div>
-
-  <div id="results" class="results hidden" aria-live="polite">
-    <div class="result-card">
-      <span class="label">Semester GPA</span>
-      <span id="semester-gpa" class="value">0.00</span>
+    <div class="actions">
+      <button id="add-course" class="btn-secondary" type="button">+ Add Course</button>
+      <button id="calculate" class="btn-primary" type="button">Calculate GPA</button>
+      <button id="clear-all" class="btn-ghost" type="button">Clear All</button>
     </div>
-    <div class="result-card total">
-      <span class="label">Total Credits</span>
-      <span id="total-credits" class="value">0</span>
-    </div>
-  </div>
 
-  <div class="cumulative-section">
-    <h4>📊 Cumulative GPA (Optional)</h4>
-    <p class="helper-text">Enter your previous CGPA to calculate your new cumulative GPA.</p>
+    <div id="results" class="results hidden" aria-live="polite">
+      <div class="result-card">
+        <span class="label">Semester GPA</span>
+        <span class="value" id="semester-gpa">0.00</span>
+      </div>
+      <div class="result-card">
+        <span class="label">Total Credits</span>
+        <span class="value" id="total-credits">0</span>
+      </div>
+    </div>
+
+    <h4>Cumulative GPA (Optional)</h4>
     <div class="cumulative-inputs">
       <div class="input-group">
-        <label for="prev-cgpa">Previous CGPA</label>
-        <input type="number" id="prev-cgpa" step="0.01" min="0" max="4" placeholder="e.g., 3.50" />
+        <label for="prev-cgpa">Current CGPA</label>
+        <input type="number" id="prev-cgpa" placeholder="3.50" step="0.01" min="0" max="4" />
       </div>
       <div class="input-group">
-        <label for="prev-credits">Previous Credits</label>
-        <input type="number" id="prev-credits" min="0" placeholder="e.g., 45" />
+        <label for="prev-credits">Credits Earned</label>
+        <input type="number" id="prev-credits" placeholder="60" min="0" />
       </div>
     </div>
-    <div id="cgpa-result" class="result-card cgpa hidden" aria-live="polite">
-      <span class="label">New Cumulative GPA</span>
-      <span id="new-cgpa" class="value">0.00</span>
-    </div>
-  </div>
 
-  <div class="footer-actions">
-    <button id="clear-all" class="btn-ghost">Clear All</button>
-    <div class="save-wrapper">
-      <span id="save-status" class="save-status" aria-live="polite"></span>
-      <button id="save-data" class="btn-secondary">💾 Save</button>
+    <div id="cgpa-result" class="cgpa hidden" aria-live="polite">
+      <div class="result-card cgpa">
+        <span class="label">New CGPA</span>
+        <span class="value" id="new-cgpa">0.00</span>
+      </div>
+    </div>
+
+    <div class="footer-actions">
+      <span class="save-status" id="save-status" aria-live="polite"></span>
+      <button id="save-data" class="btn-secondary" type="button">💾 Save</button>
     </div>
   </div>
 </div>
@@ -87,7 +81,7 @@
     const addBtn = document.getElementById('add-course');
     const calcBtn = document.getElementById('calculate');
     const clearBtn = document.getElementById('clear-all');
-    const saveBtn = document.getElementById('save-data') as HTMLButtonElement | null;
+    const saveBtn = document.getElementById('save-data');
     const resultsDiv = document.getElementById('results');
     const cgpaResultDiv = document.getElementById('cgpa-result');
 
@@ -122,7 +116,7 @@
     // Add new course row
     addBtn?.addEventListener('click', () => {
       const row = document.createElement('div');
-      row.className = 'course-row';
+      row.className = 'course-row slide-in';
       row.dataset.index = courseIndex++;
       row.innerHTML = `
         <input type="text" class="course-name" placeholder="Course name" aria-label="Course name" />
@@ -147,7 +141,7 @@
           <option value="3">3</option>
           <option value="4">4</option>
         </select>
-        <button class="remove-btn" title="Remove course" aria-label="Remove course">×</button>
+        <button type="button" class="remove-btn" title="Remove course" aria-label="Remove course">×</button>
       `;
       container?.appendChild(row);
       updateRemoveButtons();
@@ -158,23 +152,37 @@
     container?.addEventListener('click', (e) => {
       const btn = e.target.closest('.remove-btn') as HTMLButtonElement | null;
       if (btn) {
-        const currentRow = btn.closest('.course-row');
         const rows = Array.from(container.querySelectorAll('.course-row'));
 
         if (rows.length > 1) {
           const currentRow = btn.closest('.course-row');
+          if (!currentRow) return;
 
-          // Find the next element to focus before removing
-          // Prioritize the next row, then the previous row
-          let nextFocusTarget = currentRow.nextElementSibling?.querySelector('.remove-btn');
-          if (!nextFocusTarget) {
-            nextFocusTarget = currentRow.previousElementSibling?.querySelector('.remove-btn');
-          }
+          const executeRemoval = () => {
+            // Find the next element to focus before removing
+            // Prioritize the next row, then the previous row
+            let nextFocusTarget = currentRow.nextElementSibling?.querySelector('.remove-btn');
+            if (!nextFocusTarget) {
+              nextFocusTarget = currentRow.previousElementSibling?.querySelector('.remove-btn');
+            }
 
-          currentRow.remove();
+            currentRow.remove();
 
-          if (nextFocusTarget) {
-            (nextFocusTarget as HTMLElement).focus();
+            if (nextFocusTarget) {
+              (nextFocusTarget as HTMLElement).focus();
+            }
+            // Ensure buttons state is updated after removal
+            updateRemoveButtons();
+          };
+
+          const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+          if (prefersReducedMotion) {
+            executeRemoval();
+          } else {
+            currentRow.classList.add('removing');
+            // Match CSS animation duration (0.2s)
+            setTimeout(executeRemoval, 200);
           }
         }
       }
@@ -226,6 +234,7 @@
           row.querySelector('.course-name').value = '';
           row.querySelector('.grade').value = '';
           row.querySelector('.credits').value = '';
+          row.querySelector('.course-name').focus();
         }
       });
       document.getElementById('prev-cgpa').value = '';
@@ -237,8 +246,8 @@
 
     // Save data
     saveBtn?.addEventListener('click', () => {
-      const prevCgpaInput = document.getElementById('prev-cgpa') as HTMLInputElement | null;
-      const prevCreditsInput = document.getElementById('prev-credits') as HTMLInputElement | null;
+      const prevCgpaInput = document.getElementById('prev-cgpa');
+      const prevCreditsInput = document.getElementById('prev-credits');
 
       const data = {
         prevCgpa: prevCgpaInput?.value || '',
@@ -259,6 +268,20 @@
 </script>
 
 <style>
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .slide-in {
+    animation: slideIn 0.3s ease-out forwards;
+  }
+
+  .slide-out {
+    animation: slideIn 0.3s ease-in reverse forwards;
+    pointer-events: none;
+  }
+
   .gpa-calculator {
     background: var(--sl-color-bg-nav);
     border: 1px solid var(--sl-color-hairline-light);

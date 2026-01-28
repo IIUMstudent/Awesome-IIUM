@@ -1,10 +1,17 @@
 ---
 // Leaderboard.astro
+import fs from 'node:fs';
+import path from 'node:path';
+
 /**
  * Leaderboard Component
  * Displays top contributors fetched from GitHub API.
  * Optimization: Fetched at build time (SSG) to improve performance and LCP.
  */
+
+const CACHE_DIR = path.join(process.cwd(), '.astro');
+const CACHE_FILE = path.join(CACHE_DIR, 'leaderboard-cache.json');
+const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
 
 interface Contributor {
 	login: string;
@@ -13,23 +20,49 @@ interface Contributor {
 	contributions: number;
 }
 
-// biome-ignore lint/correctness/noUnusedVariables: used in template
 let contributors: Contributor[] = [];
 // biome-ignore lint/correctness/noUnusedVariables: used in template
 let error = false;
 
 try {
-	// Use a higher limit to ensure we get enough active contributors, but slice later if needed
-	const response = await fetch(
-		'https://api.github.com/repos/iiumstudent/Awesome-IIUM/contributors?per_page=12',
-	);
-	if (response.ok) {
-		contributors = await response.json();
+	let cachedData: Contributor[] | null = null;
+	try {
+		if (fs.existsSync(CACHE_FILE)) {
+			const stats = fs.statSync(CACHE_FILE);
+			const now = Date.now();
+			if (now - stats.mtimeMs < CACHE_DURATION) {
+				const data = fs.readFileSync(CACHE_FILE, 'utf-8');
+				cachedData = JSON.parse(data);
+			}
+		}
+	} catch (err) {
+		console.warn('Failed to read leaderboard cache:', err);
+	}
+
+	if (cachedData) {
+		contributors = cachedData;
 	} else {
-		console.error(
-			`Failed to fetch contributors: ${response.status} ${response.statusText}`,
+		// Use a higher limit to ensure we get enough active contributors, but slice later if needed
+		const response = await fetch(
+			'https://api.github.com/repos/iiumstudent/Awesome-IIUM/contributors?per_page=12',
 		);
-		error = true;
+		if (response.ok) {
+			contributors = await response.json();
+			// Cache the successful response
+			try {
+				if (!fs.existsSync(CACHE_DIR)) {
+					fs.mkdirSync(CACHE_DIR, { recursive: true });
+				}
+				fs.writeFileSync(CACHE_FILE, JSON.stringify(contributors));
+			} catch (err) {
+				console.warn('Failed to write leaderboard cache:', err);
+			}
+		} else {
+			console.error(
+				`Failed to fetch contributors: ${response.status} ${response.statusText}`,
+			);
+			error = true;
+		}
 	}
 } catch (e) {
 	console.error('Failed to fetch contributors', e);
