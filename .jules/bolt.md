@@ -9,3 +9,7 @@
 ## 2026-01-27 - [SSG for Local Data]
 **Learning:** Fetching local JSON files via client-side `fetch()` causes unnecessary layout shifts (CLS) and loading states.
 **Action:** Use `node:fs` to read local data files at build time in Astro frontmatter for immediate rendering.
+
+## 2026-01-28 - [Build-Time API Caching]
+**Learning:** Frequent external API calls during build/dev (e.g. GitHub API) can hit rate limits and slow down development.
+**Action:** Implement a simple file-system cache (e.g., in `.astro/`) with a TTL for static data fetched at build time.

@@ -1,4 +1,7 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
+
 /**
  * NewThisWeek Component
  * Displays resources added in the last 7 days
@@ -10,9 +13,27 @@ interface RecentResource {
 	date: string;
 }
 
+const CACHE_DIR = path.join(process.cwd(), '.astro');
+const CACHE_FILE = path.join(CACHE_DIR, 'new-this-week-cache.json');
+const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
+
 // Fetch recent commits from GitHub
 async function fetchRecentResources(): Promise<RecentResource[]> {
 	try {
+		// Check cache first
+		try {
+			if (fs.existsSync(CACHE_FILE)) {
+				const stats = fs.statSync(CACHE_FILE);
+				const now = Date.now();
+				if (now - stats.mtimeMs < CACHE_DURATION) {
+					const data = fs.readFileSync(CACHE_FILE, 'utf-8');
+					return JSON.parse(data);
+				}
+			}
+		} catch (e) {
+			console.warn('Cache read error:', e);
+		}
+
 		const response = await fetch(
 			'https://api.github.com/repos/iiumstudent/Awesome-IIUM/commits?per_page=20',
 		);
@@ -46,7 +67,19 @@ async function fetchRecentResources(): Promise<RecentResource[]> {
 			}
 		}
 
-		return recentResources.slice(0, 5);
+		const result = recentResources.slice(0, 5);
+
+		// Write cache
+		try {
+			if (!fs.existsSync(CACHE_DIR)) {
+				fs.mkdirSync(CACHE_DIR, { recursive: true });
+			}
+			fs.writeFileSync(CACHE_FILE, JSON.stringify(result));
+		} catch (e) {
+			console.warn('Cache write error:', e);
+		}
+
+		return result;
 	} catch {
 		return [];
 	}
