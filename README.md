@@ -1,3 +1,4 @@
+<!--lint disable awesome-github-->
 # Awesome IIUM [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![Build Status](https://img.shields.io/github/workflow/status/iiumstudent/Awesome-IIUM/Awesome%20Lint)](https://github.com/iiumstudent/Awesome-IIUM/actions) [![License](https://img.shields.io/github/license/iiumstudent/Awesome-IIUM)](LICENSE.md) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 > A curated list of resources, tools, and guides for the **International Islamic
