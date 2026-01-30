@@ -113,6 +113,29 @@
 
     updateRemoveButtons();
 
+    // Keyboard navigation for adding rows
+    container?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const target = e.target as HTMLElement;
+        const row = target.closest('.course-row');
+
+        // Only trigger if we are inside a course row input/select
+        if (row && (target.tagName === 'INPUT' || target.tagName === 'SELECT')) {
+          e.preventDefault();
+
+          if (!row.nextElementSibling) {
+            // If last row, add new row
+            addBtn?.click();
+          } else {
+            // If not last row, move focus to next row
+            const nextRow = row.nextElementSibling;
+            const nextInput = nextRow.querySelector('.course-name') as HTMLElement;
+            nextInput?.focus();
+          }
+        }
+      }
+    });
+
     // Add new course row
     addBtn?.addEventListener('click', () => {
       const row = document.createElement('div');
