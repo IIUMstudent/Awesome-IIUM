@@ -248,23 +248,47 @@
       }
     });
 
-    // Clear all
+    // Clear all with confirmation
+    let clearConfirmTimeout: ReturnType<typeof setTimeout>;
+
     clearBtn?.addEventListener('click', () => {
-      const rows = container?.querySelectorAll('.course-row');
-      rows?.forEach((row, i) => {
-        if (i > 0) row.remove();
-        else {
-          row.querySelector('.course-name').value = '';
-          row.querySelector('.grade').value = '';
-          row.querySelector('.credits').value = '';
-          row.querySelector('.course-name').focus();
-        }
-      });
-      document.getElementById('prev-cgpa').value = '';
-      document.getElementById('prev-credits').value = '';
-      resultsDiv?.classList.add('hidden');
-      cgpaResultDiv?.classList.add('hidden');
-      updateRemoveButtons();
+      if (clearBtn.getAttribute('data-confirm') === 'true') {
+        // Confirmed action
+        const rows = container?.querySelectorAll('.course-row');
+        rows?.forEach((row, i) => {
+          if (i > 0) row.remove();
+          else {
+            row.querySelector('.course-name').value = '';
+            row.querySelector('.grade').value = '';
+            row.querySelector('.credits').value = '';
+            (row.querySelector('.course-name') as HTMLElement).focus();
+          }
+        });
+        (document.getElementById('prev-cgpa') as HTMLInputElement).value = '';
+        (document.getElementById('prev-credits') as HTMLInputElement).value = '';
+        resultsDiv?.classList.add('hidden');
+        cgpaResultDiv?.classList.add('hidden');
+        updateRemoveButtons();
+
+        // Reset button state
+        clearBtn.textContent = 'Clear All';
+        clearBtn.classList.remove('btn-danger-text');
+        clearBtn.removeAttribute('data-confirm');
+        clearTimeout(clearConfirmTimeout);
+      } else {
+        // First click - ask for confirmation
+        const originalText = clearBtn.textContent;
+        clearBtn.textContent = 'Confirm Clear?';
+        clearBtn.classList.add('btn-danger-text');
+        clearBtn.setAttribute('data-confirm', 'true');
+
+        // Reset after 3 seconds if not confirmed
+        clearConfirmTimeout = setTimeout(() => {
+          clearBtn.textContent = originalText;
+          clearBtn.classList.remove('btn-danger-text');
+          clearBtn.removeAttribute('data-confirm');
+        }, 3000);
+      }
     });
 
     // Save data
@@ -481,6 +505,11 @@
 
   .btn-ghost:hover {
     color: var(--sl-color-text);
+  }
+
+  .btn-danger-text {
+    color: #ef4444 !important;
+    font-weight: 600;
   }
 
   .results {
