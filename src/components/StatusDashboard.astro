@@ -18,7 +18,10 @@ let initialStatus: SystemStatus[] = [];
 try {
 	const statusPath = path.join(process.cwd(), 'public/api/status.json');
 	if (fs.existsSync(statusPath)) {
-		initialStatus = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
+		const parsed = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
+		if (Array.isArray(parsed)) {
+			initialStatus = parsed;
+		}
 	}
 } catch (e) {
 	console.error('Failed to load initial status', e);
@@ -51,40 +54,63 @@ try {
 </div>
 
 <script define:vars={{ BASE_URL }}>
-  function escapeHtml(unsafe) {
-    if (typeof unsafe !== 'string') return unsafe;
-    return unsafe
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#039;');
-  }
-
   async function fetchStatus() {
     try {
       const baseUrl = BASE_URL.endsWith('/') ? BASE_URL : `${BASE_URL}/`;
       const response = await fetch(`${baseUrl}api/status.json`);
       const data = await response.json();
+
+      if (!Array.isArray(data)) {
+        throw new Error('Invalid status data format');
+      }
+
       const grid = document.getElementById('status-grid');
       if (!grid) return;
 
-      grid.innerHTML = data
-        .map(
-          (sys) => `
-        <div class="status-card ${escapeHtml(sys.status)}">
-          <div class="status-header">
-            <span class="status-dot"></span>
-            <h3>${escapeHtml(sys.name)}</h3>
-          </div>
-          <div class="status-body">
-            <span class="status-label">${escapeHtml(sys.status).toUpperCase()}</span>
-            <span class="status-time">Last Checked: ${new Date(sys.timestamp).toLocaleTimeString()}</span>
-          </div>
-        </div>
-      `,
-        )
-        .join('');
+      // Clear existing content securely
+      grid.replaceChildren();
+
+      data.forEach((sys) => {
+        const card = document.createElement('div');
+        // Validate status class to alphanumeric characters only to prevent CSS injection
+        const safeStatus = (sys.status || '').replace(/[^a-z0-9-]/gi, '');
+        card.className = `status-card ${safeStatus}`;
+
+        const header = document.createElement('div');
+        header.className = 'status-header';
+
+        const dot = document.createElement('span');
+        dot.className = 'status-dot';
+
+        const h3 = document.createElement('h3');
+        h3.textContent = sys.name || 'Unknown System';
+
+        header.appendChild(dot);
+        header.appendChild(h3);
+
+        const body = document.createElement('div');
+        body.className = 'status-body';
+
+        const label = document.createElement('span');
+        label.className = 'status-label';
+        label.textContent = (sys.status || '').toUpperCase();
+
+        const time = document.createElement('span');
+        time.className = 'status-time';
+        try {
+          time.textContent = `Last Checked: ${new Date(sys.timestamp).toLocaleTimeString()}`;
+        } catch (e) {
+          time.textContent = 'Last Checked: Unknown';
+        }
+
+        body.appendChild(label);
+        body.appendChild(time);
+
+        card.appendChild(header);
+        card.appendChild(body);
+
+        grid.appendChild(card);
+      });
     } catch (e) {
       console.error('Failed to fetch status', e);
     }
