@@ -35,9 +35,7 @@ async function fetchRecentResources(): Promise<RecentResource[]> {
 			console.warn('Cache read error:', e);
 		}
 
-		const response = await fetch(
-			`${GITHUB_REPO.apiUrl}/commits?per_page=20`,
-		);
+		const response = await fetch(`${GITHUB_REPO.apiUrl}/commits?per_page=20`);
 
 		if (!response.ok) return [];
 
