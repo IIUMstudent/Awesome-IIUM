@@ -4,9 +4,9 @@
 > A curated list of resources, tools, and guides for the **International Islamic
 > University Malaysia (IIUM)** community.
 
-_Read this in other languages: [Bahasa Melayu](translation/README.my.md),
-[中文](translation/README.zh.md), [العربية](translation/README.ar.md),
-[日本語](translation/README.jp.md)_
+_Read this in other languages: [Bahasa Melayu](https://iiumstudent.github.io/Awesome-IIUM/ms/),
+[中文](https://iiumstudent.github.io/Awesome-IIUM/zh/), [العربية](https://iiumstudent.github.io/Awesome-IIUM/ar/),
+[日本語](https://iiumstudent.github.io/Awesome-IIUM/ja/)_
 
 <div align="center">
   <img src="logo.png" alt="Awesome IIUM Logo" width="200"/>
@@ -49,5 +49,5 @@ Thanks goes to these wonderful people
 ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <a href="https://github.com/iiumstudent/Awesome-IIUM/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=iiumstudent/Awesome-IIUM" />
+  <img src="https://contrib.rocks/image?repo=iiumstudent/Awesome-IIUM" alt="Contributors" />
 </a>

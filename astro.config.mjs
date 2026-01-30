@@ -12,13 +12,6 @@ export default defineConfig({
 				'A curated list of resources for the International Islamic University Malaysia (IIUM) community.',
 			head: [
 				{
-					tag: 'link',
-					attrs: {
-						rel: 'manifest',
-						href: '/manifest.webmanifest',
-					},
-				},
-				{
 					tag: 'meta',
 					attrs: {
 						name: 'theme-color',
@@ -28,7 +21,7 @@ export default defineConfig({
 				{
 					tag: 'script',
 					attrs: {
-						src: '/pwa-register.js',
+						src: '/Awesome-IIUM/pwa-register.js',
 						defer: true,
 					},
 				},
@@ -93,12 +86,12 @@ export default defineConfig({
 				display: 'standalone',
 				icons: [
 					{
-						src: '/logo.png',
+						src: '/Awesome-IIUM/logo.png',
 						sizes: '192x192',
 						type: 'image/png',
 					},
 					{
-						src: '/logo.png',
+						src: '/Awesome-IIUM/logo.png',
 						sizes: '512x512',
 						type: 'image/png',
 					},
@@ -106,7 +99,7 @@ export default defineConfig({
 			},
 			workbox: {
 				globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,json}'],
-				navigateFallback: '/',
+				navigateFallback: '/Awesome-IIUM/',
 			},
 		}),
 	],

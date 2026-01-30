@@ -13,8 +13,8 @@ benar-benar hebat.
 Repositori ini adalah koleksi sumber untuk warga Universiti Islam Antarabangsa
 Malaysia (UIAM).
 
-_Baca ini dalam bahasa lain: [English](/), [中文](/translation/README.zh.md),
-[العربية](/translation/README.ar.md), [日本語](/translation/README.jp.md)_
+_Baca ini dalam bahasa lain: [English](/), [中文](/zh/),
+[العربية](/ar/), [日本語](/ja/)_
 
 ![Logo IIUM](/logo.png)
 

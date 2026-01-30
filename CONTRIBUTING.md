@@ -33,21 +33,28 @@ To keep this list high-quality, please ensure your contribution:
     git clone https://github.com/YOUR-USERNAME/Awesome-IIUM.git
     cd Awesome-IIUM
     ```
-3.  **Create a branch**:
+3.  **Setup your environment**:
+    ```bash
+    # Install pnpm if you don't have it
+    npm install -g pnpm
+    # Install dependencies
+    pnpm install
+    ```
+4.  **Create a branch**:
     ```bash
     git checkout -b add-my-awesome-resource
     ```
-4.  **Make your changes**: Add your resource to the appropriate file in
+5.  **Make your changes**: Add your resource to the appropriate file in
     `contents/`.
-5.  **Commit your changes**:
+6.  **Commit your changes**:
     ```bash
     git commit -m "Add [Resource Name] to [Category]"
     ```
-6.  **Push to your fork**:
+7.  **Push to your fork**:
     ```bash
     git push origin add-my-awesome-resource
     ```
-7.  **Submit a Pull Request**: Go to the original repository and click "Compare
+8.  **Submit a Pull Request**: Go to the original repository and click "Compare
     & pull request".
 
 ## ⚠️ Issues

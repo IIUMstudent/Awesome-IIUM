@@ -3,6 +3,10 @@
 import Default from '@astrojs/starlight/components/Footer.astro';
 // biome-ignore lint/correctness/noUnusedImports: Implicitly used
 import type { Props } from '@astrojs/starlight/props';
+import { GITHUB_REPO } from '../config';
+
+// biome-ignore lint/correctness/noUnusedVariables: passed to client script
+const repoFullName = GITHUB_REPO.fullName;
 ---
 
 <Default {...Astro.props} />
@@ -11,14 +15,14 @@ import type { Props } from '@astrojs/starlight/props';
   <!-- Giscus will be injected here when visible -->
 </div>
 
-<script>
+<script define:vars={{ repoFullName }}>
   function loadGiscus() {
     const container = document.getElementById('giscus-container');
     if (!container || container.querySelector('script[src*="giscus.app"]')) return;
 
     const script = document.createElement('script');
     script.src = "https://giscus.app/client.js";
-    script.setAttribute("data-repo", "iiumstudent/Awesome-IIUM");
+    script.setAttribute("data-repo", repoFullName);
     script.setAttribute("data-repo-id", "R_kgDONpSk3Q");
     script.setAttribute("data-category", "Announcements");
     script.setAttribute("data-category-id", "DIC_kwDONpSk3c4CmD1H");

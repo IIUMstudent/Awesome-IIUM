@@ -1,0 +1,15 @@
+/* Custom styles for Awesome IIUM */
+
+:root {
+	/* Custom theme variables can be added here */
+}
+
+/* Ensure offline indicator doesn't conflict with Starlight styles */
+#offline-indicator {
+	z-index: 9999;
+}
+
+/* Custom utility classes */
+.not-content {
+	/* Components that shouldn't be treated as main content */
+}

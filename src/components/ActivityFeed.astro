@@ -1,6 +1,7 @@
 ---
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import { GITHUB_REPO } from '../config';
 
 /**
  * ActivityFeed Component
@@ -50,10 +51,10 @@ async function fetchActivity(): Promise<Activity[]> {
 		// Parallelize API fetches
 		const [commitsRes, prsRes] = await Promise.all([
 			fetch(
-				'https://api.github.com/repos/iiumstudent/Awesome-IIUM/commits?per_page=3',
+				`${GITHUB_REPO.apiUrl}/commits?per_page=3`,
 			),
 			fetch(
-				'https://api.github.com/repos/iiumstudent/Awesome-IIUM/pulls?state=all&per_page=2',
+				`${GITHUB_REPO.apiUrl}/pulls?state=all&per_page=2`,
 			),
 		]);
 
@@ -164,7 +165,7 @@ const activities = await fetchActivity();
     <p class="no-activity">No recent activity</p>
   )}
   
-  <a href="https://github.com/iiumstudent/Awesome-IIUM/commits/master" class="view-all">
+  <a href={`${GITHUB_REPO.url}/commits/master`} class="view-all">
     View all activity →
   </a>
 </div>
