@@ -198,6 +198,17 @@ const locations: Location[] = [
 </div>
 
 <script type="module" define:vars={{ campuses, locations }}>
+  // Helper to prevent XSS
+  function escapeHtml(unsafe) {
+    if (typeof unsafe !== 'string') return unsafe;
+    return unsafe
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
   // Dynamically load MapLibre GL JS
   async function loadMapLibre() {
     if (window.maplibregl) return window.maplibregl;
@@ -282,14 +293,14 @@ const locations: Location[] = [
       campusLocations.forEach(location => {
         const el = document.createElement('div');
         el.className = 'custom-marker';
-        el.innerHTML = location.icon;
+        el.textContent = location.icon;
         el.title = location.name;
 
         const popup = new maplibregl.Popup({ offset: 25 })
           .setHTML(`
             <div class="marker-popup">
-              <strong>${location.icon} ${location.name}</strong>
-              <span class="type">${location.type}</span>
+              <strong>${escapeHtml(location.icon)} ${escapeHtml(location.name)}</strong>
+              <span class="type">${escapeHtml(location.type)}</span>
             </div>
           `);
 
