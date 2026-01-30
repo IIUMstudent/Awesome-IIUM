@@ -295,6 +295,7 @@
     saveBtn?.addEventListener('click', () => {
       const prevCgpaInput = document.getElementById('prev-cgpa');
       const prevCreditsInput = document.getElementById('prev-credits');
+      const saveStatus = document.getElementById('save-status');
 
       const data = {
         prevCgpa: prevCgpaInput?.value || '',
@@ -306,9 +307,21 @@
       saveBtn.textContent = '✅ Saved!';
       saveBtn.disabled = true;
 
+      if (saveStatus) {
+        saveStatus.textContent = 'Changes saved successfully';
+        saveStatus.classList.add('visible');
+      }
+
       setTimeout(() => {
         saveBtn.textContent = originalText;
         saveBtn.disabled = false;
+
+        if (saveStatus) {
+          saveStatus.classList.remove('visible');
+          setTimeout(() => {
+            saveStatus.textContent = '';
+          }, 300);
+        }
       }, 2000);
     });
   });
