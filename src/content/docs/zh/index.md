@@ -6,8 +6,8 @@ title: '欢迎来到 Awesome-IIUM！'
 
 本仓库汇集了马来西亚国际伊斯兰大学（IIUM）成员所需的各种资源。
 
-_阅读其他语言版本：[English](/), [Melayu](/ms/),
-[العربية](/ar/), [日本語](/ja/)_
+_阅读其他语言版本：[English](/), [Melayu](/ms/), [العربية](/ar/),
+[日本語](/ja/)_
 
 ![IIUM Logo](/logo.png)
 

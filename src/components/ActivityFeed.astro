@@ -50,12 +50,8 @@ async function fetchActivity(): Promise<Activity[]> {
 	try {
 		// Parallelize API fetches
 		const [commitsRes, prsRes] = await Promise.all([
-			fetch(
-				`${GITHUB_REPO.apiUrl}/commits?per_page=3`,
-			),
-			fetch(
-				`${GITHUB_REPO.apiUrl}/pulls?state=all&per_page=2`,
-			),
+			fetch(`${GITHUB_REPO.apiUrl}/commits?per_page=3`),
+			fetch(`${GITHUB_REPO.apiUrl}/pulls?state=all&per_page=2`),
 		]);
 
 		// Process commits
