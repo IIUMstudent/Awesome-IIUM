@@ -1,5 +1,15 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.3.11/schema.json",
+	"files": {
+		"ignoreUnknown": true,
+		"includes": [
+			"**",
+			"!**/.astro",
+			"!**/dist",
+			"!**/public/api/status.json",
+			"!**/node_modules"
+		]
+	},
 	"linter": {
 		"enabled": true,
 		"rules": {
