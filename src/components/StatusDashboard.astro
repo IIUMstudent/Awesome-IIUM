@@ -20,7 +20,11 @@ try {
 	if (fs.existsSync(statusPath)) {
 		const parsed = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
 		if (Array.isArray(parsed)) {
-			initialStatus = parsed;
+			// Sanitize status to prevent CSS injection or invalid characters
+			initialStatus = parsed.map((sys: SystemStatus) => ({
+				...sys,
+				status: (sys.status || '').replace(/[^a-z0-9-]/gi, ''),
+			}));
 		}
 	}
 } catch (e) {
