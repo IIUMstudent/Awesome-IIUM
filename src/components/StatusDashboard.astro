@@ -12,7 +12,6 @@ interface SystemStatus {
 	timestamp: string;
 }
 
-// biome-ignore lint/correctness/noUnusedVariables: used in template
 let initialStatus: SystemStatus[] = [];
 
 try {
@@ -30,6 +29,9 @@ try {
 } catch (e) {
 	console.error('Failed to load initial status', e);
 }
+
+// biome-ignore lint/correctness/noUnusedVariables: passed to client script
+const hasInitialData = initialStatus.length > 0;
 ---
 
 <div id="status-dashboard" class="not-content">
@@ -57,7 +59,7 @@ try {
   </div>
 </div>
 
-<script define:vars={{ BASE_URL }}>
+<script define:vars={{ BASE_URL, hasInitialData }}>
   async function fetchStatus() {
     try {
       const baseUrl = BASE_URL.endsWith('/') ? BASE_URL : `${BASE_URL}/`;
@@ -120,7 +122,9 @@ try {
     }
   }
 
-  fetchStatus();
+  if (!hasInitialData) {
+    fetchStatus();
+  }
   setInterval(fetchStatus, 60000); // Refresh every minute
 </script>
 
