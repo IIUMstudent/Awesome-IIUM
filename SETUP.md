@@ -8,6 +8,7 @@
 ## Installation
 
 1. **Install pnpm globally** (if you don't have it):
+
    ```bash
    npm install -g pnpm
    # OR use corepack (comes with Node.js 16.13+)
@@ -15,6 +16,7 @@
    ```
 
 2. **Install project dependencies**:
+
    ```bash
    pnpm install
    ```
@@ -22,6 +24,7 @@
 ## Development Server
 
 Start the development server:
+
 ```bash
 pnpm run dev
 ```
@@ -31,6 +34,7 @@ The site will be available at `http://localhost:3000`
 ## Building
 
 Build the static site for production:
+
 ```bash
 pnpm run build
 ```
@@ -42,17 +46,20 @@ Output files will be in `dist/` directory.
 ### Linting
 
 Check for code quality issues:
+
 ```bash
 pnpm run lint
 ```
 
 This runs both JavaScript/TypeScript linting and Markdown linting:
+
 - **JavaScript/TypeScript**: Biome
 - **Markdown**: markdownlint + prettier
 
 ### Formatting
 
 Auto-format code:
+
 ```bash
 pnpm run format
 ```
@@ -75,7 +82,7 @@ pnpm run format:md
 
 ## Project Structure
 
-```
+```bash
 awesome-iium/
 ├── public/                 # Static files served as-is
 │   ├── api/
@@ -103,7 +110,8 @@ awesome-iium/
 ## Deployment
 
 The project deploys automatically to GitHub Pages via GitHub Actions:
-- Branch: `main`
+
+- Branch: `master`
 - Base URL: `https://iiumstudent.github.io/Awesome-IIUM`
 - The `base` setting in `astro.config.mjs` handles the path prefix
 
@@ -112,6 +120,7 @@ The project deploys automatically to GitHub Pages via GitHub Actions:
 ### pnpm: command not found
 
 Install pnpm globally:
+
 ```bash
 npm install -g pnpm
 ```
@@ -119,6 +128,7 @@ npm install -g pnpm
 ### Port 3000 already in use
 
 Specify a different port:
+
 ```bash
 pnpm run dev -- --port 3001
 ```
@@ -126,15 +136,21 @@ pnpm run dev -- --port 3001
 ### Build fails
 
 Try these steps:
+
 1. Delete `node_modules` and `.astro` cache:
+
    ```bash
    rm -rf node_modules .astro dist
    ```
+
 2. Reinstall dependencies:
+
    ```bash
    pnpm install
    ```
+
 3. Rebuild:
+
    ```bash
    pnpm run build
    ```

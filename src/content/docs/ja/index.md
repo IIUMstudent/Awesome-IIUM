@@ -8,7 +8,7 @@ title: 'Awesome-IIUMへようこそ！'
 
 _他の言語で読む：[English](/), [Melayu](/ms/), [中文](/zh/), [العربية](/ar/)_
 
-![IIUM ロゴ](/logo.png)
+![IIUM ロゴ](/Awesome-IIUM/logo.png)
 
 ## 先導者として (LEADING THE WAY)
 

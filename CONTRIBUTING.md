@@ -26,36 +26,46 @@ To keep this list high-quality, please ensure your contribution:
 
 ## 🚀 How to Contribute
 
-1.  **Fork the repository**: Click the "Fork" button at the top right of this
-    page.
-2.  **Clone your fork**:
-    ```bash
-    git clone https://github.com/YOUR-USERNAME/Awesome-IIUM.git
-    cd Awesome-IIUM
-    ```
-3.  **Setup your environment**:
-    ```bash
-    # Install pnpm if you don't have it
-    npm install -g pnpm
-    # Install dependencies
-    pnpm install
-    ```
-4.  **Create a branch**:
-    ```bash
-    git checkout -b add-my-awesome-resource
-    ```
-5.  **Make your changes**: Add your resource to the appropriate file in
-    `contents/`.
-6.  **Commit your changes**:
-    ```bash
-    git commit -m "Add [Resource Name] to [Category]"
-    ```
-7.  **Push to your fork**:
-    ```bash
-    git push origin add-my-awesome-resource
-    ```
-8.  **Submit a Pull Request**: Go to the original repository and click "Compare
-    & pull request".
+1. **Fork the repository**: Click the "Fork" button at the top right of this
+   page.
+2. **Clone your fork**:
+
+   ```bash
+   git clone https://github.com/YOUR-USERNAME/Awesome-IIUM.git
+   cd Awesome-IIUM
+   ```
+
+3. **Setup your environment**:
+
+   ```bash
+   # Install pnpm if you don't have it
+   npm install -g pnpm
+   # Install dependencies
+   pnpm install
+   ```
+
+4. **Create a branch**:
+
+   ```bash
+   git checkout -b add-my-awesome-resource
+   ```
+
+5. **Make your changes**: Add your resource to the appropriate file in
+   `src/content/docs/`.
+6. **Commit your changes**:
+
+   ```bash
+   git commit -m "Add [Resource Name] to [Category]"
+   ```
+
+7. **Push to your fork**:
+
+   ```bash
+   git push origin add-my-awesome-resource
+   ```
+
+8. **Submit a Pull Request**: Go to the original repository and click "Compare
+   & pull request".
 
 ## ⚠️ Issues
 

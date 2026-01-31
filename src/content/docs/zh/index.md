@@ -9,7 +9,7 @@ title: '欢迎来到 Awesome-IIUM！'
 _阅读其他语言版本：[English](/), [Melayu](/ms/), [العربية](/ar/),
 [日本語](/ja/)_
 
-![IIUM Logo](/logo.png)
+![IIUM Logo](/Awesome-IIUM/logo.png)
 
 ## 引领未来 (LEADING THE WAY)
 

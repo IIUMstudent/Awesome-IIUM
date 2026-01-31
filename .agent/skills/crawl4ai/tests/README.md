@@ -11,12 +11,14 @@ This directory contains test scripts that verify the accuracy of all code exampl
 
 ## Running Tests
 
-### Run all tests:
+### Run all tests
+
 ```bash
 python run_all_tests.py
 ```
 
-### Run individual tests:
+### Run individual tests
+
 ```bash
 python test_basic_crawling.py
 python test_markdown_generation.py

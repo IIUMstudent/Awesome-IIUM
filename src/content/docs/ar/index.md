@@ -14,7 +14,7 @@ title: 'مرحبًا بكم في Awesome-IIUM!'
 _اقرأ هذا بلغات أخرى: [English](/), [Melayu](/ms/), [中文](/zh/),
 [日本語](/ja/)_
 
-![شعار الجامعة](/logo.png)
+![شعار الجامعة](/Awesome-IIUM/logo.png)
 
 ## الريادة (LEADING THE WAY)
 
