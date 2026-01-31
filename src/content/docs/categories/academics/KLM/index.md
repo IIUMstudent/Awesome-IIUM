@@ -11,7 +11,9 @@ campus: pagoh
 lastUpdated: 2025-01-30
 ---
 
-The Pagoh campus hosts the Kulliyyah of Languages and Management (KLM), which was later known as Kulliyyah of Sustainable Tourism and Contemporary Languages (KSTCL). This campus focuses on language studies and tourism management.
+The Pagoh campus hosts the Kulliyyah of Languages and Management (KLM), which
+was later known as Kulliyyah of Sustainable Tourism and Contemporary Languages
+(KSTCL). This campus focuses on language studies and tourism management.
 
 ## 🏛️ Official Links
 
