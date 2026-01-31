@@ -10,11 +10,13 @@ campus: gombak
 lastUpdated: 2025-01-30
 ---
 
-Kulliyyah of Education (KOED) prepares future educators and educational leaders at IIUM's Gombak campus.
+Kulliyyah of Education (KOED) prepares future educators and educational leaders
+at IIUM's Gombak campus.
 
 ## 🏛️ Official Links
 
-- [KOED Website](https://kulliyyah.iium.edu.my/koed/) - Official Kulliyyah portal
+- [KOED Website](https://kulliyyah.iium.edu.my/koed/) - Official Kulliyyah
+  portal
 
 ## 👨‍🏫 Leadership
 

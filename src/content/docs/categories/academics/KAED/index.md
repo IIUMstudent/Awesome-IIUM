@@ -10,11 +10,14 @@ campus: gombak
 lastUpdated: 2025-01-30
 ---
 
-Kulliyyah of Architecture and Environmental Design (KAED) offers programmes in architecture, landscape architecture, urban and regional planning, and applied arts and design at IIUM's Gombak campus.
+Kulliyyah of Architecture and Environmental Design (KAED) offers programmes in
+architecture, landscape architecture, urban and regional planning, and applied
+arts and design at IIUM's Gombak campus.
 
 ## 🏛️ Official Links
 
-- [KAED Website](https://kulliyyah.iium.edu.my/kaed/) - Official Kulliyyah portal
+- [KAED Website](https://kulliyyah.iium.edu.my/kaed/) - Official Kulliyyah
+  portal
 - Email: <kaed_corporate@iium.edu.my>
 - Phone: +603 6196 5221
 
