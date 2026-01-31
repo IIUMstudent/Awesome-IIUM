@@ -5,7 +5,7 @@
   <div class="calculator-form">
     <div id="courses-container">
       <div class="course-row" data-index="0">
-        <input type="text" class="course-name" placeholder="Course name" aria-label="Course name" />
+        <input type="text" class="course-name" placeholder="Course name" aria-label="Course name" maxlength="60" />
         <select class="grade" aria-label="Grade">
           <option value="">Grade</option>
           <option value="4.00">A (4.00)</option>
@@ -56,7 +56,7 @@
       </div>
       <div class="input-group">
         <label for="prev-credits">Credits Earned</label>
-        <input type="number" id="prev-credits" placeholder="60" min="0" />
+        <input type="number" id="prev-credits" placeholder="60" min="0" max="200" />
       </div>
     </div>
 
@@ -86,17 +86,26 @@
     const cgpaResultDiv = document.getElementById('cgpa-result');
 
     let courseIndex = 1;
+    const MAX_COURSES = 50;
 
-    // Helper to update remove buttons state
-    const updateRemoveButtons = () => {
+    // Helper to update buttons state
+    const updateButtons = () => {
       const rows = container?.querySelectorAll('.course-row');
       const removeBtns = container?.querySelectorAll('.remove-btn');
 
       if (rows && removeBtns) {
-        const shouldDisable = rows.length <= 1;
+        // Update remove buttons
+        const shouldDisableRemove = rows.length <= 1;
         removeBtns.forEach((btn) => {
-          (btn as HTMLButtonElement).disabled = shouldDisable;
+          (btn as HTMLButtonElement).disabled = shouldDisableRemove;
         });
+
+        // Update add button
+        if (addBtn) {
+          const limitReached = rows.length >= MAX_COURSES;
+          (addBtn as HTMLButtonElement).disabled = limitReached;
+          addBtn.title = limitReached ? 'Maximum courses reached' : '';
+        }
       }
     };
 
@@ -111,7 +120,7 @@
       } catch (e) {}
     }
 
-    updateRemoveButtons();
+    updateButtons();
 
     // Keyboard navigation for adding rows
     container?.addEventListener('keydown', (e) => {
@@ -142,7 +151,7 @@
       row.className = 'course-row slide-in';
       row.dataset.index = courseIndex++;
       row.innerHTML = `
-        <input type="text" class="course-name" placeholder="Course name" aria-label="Course name" />
+        <input type="text" class="course-name" placeholder="Course name" aria-label="Course name" maxlength="60" />
         <select class="grade" aria-label="Grade">
           <option value="">Grade</option>
           <option value="4.00">A (4.00)</option>
@@ -167,7 +176,7 @@
         <button type="button" class="remove-btn" title="Remove course" aria-label="Remove course">×</button>
       `;
       container?.appendChild(row);
-      updateRemoveButtons();
+      updateButtons();
       (row.querySelector('.course-name') as HTMLElement)?.focus();
     });
 
@@ -195,7 +204,7 @@
               (nextFocusTarget as HTMLElement).focus();
             }
             // Ensure buttons state is updated after removal
-            updateRemoveButtons();
+            updateButtons();
           };
 
           const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -268,7 +277,7 @@
         (document.getElementById('prev-credits') as HTMLInputElement).value = '';
         resultsDiv?.classList.add('hidden');
         cgpaResultDiv?.classList.add('hidden');
-        updateRemoveButtons();
+        updateButtons();
 
         // Reset button state
         clearBtn.textContent = 'Clear All';
