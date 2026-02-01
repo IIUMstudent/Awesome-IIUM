@@ -10,7 +10,8 @@ campus: kuantan
 lastUpdated: 2025-01-30
 ---
 
-Kulliyyah of Science (KOS) offers programmes in various scientific disciplines at IIUM's Kuantan campus.
+Kulliyyah of Science (KOS) offers programmes in various scientific disciplines
+at IIUM's Kuantan campus.
 
 ## 🏛️ Official Links
 
