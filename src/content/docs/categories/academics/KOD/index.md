@@ -10,7 +10,8 @@ campus: kuantan
 lastUpdated: 2025-01-30
 ---
 
-Kulliyyah of Dentistry (KOD) offers comprehensive dental education at IIUM's Kuantan campus.
+Kulliyyah of Dentistry (KOD) offers comprehensive dental education at IIUM's
+Kuantan campus.
 
 ## 🏛️ Official Links
 
