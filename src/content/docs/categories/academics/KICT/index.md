@@ -11,11 +11,14 @@ campus: gombak
 lastUpdated: 2025-01-30
 ---
 
-Kulliyyah of Information and Communication Technology (KICT) offers comprehensive programmes in computing, information technology, and digital technologies at IIUM's Gombak campus.
+Kulliyyah of Information and Communication Technology (KICT) offers
+comprehensive programmes in computing, information technology, and digital
+technologies at IIUM's Gombak campus.
 
 ## 🏛️ Official Links
 
-- [KICT Website](https://kulliyyah.iium.edu.my/kict/) - Official Kulliyyah portal
+- [KICT Website](https://kulliyyah.iium.edu.my/kict/) - Official Kulliyyah
+  portal
 - [Vision & Mission](https://kulliyyah.iium.edu.my/kict/vision-mission/)
 - [History](https://kulliyyah.iium.edu.my/kict/history-of-kict-2/)
 - [Organisation Chart](https://kulliyyah.iium.edu.my/kict/wp-content/uploads/sites/3/2025/07/KICT-ORG-CHART-2025-2027.png)
@@ -64,7 +67,8 @@ Kulliyyah of Information and Communication Technology (KICT) offers comprehensiv
 
 ## 📖 Programming Resources
 
-- [Java Resources](/categories/academics/KICT/Language/Java) - Java programming guides
+- [Java Resources](/categories/academics/KICT/Language/Java) - Java programming
+  guides
 
 ## � Social Media
 

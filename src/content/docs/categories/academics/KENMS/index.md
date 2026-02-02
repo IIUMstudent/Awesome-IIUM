@@ -12,11 +12,14 @@ campus: gombak
 lastUpdated: 2025-01-30
 ---
 
-Kulliyyah of Economics and Management Sciences (KENMS) offers programmes in economics, business, finance, and accounting with an Islamic perspective at IIUM's Gombak campus.
+Kulliyyah of Economics and Management Sciences (KENMS) offers programmes in
+economics, business, finance, and accounting with an Islamic perspective at
+IIUM's Gombak campus.
 
 ## 🏛️ Official Links
 
-- [KENMS Website](https://kulliyyah.iium.edu.my/kenms/) - Official Kulliyyah portal
+- [KENMS Website](https://kulliyyah.iium.edu.my/kenms/) - Official Kulliyyah
+  portal
 
 ## 👨‍🏫 Leadership
 

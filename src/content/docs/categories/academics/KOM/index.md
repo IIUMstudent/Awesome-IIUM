@@ -10,7 +10,8 @@ campus: kuantan
 lastUpdated: 2025-01-30
 ---
 
-Kulliyyah of Medicine (KOM) offers comprehensive medical education at IIUM's Kuantan campus.
+Kulliyyah of Medicine (KOM) offers comprehensive medical education at IIUM's
+Kuantan campus.
 
 ## 🏛️ Official Links
 
