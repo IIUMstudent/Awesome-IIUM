@@ -10,11 +10,13 @@ campus: kuantan
 lastUpdated: 2025-01-30
 ---
 
-Kulliyyah of Allied Health Sciences (KAHS) offers programmes in various health disciplines at IIUM's Kuantan campus.
+Kulliyyah of Allied Health Sciences (KAHS) offers programmes in various health
+disciplines at IIUM's Kuantan campus.
 
 ## 🏛️ Official Links
 
-- [KAHS Website](https://kulliyyah.iium.edu.my/kahs/) - Official Kulliyyah portal
+- [KAHS Website](https://kulliyyah.iium.edu.my/kahs/) - Official Kulliyyah
+  portal
 
 ## 👨‍🏫 Leadership
 

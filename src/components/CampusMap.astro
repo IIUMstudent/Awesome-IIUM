@@ -296,6 +296,10 @@ const locations: Location[] = [
         el.textContent = location.icon;
         el.title = location.name;
 
+        // Accessibility enhancements
+        el.setAttribute('role', 'button');
+        el.setAttribute('tabindex', '0');
+
         const popup = new maplibregl.Popup({ offset: 25 })
           .setHTML(`
             <div class="marker-popup">
@@ -308,6 +312,17 @@ const locations: Location[] = [
           .setLngLat(location.coords)
           .setPopup(popup)
           .addTo(map);
+
+        // Re-apply aria-label after map initialization
+        el.setAttribute('aria-label', `${location.name}, ${location.type}`);
+
+        // Keyboard support
+        el.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            marker.togglePopup();
+          }
+        });
 
         markers.push(marker);
       });

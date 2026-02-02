@@ -1,6 +1,8 @@
 ---
 title: '📜 AbdulHamid AbuSulayman KIRKHS'
-description: 'Resources for IIUM students at the Kulliyyah of Islamic Revealed Knowledge and Human Sciences.'
+description:
+  'Resources for IIUM students at the Kulliyyah of Islamic Revealed Knowledge
+  and Human Sciences.'
 resourceType: guide
 tags:
   - islamic-studies
@@ -11,11 +13,14 @@ campus: gombak
 lastUpdated: 2025-01-30
 ---
 
-AbdulHamid AbuSulayman Kulliyyah of Islamic Revealed Knowledge and Human Sciences (AHAS KIRKHS) is the largest Kulliyyah at IIUM, offering programmes in Islamic studies, humanities, and social sciences at the Gombak campus.
+AbdulHamid AbuSulayman Kulliyyah of Islamic Revealed Knowledge and Human
+Sciences (AHAS KIRKHS) is the largest Kulliyyah at IIUM, offering programmes in
+Islamic studies, humanities, and social sciences at the Gombak campus.
 
 ## 🏛️ Official Links
 
-- [KIRKHS Website](https://kulliyyah.iium.edu.my/kirkhs/) - Official Kulliyyah portal
+- [KIRKHS Website](https://kulliyyah.iium.edu.my/kirkhs/) - Official Kulliyyah
+  portal
 
 ## 👨‍🏫 Leadership
 
