@@ -10,7 +10,8 @@ campus: gombak
 lastUpdated: 2025-01-30
 ---
 
-Kulliyyah of Engineering (KOE) offers accredited engineering programmes at IIUM's Gombak campus.
+Kulliyyah of Engineering (KOE) offers accredited engineering programmes at
+IIUM's Gombak campus.
 
 ## 🏛️ Official Links
 

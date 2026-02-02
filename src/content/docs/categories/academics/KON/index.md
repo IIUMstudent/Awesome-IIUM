@@ -10,7 +10,8 @@ campus: kuantan
 lastUpdated: 2025-01-30
 ---
 
-Kulliyyah of Nursing (KON) prepares professional nurses at IIUM's Kuantan campus.
+Kulliyyah of Nursing (KON) prepares professional nurses at IIUM's Kuantan
+campus.
 
 ## 🏛️ Official Links
 
