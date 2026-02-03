@@ -13,8 +13,7 @@ using an escape helper or use `textContent` / DOM creation methods instead of
 **Learning:** External APIs, even trusted ones, can be vectors for XSS if their response is injected directly into the DOM.
 **Prevention:** Implement local `escapeHtml` helper in Astro client scripts and sanitize all dynamic data before using `innerHTML`.
 
-## 2026-02-01 - GPACalculator DoS Risk
-
-**Vulnerability:** Unlimited DOM creation via "Add Course" and missing input length limits in `GPACalculator.astro`.
-**Learning:** Client-side interactive components without bounds checks can be exploited for Denial of Service (DoS) by flooding the DOM or memory.
-**Prevention:** Implement explicit limits (row counts, string lengths) for all user inputs and dynamic elements.
+## 2026-02-04 - Client-Side DoS via Unbounded Inputs
+**Vulnerability:** `GPACalculator.astro` allowed unlimited row creation and unbounded input strings.
+**Learning:** Client-side tools without input constraints can lead to browser resource exhaustion (DOM/Memory).
+**Prevention:** Always enforce `maxlength` on text inputs and reasonable upper bounds (e.g. `max`, row limits) on dynamic collections.
