@@ -86,6 +86,7 @@ const defaultCampus = 'gombak';
   let parsedPrayers = [];
   let prayerCardElements = {};
   let currentNextPrayerKey = null;
+  let cachedTargetTime = null;
 
   async function fetchPrayerTimes(campusKey) {
     const campus = campuses[campusKey];
@@ -176,8 +177,7 @@ const defaultCampus = 'gombak';
     startCountdown();
   }
 
-  function updateNextPrayer() {
-    const now = new Date();
+  function updateNextPrayer(now = new Date()) {
     const currentMinutes = now.getHours() * 60 + now.getMinutes();
     
     let nextPrayer = null;
@@ -200,6 +200,17 @@ const defaultCampus = 'gombak';
       nextTime = { hours, minutes, tomorrow: true };
     }
 
+    // Update cached target time
+    if (nextTime) {
+      const target = new Date(now);
+      target.setHours(nextTime.hours, nextTime.minutes, 0, 0);
+
+      if (nextTime.tomorrow) {
+        target.setDate(target.getDate() + 1);
+      }
+      cachedTargetTime = target;
+    }
+
     // Only update DOM if prayer changed
     if (nextPrayer && nextPrayer.key !== currentNextPrayerKey) {
       document.getElementById('next-prayer-name').textContent = nextPrayer.name;
@@ -219,19 +230,19 @@ const defaultCampus = 'gombak';
   function startCountdown() {
     if (countdownInterval) clearInterval(countdownInterval);
     
-    countdownInterval = setInterval(() => {
-      const { nextTime } = updateNextPrayer();
-      if (!nextTime) return;
+    // Initial update to set cachedTargetTime
+    updateNextPrayer();
 
-      const now = new Date();
-      let targetTime = new Date();
-      targetTime.setHours(nextTime.hours, nextTime.minutes, 0, 0);
-      
-      if (nextTime.tomorrow) {
-        targetTime.setDate(targetTime.getDate() + 1);
+    countdownInterval = setInterval(() => {
+      // Use cached target time to avoid recalculation and Date object creation
+      if (!cachedTargetTime) {
+        updateNextPrayer();
+        if (!cachedTargetTime) return;
       }
 
-      const diff = targetTime - now;
+      const now = new Date();
+      const diff = cachedTargetTime - now;
+
       if (diff < 0) {
         fetchPrayerTimes(document.getElementById('campus-selector').value);
         return;
