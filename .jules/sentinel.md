@@ -12,3 +12,8 @@ using an escape helper or use `textContent` / DOM creation methods instead of
 **Vulnerability:** Unsanitized data from external API (aladhan.com) used in `innerHTML` in `PrayerTimes.astro`.
 **Learning:** External APIs, even trusted ones, can be vectors for XSS if their response is injected directly into the DOM.
 **Prevention:** Implement local `escapeHtml` helper in Astro client scripts and sanitize all dynamic data before using `innerHTML`.
+
+## 2026-02-04 - Client-Side DoS via Unbounded Inputs
+**Vulnerability:** `GPACalculator.astro` allowed unlimited row creation and unbounded input strings.
+**Learning:** Client-side tools without input constraints can lead to browser resource exhaustion (DOM/Memory).
+**Prevention:** Always enforce `maxlength` on text inputs and reasonable upper bounds (e.g. `max`, row limits) on dynamic collections.
