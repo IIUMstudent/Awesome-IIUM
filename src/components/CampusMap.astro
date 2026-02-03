@@ -298,6 +298,10 @@ const locations: Location[] = [
         el.setAttribute('aria-label', location.name);
         el.type = 'button';
 
+        // Accessibility enhancements
+        el.setAttribute('role', 'button');
+        el.setAttribute('tabindex', '0');
+
         const popup = new maplibregl.Popup({ offset: 25 })
           .setHTML(`
             <div class="marker-popup">
