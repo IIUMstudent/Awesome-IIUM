@@ -13,3 +13,7 @@
 ## 2026-01-28 - [Build-Time API Caching]
 **Learning:** Frequent external API calls during build/dev (e.g. GitHub API) can hit rate limits and slow down development.
 **Action:** Implement a simple file-system cache (e.g., in `.astro/`) with a TTL for static data fetched at build time.
+
+## 2026-02-01 - [Redundant Client Fetching]
+**Learning:** Components that hydrate client-side scripts often re-fetch data that was already rendered by SSG, causing wasted bandwidth and unnecessary DOM updates.
+**Action:** Pass a boolean flag (e.g., `hasInitialData`) from SSG frontmatter to the client script to conditionally skip the initial fetch.

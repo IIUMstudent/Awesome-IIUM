@@ -291,10 +291,16 @@ const locations: Location[] = [
       const campusLocations = locations.filter(loc => loc.campus === campusId);
 
       campusLocations.forEach(location => {
-        const el = document.createElement('div');
+        const el = document.createElement('button');
         el.className = 'custom-marker';
         el.textContent = location.icon;
         el.title = location.name;
+        el.setAttribute('aria-label', location.name);
+        el.type = 'button';
+
+        // Accessibility enhancements
+        el.setAttribute('role', 'button');
+        el.setAttribute('tabindex', '0');
 
         const popup = new maplibregl.Popup({ offset: 25 })
           .setHTML(`
@@ -308,6 +314,9 @@ const locations: Location[] = [
           .setLngLat(location.coords)
           .setPopup(popup)
           .addTo(map);
+
+        // Ensure aria-label is set to the location name (MapLibre might overwrite it)
+        el.setAttribute('aria-label', location.name);
 
         markers.push(marker);
       });
@@ -475,6 +484,15 @@ const locations: Location[] = [
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     cursor: pointer;
     transition: transform 0.2s;
+    /* Button reset */
+    border: none;
+    padding: 0;
+    appearance: none;
+  }
+
+  :global(.custom-marker:focus-visible) {
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: 2px;
   }
 
   :global(.custom-marker:hover) {

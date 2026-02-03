@@ -37,6 +37,8 @@
       <button id="clear-all" class="btn-ghost" type="button">Clear All</button>
     </div>
 
+    <div id="validation-error" class="validation-error" aria-live="polite"></div>
+
     <div id="results" class="results hidden" aria-live="polite">
       <div class="result-card">
         <span class="label">Semester GPA</span>
@@ -86,30 +88,25 @@
     const cgpaResultDiv = document.getElementById('cgpa-result');
 
     let courseIndex = 1;
-    // Security limit to prevent DoS via infinite row addition
     const MAX_COURSES = 50;
 
-    // Helper to update UI state (buttons)
-    const updateUIState = () => {
+    // Helper to update buttons state
+    const updateButtons = () => {
       const rows = container?.querySelectorAll('.course-row');
       const removeBtns = container?.querySelectorAll('.remove-btn');
 
       if (rows && removeBtns) {
-        const rowCount = rows.length;
-        // Disable remove buttons if only one row exists
-        const disableRemove = rowCount <= 1;
+        // Update remove buttons
+        const shouldDisableRemove = rows.length <= 1;
         removeBtns.forEach((btn) => {
-          (btn as HTMLButtonElement).disabled = disableRemove;
+          (btn as HTMLButtonElement).disabled = shouldDisableRemove;
         });
 
-        // Disable add button if limit reached
+        // Update add button
         if (addBtn) {
-          (addBtn as HTMLButtonElement).disabled = rowCount >= MAX_COURSES;
-          if (rowCount >= MAX_COURSES) {
-            addBtn.title = `Maximum limit of ${MAX_COURSES} courses reached`;
-          } else {
-            addBtn.title = '';
-          }
+          const limitReached = rows.length >= MAX_COURSES;
+          (addBtn as HTMLButtonElement).disabled = limitReached;
+          addBtn.title = limitReached ? 'Maximum courses reached' : '';
         }
       }
     };
@@ -125,7 +122,7 @@
       } catch (e) {}
     }
 
-    updateUIState();
+    updateButtons();
 
     // Keyboard navigation for adding rows
     container?.addEventListener('keydown', (e) => {
@@ -154,7 +151,6 @@
 
     // Add new course row
     addBtn?.addEventListener('click', () => {
-      // Security check
       const currentRows = container?.querySelectorAll('.course-row').length || 0;
       if (currentRows >= MAX_COURSES) return;
 
@@ -187,7 +183,7 @@
         <button type="button" class="remove-btn" title="Remove course" aria-label="Remove course">×</button>
       `;
       container?.appendChild(row);
-      updateUIState();
+      updateButtons();
       (row.querySelector('.course-name') as HTMLElement)?.focus();
     });
 
@@ -215,7 +211,7 @@
               (nextFocusTarget as HTMLElement).focus();
             }
             // Ensure buttons state is updated after removal
-            updateUIState();
+            updateButtons();
           };
 
           const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -231,21 +227,80 @@
       }
     });
 
+    // Clear validation errors on input
+    container?.addEventListener('input', (e) => {
+      const target = e.target as HTMLElement;
+      if (target.classList.contains('input-error')) {
+        target.classList.remove('input-error');
+        target.removeAttribute('aria-invalid');
+      }
+      document.getElementById('validation-error')?.classList.remove('visible');
+    });
+
     // Calculate GPA
     calcBtn?.addEventListener('click', () => {
       const rows = container?.querySelectorAll('.course-row');
+      const errorDiv = document.getElementById('validation-error');
+
+      if (errorDiv) {
+        errorDiv.textContent = '';
+        errorDiv.classList.remove('visible');
+      }
+
+      let hasErrors = false;
       let totalPoints = 0;
       let totalCredits = 0;
 
       rows?.forEach((row) => {
-        const grade = parseFloat(row.querySelector('.grade').value);
-        const credits = parseInt(row.querySelector('.credits').value);
+        const nameInput = row.querySelector('.course-name') as HTMLInputElement;
+        const gradeSelect = row.querySelector('.grade') as HTMLSelectElement;
+        const creditsSelect = row.querySelector('.credits') as HTMLSelectElement;
+
+        // Reset error state
+        [nameInput, gradeSelect, creditsSelect].forEach(el => {
+          el?.classList.remove('input-error');
+          el?.removeAttribute('aria-invalid');
+        });
+
+        const hasName = nameInput.value.trim() !== '';
+        const hasGrade = gradeSelect.value !== '';
+        const hasCredits = creditsSelect.value !== '';
+
+        // Check if row has partial data
+        const hasAnyData = hasName || hasGrade || hasCredits;
         
-        if (!isNaN(grade) && !isNaN(credits)) {
-          totalPoints += grade * credits;
-          totalCredits += credits;
+        // If row is started but incomplete (missing grade or credits)
+        if (hasAnyData && (!hasGrade || !hasCredits)) {
+          hasErrors = true;
+          if (!hasGrade) {
+            gradeSelect.classList.add('input-error');
+            gradeSelect.setAttribute('aria-invalid', 'true');
+          }
+          if (!hasCredits) {
+            creditsSelect.classList.add('input-error');
+            creditsSelect.setAttribute('aria-invalid', 'true');
+          }
+        } else if (hasGrade && hasCredits) {
+          // Only calculate complete rows
+          const grade = parseFloat(gradeSelect.value);
+          const credits = parseInt(creditsSelect.value);
+
+          if (!isNaN(grade) && !isNaN(credits)) {
+            totalPoints += grade * credits;
+            totalCredits += credits;
+          }
         }
       });
+
+      if (hasErrors) {
+        if (errorDiv) {
+          errorDiv.textContent = '⚠️ Please fill in Grade and Credits for all started courses.';
+          errorDiv.classList.add('visible');
+        }
+        resultsDiv?.classList.add('hidden');
+        cgpaResultDiv?.classList.add('hidden');
+        return;
+      }
 
       const semesterGpa = totalCredits > 0 ? (totalPoints / totalCredits).toFixed(2) : '0.00';
       
@@ -288,7 +343,7 @@
         (document.getElementById('prev-credits') as HTMLInputElement).value = '';
         resultsDiv?.classList.add('hidden');
         cgpaResultDiv?.classList.add('hidden');
-        updateUIState();
+        updateButtons();
 
         // Reset button state
         clearBtn.textContent = 'Clear All';
@@ -636,5 +691,30 @@
 
   .save-status.visible {
     opacity: 1;
+  }
+
+  .validation-error {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 1rem;
+    text-align: center;
+    font-weight: 500;
+    display: none;
+  }
+
+  .validation-error.visible {
+    display: block;
+    animation: slideIn 0.3s ease-out;
+  }
+
+  .gpa-calculator :global(.input-error) {
+    border-color: #ef4444 !important;
+    animation: shake 0.4s ease-in-out;
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
   }
 </style>
