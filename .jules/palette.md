@@ -23,7 +23,7 @@ especially in dynamically generated rows where structure might be less obvious.
 **Learning:** In repetitive data entry forms (like course lists), users expect spreadsheet-like behavior where pressing 'Enter' commits the current row and immediately prepares the next one. Requiring a mouse click or multiple tabs to add a new row breaks the flow and increases friction.
 **Action:** Implement a 'press Enter to add row' pattern for the last item in a dynamic list, and 'press Enter to navigate down' for middle items. This significantly improves speed and satisfaction for power users without affecting standard navigation.
 
-## 2025-05-22 - MapLibre Marker Accessibility Overwrites
+## 2024-05-24 - Calculation Validation
 
-**Learning:** MapLibre GL JS markers implemented as DOM elements can lose custom accessibility attributes (like `aria-label`) during the library's initialization process when added to the map.
-**Action:** When creating accessible map markers, explicitly set attributes like `aria-label` or `role` *after* the marker has been added to the map instance (or ensure the library's internal logic doesn't clobber them), and verify with a screen reader or inspector.
+**Learning:** Tools that perform calculations on user-inputted lists must explicitly validate complete data for each row. Silently ignoring incomplete rows (e.g., missing grade) leads to misleading results that users trust incorrectly.
+**Action:** Implement 'soft validation' that highlights incomplete rows and prevents calculation until they are fixed or removed, ensuring the result always reflects the user's full intent.
