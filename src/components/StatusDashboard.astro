@@ -1,39 +1,130 @@
 ---
 // StatusDashboard.astro
+import fs from 'node:fs';
+import path from 'node:path';
+
+// biome-ignore lint/correctness/noUnusedVariables: passed to client script
+const BASE_URL = import.meta.env.BASE_URL;
+
+interface SystemStatus {
+	name: string;
+	status: string;
+	timestamp: string;
+}
+
+let initialStatus: SystemStatus[] = [];
+
+try {
+	const statusPath = path.join(process.cwd(), 'public/api/status.json');
+	if (fs.existsSync(statusPath)) {
+		const parsed = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
+		if (Array.isArray(parsed)) {
+			// Sanitize status to prevent CSS injection or invalid characters
+			initialStatus = parsed.map((sys: SystemStatus) => ({
+				...sys,
+				status: (sys.status || '').replace(/[^a-z0-9-]/gi, ''),
+			}));
+		}
+	}
+} catch (e) {
+	console.error('Failed to load initial status', e);
+}
+
+// biome-ignore lint/correctness/noUnusedVariables: passed to client script
+const hasInitialData = initialStatus.length > 0;
 ---
 
 <div id="status-dashboard" class="not-content">
   <div class="status-grid" id="status-grid">
-    <div class="loading">Loading system status...</div>
+    {
+      initialStatus.length > 0 ? (
+        initialStatus.map((sys) => (
+          <div class={`status-card ${sys.status}`}>
+            <div class="status-header">
+              <span class="status-dot" />
+              <h3>{sys.name}</h3>
+            </div>
+            <div class="status-body">
+              <span class="status-label">{sys.status.toUpperCase()}</span>
+              <span class="status-time">
+                Last Checked: {new Date(sys.timestamp).toLocaleTimeString()}
+              </span>
+            </div>
+          </div>
+        ))
+      ) : (
+        <div class="loading">Loading system status...</div>
+      )
+    }
   </div>
 </div>
 
-<script>
+<script define:vars={{ BASE_URL, hasInitialData }}>
   async function fetchStatus() {
     try {
-      const response = await fetch('/api/status.json');
+      const baseUrl = BASE_URL.endsWith('/') ? BASE_URL : `${BASE_URL}/`;
+      const response = await fetch(`${baseUrl}api/status.json`);
       const data = await response.json();
+
+      if (!Array.isArray(data)) {
+        throw new Error('Invalid status data format');
+      }
+
       const grid = document.getElementById('status-grid');
       if (!grid) return;
-      
-      grid.innerHTML = data.map(sys => `
-        <div class="status-card ${sys.status}">
-          <div class="status-header">
-            <span class="status-dot"></span>
-            <h3>${sys.name}</h3>
-          </div>
-          <div class="status-body">
-            <span class="status-label">${sys.status.toUpperCase()}</span>
-            <span class="status-time">Last Checked: ${new Date(sys.timestamp).toLocaleTimeString()}</span>
-          </div>
-        </div>
-      `).join('');
+
+      // Clear existing content securely
+      grid.replaceChildren();
+
+      data.forEach((sys) => {
+        const card = document.createElement('div');
+        // Validate status class to alphanumeric characters only to prevent CSS injection
+        const safeStatus = (sys.status || '').replace(/[^a-z0-9-]/gi, '');
+        card.className = `status-card ${safeStatus}`;
+
+        const header = document.createElement('div');
+        header.className = 'status-header';
+
+        const dot = document.createElement('span');
+        dot.className = 'status-dot';
+
+        const h3 = document.createElement('h3');
+        h3.textContent = sys.name || 'Unknown System';
+
+        header.appendChild(dot);
+        header.appendChild(h3);
+
+        const body = document.createElement('div');
+        body.className = 'status-body';
+
+        const label = document.createElement('span');
+        label.className = 'status-label';
+        label.textContent = (sys.status || '').toUpperCase();
+
+        const time = document.createElement('span');
+        time.className = 'status-time';
+        try {
+          time.textContent = `Last Checked: ${new Date(sys.timestamp).toLocaleTimeString()}`;
+        } catch (e) {
+          time.textContent = 'Last Checked: Unknown';
+        }
+
+        body.appendChild(label);
+        body.appendChild(time);
+
+        card.appendChild(header);
+        card.appendChild(body);
+
+        grid.appendChild(card);
+      });
     } catch (e) {
       console.error('Failed to fetch status', e);
     }
   }
 
-  fetchStatus();
+  if (!hasInitialData) {
+    fetchStatus();
+  }
   setInterval(fetchStatus, 60000); // Refresh every minute
 </script>
 

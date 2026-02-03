@@ -77,6 +77,7 @@ description: 'Koleksi sumber, alatan, dan panduan untuk komuniti IIUM.'
 ```
 
 **Style Notes:**
+
 - Use formal register (standard Bahasa Melayu)
 - Prefer Malay terms over English loans where natural
 - Keep IIUM terminology as-is
@@ -106,6 +107,7 @@ dir: rtl
 ```
 
 **Style Notes:**
+
 - Use Modern Standard Arabic (فصحى)
 - Right-to-left direction is automatic
 - Keep English acronyms and names
@@ -134,6 +136,7 @@ description: '为马来西亚国际伊斯兰大学社区精心策划的资源、
 ```
 
 **Style Notes:**
+
 - Use Simplified Chinese (简体中文)
 - Keep technical terms in English where appropriate
 - Numbers can use Arabic numerals
@@ -161,6 +164,7 @@ description: 'マレーシア国際イスラム大学コミュニティのため
 ```
 
 **Style Notes:**
+
 - Use polite form (です/ます)
 - Mix of kanji, hiragana, katakana as natural
 - Technical terms often in katakana
@@ -183,6 +187,7 @@ description: 'マレーシア国際イスラム大学コミュニティのため
 ### 1. Choose a File
 
 Start with high-impact pages:
+
 1. `index.md` - Homepage
 2. `categories/academics/index.md` - Academics overview
 3. `tools.md` - Tools page
@@ -234,6 +239,7 @@ Before submitting translations:
 ## 🤝 Contributing
 
 We especially need help with:
+
 - Completing Arabic translations
 - Expanding Bahasa Melayu coverage
 - Japanese natural language review

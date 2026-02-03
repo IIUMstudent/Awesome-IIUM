@@ -1,65 +1,134 @@
 ---
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { join } from 'node:path';
+import { GITHUB_REPO } from '../config';
+
 /**
  * ActivityFeed Component
  * Shows recent activity from the GitHub repository
  */
 interface Activity {
-  type: 'commit' | 'pr' | 'issue';
-  title: string;
-  user: string;
-  avatar: string;
-  url: string;
-  date: string;
-  icon: string;
+	type: 'commit' | 'pr' | 'issue';
+	title: string;
+	user: string;
+	avatar: string;
+	url: string;
+	date: string;
+	timestamp: number;
+	icon: string;
 }
-
-import { getCachedCommits, getCachedPulls } from '../utils/github';
 
 async function fetchActivity(): Promise<Activity[]> {
-  const activities: Activity[] = [];
-  
-  try {
-    // Fetch recent commits
-    const commits = await getCachedCommits(3);
-    if (commits) {
-      for (const commit of commits) {
-        activities.push({
-          type: 'commit',
-          title: commit.commit.message.split('\n')[0].substring(0, 60),
-          user: commit.author?.login || commit.commit.author.name,
-          avatar: commit.author?.avatar_url || 'https://github.com/ghost.png',
-          url: commit.html_url,
-          date: new Date(commit.commit.author.date).toLocaleDateString(),
-          icon: '📝',
-        });
-      }
-    }
+	const CACHE_DIR = join(
+		process.cwd(),
+		'node_modules',
+		'.cache',
+		'awesome-iium',
+	);
+	const CACHE_FILE = join(CACHE_DIR, 'activity-feed.json');
+	const CACHE_TTL = 3600 * 1000; // 1 hour
 
-    // Fetch recent pull requests
-    const prs = await getCachedPulls(2);
-    if (prs) {
-      for (const pr of prs) {
-        activities.push({
-          type: 'pr',
-          title: pr.title.substring(0, 60),
-          user: pr.user.login,
-          avatar: pr.user.avatar_url,
-          url: pr.html_url,
-          date: new Date(pr.created_at).toLocaleDateString(),
-          icon: '🔀',
-        });
-      }
-    }
+	const activities: Activity[] = [];
 
-    // Sort by date (most recent first)
-    activities.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-    
-    return activities.slice(0, 5);
-  } catch {
-    return [];
-  }
+	// Try reading from cache
+	try {
+		const cachedData = await readFile(CACHE_FILE, 'utf-8');
+		const cache = JSON.parse(cachedData);
+		const now = Date.now();
+		if (now - cache.timestamp < CACHE_TTL) {
+			// Sort by date (most recent first) just in case
+			cache.data.sort(
+				(a: Activity, b: Activity) =>
+					(b.timestamp ?? new Date(b.date).getTime()) -
+					(a.timestamp ?? new Date(a.date).getTime()),
+			);
+			return cache.data.slice(0, 5);
+		}
+	} catch {
+		// Cache miss or error, proceed to fetch
+	}
+
+	try {
+		// Parallelize API fetches
+		const [commitsRes, prsRes] = await Promise.all([
+			fetch(`${GITHUB_REPO.apiUrl}/commits?per_page=3`),
+			fetch(`${GITHUB_REPO.apiUrl}/pulls?state=all&per_page=2`),
+		]);
+
+		// Process commits
+		if (commitsRes.ok) {
+			const commits = await commitsRes.json();
+			for (const commit of commits) {
+				activities.push({
+					type: 'commit',
+					title: commit.commit.message.split('\n')[0].substring(0, 60),
+					user: commit.author?.login || commit.commit.author.name,
+					avatar: commit.author?.avatar_url || 'https://github.com/ghost.png',
+					url: commit.html_url,
+					date: new Date(commit.commit.author.date).toLocaleDateString(),
+					timestamp: new Date(commit.commit.author.date).getTime(),
+					icon: '📝',
+				});
+			}
+		}
+
+		// Process pull requests
+		if (prsRes.ok) {
+			const prs = await prsRes.json();
+			for (const pr of prs) {
+				activities.push({
+					type: 'pr',
+					title: pr.title.substring(0, 60),
+					user: pr.user.login,
+					avatar: pr.user.avatar_url,
+					url: pr.html_url,
+					date: new Date(pr.created_at).toLocaleDateString(),
+					timestamp: new Date(pr.created_at).getTime(),
+					icon: '🔀',
+				});
+			}
+		}
+
+		// Sort by date (most recent first)
+		activities.sort((a, b) => b.timestamp - a.timestamp);
+
+		// Save to cache
+		try {
+			await mkdir(CACHE_DIR, { recursive: true });
+			await writeFile(
+				CACHE_FILE,
+				JSON.stringify({
+					timestamp: Date.now(),
+					data: activities,
+				}),
+			);
+		} catch (e) {
+			console.error('Failed to write cache:', e);
+		}
+
+		return activities.slice(0, 5);
+	} catch (e) {
+		console.error('ActivityFeed Error:', e);
+
+		// If fetch fails, try to use stale cache
+		try {
+			const cachedData = await readFile(CACHE_FILE, 'utf-8');
+			const cache = JSON.parse(cachedData);
+			cache.data.sort(
+				(a: Activity, b: Activity) =>
+					(b.timestamp ?? new Date(b.date).getTime()) -
+					(a.timestamp ?? new Date(a.date).getTime()),
+			);
+			return cache.data.slice(0, 5);
+		} catch {
+			// No cache available
+		}
+
+		return [];
+	}
 }
 
+// biome-ignore lint/correctness/noUnusedVariables: used in template
 const activities = await fetchActivity();
 ---
 
@@ -94,7 +163,7 @@ const activities = await fetchActivity();
     <p class="no-activity">No recent activity</p>
   )}
   
-  <a href="https://github.com/iiumstudent/Awesome-IIUM/commits/master" class="view-all">
+  <a href={`${GITHUB_REPO.url}/commits/master`} class="view-all">
     View all activity →
   </a>
 </div>

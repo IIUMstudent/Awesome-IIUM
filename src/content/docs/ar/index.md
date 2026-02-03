@@ -11,10 +11,10 @@ title: 'مرحبًا بكم في Awesome-IIUM!'
 هذا المستودع عبارة عن مجموعة من الموارد لأعضاء الجامعة الإسلامية العالمية
 ماليزيا (IIUM).
 
-_اقرأ هذا بلغات أخرى: [English](/), [Melayu](/translation/README.my.md),
-[中文](/translation/README.zh.md), [日本語](/translation/README.jp.md)_
+_اقرأ هذا بلغات أخرى: [English](/), [Melayu](/ms/), [中文](/zh/),
+[日本語](/ja/)_
 
-![شعار الجامعة](/logo.png)
+![شعار الجامعة](/Awesome-IIUM/logo.png)
 
 ## الريادة (LEADING THE WAY)
 

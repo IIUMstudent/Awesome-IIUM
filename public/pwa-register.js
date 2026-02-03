@@ -1,6 +1,6 @@
 if ('serviceWorker' in navigator) {
-	window.addEventListener('load', () => {
-		navigator.serviceWorker.register('/sw.js');
+	globalThis.addEventListener('load', () => {
+		navigator.serviceWorker.register('/Awesome-IIUM/sw.js');
 	});
 }
 
@@ -15,10 +15,10 @@ function updateOnlineStatus() {
 	}
 }
 
-window.addEventListener('online', updateOnlineStatus);
-window.addEventListener('offline', updateOnlineStatus);
+globalThis.addEventListener('online', updateOnlineStatus);
+globalThis.addEventListener('offline', updateOnlineStatus);
 
-window.addEventListener('DOMContentLoaded', () => {
+globalThis.addEventListener('DOMContentLoaded', () => {
 	const banner = document.createElement('div');
 	banner.id = 'offline-indicator';
 	banner.innerHTML = `

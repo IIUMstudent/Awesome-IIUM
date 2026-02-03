@@ -1,53 +1,90 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
+import { GITHUB_REPO } from '../config';
+
 /**
  * NewThisWeek Component
  * Displays resources added in the last 7 days
  * Uses GitHub API to fetch recent commits
  */
 interface RecentResource {
-  title: string;
-  path: string;
-  date: string;
+	title: string;
+	path: string;
+	date: string;
 }
 
-import { getCachedCommits } from '../utils/github';
+const CACHE_DIR = path.join(process.cwd(), '.astro');
+const CACHE_FILE = path.join(CACHE_DIR, 'new-this-week-cache.json');
+const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
 
 // Fetch recent commits from GitHub
 async function fetchRecentResources(): Promise<RecentResource[]> {
-  try {
-    const commits = await getCachedCommits(20);
-    
-    if (!commits) return [];
-    const sevenDaysAgo = new Date();
-    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
-    
-    const recentResources: RecentResource[] = [];
-    
-    for (const commit of commits) {
-      const commitDate = new Date(commit.commit.author.date);
-      if (commitDate < sevenDaysAgo) break;
-      
-      // Check if commit message indicates new content
-      const message = commit.commit.message.toLowerCase();
-      if (
-        message.includes('add') ||
-        message.includes('new') ||
-        message.includes('feat')
-      ) {
-        recentResources.push({
-          title: commit.commit.message.split('\n')[0],
-          path: commit.html_url,
-          date: commitDate.toLocaleDateString(),
-        });
-      }
-    }
-    
-    return recentResources.slice(0, 5);
-  } catch {
-    return [];
-  }
+	try {
+		// Check cache first
+		try {
+			if (fs.existsSync(CACHE_FILE)) {
+				const stats = fs.statSync(CACHE_FILE);
+				const now = Date.now();
+				if (now - stats.mtimeMs < CACHE_DURATION) {
+					const data = fs.readFileSync(CACHE_FILE, 'utf-8');
+					return JSON.parse(data);
+				}
+			}
+		} catch (e) {
+			console.warn('Cache read error:', e);
+		}
+
+		const response = await fetch(`${GITHUB_REPO.apiUrl}/commits?per_page=20`);
+
+		if (!response.ok) return [];
+
+		const commits = await response.json();
+		const sevenDaysAgo = new Date();
+		sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+
+		const recentResources: RecentResource[] = [];
+
+		for (const commit of commits) {
+			if (recentResources.length >= 5) break;
+
+			const commitDate = new Date(commit.commit.author.date);
+			if (commitDate < sevenDaysAgo) break;
+
+			// Check if commit message indicates new content
+			const message = commit.commit.message.toLowerCase();
+			if (
+				message.includes('add') ||
+				message.includes('new') ||
+				message.includes('feat')
+			) {
+				recentResources.push({
+					title: commit.commit.message.split('\n')[0],
+					path: commit.html_url,
+					date: commitDate.toLocaleDateString(),
+				});
+			}
+		}
+
+		const result = recentResources.slice(0, 5);
+
+		// Write cache
+		try {
+			if (!fs.existsSync(CACHE_DIR)) {
+				fs.mkdirSync(CACHE_DIR, { recursive: true });
+			}
+			fs.writeFileSync(CACHE_FILE, JSON.stringify(result));
+		} catch (e) {
+			console.warn('Cache write error:', e);
+		}
+
+		return result;
+	} catch {
+		return [];
+	}
 }
 
+// biome-ignore lint/correctness/noUnusedVariables: Used in template
 const resources = await fetchRecentResources();
 ---
 

@@ -4,26 +4,29 @@
  * Displays daily prayer times for IIUM campuses using Aladhan API
  */
 
+// biome-ignore lint/correctness/noUnusedVariables: unused interface
 interface PrayerTime {
-  name: string;
-  time: string;
-  arabic: string;
+	name: string;
+	time: string;
+	arabic: string;
 }
 
 interface Campus {
-  name: string;
-  city: string;
-  lat: number;
-  lng: number;
+	name: string;
+	city: string;
+	lat: number;
+	lng: number;
 }
 
+// biome-ignore lint/correctness/noUnusedVariables: passed to client script
 const campuses: Record<string, Campus> = {
-  gombak: { name: 'Gombak', city: 'Gombak', lat: 3.2513, lng: 101.7313 },
-  kuantan: { name: 'Kuantan', city: 'Kuantan', lat: 3.8077, lng: 103.3260 },
-  pagoh: { name: 'Pagoh', city: 'Pagoh', lat: 2.1494, lng: 102.7181 },
+	gombak: { name: 'Gombak', city: 'Gombak', lat: 3.2513, lng: 101.7313 },
+	kuantan: { name: 'Kuantan', city: 'Kuantan', lat: 3.8077, lng: 103.326 },
+	pagoh: { name: 'Pagoh', city: 'Pagoh', lat: 2.1494, lng: 102.7181 },
 };
 
 // Default to Gombak
+// biome-ignore lint/correctness/noUnusedVariables: passed to client script
 const defaultCampus = 'gombak';
 ---
 
@@ -58,6 +61,17 @@ const defaultCampus = 'gombak';
 </div>
 
 <script define:vars={{ campuses, defaultCampus }}>
+  // Helper to prevent XSS
+  function escapeHtml(unsafe) {
+    if (typeof unsafe !== 'string') return unsafe;
+    return unsafe
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
   const prayers = [
     { key: 'Fajr', name: 'Subuh', arabic: 'الفجر' },
     { key: 'Sunrise', name: 'Syuruk', arabic: 'الشروق' },
@@ -69,6 +83,9 @@ const defaultCampus = 'gombak';
 
   let currentTimes = {};
   let countdownInterval;
+  let parsedPrayers = [];
+  let prayerCardElements = {};
+  let currentNextPrayerKey = null;
 
   async function fetchPrayerTimes(campusKey) {
     const campus = campuses[campusKey];
@@ -76,6 +93,22 @@ const defaultCampus = 'gombak';
 
     const today = new Date();
     const date = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
+    const cacheKey = `iium-prayer-times-${campusKey}-${date}`;
+
+    // Check cache first
+    try {
+      const cached = localStorage.getItem(cacheKey);
+      if (cached) {
+        const data = JSON.parse(cached);
+        if (data && data.code === 200) {
+          currentTimes = data.data.timings;
+          renderTimes(data.data);
+          return;
+        }
+      }
+    } catch (e) {
+      console.warn('Cache read error:', e);
+    }
     
     try {
       const res = await fetch(
@@ -84,6 +117,13 @@ const defaultCampus = 'gombak';
       const data = await res.json();
       
       if (data.code === 200) {
+        // Cache the successful response
+        try {
+          localStorage.setItem(cacheKey, JSON.stringify(data));
+        } catch (e) {
+          console.warn('Cache write error:', e);
+        }
+
         currentTimes = data.data.timings;
         renderTimes(data.data);
       }
@@ -101,15 +141,36 @@ const defaultCampus = 'gombak';
     // Render Hijri date
     const hijri = data.date.hijri;
     hijriDiv.textContent = `${hijri.day} ${hijri.month.en} ${hijri.year} AH`;
+
+    // Pre-parse times
+    parsedPrayers = prayers.map(prayer => {
+      const time = data.timings[prayer.key];
+      const [hours, minutes] = time.split(':').map(Number);
+      return {
+        ...prayer,
+        hours,
+        minutes,
+        totalMinutes: hours * 60 + minutes
+      };
+    });
     
     // Render prayer times
-    grid.innerHTML = prayers.map(prayer => `
-      <div class="prayer-card" data-prayer="${prayer.key}">
-        <span class="prayer-arabic">${prayer.arabic}</span>
-        <span class="prayer-name">${prayer.name}</span>
-        <span class="prayer-time">${data.timings[prayer.key]}</span>
+    grid.innerHTML = parsedPrayers.map(prayer => `
+      <div class="prayer-card" data-prayer="${escapeHtml(prayer.key)}">
+        <span class="prayer-arabic">${escapeHtml(prayer.arabic)}</span>
+        <span class="prayer-name">${escapeHtml(prayer.name)}</span>
+        <span class="prayer-time">${escapeHtml(data.timings[prayer.key])}</span>
       </div>
     `).join('');
+
+    // Cache DOM elements
+    prayerCardElements = {};
+    document.querySelectorAll('.prayer-card').forEach(card => {
+      prayerCardElements[card.dataset.prayer] = card;
+    });
+
+    // Reset currentNextPrayerKey to force update
+    currentNextPrayerKey = null;
 
     updateNextPrayer();
     startCountdown();
@@ -122,33 +183,35 @@ const defaultCampus = 'gombak';
     let nextPrayer = null;
     let nextTime = null;
 
-    for (const prayer of prayers) {
-      const time = currentTimes[prayer.key];
-      if (!time) continue;
-      
-      const [hours, minutes] = time.split(':').map(Number);
-      const prayerMinutes = hours * 60 + minutes;
-      
-      if (prayerMinutes > currentMinutes) {
+    for (const prayer of parsedPrayers) {
+      if (prayer.totalMinutes > currentMinutes) {
         nextPrayer = prayer;
-        nextTime = { hours, minutes };
+        nextTime = { hours: prayer.hours, minutes: prayer.minutes };
         break;
       }
     }
 
     // If no prayer found today, next is Fajr tomorrow
     if (!nextPrayer) {
-      nextPrayer = prayers[0];
-      const [hours, minutes] = currentTimes.Fajr?.split(':').map(Number) || [5, 30];
+      nextPrayer = parsedPrayers[0];
+      // Default to 05:30 if parsing failed, though parsedPrayers[0] should be valid
+      const hours = nextPrayer?.hours ?? 5;
+      const minutes = nextPrayer?.minutes ?? 30;
       nextTime = { hours, minutes, tomorrow: true };
     }
 
-    document.getElementById('next-prayer-name').textContent = nextPrayer.name;
-    
-    // Highlight current prayer
-    document.querySelectorAll('.prayer-card').forEach(card => {
-      card.classList.toggle('next', card.dataset.prayer === nextPrayer.key);
-    });
+    // Only update DOM if prayer changed
+    if (nextPrayer && nextPrayer.key !== currentNextPrayerKey) {
+      document.getElementById('next-prayer-name').textContent = nextPrayer.name;
+
+      // Highlight current prayer using cached elements
+      Object.values(prayerCardElements).forEach(card => card.classList.remove('next'));
+      if (prayerCardElements[nextPrayer.key]) {
+        prayerCardElements[nextPrayer.key].classList.add('next');
+      }
+
+      currentNextPrayerKey = nextPrayer.key;
+    }
 
     return { nextPrayer, nextTime };
   }

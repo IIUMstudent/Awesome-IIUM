@@ -6,10 +6,10 @@ title: '欢迎来到 Awesome-IIUM！'
 
 本仓库汇集了马来西亚国际伊斯兰大学（IIUM）成员所需的各种资源。
 
-_阅读其他语言版本：[English](/), [Melayu](/translation/README.my.md),
-[العربية](/translation/README.ar.md), [日本語](/translation/README.jp.md)_
+_阅读其他语言版本：[English](/), [Melayu](/ms/), [العربية](/ar/),
+[日本語](/ja/)_
 
-![IIUM Logo](/logo.png)
+![IIUM Logo](/Awesome-IIUM/logo.png)
 
 ## 引领未来 (LEADING THE WAY)
 
@@ -75,7 +75,8 @@ _阅读其他语言版本：[English](/), [Melayu](/translation/README.my.md),
 本部分提供了一系列官方网站和门户，为 IIUM 社区提供各种服务。
 
 - [马来西亚国际伊斯兰大学 (IIUM) - 官方网站](https://www.iium.edu.my/): 包含关于大学、愿景、使命、历史、管理、学院、中心、研究所、校区与其它的常规信息。
-- [i-Ma'luum - 学生服务](https://imaluum.iium.edu.my/): 一个 _基于网络_ 的系统，为学生提供**重要的在线服务**，如课程注册、考试成绩、财务报表、学术成绩单等。
+- [i-Ma'luum - 学生服务](https://imaluum.iium.edu.my/): 一个 _基于网络_
+  的系统，为学生提供**重要的在线服务**，如课程注册、考试成绩、财务报表、学术成绩单等。
 - [i-Ta'leem - 学习管理系统](https://italeem.iium.edu.my/): 支持在线教学活动，如课程材料、作业、测验、论坛等。
 - [i-Viva - 研究生 Viva 流程](https://iviva.iium.edu.my/): 管理研究生的 Viva 流程，如提名导师、提交研究计划、安排 Viva 会议等。
 

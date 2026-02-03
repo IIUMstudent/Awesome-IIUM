@@ -6,10 +6,9 @@ title: 'Awesome-IIUMへようこそ！'
 
 このリポジトリは、マレーシア国際イスラム大学（IIUM）のメンバー向けのリソース集です。
 
-_他の言語で読む：[English](/), [Melayu](/translation/README.my.md),
-[中文](/translation/README.zh.md), [العربية](/translation/README.ar.md)_
+_他の言語で読む：[English](/), [Melayu](/ms/), [中文](/zh/), [العربية](/ar/)_
 
-![IIUM ロゴ](/logo.png)
+![IIUM ロゴ](/Awesome-IIUM/logo.png)
 
 ## 先導者として (LEADING THE WAY)
 
@@ -80,7 +79,8 @@ _他の言語で読む：[English](/), [Melayu](/translation/README.my.md),
 このセクションでは、IIUMコミュニティに様々なサービスを提供する公式ウェブサイトとポータルのリストを提供します。
 
 - [マレーシア国際イスラム大学 (IIUM) - 公式ウェブサイト](https://www.iium.edu.my/): 大学、ビジョン、ミッション、歴史、ガバナンス、学部、センター、研究所、キャンパスなどに関する一般情報が含まれています。
-- [i-Ma'luum - 学生サービス](https://imaluum.iium.edu.my/): コース登録、試験結果、財務諸表、学業成績証明書など、学生にとって**重要なオンラインサービス**を提供する _ウェブベースのシステム_ 。
+- [i-Ma'luum - 学生サービス](https://imaluum.iium.edu.my/): コース登録、試験結果、財務諸表、学業成績証明書など、学生にとって**重要なオンラインサービス**を提供する
+  _ウェブベースのシステム_ 。
 - [i-Ta'leem - 学習管理システム](https://italeem.iium.edu.my/): コース教材、課題、クイズ、フォーラムなどのオンライン教育・学習活動をサポートします。
 - [i-Viva - 大学院生ビバプロセス](https://iviva.iium.edu.my/): 指導教員の指名、研究提案書の提出、ビバセッションのスケジュール調整など、大学院生のビバプロセスを管理します。
 

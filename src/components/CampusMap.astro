@@ -5,46 +5,160 @@
  */
 
 interface Campus {
-  id: string;
-  name: string;
-  nameMs: string;
-  center: [number, number];
-  zoom: number;
-  color: string;
+	id: string;
+	name: string;
+	nameMs: string;
+	center: [number, number];
+	zoom: number;
+	color: string;
 }
 
 interface Location {
-  name: string;
-  type: 'kulliyyah' | 'library' | 'cafeteria' | 'mosque' | 'admin' | 'sport' | 'hostel';
-  coords: [number, number];
-  icon: string;
-  campus: string;
+	name: string;
+	type:
+		| 'kulliyyah'
+		| 'library'
+		| 'cafeteria'
+		| 'mosque'
+		| 'admin'
+		| 'sport'
+		| 'hostel';
+	coords: [number, number];
+	icon: string;
+	campus: string;
 }
 
+// biome-ignore lint/correctness/noUnusedVariables: passed to client script via define:vars
 const campuses: Campus[] = [
-  { id: 'gombak', name: 'Main Campus (Gombak)', nameMs: 'Kampus Utama (Gombak)', center: [101.7313, 3.2513], zoom: 15, color: '#10b981' },
-  { id: 'kuantan', name: 'Kuantan Campus', nameMs: 'Kampus Kuantan', center: [103.4260, 3.8177], zoom: 15, color: '#3b82f6' },
-  { id: 'pagoh', name: 'Pagoh Campus', nameMs: 'Kampus Pagoh', center: [102.7681, 2.1494], zoom: 15, color: '#f59e0b' },
+	{
+		id: 'gombak',
+		name: 'Main Campus (Gombak)',
+		nameMs: 'Kampus Utama (Gombak)',
+		center: [101.7313, 3.2513],
+		zoom: 15,
+		color: '#10b981',
+	},
+	{
+		id: 'kuantan',
+		name: 'Kuantan Campus',
+		nameMs: 'Kampus Kuantan',
+		center: [103.426, 3.8177],
+		zoom: 15,
+		color: '#3b82f6',
+	},
+	{
+		id: 'pagoh',
+		name: 'Pagoh Campus',
+		nameMs: 'Kampus Pagoh',
+		center: [102.7681, 2.1494],
+		zoom: 15,
+		color: '#f59e0b',
+	},
 ];
 
+// biome-ignore lint/correctness/noUnusedVariables: passed to client script via define:vars
 const locations: Location[] = [
-  // Gombak Campus
-  { name: 'KICT', type: 'kulliyyah', coords: [101.7340, 3.2520], icon: '💻', campus: 'gombak' },
-  { name: 'KENMS', type: 'kulliyyah', coords: [101.7300, 3.2530], icon: '📊', campus: 'gombak' },
-  { name: 'KOE', type: 'kulliyyah', coords: [101.7320, 3.2500], icon: '⚙️', campus: 'gombak' },
-  { name: 'KIRKHS', type: 'kulliyyah', coords: [101.7280, 3.2540], icon: '📚', campus: 'gombak' },
-  { name: 'Dar al-Hikmah Library', type: 'library', coords: [101.7310, 3.2515], icon: '📖', campus: 'gombak' },
-  { name: 'Main Mosque', type: 'mosque', coords: [101.7305, 3.2525], icon: '🕌', campus: 'gombak' },
-  { name: 'Mahallah Ali', type: 'hostel', coords: [101.7350, 3.2480], icon: '🏠', campus: 'gombak' },
-  { name: 'Mahallah Bilal', type: 'hostel', coords: [101.7360, 3.2490], icon: '🏠', campus: 'gombak' },
-  // Kuantan Campus
-  { name: 'KOM', type: 'kulliyyah', coords: [103.4270, 3.8180], icon: '🏥', campus: 'kuantan' },
-  { name: 'KOD', type: 'kulliyyah', coords: [103.4250, 3.8190], icon: '🦷', campus: 'kuantan' },
-  { name: 'KOP', type: 'kulliyyah', coords: [103.4280, 3.8170], icon: '💊', campus: 'kuantan' },
-  { name: 'Sultan Haji Ahmad Shah Library', type: 'library', coords: [103.4260, 3.8175], icon: '📖', campus: 'kuantan' },
-  // Pagoh Campus
-  { name: 'KLM', type: 'kulliyyah', coords: [102.7690, 2.1500], icon: '🗣️', campus: 'pagoh' },
-  { name: 'Pagoh Library', type: 'library', coords: [102.7680, 2.1490], icon: '📖', campus: 'pagoh' },
+	// Gombak Campus
+	{
+		name: 'KICT',
+		type: 'kulliyyah',
+		coords: [101.734, 3.252],
+		icon: '💻',
+		campus: 'gombak',
+	},
+	{
+		name: 'KENMS',
+		type: 'kulliyyah',
+		coords: [101.73, 3.253],
+		icon: '📊',
+		campus: 'gombak',
+	},
+	{
+		name: 'KOE',
+		type: 'kulliyyah',
+		coords: [101.732, 3.25],
+		icon: '⚙️',
+		campus: 'gombak',
+	},
+	{
+		name: 'KIRKHS',
+		type: 'kulliyyah',
+		coords: [101.728, 3.254],
+		icon: '📚',
+		campus: 'gombak',
+	},
+	{
+		name: 'Dar al-Hikmah Library',
+		type: 'library',
+		coords: [101.731, 3.2515],
+		icon: '📖',
+		campus: 'gombak',
+	},
+	{
+		name: 'Main Mosque',
+		type: 'mosque',
+		coords: [101.7305, 3.2525],
+		icon: '🕌',
+		campus: 'gombak',
+	},
+	{
+		name: 'Mahallah Ali',
+		type: 'hostel',
+		coords: [101.735, 3.248],
+		icon: '🏠',
+		campus: 'gombak',
+	},
+	{
+		name: 'Mahallah Bilal',
+		type: 'hostel',
+		coords: [101.736, 3.249],
+		icon: '🏠',
+		campus: 'gombak',
+	},
+	// Kuantan Campus
+	{
+		name: 'KOM',
+		type: 'kulliyyah',
+		coords: [103.427, 3.818],
+		icon: '🏥',
+		campus: 'kuantan',
+	},
+	{
+		name: 'KOD',
+		type: 'kulliyyah',
+		coords: [103.425, 3.819],
+		icon: '🦷',
+		campus: 'kuantan',
+	},
+	{
+		name: 'KOP',
+		type: 'kulliyyah',
+		coords: [103.428, 3.817],
+		icon: '💊',
+		campus: 'kuantan',
+	},
+	{
+		name: 'Sultan Haji Ahmad Shah Library',
+		type: 'library',
+		coords: [103.426, 3.8175],
+		icon: '📖',
+		campus: 'kuantan',
+	},
+	// Pagoh Campus
+	{
+		name: 'KLM',
+		type: 'kulliyyah',
+		coords: [102.769, 2.15],
+		icon: '🗣️',
+		campus: 'pagoh',
+	},
+	{
+		name: 'Pagoh Library',
+		type: 'library',
+		coords: [102.768, 2.149],
+		icon: '📖',
+		campus: 'pagoh',
+	},
 ];
 ---
 
@@ -84,21 +198,47 @@ const locations: Location[] = [
 </div>
 
 <script type="module" define:vars={{ campuses, locations }}>
+  // Helper to prevent XSS
+  function escapeHtml(unsafe) {
+    if (typeof unsafe !== 'string') return unsafe;
+    return unsafe
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
   // Dynamically load MapLibre GL JS
   async function loadMapLibre() {
-    // Add CSS
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css';
-    document.head.appendChild(link);
+    if (window.maplibregl) return window.maplibregl;
 
-    // Add JS
-    const script = document.createElement('script');
-    script.src = 'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js';
-    document.head.appendChild(script);
+    const scriptSrc = 'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js';
+    let script = document.querySelector(`script[src="${scriptSrc}"]`);
+
+    if (!script) {
+      // Add CSS
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css';
+      link.integrity = 'sha384-MinO0mNliZ3vwppuPOUnGa+iq619pfMhLVUXfC4LHwSCvF9H+6P/KO4Q7qBOYV5V';
+      link.crossOrigin = 'anonymous';
+      document.head.appendChild(link);
+
+      // Add JS
+      script = document.createElement('script');
+      script.src = scriptSrc;
+      script.integrity = 'sha384-SYKAG6cglRMN0RVvhNeBY0r3FYKNOJtznwA0v7B5Vp9tr31xAHsZC0DqkQ/pZDmj';
+      script.crossOrigin = 'anonymous';
+      document.head.appendChild(script);
+    }
 
     return new Promise((resolve) => {
-      script.onload = () => resolve(window.maplibregl);
+      if (window.maplibregl) {
+        resolve(window.maplibregl);
+      } else {
+        script.addEventListener('load', () => resolve(window.maplibregl));
+      }
     });
   }
 
@@ -151,16 +291,22 @@ const locations: Location[] = [
       const campusLocations = locations.filter(loc => loc.campus === campusId);
 
       campusLocations.forEach(location => {
-        const el = document.createElement('div');
+        const el = document.createElement('button');
         el.className = 'custom-marker';
-        el.innerHTML = location.icon;
+        el.textContent = location.icon;
         el.title = location.name;
+        el.setAttribute('aria-label', location.name);
+        el.type = 'button';
+
+        // Accessibility enhancements
+        el.setAttribute('role', 'button');
+        el.setAttribute('tabindex', '0');
 
         const popup = new maplibregl.Popup({ offset: 25 })
           .setHTML(`
             <div class="marker-popup">
-              <strong>${location.icon} ${location.name}</strong>
-              <span class="type">${location.type}</span>
+              <strong>${escapeHtml(location.icon)} ${escapeHtml(location.name)}</strong>
+              <span class="type">${escapeHtml(location.type)}</span>
             </div>
           `);
 
@@ -168,6 +314,9 @@ const locations: Location[] = [
           .setLngLat(location.coords)
           .setPopup(popup)
           .addTo(map);
+
+        // Ensure aria-label is set to the location name (MapLibre might overwrite it)
+        el.setAttribute('aria-label', location.name);
 
         markers.push(marker);
       });
@@ -206,10 +355,19 @@ const locations: Location[] = [
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMap);
-  } else {
-    initMap();
+  // Lazy load map when it comes into view
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        initMap();
+        observer.disconnect();
+      }
+    });
+  }, { rootMargin: '200px' });
+
+  const mapContainer = document.getElementById('map-container');
+  if (mapContainer) {
+    observer.observe(mapContainer);
   }
 </script>
 
@@ -326,6 +484,15 @@ const locations: Location[] = [
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     cursor: pointer;
     transition: transform 0.2s;
+    /* Button reset */
+    border: none;
+    padding: 0;
+    appearance: none;
+  }
+
+  :global(.custom-marker:focus-visible) {
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: 2px;
   }
 
   :global(.custom-marker:hover) {

@@ -1,17 +1,91 @@
 ---
-import { getCachedContributors, type Contributor } from '../utils/github';
+// Leaderboard.astro
+import fs from 'node:fs';
+import path from 'node:path';
+import { GITHUB_REPO } from '../config';
 
-const contributors = await getCachedContributors(12);
+/**
+ * Leaderboard Component
+ * Displays top contributors fetched from GitHub API.
+ * Optimization: Fetched at build time (SSG) to improve performance and LCP.
+ */
+
+const CACHE_DIR = path.join(process.cwd(), '.astro');
+const CACHE_FILE = path.join(CACHE_DIR, 'leaderboard-cache.json');
+const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
+
+interface Contributor {
+	login: string;
+	avatar_url: string;
+	html_url: string;
+	contributions: number;
+}
+
+let contributors: Contributor[] = [];
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+let error = false;
+
+try {
+	let cachedData: Contributor[] | null = null;
+	try {
+		if (fs.existsSync(CACHE_FILE)) {
+			const stats = fs.statSync(CACHE_FILE);
+			const now = Date.now();
+			if (now - stats.mtimeMs < CACHE_DURATION) {
+				const data = fs.readFileSync(CACHE_FILE, 'utf-8');
+				cachedData = JSON.parse(data);
+			}
+		}
+	} catch (err) {
+		console.warn('Failed to read leaderboard cache:', err);
+	}
+
+	if (cachedData) {
+		contributors = cachedData;
+	} else {
+		// Use a higher limit to ensure we get enough active contributors, but slice later if needed
+		const response = await fetch(
+			`${GITHUB_REPO.apiUrl}/contributors?per_page=12`,
+		);
+		if (response.ok) {
+			contributors = await response.json();
+			// Cache the successful response
+			try {
+				if (!fs.existsSync(CACHE_DIR)) {
+					fs.mkdirSync(CACHE_DIR, { recursive: true });
+				}
+				fs.writeFileSync(CACHE_FILE, JSON.stringify(contributors));
+			} catch (err) {
+				console.warn('Failed to write leaderboard cache:', err);
+			}
+		} else {
+			console.error(
+				`Failed to fetch contributors: ${response.status} ${response.statusText}`,
+			);
+			error = true;
+		}
+	}
+} catch (e) {
+	console.error('Failed to fetch contributors', e);
+	error = true;
+}
 ---
 
 <div id="leaderboard" class="not-content">
   <div class="leaderboard-container">
-    <div id="contributor-list" class="contributor-list">
-      {contributors ? (
-        contributors.map((user: Contributor, index: number) => (
-          <a href={user.html_url} target="_blank" class={`contributor-card rank-${index + 1}`}>
+    <div class="contributor-list">
+      {contributors.length > 0 ? (
+        contributors.map((user, index) => (
+          <a href={user.html_url} target="_blank" rel="noopener noreferrer" class={`contributor-card rank-${index + 1}`}>
             <div class="rank">#{index + 1}</div>
-            <img src={user.avatar_url} alt={user.login} class="avatar" />
+            <img
+              src={user.avatar_url}
+              alt={user.login}
+              class="avatar"
+              loading="lazy"
+              width="45"
+              height="45"
+            />
             <div class="info">
               <span class="username">{user.login}</span>
               <span class="contributions">{user.contributions} Contributions</span>
@@ -19,7 +93,9 @@ const contributors = await getCachedContributors(12);
           </a>
         ))
       ) : (
-        <div class="loading">Loading top contributors...</div>
+        <div class="message">
+          {error ? 'Unable to load contributors at this time.' : 'No contributors found.'}
+        </div>
       )}
     </div>
   </div>
@@ -64,6 +140,7 @@ const contributors = await getCachedContributors(12);
     height: 45px;
     border-radius: 50%;
     border: 2px solid var(--sl-color-hairline-light);
+    background-color: var(--sl-color-gray-5); /* Placeholder */
   }
   .info {
     display: flex;
@@ -77,9 +154,10 @@ const contributors = await getCachedContributors(12);
     font-size: 0.8rem;
     color: var(--sl-color-gray-3);
   }
-  .loading {
+  .message {
     grid-column: 1 / -1;
     text-align: center;
     padding: 2rem;
+    color: var(--sl-color-gray-3);
   }
 </style>

@@ -54,7 +54,7 @@ amended or successor version of such directive); and vii. other similar,
 equivalent or corresponding rights throughout the world based on applicable law
 or treaty, and any national implementations thereof.
 
-2. Waiver. To the greatest extent permitted by, but not in contravention of,
+1. Waiver. To the greatest extent permitted by, but not in contravention of,
    applicable law, Affirmer hereby overtly, fully, permanently, irrevocably and
    unconditionally waives, abandons, and surrenders all of Affirmer's Copyright
    and Related Rights and associated claims and causes of action, whether now
@@ -71,7 +71,7 @@ or treaty, and any national implementations thereof.
    enjoyment of the Work by the public as contemplated by Affirmer's express
    Statement of Purpose.
 
-3. Public License Fallback. Should any part of the Waiver for any reason be
+2. Public License Fallback. Should any part of the Waiver for any reason be
    judged legally invalid or ineffective under applicable law, then the Waiver
    shall be preserved to the maximum extent permitted taking into account
    Affirmer's express Statement of Purpose. In addition, to the extent the
@@ -92,7 +92,7 @@ or treaty, and any national implementations thereof.
    associated claims and causes of action with respect to the Work, in either
    case contrary to Affirmer's express Statement of Purpose.
 
-4. Limitations and Disclaimers.
+3. Limitations and Disclaimers.
 
 a. No trademark or patent rights held by Affirmer are waived, abandoned,
 surrendered, licensed or otherwise affected by this document. b. Affirmer offers
