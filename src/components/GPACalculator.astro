@@ -149,6 +149,9 @@
 
     // Add new course row
     addBtn?.addEventListener('click', () => {
+      const currentRows = container?.querySelectorAll('.course-row').length || 0;
+      if (currentRows >= MAX_COURSES) return;
+
       const row = document.createElement('div');
       row.className = 'course-row slide-in';
       row.dataset.index = courseIndex++;
