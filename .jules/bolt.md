@@ -17,3 +17,7 @@
 ## 2026-02-01 - [Redundant Client Fetching]
 **Learning:** Components that hydrate client-side scripts often re-fetch data that was already rendered by SSG, causing wasted bandwidth and unnecessary DOM updates.
 **Action:** Pass a boolean flag (e.g., `hasInitialData`) from SSG frontmatter to the client script to conditionally skip the initial fetch.
+
+## 2026-02-03 - [Optimizing Interval Loops]
+**Learning:** `setInterval` loops in hydrated Astro components can silently accumulate object allocations (e.g., `new Date()`) and redundant calculations if not carefully scoped.
+**Action:** Lift invariant calculations and object creations out of the hot loop (interval) and use caching/state variables to minimize work done per tick.
