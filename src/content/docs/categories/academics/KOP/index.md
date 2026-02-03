@@ -10,7 +10,8 @@ campus: kuantan
 lastUpdated: 2025-01-30
 ---
 
-Kulliyyah of Pharmacy (KOP) offers pharmaceutical education at IIUM's Kuantan campus.
+Kulliyyah of Pharmacy (KOP) offers pharmaceutical education at IIUM's Kuantan
+campus.
 
 ## 🏛️ Official Links
 
