@@ -135,8 +135,10 @@
           e.preventDefault();
 
           if (!row.nextElementSibling) {
-            // If last row, add new row
-            addBtn?.click();
+            // If last row, add new row (if not disabled)
+            if (!(addBtn as HTMLButtonElement).disabled) {
+              addBtn?.click();
+            }
           } else {
             // If not last row, move focus to next row
             const nextRow = row.nextElementSibling;
