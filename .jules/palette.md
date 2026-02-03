@@ -27,3 +27,8 @@ especially in dynamically generated rows where structure might be less obvious.
 
 **Learning:** Tools that perform calculations on user-inputted lists must explicitly validate complete data for each row. Silently ignoring incomplete rows (e.g., missing grade) leads to misleading results that users trust incorrectly.
 **Action:** Implement 'soft validation' that highlights incomplete rows and prevents calculation until they are fixed or removed, ensuring the result always reflects the user's full intent.
+
+## 2025-05-25 - Copy Actions for Calculated Data
+
+**Learning:** Users often calculate data (like GPA) to share or save it elsewhere. Manual selection of text on mobile is high-friction and error-prone.
+**Action:** Provide a dedicated "Copy" button next to calculated results with clear visual feedback (e.g., checkmark icon change) to improve utility and delight.

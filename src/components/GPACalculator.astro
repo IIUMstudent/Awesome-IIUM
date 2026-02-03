@@ -42,7 +42,15 @@
     <div id="results" class="results hidden" aria-live="polite">
       <div class="result-card">
         <span class="label">Semester GPA</span>
-        <span class="value" id="semester-gpa">0.00</span>
+        <div class="value-wrapper">
+          <span class="value" id="semester-gpa">0.00</span>
+          <button class="copy-btn" type="button" aria-label="Copy Semester GPA" title="Copy to clipboard">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
       </div>
       <div class="result-card">
         <span class="label">Total Credits</span>
@@ -65,7 +73,15 @@
     <div id="cgpa-result" class="cgpa hidden" aria-live="polite">
       <div class="result-card cgpa">
         <span class="label">New CGPA</span>
-        <span class="value" id="new-cgpa">0.00</span>
+        <div class="value-wrapper">
+          <span class="value" id="new-cgpa">0.00</span>
+          <button class="copy-btn" type="button" aria-label="Copy New CGPA" title="Copy to clipboard">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -399,6 +415,32 @@
         }
       }, 2000);
     });
+
+    // Copy to clipboard functionality
+    document.querySelectorAll('.copy-btn').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const valueElement = btn.previousElementSibling;
+        const text = valueElement?.textContent || '';
+
+        try {
+          await navigator.clipboard.writeText(text);
+
+          // Feedback
+          const originalHTML = btn.innerHTML;
+          btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+          btn.classList.add('copied');
+          btn.setAttribute('aria-label', 'Copied!');
+
+          setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.classList.remove('copied');
+            btn.setAttribute('aria-label', 'Copy to clipboard');
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    });
   });
 </script>
 
@@ -640,6 +682,35 @@
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--sl-color-accent);
+  }
+
+  .value-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .copy-btn {
+    background: transparent;
+    border: none;
+    color: var(--sl-color-gray-3);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .copy-btn:hover {
+    background: var(--sl-color-gray-5);
+    color: var(--sl-color-text);
+  }
+
+  .copy-btn.copied {
+    color: #10b981;
   }
 
   .cumulative-inputs {
