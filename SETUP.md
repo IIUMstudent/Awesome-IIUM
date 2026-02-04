@@ -21,6 +21,28 @@
    pnpm install
    ```
 
+## Environment Variables (Optional)
+
+The project works without any environment variables, but you can configure the following for enhanced functionality:
+
+### GitHub API Token
+
+To avoid GitHub API rate limits (increases from 60 to 5000 requests/hour):
+
+1. Create a personal access token at <https://github.com/settings/tokens>
+   - No special scopes needed for public repo access
+   - Token only needs read access to public repositories
+
+2. Create a `.env` file in the project root:
+
+   ```bash
+   GITHUB_TOKEN=your_github_token_here
+   ```
+
+3. The token will be automatically used for API requests
+
+**Note:** Never commit the `.env` file to version control (it's already in `.gitignore`)
+
 ## Development Server
 
 Start the development server:
@@ -80,6 +102,28 @@ pnpm run lint:md
 pnpm run format:md
 ```
 
+### Pre-commit Hooks
+
+This project uses Husky and Lint-Staged to automatically lint and format code before committing. The hooks are set up during `pnpm install`:
+
+**What happens on commit:**
+
+- JavaScript/TypeScript files are checked with Biome
+- Markdown files are formatted with Prettier and linted
+- If there are issues, the commit is blocked until fixed
+
+To bypass hooks (not recommended):
+
+```bash
+git commit --no-verify
+```
+
+To manually run pre-commit checks:
+
+```bash
+pnpm lint-staged
+```
+
 ## Project Structure
 
 ```bash
@@ -114,6 +158,85 @@ The project deploys automatically to GitHub Pages via GitHub Actions:
 - Branch: `master`
 - Base URL: `https://iiumstudent.github.io/Awesome-IIUM`
 - The `base` setting in `astro.config.mjs` handles the path prefix
+
+## PWA & Caching Strategy
+
+This site is a Progressive Web App (PWA) with offline support powered by Workbox.
+
+### How Caching Works
+
+**Service Worker Generation:**
+
+- Service worker (`sw.js`) is automatically generated during build using `@vite-pwa/astro`
+- Uses Workbox's `generateSW` strategy with automatic precaching
+- All static assets (HTML, CSS, JS, images) are precached for offline access
+
+**Cache Versioning:**
+
+- Each file has a content-based hash (revision) in the precache manifest
+- When files change, their hashes change, triggering cache updates
+- Example: `workbox-3105ea8d.js` (hash changes with content)
+
+**Cache Invalidation:**
+
+- Automatic cleanup of outdated caches via `cleanupOutdatedCaches()`
+- New service workers activate immediately with `skipWaiting()`
+- Users get updates on next page load without manual cache clearing
+
+**Update Strategy:**
+
+- `registerType: 'autoUpdate'` in `astro.config.mjs`
+- Service worker checks for updates on page load
+- New versions downloaded in background
+- Changes applied on next visit (no interruption to current session)
+
+**Offline Behavior:**
+
+- All precached pages (226 entries, ~12MB) available offline
+- Navigation fallback to root (`/Awesome-IIUM/`)
+- Offline indicator appears when network is unavailable
+- Users can browse previously visited pages without internet
+
+**Development vs Production:**
+
+- Service worker only registers in production builds
+- Development server (`pnpm run dev`) doesn't use service worker
+- Preview server (`pnpm run preview`) tests PWA functionality
+
+### Testing PWA Locally
+
+1. Build the site:
+
+   ```bash
+   pnpm run build
+   ```
+
+2. Start preview server:
+
+   ```bash
+   pnpm run preview
+   ```
+
+3. Open browser and:
+   - Visit the site
+   - Open DevTools → Application → Service Workers
+   - Verify service worker is active
+   - Go offline (toggle in DevTools Network tab)
+   - Refresh page - should work offline
+
+### Cache Statistics
+
+From build output:
+
+```text
+PWA v1.2.0
+mode      generateSW
+precache  226 entries (12411.08 KiB)
+```
+
+- 226 pages/assets cached
+- ~12MB total cache size
+- Includes all 5 language versions (en, ar, ja, ms, zh)
 
 ## Troubleshooting
 

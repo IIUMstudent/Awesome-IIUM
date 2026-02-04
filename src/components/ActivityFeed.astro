@@ -4,8 +4,13 @@ import { join } from 'node:path';
 import { GITHUB_REPO } from '../config';
 
 /**
- * ActivityFeed Component
- * Shows recent activity from the GitHub repository
+ * ActivityFeed component
+ *
+ * Purpose: Show recent commits and pull requests from the repository.
+ * Usage: <ActivityFeed /> on the dashboard page.
+ * Props: None.
+ * Client behavior: Server-side rendered at build time (SSG) with cache fallback.
+ * API dependencies: GitHub REST API (commits, pulls).
  */
 interface Activity {
 	type: 'commit' | 'pr' | 'issue';

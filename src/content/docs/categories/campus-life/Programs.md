@@ -1,5 +1,6 @@
 ---
 title: '📅 IIUM Programs & Events'
+description: Where to find current campus events and programs.
 ---
 
 Stay updated with the latest events and programs happening on campus.

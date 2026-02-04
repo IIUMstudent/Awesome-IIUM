@@ -1,5 +1,6 @@
 ---
 title: '☕ Java Resources'
+description: Java tools and learning resources for IIUM students.
 ---
 
 A collection of resources for Java development at IIUM.

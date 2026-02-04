@@ -1,0 +1,59 @@
+name: Accessibility Tests
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  accessibility:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Install Playwright Browsers
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Build site
+        run: pnpm run build
+        env:
+          NODE_ENV: production
+
+      - name: Start preview server
+        run: pnpm run preview -- --host 0.0.0.0 --port 4321 & sleep 5
+
+      - name: Run a11y tests (Playwright + axe)
+        run: pnpm run test:a11y
+        env:
+          CI: true
+          BASE_URL: http://localhost:4321
+
+      - name: Run a11y tests (pa11y-ci)
+        run: pnpm run test:pa11y
+
+      - name: Upload a11y reports
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a11y-results
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7

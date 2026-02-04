@@ -56,8 +56,13 @@ individual is representing the community in public spaces.
 ## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported to the community leaders at [INSERT EMAIL ADDRESS]. All complaints will
-be reviewed promptly, fairly, and with strict confidentiality.
+reported to the community leaders through:
+
+- **GitHub Discussions**: Open a discussion in the Community category
+- **GitHub Issues**: Create a confidential issue (mark as private if sensitive)
+- **Direct Contact**: Message @iiumstudent on GitHub
+
+All complaints will be reviewed promptly, fairly, and with strict confidentiality.
 
 ## Attribution
 

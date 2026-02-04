@@ -3,6 +3,16 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+/**
+ * StatusDashboard component
+ *
+ * Purpose: Display the health status of system services.
+ * Usage: <StatusDashboard /> on the dashboard page.
+ * Props: None.
+ * Client behavior: Uses client script to refresh status data.
+ * API dependencies: Local status JSON (`public/api/status.json`).
+ */
+
 // biome-ignore lint/correctness/noUnusedVariables: passed to client script
 const BASE_URL = import.meta.env.BASE_URL;
 
@@ -35,6 +45,11 @@ const hasInitialData = initialStatus.length > 0;
 ---
 
 <div id="status-dashboard" class="not-content">
+  <div class="dashboard-header">
+    <span class="last-updated" id="last-updated">
+      Last updated: {initialStatus.length > 0 ? new Date().toLocaleString() : 'Loading...'}
+    </span>
+  </div>
   <div class="status-grid" id="status-grid">
     {
       initialStatus.length > 0 ? (
@@ -60,6 +75,13 @@ const hasInitialData = initialStatus.length > 0;
 </div>
 
 <script define:vars={{ BASE_URL, hasInitialData }}>
+  function updateLastUpdatedTimestamp() {
+    const lastUpdated = document.getElementById('last-updated');
+    if (lastUpdated) {
+      lastUpdated.textContent = `Last updated: ${new Date().toLocaleString()}`;
+    }
+  }
+
   async function fetchStatus() {
     try {
       const baseUrl = BASE_URL.endsWith('/') ? BASE_URL : `${BASE_URL}/`;
@@ -117,15 +139,29 @@ const hasInitialData = initialStatus.length > 0;
 
         grid.appendChild(card);
       });
+
+      // Update last updated timestamp
+      updateLastUpdatedTimestamp();
     } catch (e) {
       console.error('Failed to fetch status', e);
-    }
+   dashboard-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 1rem;
   }
-
-  if (!hasInitialData) {
-    fetchStatus();
+  .last-updated {
+    font-size: 0.85rem;
+    color: var(--sl-color-gray-3);
+    font-style: italic;
   }
-  setInterval(fetchStatus, 60000); // Refresh every minute
+  .status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1;
+  }
+  setInterval(fetchStatus, 300000); // Refresh every 5 minutes (matches cache TTL)
 </script>
 
 <style>
@@ -162,7 +198,7 @@ const hasInitialData = initialStatus.length > 0;
     border-radius: 50%;
     display: inline-block;
   }
-  .online .status-dot { background: #10b981; box-shadow: 0 0 10px #10b981; }
+  .online .status-dot { background: #047857; box-shadow: 0 0 10px #047857; }
   .offline .status-dot { background: #ef4444; box-shadow: 0 0 10px #ef4444; }
   
   .status-body {
@@ -174,8 +210,8 @@ const hasInitialData = initialStatus.length > 0;
     font-weight: bold;
     font-size: 0.9rem;
   }
-  .online .status-label { color: #10b981; }
-  .offline .status-label { color: #ef4444; }
+  .online .status-label { color: #047857; }
+  .offline .status-label { color: #b91c1c; }
   
   .status-time {
     font-size: 0.8rem;

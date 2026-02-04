@@ -1,5 +1,6 @@
 ---
 title: '📸 IIUM Instagram Accounts'
+description: Official and community Instagram accounts for IIUM.
 ---
 
 Follow these official and community accounts to stay updated.
@@ -23,4 +24,4 @@ Follow these official and community accounts to stay updated.
 
 ## 🏅 Clubs & Societies
 
-- Refer to [Club.md](../Club.md) for a list of club-specific Instagram accounts.
+- Refer to [../Club/](../Club/) for a list of club-specific Instagram accounts.

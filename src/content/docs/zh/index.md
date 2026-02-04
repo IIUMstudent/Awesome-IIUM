@@ -1,13 +1,14 @@
 ---
 title: '欢迎来到 Awesome-IIUM！'
+description: 面向 IIUM 社区的精选资源与指南。
 ---
 
 欢迎！我们非常高兴能为您呈现这一系列专为马来西亚国际伊斯兰大学（IIUM）社区精心策划的资源。无论您是在校学生、尊敬的教职员工，还是引以为傲的校友，我们都已将您所需的一切汇集于此！从官方门户网站到学生活动，从研究出版物到社区服务，请尽情探索，发现 IIUM 的真正精彩之处。
 
 本仓库汇集了马来西亚国际伊斯兰大学（IIUM）成员所需的各种资源。
 
-_阅读其他语言版本：[English](/), [Melayu](/ms/), [العربية](/ar/),
-[日本語](/ja/)_
+_阅读其他语言版本：[English](../), [Melayu](../ms/), [العربية](../ar/),
+[日本語](../ja/)_
 
 ![IIUM Logo](/Awesome-IIUM/logo.png)
 
@@ -37,7 +38,7 @@ _阅读其他语言版本：[English](/), [Melayu](/ms/), [العربية](/ar/)
 ## 许可证
 
 本项目采用知识共享许可协议（Creative Commons License）授权 - 详情请参阅
-[/about/license](//about/license) 文件。
+[../about/license](../about/license) 文件。
 
 ## 文件夹结构
 
@@ -53,7 +54,7 @@ _阅读其他语言版本：[English](/), [Melayu](/ms/), [العربية](/ar/)
 - [推荐](#推荐)
 - [IIUM 官方网站和门户](#iium-官方网站和门户)
 - [IIUM 学术资源和工具](#iium-学术资源和工具)
-- [学生生活](/categories/campus-life/)
+- [学生生活](../categories/campus-life/)
 - [IIUM 校友网络和职业机会](#iium-校友网络和职业机会)
 - [IIUM 新闻和媒体](#iium-新闻和媒体)
 - [IIUM 研究和出版物](#iium-研究和出版物)
@@ -68,7 +69,7 @@ _阅读其他语言版本：[English](/), [Melayu](/ms/), [العربية](/ar/)
   Iqmal 制作。
 - [Moodle 移动应用](https://download.moodle.org/mobile/) /
   [Moodle 桌面应用](https://download.moodle.org/) - 由于 Imaalum 使用 Moodle，此应用程序允许学生访问他们的课程。
-- [活动](/categories/campus-life/Programs.md) - IIUM 现有活动的列表。
+- [活动](../categories/campus-life/programs/) - IIUM 现有活动的列表。
 
 ## IIUM 官方网站和门户
 
@@ -84,10 +85,10 @@ _阅读其他语言版本：[English](/), [Melayu](/ms/), [العربية](/ar/)
 
 本部分提供与 IIUM 学术界相关的应用程序、工具和服务资源。
 
-- [通用学术资源](/categories/academics/General.md) - 基本工具、作品集和图书馆链接。
-- [KICT 资源](/categories/academics/KICT/) - 信息与通信技术资源。
-- [Gombak 和 Kuantan 预注册](/categories/academics/Pre-reg%20gombak-kuantan.md) - 注册日期和时间表。
-- [Pagoh 预注册](/categories/academics/Pre-reg%20pagoh.md) -
+- [通用学术资源](../categories/academics/general/) - 基本工具、作品集和图书馆链接。
+- [KICT 资源](../categories/academics/KICT/) - 信息与通信技术资源。
+- [Gombak 和 Kuantan 预注册](../categories/academics/pre-reg-gombak-kuantan/) - 注册日期和时间表。
+- [Pagoh 预注册](../categories/academics/pre-reg-pagoh/) -
   Pagoh 校区的日期和时间表。
 
 ## IIUM 校友网络和职业机会
@@ -136,7 +137,7 @@ _阅读其他语言版本：[English](/), [Melayu](/ms/), [العربية](/ar/)
 - [Facebook](https://www.facebook.com/IIUM.Official)
 - [Twitter](https://twitter.com/OfficialIIUM)
 - [Instagram](https://www.instagram.com/iiumofficial/)
-- [YouTube](https://www.youtube.com/user/IIUMOnline)
+- [YouTube](https://www.youtube.com/@IIUMOfficial)
 - [LinkedIn](https://www.linkedin.com/school/international-islamic-university-malaysia/)
 
 关注我们以获取 IIUM 的最新更新、新闻和活动！

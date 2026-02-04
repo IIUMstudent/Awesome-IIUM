@@ -1,5 +1,6 @@
 ---
 title: 'Career & Internships'
+description: Resume, internship, and alumni resources for IIUM students.
 ---
 
 > Preparing for life after graduation.

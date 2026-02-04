@@ -1,5 +1,6 @@
 ---
 title: '💡 Student Life Tips & Hacks'
+description: Practical tips for living and studying at IIUM.
 ---
 
 A collection of community-sourced tips for surviving and thriving at IIUM.

@@ -1,0 +1,16 @@
+# Default code owners
+
+* @IIUMstudent
+
+# GitHub config and workflows
+
+/.github/ @IIUMstudent
+
+# Core source and content
+
+/src/ @IIUMstudent
+/src/content/ @IIUMstudent
+
+# Documentation
+
+/*.md @IIUMstudent

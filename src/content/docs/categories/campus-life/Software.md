@@ -1,5 +1,6 @@
 ---
 title: '💻 Essential Software for IIUM Students'
+description: Productivity, security, and academic software for IIUM students.
 ---
 
 A collection of software and digital tools provided or recommended for IIUM

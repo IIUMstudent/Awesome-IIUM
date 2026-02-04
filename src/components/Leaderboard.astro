@@ -5,9 +5,13 @@ import path from 'node:path';
 import { GITHUB_REPO } from '../config';
 
 /**
- * Leaderboard Component
- * Displays top contributors fetched from GitHub API.
- * Optimization: Fetched at build time (SSG) to improve performance and LCP.
+ * Leaderboard component
+ *
+ * Purpose: Display top contributors for the repository.
+ * Usage: <Leaderboard /> on the dashboard page.
+ * Props: None.
+ * Client behavior: Server-side rendered at build time with cache fallback.
+ * API dependencies: GitHub REST API (contributors endpoint).
  */
 
 const CACHE_DIR = path.join(process.cwd(), '.astro');
@@ -131,9 +135,9 @@ try {
     color: var(--sl-color-gray-3);
     min-width: 30px;
   }
-  .rank-1 .rank { color: #facc15; } /* Gold */
-  .rank-2 .rank { color: #94a3b8; } /* Silver */
-  .rank-3 .rank { color: #b45309; } /* Bronze */
+  .rank-1 .rank { color: #92400e; } /* Gold - WCAG AA compliant */
+  .rank-2 .rank { color: #475569; } /* Silver */
+  .rank-3 .rank { color: #78350f; } /* Bronze - WCAG AA compliant */
   
   .avatar {
     width: 45px;

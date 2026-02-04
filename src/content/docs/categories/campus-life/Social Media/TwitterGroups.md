@@ -1,5 +1,6 @@
 ---
 title: '🐦 IIUM Twitter (X) Accounts'
+description: Official and community Twitter accounts for IIUM.
 ---
 
 Stay connected with the IIUM community on Twitter.

@@ -1,6 +1,10 @@
 ---
 title: 'Pre Reg Gombak Kuantan'
+description: Pre-registration schedule for Gombak and Kuantan campuses.
 ---
+
+> [!WARNING] This schedule is for 2023/2024 and is likely outdated. Verify the
+> current dates in the Pre-Registration System before planning.
 
 | Semester/Session | Time/Date/Day                                                                 | Level of Study                                        | Campus             |
 | ---------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------- | ------------------ |

@@ -21,3 +21,17 @@ dev.log
 # Biome excludes
 .astro/
 dist/
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
+
+# Test Coverage
+coverage/
+*.lcov
+coverage-final.json
+
+# Reports
+lychee-report.md
+lighthouse-report.html

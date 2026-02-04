@@ -4,9 +4,13 @@ import path from 'node:path';
 import { GITHUB_REPO } from '../config';
 
 /**
- * NewThisWeek Component
- * Displays resources added in the last 7 days
- * Uses GitHub API to fetch recent commits
+ * NewThisWeek component
+ *
+ * Purpose: Highlight resources added in the last 7 days.
+ * Usage: <NewThisWeek /> on the dashboard page.
+ * Props: None.
+ * Client behavior: Server-side rendered at build time with cache fallback.
+ * API dependencies: GitHub REST API (commits endpoint).
  */
 interface RecentResource {
 	title: string;

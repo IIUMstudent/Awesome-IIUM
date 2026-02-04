@@ -1,5 +1,6 @@
 ---
 title: '🟢 IIUM WhatsApp Groups'
+description: WhatsApp group categories for IIUM students.
 ---
 
 Note: WhatsApp groups are mostly private or invite-only. Check with your

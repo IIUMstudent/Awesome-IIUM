@@ -11,8 +11,8 @@ title: 'مرحبًا بكم في Awesome-IIUM!'
 هذا المستودع عبارة عن مجموعة من الموارد لأعضاء الجامعة الإسلامية العالمية
 ماليزيا (IIUM).
 
-_اقرأ هذا بلغات أخرى: [English](/), [Melayu](/ms/), [中文](/zh/),
-[日本語](/ja/)_
+_اقرأ هذا بلغات أخرى: [English](../), [Melayu](../ms/), [中文](../zh/),
+[日本語](../ja/)_
 
 ![شعار الجامعة](/Awesome-IIUM/logo.png)
 
@@ -46,7 +46,7 @@ _اقرأ هذا بلغات أخرى: [English](/), [Melayu](/ms/), [中文](/zh
 ## الترخيص
 
 هذا المشروع مرخص بموجب رخصة المشاع الإبداعي (Creative Commons License) - راجع
-ملف [/about/license](//about/license) للتفاصيل.
+ملف [../about/license](../about/license) للتفاصيل.
 
 ## هيكل المجلدات
 
@@ -66,7 +66,7 @@ _اقرأ هذا بلغات أخرى: [English](/), [Melayu](/ms/), [中文](/zh
 - [توصيات](#توصيات)
 - [المواقع والبوابات الرسمية للجامعة](#المواقع-والبوابات-الرسمية-للجامعة)
 - [الموارد والأدوات الأكاديمية](#الموارد-والأدوات-الأكاديمية)
-- [الحياة الطلابية](/categories/campus-life/)
+- [الحياة الطلابية](../categories/campus-life/)
 - [شبكة الخريجين وفرص العمل](#شبكة-الخريجين-وفرص-العمل)
 - [أخبار وإعلام الجامعة](#أخبار-وإعلام-الجامعة)
 - [البحوث والمنشورات](#البحوث-والمنشورات)
@@ -83,7 +83,7 @@ _اقرأ هذا بلغات أخرى: [English](/), [Melayu](/ms/), [中文](/zh
 - [تطبيق Moodle للهاتف المحمول](https://download.moodle.org/mobile/) /
   [تطبيق Moodle لسطح المكتب](https://download.moodle.org/) - تطبيق يتيح للطلاب
   الوصول إلى دوراتهم على Moodle نظرًا لأن Imaalum يستخدمها.
-- [الأنشطة](/categories/campus-life/Programs.md) - قائمة بالأنشطة والفعاليات
+- [الأنشطة](../categories/campus-life/programs/) - قائمة بالأنشطة والفعاليات
   المتاحة في الجامعة.
 
 ## المواقع والبوابات الرسمية للجامعة
@@ -108,13 +108,13 @@ _اقرأ هذا بلغات أخرى: [English](/), [Melayu](/ms/), [中文](/zh
 
 يوفر هذا القسم موارد متعلقة بالتطبيقات والأدوات والخدمات للأكاديميين في الجامعة.
 
-- [الموارد الأكاديمية العامة](/categories/academics/General.md) - الأدوات
+- [الموارد الأكاديمية العامة](../categories/academics/general/) - الأدوات
   الأساسية، والمحافظ، وروابط المكتبة.
-- [موارد كلية تكنولوجيا المعلومات والاتصالات (KICT)](/categories/academics/KICT/) -
+- [موارد كلية تكنولوجيا المعلومات والاتصالات (KICT)](../categories/academics/KICT/) -
   موارد لتكنولوجيا المعلومات والاتصالات.
-- [التسجيل المسبق (غومباك وكوانتان)](/categories/academics/Pre-reg%20gombak-kuantan.md) -
+- [التسجيل المسبق (غومباك وكوانتان)](../categories/academics/pre-reg-gombak-kuantan/) -
   التواريخ والجداول الزمنية للتسجيل.
-- [التسجيل المسبق (باغوه)](/categories/academics/Pre-reg%20pagoh.md) - التواريخ
+- [التسجيل المسبق (باغوه)](../categories/academics/pre-reg-pagoh/) - التواريخ
   والجداول الزمنية لحرم باغوه الجامعي.
 
 ## شبكة الخريجين وفرص العمل
@@ -190,7 +190,7 @@ _اقرأ هذا بلغات أخرى: [English](/), [Melayu](/ms/), [中文](/zh
 - [فيسبوك](https://www.facebook.com/IIUM.Official)
 - [تويتر](https://twitter.com/OfficialIIUM)
 - [إنستغرام](https://www.instagram.com/iiumofficial/)
-- [يوتيوب](https://www.youtube.com/user/IIUMOnline)
+- [يوتيوب](https://www.youtube.com/@IIUMOfficial)
 - [لينكد إن](https://www.linkedin.com/school/international-islamic-university-malaysia/)
 
 تابعنا للحصول على آخر التحديثات والأخبار والفعاليات من الجامعة!

@@ -43,6 +43,13 @@ tools, and guides to make your university life easier and more productive.
 We welcome contributions! Please read our
 [Contribution Guidelines](CONTRIBUTING.md) before submitting a pull request.
 
+## ♿ Accessibility
+
+Awesome IIUM conforms to **WCAG 2.1 Level AA** standards. We are committed to
+providing an accessible experience for all users. Read our
+[Accessibility Statement](ACCESSIBILITY.md) to learn more about our accessibility
+features, testing methodology, and how to report issues.
+
 ## 👥 Contributors
 
 Thanks goes to these wonderful people

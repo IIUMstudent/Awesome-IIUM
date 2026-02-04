@@ -1,0 +1,61 @@
+# Security Headers for GitHub Pages
+
+# These headers will be served by GitHub Pages for all routes
+
+/*
+
+# Content Security Policy - Controls what resources can be loaded
+
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' <https://cdn.jsdelivr.net> https://*.goatcounter.com <https://giscus.app> <https://unpkg.com>; style-src 'self' 'unsafe-inline' <https://cdn.jsdelivr.net> <https://giscus.app> <https://unpkg.com>; img-src 'self' data: https: http:; font-src 'self' data: <https://cdn.jsdelivr.net>; connect-src 'self' <https://api.github.com> https://*.goatcounter.com <https://giscus.app> <https://api.aladhan.com>; frame-src <https://giscus.app> <https://www.openstreetmap.org>; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  
+# Prevent clickjacking attacks
+
+  X-Frame-Options: DENY
+  
+# Prevent MIME type sniffing
+
+  X-Content-Type-Options: nosniff
+  
+# Referrer Policy - Control referrer information
+
+  Referrer-Policy: strict-origin-when-cross-origin
+  
+# Permissions Policy - Control browser features
+
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()
+  
+# Strict Transport Security - Force HTTPS (only if served over HTTPS)
+
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  
+# XSS Protection (legacy, but still useful for older browsers)
+
+  X-XSS-Protection: 1; mode=block
+  
+# Cache Control for HTML files
+
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Static assets - can be cached longer
+
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Service Worker
+
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
+  
+# PWA Manifest
+
+/manifest.webmanifest
+  Cache-Control: public, max-age=86400
+
+# API Status JSON - short TTL
+
+/api/status.json
+  Cache-Control: public, max-age=300, stale-while-revalidate=60
+  Access-Control-Allow-Origin: *
