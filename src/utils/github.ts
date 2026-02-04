@@ -275,11 +275,7 @@ async function fetchAndCache<T>(
 
 export async function getCachedContributors(perPage = 12) {
 	const url = `https://api.github.com/repos/iiumstudent/Awesome-IIUM/contributors?per_page=${perPage}`;
-<<<<<<< HEAD
-	return fetchAndCache(url, contributorCache);
-=======
 	return fetchAndCache(url, contributorCache, FALLBACK_CONTRIBUTORS);
->>>>>>> 1edf593 (feat(tests): add comprehensive E2E and unit tests for GPA calculator, prayer times, search functionality, and status dashboard)
 }
 
 export async function getCachedCommits(perPage = 20) {
@@ -289,8 +285,5 @@ export async function getCachedCommits(perPage = 20) {
 
 export async function getCachedPulls(perPage = 2) {
 	const url = `https://api.github.com/repos/iiumstudent/Awesome-IIUM/pulls?state=all&per_page=${perPage}`;
-<<<<<<< HEAD
-	return fetchAndCache(url, pullsCache);
-=======
 	return fetchAndCache(url, pullsCache, FALLBACK_PULLS);
-	return fetchAndCache(url, pullsCache, FALLBACK_PULLS);
+}

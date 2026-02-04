@@ -1,10 +1,10 @@
 /**
  * E2E Tests for Prayer Times Widget
- * 
+ *
  * Tests prayer times display and campus selection
  */
 
-import { test, expect, type Page } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 
 test.describe('Prayer Times', () => {
 	test.beforeEach(async ({ page }) => {
@@ -17,22 +17,31 @@ test.describe('Prayer Times', () => {
 
 	const waitForPrayerData = async (page: Page) => {
 		await page.waitForSelector('.prayer-card, .error', { timeout: 10000 });
-		const hasError = await page.locator('.error').isVisible().catch(() => false);
+		const hasError = await page
+			.locator('.error')
+			.isVisible()
+			.catch(() => false);
 		return !hasError;
 	};
 
 	test('should display prayer times widget', async ({ page }) => {
 		// Check heading
-		await expect(page.locator('.prayer-times h3')).toContainText('Prayer Times');
+		await expect(page.locator('.prayer-times h3')).toContainText(
+			'Prayer Times',
+		);
 
 		// Check campus selector exists
 		await expect(page.locator('#campus-selector')).toBeVisible();
 
 		// Check attribution link
-		await expect(page.locator('.prayer-times .attribution')).toContainText('Aladhan.com');
+		await expect(page.locator('.prayer-times .attribution')).toContainText(
+			'Aladhan.com',
+		);
 	});
 
-	test('should show prayer times for default campus (Gombak)', async ({ page }) => {
+	test('should show prayer times for default campus (Gombak)', async ({
+		page,
+	}) => {
 		const hasData = await waitForPrayerData(page);
 		if (!hasData) {
 			test.skip(true, 'Prayer times unavailable');
@@ -43,7 +52,9 @@ test.describe('Prayer Times', () => {
 		await expect(page.locator('#prayer-grid')).toBeVisible();
 
 		// Should have multiple prayer cards (Subuh, Syuruk, Zohor, Asar, Maghrib, Isyak)
-		await expect(page.locator('.prayer-card')).toHaveCount(6, { timeout: 10000 });
+		await expect(page.locator('.prayer-card')).toHaveCount(6, {
+			timeout: 10000,
+		});
 
 		// Check for expected prayer names
 		await expect(page.locator('.prayer-times')).toContainText('Subuh');
@@ -59,7 +70,9 @@ test.describe('Prayer Times', () => {
 		}
 
 		// Wait for initial load
-		await expect(page.locator('.prayer-card')).toHaveCount(6, { timeout: 10000 });
+		await expect(page.locator('.prayer-card')).toHaveCount(6, {
+			timeout: 10000,
+		});
 
 		// Default should be Gombak
 		await expect(page.locator('#campus-selector')).toHaveValue('gombak');
@@ -68,13 +81,17 @@ test.describe('Prayer Times', () => {
 		await page.locator('#campus-selector').selectOption('kuantan');
 
 		// Should still show 6 prayer times
-		await expect(page.locator('.prayer-card')).toHaveCount(6, { timeout: 10000 });
+		await expect(page.locator('.prayer-card')).toHaveCount(6, {
+			timeout: 10000,
+		});
 
 		// Switch to Pagoh
 		await page.locator('#campus-selector').selectOption('pagoh');
 
 		// Should still show 6 prayer times
-		await expect(page.locator('.prayer-card')).toHaveCount(6, { timeout: 10000 });
+		await expect(page.locator('.prayer-card')).toHaveCount(6, {
+			timeout: 10000,
+		});
 	});
 
 	test('should display Hijri date', async ({ page }) => {
@@ -100,13 +117,17 @@ test.describe('Prayer Times', () => {
 		}
 
 		// Wait for prayer times to load
-		await expect(page.locator('.prayer-card')).toHaveCount(6, { timeout: 10000 });
+		await expect(page.locator('.prayer-card')).toHaveCount(6, {
+			timeout: 10000,
+		});
 
 		// Next prayer section should be visible
 		await expect(page.locator('#next-prayer')).toBeVisible();
 
 		// Should show next prayer name
-		const nextPrayerName = await page.locator('#next-prayer-name').textContent();
+		const nextPrayerName = await page
+			.locator('#next-prayer-name')
+			.textContent();
 		expect(nextPrayerName).not.toBe('-');
 
 		// Should show countdown timer (format: HH:MM:SS or --:--:--)
@@ -122,7 +143,9 @@ test.describe('Prayer Times', () => {
 		}
 
 		// Wait for prayer times to load
-		await expect(page.locator('.prayer-card')).toHaveCount(6, { timeout: 10000 });
+		await expect(page.locator('.prayer-card')).toHaveCount(6, {
+			timeout: 10000,
+		});
 
 		// One prayer card should have 'active' or 'current' class
 		// or next prayer indicator (implementation-specific)
@@ -142,12 +165,16 @@ test.describe('Prayer Times', () => {
 		}
 
 		// First visit - load from API
-		await expect(page.locator('.prayer-card')).toHaveCount(6, { timeout: 10000 });
+		await expect(page.locator('.prayer-card')).toHaveCount(6, {
+			timeout: 10000,
+		});
 
 		// Reload page - should use cache (faster load)
 		const startTime = Date.now();
 		await page.reload();
-		await expect(page.locator('.prayer-card')).toHaveCount(6, { timeout: 5000 });
+		await expect(page.locator('.prayer-card')).toHaveCount(6, {
+			timeout: 5000,
+		});
 		const loadTime = Date.now() - startTime;
 
 		// Cached load should be reasonably fast (< 3 seconds)

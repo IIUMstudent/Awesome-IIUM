@@ -162,18 +162,30 @@ describe('calculateNewCGPA', () => {
 	});
 
 	it('should throw error for invalid previous CGPA', () => {
-		expect(() => calculateNewCGPA(5.0, 30, 3.5, 15)).toThrow('Invalid previous CGPA');
-		expect(() => calculateNewCGPA(-1.0, 30, 3.5, 15)).toThrow('Invalid previous CGPA');
+		expect(() => calculateNewCGPA(5.0, 30, 3.5, 15)).toThrow(
+			'Invalid previous CGPA',
+		);
+		expect(() => calculateNewCGPA(-1.0, 30, 3.5, 15)).toThrow(
+			'Invalid previous CGPA',
+		);
 	});
 
 	it('should throw error for invalid semester GPA', () => {
-		expect(() => calculateNewCGPA(3.0, 30, 5.0, 15)).toThrow('Invalid semester GPA');
-		expect(() => calculateNewCGPA(3.0, 30, -1.0, 15)).toThrow('Invalid semester GPA');
+		expect(() => calculateNewCGPA(3.0, 30, 5.0, 15)).toThrow(
+			'Invalid semester GPA',
+		);
+		expect(() => calculateNewCGPA(3.0, 30, -1.0, 15)).toThrow(
+			'Invalid semester GPA',
+		);
 	});
 
 	it('should throw error for negative credits', () => {
-		expect(() => calculateNewCGPA(3.0, -10, 3.5, 15)).toThrow('Invalid previous credits');
-		expect(() => calculateNewCGPA(3.0, 30, 3.5, -5)).toThrow('Invalid semester credits');
+		expect(() => calculateNewCGPA(3.0, -10, 3.5, 15)).toThrow(
+			'Invalid previous credits',
+		);
+		expect(() => calculateNewCGPA(3.0, 30, 3.5, -5)).toThrow(
+			'Invalid semester credits',
+		);
 	});
 
 	it('should round result to 2 decimal places', () => {
