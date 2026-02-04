@@ -1,5 +1,6 @@
 ---
 title: 'Contributing to Awesome IIUM'
+description: Guidelines for contributing high-quality IIUM resources.
 ---
 
 Thank you for your interest in contributing to Awesome IIUM! We aim to build the

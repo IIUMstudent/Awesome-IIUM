@@ -1,4 +1,13 @@
 ---
+/**
+ * Giscus component
+ *
+ * Purpose: Replace the Starlight footer with a Giscus comments section.
+ * Usage: Configured as the Starlight Footer component in astro.config.mjs.
+ * Props: Inherits Starlight Footer props (no custom props).
+ * Client behavior: Injects Giscus client script when visible.
+ * API dependencies: Giscus (giscus.app) and GitHub Discussions.
+ */
 // biome-ignore lint/correctness/noUnusedImports: Used in template
 import Default from '@astrojs/starlight/components/Footer.astro';
 // biome-ignore lint/correctness/noUnusedImports: Implicitly used
@@ -10,6 +19,16 @@ const repoFullName = GITHUB_REPO.fullName;
 ---
 
 <Default {...Astro.props} />
+
+<div class="footer-links" role="contentinfo">
+  <a
+    href="https://github.com/iiumstudent/Awesome-IIUM/blob/master/PRIVACY.md"
+    target="_blank"
+    rel="noopener"
+  >
+    Privacy Policy
+  </a>
+</div>
 
 <div class="giscus-container" id="giscus-container">
   <!-- Giscus will be injected here when visible -->
@@ -60,5 +79,20 @@ const repoFullName = GITHUB_REPO.fullName;
     padding-top: 2rem;
     border-top: 1px solid var(--sl-color-hairline-light);
     min-height: 200px; /* Reserve some space to prevent layout shift */
+  }
+
+  .footer-links {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .footer-links a {
+    color: var(--sl-color-text-accent);
+    text-decoration: none;
+  }
+
+  .footer-links a:hover,
+  .footer-links a:focus-visible {
+    text-decoration: underline;
   }
 </style>

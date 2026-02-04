@@ -1,0 +1,119 @@
+---
+/**
+ * ErrorBoundary component
+ *
+ * Purpose: Wraps content to render a friendly fallback on errors.
+ * Usage: <ErrorBoundary fallback="...">...</ErrorBoundary>
+ * Props: fallback?: string, componentName?: string, showDetails?: boolean.
+ * Client behavior: Server-side render only; uses slot rendering.
+ * API dependencies: None.
+ */
+
+interface Props {
+	fallback?: string;
+	componentName?: string;
+	showDetails?: boolean;
+}
+
+const {
+	fallback = 'Unable to load content',
+	componentName = 'Component',
+	showDetails = false,
+} = Astro.props;
+
+const slot = await Astro.slots.render('default');
+---
+
+<div class="error-boundary" data-component={componentName}>
+	<Fragment set:html={slot} />
+</div>
+
+<style>
+	.error-boundary {
+		position: relative;
+	}
+
+	.error-fallback {
+		padding: 1rem;
+		margin: 1rem 0;
+		border-radius: 8px;
+		background: var(--sl-color-gray-6);
+		border-left: 4px solid var(--sl-color-orange);
+		color: var(--sl-color-text);
+	}
+
+	.error-fallback h4 {
+		margin: 0 0 0.5rem 0;
+		font-size: 1rem;
+		color: var(--sl-color-orange);
+	}
+
+	.error-fallback p {
+		margin: 0;
+		font-size: 0.875rem;
+		opacity: 0.9;
+	}
+
+	.error-details {
+		margin-top: 0.5rem;
+		padding: 0.5rem;
+		background: var(--sl-color-gray-7);
+		border-radius: 4px;
+		font-family: monospace;
+		font-size: 0.75rem;
+		overflow-x: auto;
+	}
+</style>
+
+<script define:vars={{ fallback, componentName, showDetails }}>
+	// Client-side error boundary
+	const boundary = document.currentScript?.
+previousElementSibling;
+
+	if (boundary) {
+		// Catch errors in child components
+		window.addEventListener('error', (event) => {
+			const target = event.target;
+			if (boundary.contains(target)) {
+				event.preventDefault();
+				showErrorFallback(event.error);
+			}
+		});
+
+		// Catch unhandled promise rejections
+		window.addEventListener('unhandledrejection', (event) => {
+			if (boundary.contains(event.target)) {
+				event.preventDefault();
+				showErrorFallback(event.reason);
+			}
+		});
+
+		function showErrorFallback(error) {
+			const errorHtml = `
+				<div class="error-fallback">
+					<h4>⚠️ ${fallback}</h4>
+					<p>The ${componentName} encountered an error. Please try refreshing the page.</p>
+					${
+						showDetails
+							? `<div class="error-details">${String(error)}</div>`
+							: ''
+					}
+				</div>
+			`;
+
+			if (boundary) {
+				boundary.innerHTML = errorHtml;
+			}
+
+			// Log to Sentry in production
+			if (import.meta.env.PROD && typeof window !== 'undefined' && window.Sentry) {
+				window.Sentry.captureException(error, {
+					extra: {
+						component: componentName,
+						boundary: 'ErrorBoundary',
+					},
+				});
+			}
+		}
+	}
+</script>

@@ -1,5 +1,6 @@
 ---
 title: 'Campus Life'
+description: Daily life resources for students across IIUM campuses.
 ---
 
 > Everything you need to know about surviving and thriving on campus.

@@ -12,24 +12,57 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"lint:md": "markdownlint 'src/**/*.{md,mdx}' --ignore node_modules",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"test:ui": "vitest --ui",
+		"test:coverage": "vitest run --coverage",
+		"test:e2e": "playwright test",
+		"test:e2e:ui": "playwright test --ui",
+		"test:e2e:debug": "playwright test --debug",
+		"test:a11y": "playwright test tests/e2e/accessibility.spec.ts",
+		"test:pa11y": "pa11y-ci",
+		"test:lighthouse": "lhci autorun",
+		"lint:md": "markdownlint '*.md' 'src/**/*.{md,mdx}' --ignore node_modules",
 		"format:md": "prettier --write 'src/**/*.{md,mdx}'",
 		"lint:js": "biome check .",
 		"format:js": "biome format --write .",
 		"lint": "pnpm run lint:js && pnpm run lint:md",
-		"format": "pnpm run format:js && pnpm run format:md"
+		"format": "pnpm run format:js && pnpm run format:md",
+		"prepare": "husky install"
+	},
+	"lint-staged": {
+		"src/**/*.{js,ts,astro}": [
+			"biome check --fix"
+		],
+		"src/**/*.{md,mdx}": [
+			"prettier --write",
+			"markdownlint"
+		]
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.3.11",
-		"awesome-lint": "^2.2.2",
+		"@axe-core/playwright": "^4.11.0",
+		"@biomejs/biome": "^2.3.13",
+		"@lhci/cli": "^0.15.1",
+		"@playwright/test": "^1.58.1",
+		"@vitest/coverage-v8": "4.0.18",
+		"@vitest/ui": "^4.0.18",
+		"awesome-lint": "^2.2.3",
+		"happy-dom": "^20.5.0",
+		"husky": "^9.1.7",
+		"jsdom": "^28.0.0",
+		"lint-staged": "^16.2.7",
 		"markdownlint-cli": "^0.47.0",
 		"npm-run-all": "^4.1.5",
-		"prettier": "^3.8.0"
+		"pa11y-ci": "^4.0.1",
+		"prettier": "^3.8.1",
+		"rollup-plugin-visualizer": "^6.0.5",
+		"vitest": "^4.0.18"
 	},
 	"dependencies": {
-		"@astrojs/starlight": "^0.37.3",
+		"@astrojs/starlight": "^0.37.6",
+		"@sentry/astro": "^10.38.0",
 		"@vite-pwa/astro": "^1.2.0",
-		"astro": "^5.16.11",
+		"astro": "^5.17.1",
 		"sharp": "^0.34.5",
 		"workbox-window": "^7.4.0"
 	}

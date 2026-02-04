@@ -1,0 +1,109 @@
+name: ✅ Verification Request
+description: Request a verified badge for a resource
+title: '[Verification]: '
+labels: ['verification', 'triage']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## ✅ Verification Request
+        Please provide evidence that this resource meets the verified criteria.
+
+  - type: input
+    id: resource-name
+    attributes:
+      label: Resource Name
+      description: The name of the resource
+      placeholder: e.g., IIUM Portal
+    validations:
+      required: true
+
+  - type: input
+    id: resource-url
+    attributes:
+      label: Resource URL
+      description: Direct link to the resource
+      placeholder: https://example.com
+    validations:
+      required: true
+
+  - type: dropdown
+    id: verification-reason
+    attributes:
+      label: Verification Reason
+      description: Why should this resource be verified?
+      options:
+        - Official IIUM resource (iium.edu.my)
+        - Widely used student tool (50+ stars or strong usage)
+        - Maintainer-confirmed and actively supported
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Provide evidence (official domain, stars, usage metrics, maintainer confirmation)
+      placeholder: |
+        - Official domain: https://...
+        - GitHub stars: 120
+        - Usage: 500+ monthly active users
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: Which category does this resource belong to?
+      options:
+        - Academics - General
+        - Academics - AIKOL (Laws)
+        - Academics - KIRKHS (Islamic Studies)
+        - Academics - KAED (Architecture)
+        - Academics - KENMS (Economics)
+        - Academics - KICT (IT)
+        - Academics - KOE (Engineering)
+        - Academics - KOED (Education)
+        - Academics - Medical (KOM/KOD/KON/KOP/KAHS)
+        - Academics - KOS (Science)
+        - Campus Life
+        - Career & Internships
+        - Developers
+    validations:
+      required: true
+
+  - type: dropdown
+    id: campus
+    attributes:
+      label: Campus
+      description: Which campus is this resource relevant to?
+      options:
+        - All campuses
+        - Gombak
+        - Kuantan
+        - Pagoh
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: quality-checks
+    attributes:
+      label: Quality Checklist
+      description: Please confirm the following
+      options:
+        - label: The resource is currently accessible and working
+          required: true
+        - label: The resource is relevant to IIUM students/faculty
+          required: true
+        - label: The resource is either official or widely adopted
+          required: true
+        - label: I have searched and confirmed this resource is not already listed
+          required: false
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional Information
+      description: Anything else that helps the review
+      placeholder: Optional

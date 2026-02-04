@@ -1,5 +1,6 @@
 ---
 title: '🎓 IIUM Kulliyyahs (Faculties)'
+description: Overview of IIUM faculties across campuses.
 ---
 
 A list of Kulliyyahs across IIUM campuses.

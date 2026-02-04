@@ -1,5 +1,6 @@
 ---
 title: 'Code of Conduct'
+description: Community standards and enforcement guidance for Awesome IIUM.
 ---
 
 ## Our Pledge
@@ -58,8 +59,9 @@ individual is representing the community in public spaces.
 ## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported to the community leaders at [INSERT EMAIL ADDRESS]. All complaints will
-be reviewed promptly, fairly, and with strict confidentiality.
+reported by opening an issue at
+<https://github.com/iiumstudent/Awesome-IIUM/issues>. All complaints will be
+reviewed promptly, fairly, and with strict confidentiality.
 
 ## Attribution
 

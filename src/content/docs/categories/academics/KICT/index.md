@@ -67,17 +67,16 @@ technologies at IIUM's Gombak campus.
 
 ## 📖 Programming Resources
 
-- [Java Resources](/categories/academics/KICT/Language/Java) - Java programming
-  guides
+- [Java Resources](./Language/Java/) - Java programming guides
 
-## � Social Media
+## 📣 Social Media
 
 - [Facebook: @kictofficial](https://www.facebook.com/kictofficial/)
 - [Instagram: @kictofficial](https://www.instagram.com/kictofficial/)
 - [YouTube: KICT Media](https://www.youtube.com/@KICTMedia)
 - [Twitter: @kictofficial](https://twitter.com/kictofficial)
 
-## �🔗 Quick Links
+## 🔗 Quick Links
 
 - [i-Ma'luum](https://imaluum.iium.edu.my/) - Student Portal
 - [i-Ta'leem](https://italeem.iium.edu.my/) - Learning Management System

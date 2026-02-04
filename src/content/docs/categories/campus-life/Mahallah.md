@@ -1,5 +1,6 @@
 ---
 title: '🏠 IIUM Mahallahs (Residential Colleges)'
+description: Residential colleges available at IIUM Gombak.
 ---
 
 A list of Mahallahs at IIUM Gombak campus.

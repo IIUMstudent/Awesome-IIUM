@@ -1,5 +1,6 @@
 ---
 title: 'Academics'
+description: Academic portals, tools, and kulliyyah resources for IIUM students.
 ---
 
 > Resources, tools, and guides for academic success at IIUM.
@@ -17,12 +18,12 @@ title: 'Academics'
 
 ## 🧮 Tools & Utilities
 
-- [iium-schedule-maker](https://github.com/iiumschedule/iium-schedule-maker) - A
-  tool to help you visualize and plan your semester timetable.
+- [MIIUM Schedule Apps](https://github.com/iqfareez/iium_schedule) - A mobile
+  app to help you visualize and plan your semester timetable.
 - [CGPA Calculator](https://github.com/zamzameir/iiumcgpa) - Calculate your GPA
   and CGPA easily.
-- **[Built-in GPA Calculator](/tools)** - Use our interactive calculator right
-  here!
+- **[Built-in GPA Calculator](../../tools/)** - Use our interactive calculator
+  right here!
 
 ## 📚 Resources
 

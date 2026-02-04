@@ -24,6 +24,29 @@ To keep this list high-quality, please ensure your contribution:
 - **No Self-Promotion**: If you are the author, please state it in the PR but
   keep the description objective.
 
+## 📦 Dependency Management Policy
+
+We keep dependencies stable and secure with a lightweight update policy.
+
+### When to Update
+
+- **Security fixes:** Update within **48 hours** of a known vulnerability.
+- **Minor/patch updates:** Batch monthly or when needed for compatibility.
+- **Major updates:** Only after testing and review (see below).
+
+### Handling Breaking Changes
+
+1. Review changelog and migration notes.
+2. Update in a dedicated PR with a clear summary of changes.
+3. Run the full test suite (`pnpm test`, `pnpm test:e2e`).
+4. Confirm no regressions in build (`pnpm build`).
+
+### Package Manager
+
+- **pnpm is required** for consistency (lockfile and workspace behavior).
+- Do not run `npm install` or `yarn install`.
+- Keep `pnpm-lock.yaml` in sync with `package.json`.
+
 ## 🚀 How to Contribute
 
 1. **Fork the repository**: Click the "Fork" button at the top right of this

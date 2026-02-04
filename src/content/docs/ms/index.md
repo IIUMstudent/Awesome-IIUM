@@ -13,8 +13,8 @@ benar-benar hebat.
 Repositori ini adalah koleksi sumber untuk warga Universiti Islam Antarabangsa
 Malaysia (UIAM).
 
-_Baca ini dalam bahasa lain: [English](/), [中文](/zh/), [العربية](/ar/),
-[日本語](/ja/)_
+_Baca ini dalam bahasa lain: [English](../), [中文](../zh/), [العربية](../ar/),
+[日本語](../ja/)_
 
 ![Logo IIUM](/Awesome-IIUM/logo.png)
 
@@ -51,7 +51,7 @@ berkembang dengan bantuan anda!
 ## Lesen
 
 Projek ini dilesenkan di bawah Lesen Creative Commons - lihat fail
-[/about/license](/about/license) untuk maklumat lanjut.
+[../about/license](../about/license) untuk maklumat lanjut.
 
 ## Struktur Folder
 
@@ -72,7 +72,7 @@ dalam folder tersebut.
 - [Cadangan](#cadangan)
 - [Laman Web dan Portal Rasmi UIAM](#laman-web-dan-portal-rasmi-uiam)
 - [Sumber dan Alat Akademik UIAM](#sumber-dan-alat-akademik-uiam)
-- [Kehidupan Pelajar](/categories/campus-life/)
+- [Kehidupan Pelajar](../categories/campus-life/)
 - [Rangkaian Alumni dan Peluang Kerjaya UIAM](#rangkaian-alumni-dan-peluang-kerjaya-uiam)
 - [Berita dan Media UIAM](#berita-dan-media-uiam)
 - [Penyelidikan dan Penerbitan UIAM](#penyelidikan-dan-penerbitan-uiam)
@@ -90,7 +90,7 @@ Bahagian ini menyediakan senarai cadangan untuk pelajar UIAM.
   [Aplikasi Desktop Moodle](https://download.moodle.org/) - Aplikasi yang
   membolehkan pelajar mengakses kursus mereka di Moodle memandangkan Imaalum
   menggunakannya.
-- [Aktiviti](/categories/campus-life/Programs.md) - Senarai aktiviti aktif yang
+- [Aktiviti](../categories/campus-life/programs/) - Senarai aktiviti aktif yang
   terdapat di UIAM.
 
 ## Laman Web dan Portal Rasmi UIAM
@@ -117,13 +117,13 @@ pelbagai perkhidmatan kepada komuniti UIAM.
 Bahagian ini menyediakan sumber berkaitan aplikasi, alat, dan perkhidmatan untuk
 ahli akademik di UIAM.
 
-- [Sumber Akademik Umum](/categories/academics/General.md) - Alat penting,
+- [Sumber Akademik Umum](../categories/academics/general/) - Alat penting,
   portfolio, dan pautan perpustakaan.
-- [Sumber KICT](/categories/academics/KICT/) - Sumber untuk Teknologi Maklumat &
-  Komunikasi.
-- [Pra-Pendaftaran Gombak & Kuantan](/categories/academics/Pre-reg%20gombak-kuantan.md) -
+- [Sumber KICT](../categories/academics/KICT/) - Sumber untuk Teknologi Maklumat
+  & Komunikasi.
+- [Pra-Pendaftaran Gombak & Kuantan](../categories/academics/pre-reg-gombak-kuantan/) -
   Tarikh dan jadual untuk pendaftaran.
-- [Pra-Pendaftaran Pagoh](/categories/academics/Pre-reg%20pagoh.md) - Tarikh dan
+- [Pra-Pendaftaran Pagoh](../categories/academics/pre-reg-pagoh/) - Tarikh dan
   jadual untuk kampus Pagoh.
 
 ## Rangkaian Alumni dan Peluang Kerjaya UIAM
@@ -210,7 +210,7 @@ Kekal berhubung dengan UIAM melalui saluran media sosial rasmi kami:
 - [Facebook](https://www.facebook.com/IIUM.Official)
 - [Twitter](https://twitter.com/OfficialIIUM)
 - [Instagram](https://www.instagram.com/iiumofficial/)
-- [YouTube](https://www.youtube.com/user/IIUMOnline)
+- [YouTube](https://www.youtube.com/@IIUMOfficial)
 - [LinkedIn](https://www.linkedin.com/school/international-islamic-university-malaysia/)
 
 Ikuti kami untuk mendapatkan kemas kini, berita, dan acara terkini dari UIAM!

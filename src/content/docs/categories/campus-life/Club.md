@@ -1,5 +1,6 @@
 ---
 title: '🏀 IIUM Clubs & Societies'
+description: Sports, arts, and community clubs at IIUM.
 ---
 
 Participating in clubs and societies is a great way to enhance your university

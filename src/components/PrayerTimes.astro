@@ -1,29 +1,17 @@
 ---
 /**
- * Prayer Times Widget
- * Displays daily prayer times for IIUM campuses using Aladhan API
+ * PrayerTimes component
+ *
+ * Purpose: Display daily prayer times for IIUM campuses with countdown.
+ * Usage: <PrayerTimes /> on the dashboard page.
+ * Props: None.
+ * Client behavior: Hydrates client script for campus selection and countdown.
+ * API dependencies: Aladhan API (timings endpoint).
  */
-
-// biome-ignore lint/correctness/noUnusedVariables: unused interface
-interface PrayerTime {
-	name: string;
-	time: string;
-	arabic: string;
-}
-
-interface Campus {
-	name: string;
-	city: string;
-	lat: number;
-	lng: number;
-}
+import { CAMPUSES } from '../utils/aladhan';
 
 // biome-ignore lint/correctness/noUnusedVariables: passed to client script
-const campuses: Record<string, Campus> = {
-	gombak: { name: 'Gombak', city: 'Gombak', lat: 3.2513, lng: 101.7313 },
-	kuantan: { name: 'Kuantan', city: 'Kuantan', lat: 3.8077, lng: 103.326 },
-	pagoh: { name: 'Pagoh', city: 'Pagoh', lat: 2.1494, lng: 102.7181 },
-};
+const campuses = CAMPUSES;
 
 // Default to Gombak
 // biome-ignore lint/correctness/noUnusedVariables: passed to client script
@@ -397,7 +385,7 @@ const defaultCampus = 'gombak';
   .attribution {
     margin: 1rem 0 0 0;
     font-size: 0.625rem;
-    color: var(--sl-color-gray-4);
+    color: #475569;
     text-align: center;
   }
 

@@ -1,12 +1,14 @@
 ---
 title: 'Awesome-IIUMへようこそ！'
+description: IIUMコミュニティ向けの厳選リソース集。
 ---
 
 ようこそ！マレーシア国際イスラム大学（IIUM）コミュニティのために厳選されたリソース集をお届けできることを嬉しく思います。在校生、尊敬すべき教職員、誇り高き卒業生の皆様、必要なすべての情報をここにまとめました！公式ポータルから学生活動、研究出版物から社会奉仕活動まで、IIUMの真の魅力を発見してください。
 
 このリポジトリは、マレーシア国際イスラム大学（IIUM）のメンバー向けのリソース集です。
 
-_他の言語で読む：[English](/), [Melayu](/ms/), [中文](/zh/), [العربية](/ar/)_
+_他の言語で読む：[English](../), [Melayu](../ms/), [中文](../zh/),
+[العربية](../ar/)_
 
 ![IIUM ロゴ](/Awesome-IIUM/logo.png)
 
@@ -36,7 +38,7 @@ _他の言語で読む：[English](/), [Melayu](/ms/), [中文](/zh/), [العر
 ## ライセンス
 
 このプロジェクトはクリエイティブ・コモンズ・ライセンスの下でライセンスされています。詳細は
-[/about/license](//about/license) ファイルをご覧ください。
+[../about/license](../about/license) ファイルをご覧ください。
 
 ## フォルダ構成
 
@@ -55,7 +57,7 @@ _他の言語で読む：[English](/), [Melayu](/ms/), [中文](/zh/), [العر
 - [おすすめ](#おすすめ)
 - [IIUM 公式ウェブサイトとポータル](#iium-公式ウェブサイトとポータル)
 - [IIUM 学術リソースとツール](#iium-学術リソースとツール)
-- [学生生活](/categories/campus-life/)
+- [学生生活](../categories/campus-life/)
 - [IIUM 同窓会ネットワークとキャリア機会](#iium-同窓会ネットワークとキャリア機会)
 - [IIUM ニュースとメディア](#iium-ニュースとメディア)
 - [IIUM 研究と出版](#iium-研究と出版)
@@ -71,7 +73,7 @@ _他の言語で読む：[English](/), [Melayu](/ms/), [中文](/zh/), [العر
 - [Moodle Mobile App](https://download.moodle.org/mobile/) /
   [Moodle Desktop App](https://download.moodle.org/) -
   ImaalumがMoodleを使用しているため、学生がコースにアクセスできるようにするアプリケーション。
-- [活動](/categories/campus-life/Programs.md) -
+- [活動](../categories/campus-life/programs/) -
   IIUMで利用可能なアクティブな活動のリスト。
 
 ## IIUM 公式ウェブサイトとポータル
@@ -88,10 +90,10 @@ _他の言語で読む：[English](/), [Melayu](/ms/), [中文](/zh/), [العر
 
 このセクションでは、IIUMの学術関係者向けのアプリケーション、ツール、サービスに関連するリソースを提供します。
 
-- [一般学術リソース](/categories/academics/General.md) - 基本的なツール、ポートフォリオ、図書館リンク。
-- [KICT リソース](/categories/academics/KICT/) - 情報通信技術向けのリソース。
-- [事前登録（ゴンバック＆クアンタン）](/categories/academics/Pre-reg%20gombak-kuantan.md) - 登録の日程とスケジュール。
-- [事前登録（パゴ）](/categories/academics/Pre-reg%20pagoh.md) - パゴキャンパスの日程とスケジュール。
+- [一般学術リソース](../categories/academics/general/) - 基本的なツール、ポートフォリオ、図書館リンク。
+- [KICT リソース](../categories/academics/KICT/) - 情報通信技術向けのリソース。
+- [事前登録（ゴンバック＆クアンタン）](../categories/academics/pre-reg-gombak-kuantan/) - 登録の日程とスケジュール。
+- [事前登録（パゴ）](../categories/academics/pre-reg-pagoh/) - パゴキャンパスの日程とスケジュール。
 
 ## IIUM 同窓会ネットワークとキャリア機会
 
@@ -147,7 +149,7 @@ _他の言語で読む：[English](/), [Melayu](/ms/), [中文](/zh/), [العر
 - [Facebook](https://www.facebook.com/IIUM.Official)
 - [Twitter](https://twitter.com/OfficialIIUM)
 - [Instagram](https://www.instagram.com/iiumofficial/)
-- [YouTube](https://www.youtube.com/user/IIUMOnline)
+- [YouTube](https://www.youtube.com/@IIUMOfficial)
 - [LinkedIn](https://www.linkedin.com/school/international-islamic-university-malaysia/)
 
 フォローして、IIUMからの最新情報、ニュース、イベントを入手してください！

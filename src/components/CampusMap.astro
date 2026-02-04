@@ -1,7 +1,12 @@
 ---
 /**
- * Campus Map Component
- * Interactive map of IIUM campuses using MapLibre GL JS
+ * CampusMap component
+ *
+ * Purpose: Interactive map with campus tabs and location markers.
+ * Usage: <CampusMap /> on the dashboard page.
+ * Props: None.
+ * Client behavior: Loads MapLibre GL and hydrates map interactions.
+ * API dependencies: MapLibre GL JS (tile and map assets).
  */
 
 interface Campus {
@@ -418,7 +423,7 @@ const locations: Location[] = [
   .campus-tab.active {
     background: var(--campus-color, var(--sl-color-accent));
     border-color: var(--campus-color, var(--sl-color-accent));
-    color: white;
+    color: #0f172a;
   }
 
   .map-container {
@@ -467,7 +472,7 @@ const locations: Location[] = [
   .map-note {
     margin: 0.75rem 0 0 0;
     font-size: 0.625rem;
-    color: var(--sl-color-gray-4);
+    color: var(--sl-color-gray-2);
     text-align: center;
   }
 

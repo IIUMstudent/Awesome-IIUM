@@ -1,5 +1,6 @@
 ---
 title: 'License'
+description: CC0 1.0 Universal license text for Awesome IIUM content.
 ---
 
 Creative Commons Legal Code
