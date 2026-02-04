@@ -444,7 +444,7 @@ graph TD
 
 **API Endpoint:**
 
-```
+```http
 GET https://api.aladhan.com/v1/timings/{timestamp}
   ?latitude={lat}&longitude={lng}&method=3
 ```
@@ -535,7 +535,7 @@ graph TD
 
 **Output Directory:** `dist/`
 
-```
+```text
 dist/
 ├── index.html                    # Homepage
 ├── dashboard/index.html          # Dashboard page
@@ -939,7 +939,7 @@ sentry({
 
 ### Error Handling Patterns
 
-**Pattern 1: Async with Retry**
+### Pattern 1: Async with Retry
 
 ```typescript
 import { withRetry } from '@/utils/errors';
@@ -954,7 +954,7 @@ const data = await withRetry(
 );
 ```
 
-**Pattern 2: Try-Catch with Fallback**
+### Pattern 2: Try-Catch with Fallback
 
 ```typescript
 import { handleError } from '@/utils/errors';
@@ -967,7 +967,7 @@ try {
 }
 ```
 
-**Pattern 3: Error Component UI**
+### Pattern 3: Error Component UI
 
 ```typescript
 import { createErrorMarkup } from '@/utils/errors';
