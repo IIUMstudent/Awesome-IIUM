@@ -45,8 +45,8 @@ export const sentryConfig = {
 
 	// Only send errors for our domain
 	allowUrls: [
-		/^https?:\/\/(.+\.)?iiumstudent\.github\.io$/,
-		/^https?:\/\/localhost(:\d+)?$/,
+		/^https?:\/\/(.+\.)?iiumstudent\.github\.io/,
+		/^https?:\/\/localhost/,
 	],
 
 	// Release version for tracking (uses git commit SHA in production)
