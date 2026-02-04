@@ -3,16 +3,22 @@
 ## Prerequisites
 
 - **Node.js**: 18.17 or higher
-- **pnpm**: 8.0 or higher (we use pnpm instead of npm for this project)
+- **pnpm**: 10.0.0 (automatically installed via corepack - see below)
 
 ## Installation
 
-1. **Install pnpm globally** (if you don't have it):
+1. **Install pnpm** (recommended via corepack):
 
    ```bash
-   npm install -g pnpm
-   # OR use corepack (comes with Node.js 16.13+)
+   # Enable corepack (comes with Node.js 16.13+)
    corepack enable
+   # This will automatically install pnpm 10.0.0 as specified in package.json
+   ```
+
+   Alternatively, install pnpm globally:
+
+   ```bash
+   npm install -g pnpm@10.0.0
    ```
 
 2. **Install project dependencies**:
