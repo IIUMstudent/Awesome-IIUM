@@ -63,7 +63,7 @@ The site is built with Astro and ships standards-based HTML, CSS, and vanilla JS
 ### Automated Tests
 
 - Playwright E2E on Chromium, Firefox, WebKit
-- Accessibility tests (axe-core + pa11y-ci)
+- Accessibility tests (@axe-core/playwright)
 - Lighthouse CI performance and accessibility
 
 ---

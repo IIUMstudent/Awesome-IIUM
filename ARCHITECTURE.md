@@ -71,7 +71,7 @@ Bundle Analysis: rollup-plugin-visualizer
 ```yaml
 Unit Tests: Vitest + happy-dom
 E2E Tests: Playwright
-Accessibility: axe-core + pa11y-ci
+Accessibility: @axe-core/playwright
 Performance: Lighthouse CI
 ```
 
@@ -593,7 +593,7 @@ graph TD
     
     CI --> Lint[🔍 Lint & Format<br/>Biome + markdownlint]
     CI --> Test[🧪 Tests<br/>Vitest + Playwright]
-    CI --> A11y[♿ Accessibility<br/>axe-core + pa11y-ci]
+    CI --> A11y[♿ Accessibility<br/>@axe-core/playwright]
     CI --> Security[🔒 Security<br/>npm audit]
     
     Lint --> Pass{All Pass?}

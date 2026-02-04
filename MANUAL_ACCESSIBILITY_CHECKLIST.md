@@ -574,7 +574,7 @@ Minimum 44×44 CSS pixels for touch targets.
 
 - [x] **E2E Tests (Playwright):** 41 tests covering functionality
 - [x] **Accessibility Tests (axe-core):** 13 tests covering WCAG rules
-- [x] **pa11y-ci:** Automated accessibility scanning
+- [x] **@axe-core/playwright:** Automated WCAG 2.1 AA accessibility scanning (12 comprehensive tests)
 - [x] **Lighthouse CI:** Core Web Vitals + Accessibility score
 
 ### Manual vs Automated Coverage
