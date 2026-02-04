@@ -1,16 +1,16 @@
 /**
  * Unit tests for GPA calculation utilities
- * 
+ *
  * Tests semester GPA, CGPA calculations, grade descriptions, and validation
  */
 
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import {
-	calculateSemesterGPA,
+	type Course,
 	calculateNewCGPA,
+	calculateSemesterGPA,
 	getGradeDescription,
 	isValidCourse,
-	type Course,
 } from '../../src/utils/gpa';
 
 describe('calculateSemesterGPA', () => {
@@ -255,25 +255,27 @@ describe('isValidCourse', () => {
 	});
 
 	it('should reject null', () => {
-		expect(isValidCourse(null as any)).toBe(false);
+		expect(isValidCourse(null as unknown as Course)).toBe(false);
 	});
 
 	it('should reject undefined', () => {
-		expect(isValidCourse(undefined as any)).toBe(false);
+		expect(isValidCourse(undefined as unknown as Course)).toBe(false);
 	});
 
 	it('should reject non-object', () => {
-		expect(isValidCourse('invalid' as any)).toBe(false);
-		expect(isValidCourse(123 as any)).toBe(false);
+		expect(isValidCourse('invalid' as unknown as Course)).toBe(false);
+		expect(isValidCourse(123 as unknown as Course)).toBe(false);
 	});
 
 	it('should reject course with missing fields', () => {
-		expect(isValidCourse({ grade: 3.5 } as any)).toBe(false);
-		expect(isValidCourse({ credits: 3 } as any)).toBe(false);
+		expect(isValidCourse({ grade: 3.5 } as unknown as Course)).toBe(false);
+		expect(isValidCourse({ credits: 3 } as unknown as Course)).toBe(false);
 	});
 
 	it('should validate all valid IIUM grade points', () => {
-		const validGrades = [4.0, 3.67, 3.33, 3.0, 2.67, 2.33, 2.0, 1.67, 1.33, 1.0, 0.0];
+		const validGrades = [
+			4.0, 3.67, 3.33, 3.0, 2.67, 2.33, 2.0, 1.67, 1.33, 1.0, 0.0,
+		];
 		const validCredits = [1, 2, 3, 4];
 
 		for (const grade of validGrades) {

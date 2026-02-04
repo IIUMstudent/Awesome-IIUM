@@ -3,11 +3,11 @@
 
 /**
  * Sentry integration for Awesome IIUM
- * 
+ *
  * Environment Variables Required:
  * - SENTRY_DSN: Your Sentry project DSN (optional, errors logged if not set)
  * - SENTRY_AUTH_TOKEN: For uploading source maps (CI/CD only)
- * 
+ *
  * Free tier for open source: https://sentry.io/pricing/
  */
 

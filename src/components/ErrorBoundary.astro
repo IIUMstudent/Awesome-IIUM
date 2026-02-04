@@ -21,11 +21,11 @@ const {
 	showDetails = false,
 } = Astro.props;
 
-const slot = await Astro.slots.render('default');
+const _slot = await Astro.slots.render('default');
 ---
 
 <div class="error-boundary" data-component={componentName}>
-	<Fragment set:html={slot} />
+		<Fragment set:html={_slot} />
 </div>
 
 <style>
