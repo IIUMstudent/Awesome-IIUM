@@ -16,9 +16,10 @@ export default defineConfig({
 		esbuild: {
 			// Remove console.log, console.warn, console.info in production
 			// Keep console.error for critical errors that need monitoring
-			pure: process.env.NODE_ENV === 'production' 
-				? ['console.log', 'console.warn', 'console.info'] 
-				: [],
+			pure:
+				process.env.NODE_ENV === 'production'
+					? ['console.log', 'console.warn', 'console.info']
+					: [],
 		},
 		plugins: [
 			// Bundle size visualizer - generates stats.html after build
