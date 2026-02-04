@@ -1,10 +1,10 @@
 /**
  * E2E Tests for Search Functionality
- * 
+ *
  * Tests Pagefind search integration
  */
 
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('Search Functionality', () => {
 	test.beforeEach(async ({ page }) => {
@@ -17,38 +17,66 @@ test.describe('Search Functionality', () => {
 
 	test('should display search button in header', async ({ page }) => {
 		// Starlight has search button in header
-		const searchButton = page.locator('button[data-open-modal], .search-button, [aria-label*="Search"]').first();
+		const searchButton = page
+			.locator(
+				'button[data-open-modal], .search-button, [aria-label*="Search"]',
+			)
+			.first();
 		await expect(searchButton).toBeVisible({ timeout: 5000 });
 	});
 
 	test('should open search modal on click', async ({ page }) => {
 		// Click search button
-		const searchButton = page.locator('button[data-open-modal], .search-button, [aria-label*="Search"]').first();
+		const searchButton = page
+			.locator(
+				'button[data-open-modal], .search-button, [aria-label*="Search"]',
+			)
+			.first();
 		await searchButton.click();
 
 		// Search modal/dialog should appear
-		await expect(page.locator('dialog[open], .search-modal, [role="dialog"]')).toBeVisible({ timeout: 2000 });
+		await expect(
+			page.locator('dialog[open], .search-modal, [role="dialog"]'),
+		).toBeVisible({ timeout: 2000 });
 	});
 
 	test('should search and show results', async ({ page }) => {
 		// Open search
-		const searchButton = page.locator('button[data-open-modal], .search-button, [aria-label*="Search"]').first();
+		const searchButton = page
+			.locator(
+				'button[data-open-modal], .search-button, [aria-label*="Search"]',
+			)
+			.first();
 		await searchButton.click();
 
 		// Wait for search input
-		const searchInput = page.locator('input[type="search"], input[placeholder*="Search"], .pagefind-ui__search-input').first();
+		const searchInput = page
+			.locator(
+				'input[type="search"], input[placeholder*="Search"], .pagefind-ui__search-input',
+			)
+			.first();
 		await expect(searchInput).toBeVisible({ timeout: 2000 });
 
 		// Type search query
 		await searchInput.fill('GPA');
 
 		// Wait for results to appear
-		await page.waitForFunction(() => {
-			return document.querySelectorAll('.pagefind-ui__result, .search-result, [data-pagefind-result]').length > 0;
-		}, null, { timeout: 10000 });
+		await page.waitForFunction(
+			() => {
+				return (
+					document.querySelectorAll(
+						'.pagefind-ui__result, .search-result, [data-pagefind-result]',
+					).length > 0
+				);
+			},
+			null,
+			{ timeout: 10000 },
+		);
 
 		// Should show search results
-		const results = page.locator('.pagefind-ui__result, .search-result, [data-pagefind-result]');
+		const results = page.locator(
+			'.pagefind-ui__result, .search-result, [data-pagefind-result]',
+		);
 		const resultCount = await results.count();
 
 		// Should have at least some results
@@ -57,16 +85,26 @@ test.describe('Search Functionality', () => {
 
 	test('should navigate to result on click', async ({ page }) => {
 		// Open search
-		const searchButton = page.locator('button[data-open-modal], .search-button, [aria-label*="Search"]').first();
+		const searchButton = page
+			.locator(
+				'button[data-open-modal], .search-button, [aria-label*="Search"]',
+			)
+			.first();
 		await searchButton.click();
 
 		// Search for something specific
-		const searchInput = page.locator('input[type="search"], input[placeholder*="Search"], .pagefind-ui__search-input').first();
+		const searchInput = page
+			.locator(
+				'input[type="search"], input[placeholder*="Search"], .pagefind-ui__search-input',
+			)
+			.first();
 		await searchInput.fill('GPA');
 		await page.waitForTimeout(1000);
 
 		// Click first result (if any)
-		const firstResult = page.locator('.pagefind-ui__result, .search-result').first();
+		const firstResult = page
+			.locator('.pagefind-ui__result, .search-result')
+			.first();
 		const hasResults = await firstResult.isVisible().catch(() => false);
 
 		if (hasResults) {
@@ -83,11 +121,19 @@ test.describe('Search Functionality', () => {
 
 	test('should handle empty search', async ({ page }) => {
 		// Open search
-		const searchButton = page.locator('button[data-open-modal], .search-button, [aria-label*="Search"]').first();
+		const searchButton = page
+			.locator(
+				'button[data-open-modal], .search-button, [aria-label*="Search"]',
+			)
+			.first();
 		await searchButton.click();
 
 		// Search input should be empty initially
-		const searchInput = page.locator('input[type="search"], input[placeholder*="Search"], .pagefind-ui__search-input').first();
+		const searchInput = page
+			.locator(
+				'input[type="search"], input[placeholder*="Search"], .pagefind-ui__search-input',
+			)
+			.first();
 		await expect(searchInput).toHaveValue('');
 
 		// Typing and clearing should work
@@ -98,7 +144,11 @@ test.describe('Search Functionality', () => {
 
 	test('should close search modal with Escape key', async ({ page }) => {
 		// Open search
-		const searchButton = page.locator('button[data-open-modal], .search-button, [aria-label*="Search"]').first();
+		const searchButton = page
+			.locator(
+				'button[data-open-modal], .search-button, [aria-label*="Search"]',
+			)
+			.first();
 		await searchButton.click();
 
 		// Modal should be open
@@ -123,10 +173,16 @@ test.describe('Search Functionality', () => {
 		await page.keyboard.press('Enter');
 
 		// Search input should be focused
-		const searchInput = page.locator('input[type="search"], input[placeholder*="Search"]').first();
-		const isFocused = await searchInput.evaluate((el) => el === document.activeElement).catch(() => false);
+		const searchInput = page
+			.locator('input[type="search"], input[placeholder*="Search"]')
+			.first();
+		const isFocused = await searchInput
+			.evaluate((el) => el === document.activeElement)
+			.catch(() => false);
 
 		// Input should either be focused or visible
-		expect(await searchInput.isVisible().catch(() => false) || isFocused).toBe(true);
+		expect(
+			(await searchInput.isVisible().catch(() => false)) || isFocused,
+		).toBe(true);
 	});
 });

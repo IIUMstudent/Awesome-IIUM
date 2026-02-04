@@ -1,11 +1,11 @@
 /**
  * Setup verification test for Vitest
- * 
+ *
  * This file verifies that the Vitest testing framework is configured correctly
  * and can run basic tests.
  */
 
-import { describe, it, expect, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 describe('Vitest Setup Verification', () => {
 	it('should run basic assertions', () => {

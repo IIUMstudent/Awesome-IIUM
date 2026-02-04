@@ -1,6 +1,6 @@
 /**
  * Pa11y-ci configuration for accessibility testing
- * 
+ *
  * Supports both CI and local development environments
  * Uses JavaScript config to enable conditional browser paths
  */
@@ -11,7 +11,7 @@ const getChromiumPath = () => {
 	if (process.env.CI) {
 		return '/usr/bin/chromium-browser';
 	}
-	
+
 	// Locally, let puppeteer auto-detect (works with Chrome/Chromium in PATH)
 	// Or use PUPPETEER_EXECUTABLE_PATH if set
 	return process.env.PUPPETEER_EXECUTABLE_PATH || undefined;

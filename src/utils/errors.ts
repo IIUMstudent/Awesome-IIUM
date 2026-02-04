@@ -89,7 +89,7 @@ export function categorizeError(error: unknown): ErrorCategory {
  */
 export function createErrorResponse(
 	error: unknown,
-	context?: string,
+	_context?: string,
 ): ErrorResponse {
 	const errorObj = error instanceof Error ? error : new Error(String(error));
 	const category = categorizeError(errorObj);

@@ -9,7 +9,7 @@
  * API dependencies: None.
  */
 
-interface Props {
+interface _Props {
 	fallback?: string;
 	componentName?: string;
 	showDetails?: boolean;
@@ -19,9 +19,12 @@ const {
 	fallback = 'Unable to load content',
 	componentName = 'Component',
 	showDetails = false,
-} = Astro.props;
+} = Astro.props as _Props;
 
 const _slot = await Astro.slots.render('default');
+
+// Variables used in client script via define:vars
+void (fallback ?? componentName ?? showDetails);
 ---
 
 <div class="error-boundary" data-component={componentName}>
