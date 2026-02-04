@@ -46,6 +46,10 @@ We keep dependencies stable and secure with a lightweight update policy.
 - **pnpm is required** for consistency (lockfile and workspace behavior).
 - Do not run `npm install` or `yarn install`.
 - Keep `pnpm-lock.yaml` in sync with `package.json`.
+- **Do not modify the `packageManager` field** in `package.json` unless coordinating a version upgrade.
+  - This field (`"packageManager": "pnpm@10.0.0"`) ensures everyone uses the same pnpm version.
+  - Corepack and CI workflows read this field automatically.
+  - Changing it requires updating documentation and testing all workflows.
 
 ## 🚀 How to Contribute
 
