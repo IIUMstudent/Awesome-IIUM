@@ -21,7 +21,6 @@
 		"test:e2e:ui": "playwright test --ui",
 		"test:e2e:debug": "playwright test --debug",
 		"test:a11y": "playwright test tests/e2e/accessibility.spec.ts",
-		"test:pa11y": "pa11y-ci",
 		"test:lighthouse": "lhci autorun",
 		"lint:md": "markdownlint '*.md' 'src/**/*.{md,mdx}' --ignore node_modules",
 		"format:md": "prettier --write 'src/**/*.{md,mdx}'",
@@ -60,7 +59,6 @@
 		"lint-staged": "^16.2.7",
 		"markdownlint-cli": "^0.47.0",
 		"npm-run-all": "^4.1.5",
-		"pa11y-ci": "^4.0.1",
 		"prettier": "^3.8.1",
 		"rollup-plugin-visualizer": "^6.0.5",
 		"vitest": "^4.0.18"

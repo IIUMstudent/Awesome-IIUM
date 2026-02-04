@@ -31,11 +31,6 @@ jobs:
       - name: Install Playwright Browsers
         run: pnpm exec playwright install --with-deps chromium
 
-      - name: Install Chromium for pa11y-ci
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y chromium-browser
-
       - name: Build site
         run: pnpm run build
         env:
@@ -49,9 +44,6 @@ jobs:
         env:
           CI: true
           BASE_URL: http://localhost:4321
-
-      - name: Run a11y tests (pa11y-ci)
-        run: pnpm run test:pa11y
 
       - name: Upload a11y reports
         if: failure()

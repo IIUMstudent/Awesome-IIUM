@@ -95,8 +95,7 @@ We use automated accessibility testing tools in our CI/CD pipeline:
 
 ### Tools Used
 
-- **[@axe-core/playwright](https://github.com/dequelabs/axe-core-npm)** - Automated WCAG testing
-- **[pa11y-ci](https://github.com/pa11y/pa11y-ci)** - CLI accessibility auditing
+- **[@axe-core/playwright](https://github.com/dequelabs/axe-core-npm)** - Automated WCAG 2.1 AA compliance testing
 - **[Playwright](https://playwright.dev/)** - E2E testing with accessibility checks
 
 ### Test Coverage
@@ -104,7 +103,6 @@ We use automated accessibility testing tools in our CI/CD pipeline:
 ```bash
 # Run accessibility tests
 pnpm test:a11y           # Axe-core + Playwright (13 tests)
-pnpm exec pa11y-ci       # Pa11y audits (5 core pages)
 
 # All E2E tests (includes 13 accessibility tests)
 pnpm test:e2e            # 41 total tests
