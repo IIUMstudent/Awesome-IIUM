@@ -221,6 +221,10 @@ const defaultCampus = 'gombak';
     // Initial update to set cachedTargetTime
     updateNextPrayer();
 
+    // Cache DOM elements to prevent querying every second
+    const countdownEl = document.getElementById('countdown');
+    const campusSelectEl = document.getElementById('campus-selector');
+
     countdownInterval = setInterval(() => {
       // Use cached target time to avoid recalculation and Date object creation
       if (!cachedTargetTime) {
@@ -232,7 +236,12 @@ const defaultCampus = 'gombak';
       const diff = cachedTargetTime - now;
 
       if (diff < 0) {
-        fetchPrayerTimes(document.getElementById('campus-selector').value);
+        // Refresh times when countdown ends
+        if (campusSelectEl) {
+          fetchPrayerTimes(campusSelectEl.value);
+        } else {
+          fetchPrayerTimes(defaultCampus);
+        }
         return;
       }
 
@@ -240,8 +249,10 @@ const defaultCampus = 'gombak';
       const minutes = Math.floor((diff % 3600000) / 60000);
       const seconds = Math.floor((diff % 60000) / 1000);
 
-      document.getElementById('countdown').textContent = 
-        `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      if (countdownEl) {
+        countdownEl.textContent =
+          `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      }
     }, 1000);
   }
 
