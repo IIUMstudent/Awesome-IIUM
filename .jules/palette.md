@@ -32,3 +32,8 @@ especially in dynamically generated rows where structure might be less obvious.
 
 **Learning:** Users often calculate data (like GPA) to share or save it elsewhere. Manual selection of text on mobile is high-friction and error-prone.
 **Action:** Provide a dedicated "Copy" button next to calculated results with clear visual feedback (e.g., checkmark icon change) to improve utility and delight.
+
+## 2026-02-06 - Focus Management in Validation
+
+**Learning:** When form validation fails, showing an error message is not enough. Users, especially those using keyboards or screen readers, may not immediately know *which* field is invalid or where it is located.
+**Action:** Programmatically focus the first invalid input element and scroll it into view using `element.focus()` and `element.scrollIntoView()`. This immediately guides the user to the problem area.

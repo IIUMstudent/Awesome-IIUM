@@ -276,6 +276,7 @@
       }
 
       let hasErrors = false;
+      let firstErrorInput: HTMLElement | null = null;
       let totalPoints = 0;
       let totalCredits = 0;
 
@@ -303,10 +304,12 @@
           if (!hasGrade) {
             gradeSelect.classList.add('input-error');
             gradeSelect.setAttribute('aria-invalid', 'true');
+            if (!firstErrorInput) firstErrorInput = gradeSelect;
           }
           if (!hasCredits) {
             creditsSelect.classList.add('input-error');
             creditsSelect.setAttribute('aria-invalid', 'true');
+            if (!firstErrorInput) firstErrorInput = creditsSelect;
           }
         } else if (hasGrade && hasCredits) {
           // Only calculate complete rows
@@ -324,6 +327,10 @@
         if (errorDiv) {
           errorDiv.textContent = '⚠️ Please fill in Grade and Credits for all started courses.';
           errorDiv.classList.add('visible');
+        }
+        if (firstErrorInput) {
+          (firstErrorInput as HTMLElement).focus();
+          (firstErrorInput as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
         resultsDiv?.classList.add('hidden');
         cgpaResultDiv?.classList.add('hidden');

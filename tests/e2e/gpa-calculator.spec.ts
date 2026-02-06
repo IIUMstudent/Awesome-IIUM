@@ -185,4 +185,23 @@ test.describe('GPA Calculator', () => {
 		await expect(page.locator('#prev-cgpa')).toHaveValue('3.75');
 		await expect(page.locator('#prev-credits')).toHaveValue('90');
 	});
+
+	test('should focus the first invalid input when validation fails', async ({
+		page,
+	}) => {
+		// Fill name but not grade/credits
+		await page
+			.locator('.course-row')
+			.first()
+			.locator('.course-name')
+			.fill('Incomplete Course');
+
+		// Click calculate
+		await page.getByRole('button', { name: /calculate gpa/i }).click();
+
+		// Expect Grade select to be focused
+		await expect(
+			page.locator('.course-row').first().locator('.grade'),
+		).toBeFocused();
+	});
 });
