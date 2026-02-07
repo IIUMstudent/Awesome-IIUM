@@ -32,3 +32,8 @@ especially in dynamically generated rows where structure might be less obvious.
 
 **Learning:** Users often calculate data (like GPA) to share or save it elsewhere. Manual selection of text on mobile is high-friction and error-prone.
 **Action:** Provide a dedicated "Copy" button next to calculated results with clear visual feedback (e.g., checkmark icon change) to improve utility and delight.
+
+## 2023-10-24 - Status Updates for Screen Readers
+
+**Learning:** Visual status dashboards that update in the background (via `setInterval`) provide no feedback to screen reader users, leaving them unaware of potentially critical changes.
+**Action:** Add `aria-live="polite"` to the timestamp or status summary element. This ensures updates are announced non-intrusively, keeping all users informed of the system state.

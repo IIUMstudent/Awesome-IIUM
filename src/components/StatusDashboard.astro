@@ -46,7 +46,7 @@ const hasInitialData = initialStatus.length > 0;
 
 <div id="status-dashboard" class="not-content">
   <div class="dashboard-header">
-    <span class="last-updated" id="last-updated">
+    <span class="last-updated" id="last-updated" aria-live="polite">
       Last updated: {initialStatus.length > 0 ? new Date().toLocaleString() : 'Loading...'}
     </span>
   </div>
