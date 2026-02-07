@@ -119,23 +119,15 @@
     const MAX_COURSES = 50;
 
     // Helper to update buttons state
-    const updateButtons = () => {
-      const rows = container?.querySelectorAll('.course-row');
-      const removeBtns = container?.querySelectorAll('.remove-btn');
-
-      if (rows && removeBtns) {
-        // Update remove buttons
-        const shouldDisableRemove = rows.length <= 1;
-        removeBtns.forEach((btn) => {
-          (btn as HTMLButtonElement).disabled = shouldDisableRemove;
-        });
-
-        // Update add button
-        if (addBtn) {
-          const limitReached = rows.length >= MAX_COURSES;
-          (addBtn as HTMLButtonElement).disabled = limitReached;
-          addBtn.title = limitReached ? 'Maximum courses reached' : '';
-        }
+    // Bolt Optimization: Only update the global "Add Course" button here.
+    // Individual row buttons are handled efficiently in add/remove listeners
+    // to avoid O(N) DOM operations.
+    const updateAddButtonState = () => {
+      if (addBtn && container) {
+        const rowCount = container.children.length;
+        const limitReached = rowCount >= MAX_COURSES;
+        (addBtn as HTMLButtonElement).disabled = limitReached;
+        addBtn.title = limitReached ? 'Maximum courses reached' : '';
       }
     };
 
@@ -150,7 +142,12 @@
       } catch (e) {}
     }
 
-    updateButtons();
+    updateAddButtonState();
+    // Bolt Optimization: Ensure the initial row has a disabled remove button
+    if (container && container.children.length === 1) {
+      const btn = container.querySelector('.remove-btn');
+      if (btn) (btn as HTMLButtonElement).disabled = true;
+    }
 
     // Keyboard navigation for adding rows
     container?.addEventListener('keydown', (e) => {
@@ -179,8 +176,14 @@
 
     // Add new course row
     addBtn?.addEventListener('click', () => {
-      const currentRows = container?.querySelectorAll('.course-row').length || 0;
-      if (currentRows >= MAX_COURSES) return;
+      const rowCount = container?.children.length || 0;
+      if (rowCount >= MAX_COURSES) return;
+
+      // Bolt Optimization: If only 1 row exists, enable its remove button before adding the 2nd row
+      if (rowCount === 1) {
+        const firstRowBtn = container?.firstElementChild?.querySelector('.remove-btn');
+        if (firstRowBtn) (firstRowBtn as HTMLButtonElement).disabled = false;
+      }
 
       const row = document.createElement('div');
       row.className = 'course-row slide-in';
@@ -211,7 +214,7 @@
         <button type="button" class="remove-btn" title="Remove course" aria-label="Remove course">×</button>
       `;
       container?.appendChild(row);
-      updateButtons();
+      updateAddButtonState();
       (row.querySelector('.course-name') as HTMLElement)?.focus();
     });
 
@@ -219,9 +222,9 @@
     container?.addEventListener('click', (e) => {
       const btn = e.target.closest('.remove-btn') as HTMLButtonElement | null;
       if (btn) {
-        const rows = Array.from(container.querySelectorAll('.course-row'));
+        const rowCount = container?.children.length || 0;
 
-        if (rows.length > 1) {
+        if (rowCount > 1) {
           const currentRow = btn.closest('.course-row');
           if (!currentRow) return;
 
@@ -235,11 +238,17 @@
 
             currentRow.remove();
 
+            // Bolt Optimization: If we are down to 1 row, disable its remove button
+            if (container?.children.length === 1) {
+              const lastRowBtn = container.firstElementChild?.querySelector('.remove-btn');
+              if (lastRowBtn) (lastRowBtn as HTMLButtonElement).disabled = true;
+            }
+
             if (nextFocusTarget) {
               (nextFocusTarget as HTMLElement).focus();
             }
             // Ensure buttons state is updated after removal
-            updateButtons();
+            updateAddButtonState();
           };
 
           const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -267,7 +276,7 @@
 
     // Calculate GPA
     calcBtn?.addEventListener('click', () => {
-      const rows = container?.querySelectorAll('.course-row');
+      const rows = container?.children;
       const errorDiv = document.getElementById('validation-error');
 
       if (errorDiv) {
@@ -279,7 +288,7 @@
       let totalPoints = 0;
       let totalCredits = 0;
 
-      rows?.forEach((row) => {
+      Array.from(rows || []).forEach((row) => {
         const nameInput = row.querySelector('.course-name') as HTMLInputElement;
         const gradeSelect = row.querySelector('.grade') as HTMLSelectElement;
         const creditsSelect = row.querySelector('.credits') as HTMLSelectElement;
@@ -365,21 +374,26 @@
     clearBtn?.addEventListener('click', () => {
       if (clearBtn.getAttribute('data-confirm') === 'true') {
         // Confirmed action
-        const rows = container?.querySelectorAll('.course-row');
-        rows?.forEach((row, i) => {
-          if (i > 0) row.remove();
-          else {
-            row.querySelector('.course-name').value = '';
-            row.querySelector('.grade').value = '';
-            row.querySelector('.credits').value = '';
-            (row.querySelector('.course-name') as HTMLElement).focus();
-          }
-        });
+        const rows = container?.children;
+        if (rows) {
+          Array.from(rows).forEach((row, i) => {
+            if (i > 0) row.remove();
+            else {
+              (row.querySelector('.course-name') as HTMLInputElement).value = '';
+              (row.querySelector('.grade') as HTMLSelectElement).value = '';
+              (row.querySelector('.credits') as HTMLSelectElement).value = '';
+              (row.querySelector('.course-name') as HTMLElement).focus();
+              // Bolt Optimization: Disable the remove button on the single remaining row
+              const removeBtn = row.querySelector('.remove-btn');
+              if (removeBtn) (removeBtn as HTMLButtonElement).disabled = true;
+            }
+          });
+        }
         (document.getElementById('prev-cgpa') as HTMLInputElement).value = '';
         (document.getElementById('prev-credits') as HTMLInputElement).value = '';
         resultsDiv?.classList.add('hidden');
         cgpaResultDiv?.classList.add('hidden');
-        updateButtons();
+        updateAddButtonState();
 
         // Reset button state
         clearBtn.textContent = 'Clear All';
