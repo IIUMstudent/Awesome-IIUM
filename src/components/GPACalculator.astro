@@ -327,6 +327,14 @@
         }
         resultsDiv?.classList.add('hidden');
         cgpaResultDiv?.classList.add('hidden');
+
+        // Focus the first error input
+        const firstError = container?.querySelector('.input-error') as HTMLElement;
+        if (firstError) {
+          firstError.focus();
+          firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
         return;
       }
 
