@@ -1,5 +1,5 @@
 ---
-import fs from 'node:fs';
+import fs from 'node:fs/promises';
 import path from 'node:path';
 import { GITHUB_REPO } from '../config';
 
@@ -27,16 +27,16 @@ async function fetchRecentResources(): Promise<RecentResource[]> {
 	try {
 		// Check cache first
 		try {
-			if (fs.existsSync(CACHE_FILE)) {
-				const stats = fs.statSync(CACHE_FILE);
-				const now = Date.now();
-				if (now - stats.mtimeMs < CACHE_DURATION) {
-					const data = fs.readFileSync(CACHE_FILE, 'utf-8');
-					return JSON.parse(data);
-				}
+			const stats = await fs.stat(CACHE_FILE);
+			const now = Date.now();
+			if (now - stats.mtimeMs < CACHE_DURATION) {
+				const data = await fs.readFile(CACHE_FILE, 'utf-8');
+				return JSON.parse(data);
 			}
 		} catch (e) {
-			console.warn('Cache read error:', e);
+			if ((e as { code?: string }).code !== 'ENOENT') {
+				console.warn('Cache read error:', e);
+			}
 		}
 
 		const response = await fetch(`${GITHUB_REPO.apiUrl}/commits?per_page=20`);
@@ -74,10 +74,8 @@ async function fetchRecentResources(): Promise<RecentResource[]> {
 
 		// Write cache
 		try {
-			if (!fs.existsSync(CACHE_DIR)) {
-				fs.mkdirSync(CACHE_DIR, { recursive: true });
-			}
-			fs.writeFileSync(CACHE_FILE, JSON.stringify(result));
+			await fs.mkdir(CACHE_DIR, { recursive: true });
+			await fs.writeFile(CACHE_FILE, JSON.stringify(result));
 		} catch (e) {
 			console.warn('Cache write error:', e);
 		}
