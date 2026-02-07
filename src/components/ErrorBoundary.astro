@@ -22,12 +22,13 @@ const {
 } = Astro.props as _Props;
 
 const _slot = await Astro.slots.render('default');
+const id = 'boundary-' + Math.random().toString(36).substr(2, 9);
 
 // Variables used in client script via define:vars
-void (fallback ?? componentName ?? showDetails);
+void (fallback ?? componentName ?? showDetails ?? id);
 ---
 
-<div class="error-boundary" data-component={componentName}>
+<div id={id} class="error-boundary" data-component={componentName}>
 		<Fragment set:html={_slot} />
 </div>
 
@@ -68,10 +69,9 @@ void (fallback ?? componentName ?? showDetails);
 	}
 </style>
 
-<script define:vars={{ fallback, componentName, showDetails }}>
+<script define:vars={{ fallback, componentName, showDetails, id }}>
 	// Client-side error boundary
-	const boundary = document.currentScript?.
-previousElementSibling;
+	const boundary = document.getElementById(id);
 
 	if (boundary) {
 		// Catch errors in child components
@@ -91,14 +91,24 @@ previousElementSibling;
 			}
 		});
 
+        function escapeHtml(unsafe) {
+			if (typeof unsafe !== 'string') return unsafe;
+			return unsafe
+				.replace(/&/g, '&amp;')
+				.replace(/</g, '&lt;')
+				.replace(/>/g, '&gt;')
+				.replace(/"/g, '&quot;')
+				.replace(/'/g, '&#039;');
+		}
+
 		function showErrorFallback(error) {
 			const errorHtml = `
 				<div class="error-fallback">
-					<h4>⚠️ ${fallback}</h4>
-					<p>The ${componentName} encountered an error. Please try refreshing the page.</p>
+					<h4>⚠️ ${escapeHtml(fallback)}</h4>
+					<p>The ${escapeHtml(componentName)} encountered an error. Please try refreshing the page.</p>
 					${
 						showDetails
-							? `<div class="error-details">${String(error)}</div>`
+							? `<div class="error-details">${escapeHtml(String(error))}</div>`
 							: ''
 					}
 				</div>
