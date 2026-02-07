@@ -14,8 +14,32 @@ import { CAMPUSES } from '../utils/aladhan';
 const campuses = CAMPUSES;
 
 // Default to Gombak
-// biome-ignore lint/correctness/noUnusedVariables: passed to client script
 const defaultCampus = 'gombak';
+
+// Pre-fetch data for default campus at build time
+// biome-ignore lint/correctness/noUnusedVariables: passed to client script
+let initialData = null;
+let initialDate = '';
+
+try {
+	const malaysiaTime = new Date().toLocaleString('en-US', {
+		timeZone: 'Asia/Kuala_Lumpur',
+	});
+	const myDate = new Date(malaysiaTime);
+	initialDate = `${myDate.getDate()}-${myDate.getMonth() + 1}-${myDate.getFullYear()}`;
+
+	const campus = CAMPUSES[defaultCampus];
+	const res = await fetch(
+		`https://api.aladhan.com/v1/timings/${initialDate}?latitude=${campus.lat}&longitude=${campus.lng}&method=3`,
+	);
+	const data = await res.json();
+
+	if (data.code === 200) {
+		initialData = data.data;
+	}
+} catch (e) {
+	console.warn('Failed to pre-fetch prayer times:', e);
+}
 ---
 
 <div class="prayer-times not-content">
@@ -48,7 +72,7 @@ const defaultCampus = 'gombak';
   </p>
 </div>
 
-<script define:vars={{ campuses, defaultCampus }}>
+<script define:vars={{ campuses, defaultCampus, initialData, initialDate }}>
   // Helper to prevent XSS
   function escapeHtml(unsafe) {
     if (typeof unsafe !== 'string') return unsafe;
@@ -82,6 +106,22 @@ const defaultCampus = 'gombak';
 
     const today = new Date();
     const date = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
+
+    // Check pre-fetched data first
+    if (campusKey === defaultCampus && initialData && date === initialDate) {
+      currentTimes = initialData.timings;
+      renderTimes(initialData);
+
+      // Cache for future visits
+      try {
+        const cacheKey = `iium-prayer-times-${campusKey}-${date}`;
+        localStorage.setItem(cacheKey, JSON.stringify({ code: 200, data: initialData }));
+      } catch (e) {
+        console.warn('Cache write error:', e);
+      }
+      return;
+    }
+
     const cacheKey = `iium-prayer-times-${campusKey}-${date}`;
 
     // Check cache first

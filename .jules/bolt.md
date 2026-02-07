@@ -21,3 +21,7 @@
 ## 2026-02-03 - [Optimizing Interval Loops]
 **Learning:** `setInterval` loops in hydrated Astro components can silently accumulate object allocations (e.g., `new Date()`) and redundant calculations if not carefully scoped.
 **Action:** Lift invariant calculations and object creations out of the hot loop (interval) and use caching/state variables to minimize work done per tick.
+
+## 2026-02-07 - [Hybrid Fetching for Daily Data]
+**Learning:** For data that changes daily (like prayer times), purely static build is insufficient if the user visits on a different day than the build.
+**Action:** Fetch data at build time for the *build date*, pass it to client, and let client logic decide whether to use it (if date matches) or fetch fresh data.
