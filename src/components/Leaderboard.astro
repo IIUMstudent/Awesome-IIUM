@@ -1,6 +1,6 @@
 ---
 // Leaderboard.astro
-import fs from 'node:fs';
+import fs from 'node:fs/promises';
 import path from 'node:path';
 import { GITHUB_REPO } from '../config';
 
@@ -25,6 +25,7 @@ interface Contributor {
 	contributions: number;
 }
 
+// biome-ignore lint/suspicious/noExplicitAny: validating unknown external data
 function isValidContributor(data: any): data is Contributor {
 	return (
 		typeof data === 'object' &&
@@ -47,19 +48,20 @@ let error = false;
 try {
 	let cachedData: Contributor[] | null = null;
 	try {
-		if (fs.existsSync(CACHE_FILE)) {
-			const stats = fs.statSync(CACHE_FILE);
-			const now = Date.now();
-			if (now - stats.mtimeMs < CACHE_DURATION) {
-				const data = fs.readFileSync(CACHE_FILE, 'utf-8');
-				const parsed = JSON.parse(data);
-				if (Array.isArray(parsed) && parsed.every(isValidContributor)) {
-					cachedData = parsed;
-				}
+		const stats = await fs.stat(CACHE_FILE);
+		const now = Date.now();
+		if (now - stats.mtimeMs < CACHE_DURATION) {
+			const data = await fs.readFile(CACHE_FILE, 'utf-8');
+			const parsed = JSON.parse(data);
+			if (Array.isArray(parsed) && parsed.every(isValidContributor)) {
+				cachedData = parsed;
 			}
 		}
 	} catch (err) {
-		console.warn('Failed to read leaderboard cache:', err);
+		const code = (err as { code?: string })?.code;
+		if (code !== 'ENOENT') {
+			console.warn('Failed to read leaderboard cache:', err);
+		}
 	}
 
 	if (cachedData) {
@@ -75,10 +77,8 @@ try {
 				contributors = data;
 				// Cache the successful response
 				try {
-					if (!fs.existsSync(CACHE_DIR)) {
-						fs.mkdirSync(CACHE_DIR, { recursive: true });
-					}
-					fs.writeFileSync(CACHE_FILE, JSON.stringify(contributors));
+					await fs.mkdir(CACHE_DIR, { recursive: true });
+					await fs.writeFile(CACHE_FILE, JSON.stringify(contributors));
 				} catch (err) {
 					console.warn('Failed to write leaderboard cache:', err);
 				}
