@@ -185,4 +185,23 @@ test.describe('GPA Calculator', () => {
 		await expect(page.locator('#prev-cgpa')).toHaveValue('3.75');
 		await expect(page.locator('#prev-credits')).toHaveValue('90');
 	});
+
+	test('should focus the first error input on validation failure', async ({
+		page,
+	}) => {
+		// Fill name but not grade/credits
+		const courseRow = page.locator('.course-row').first();
+		await courseRow.locator('.course-name').fill('Physics');
+
+		// Click calculate
+		await page.getByRole('button', { name: /calculate gpa/i }).click();
+
+		// Expect validation error message
+		await expect(page.locator('#validation-error')).toBeVisible();
+
+		// Expect grade select (first invalid) to have error class and be focused
+		const gradeSelect = courseRow.locator('.grade');
+		await expect(gradeSelect).toHaveClass(/input-error/);
+		await expect(gradeSelect).toBeFocused();
+	});
 });

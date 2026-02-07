@@ -147,6 +147,11 @@ const hasInitialData = initialStatus.length > 0;
     }
   }
 
+  // Initial fetch if no SSG data
+  if (!hasInitialData) {
+    fetchStatus();
+  }
+
   setInterval(fetchStatus, 300000); // Refresh every 5 minutes (matches cache TTL)
 </script>
 
