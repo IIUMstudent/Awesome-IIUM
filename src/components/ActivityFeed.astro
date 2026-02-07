@@ -15,6 +15,7 @@ import { GITHUB_REPO } from '../config';
 interface Activity {
 	type: 'commit' | 'pr' | 'issue';
 	title: string;
+	fullTitle?: string;
 	user: string;
 	avatar: string;
 	url: string;
@@ -78,6 +79,7 @@ async function fetchActivity(): Promise<Activity[]> {
 				activities.push({
 					type: 'commit',
 					title: commit.commit.message.split('\n')[0].substring(0, 60),
+					fullTitle: commit.commit.message.split('\n')[0],
 					user: commit.author?.login || commit.commit.author.name,
 					avatar: isValidUrl(commit.author?.avatar_url)
 						? commit.author?.avatar_url
@@ -97,6 +99,7 @@ async function fetchActivity(): Promise<Activity[]> {
 				activities.push({
 					type: 'pr',
 					title: pr.title.substring(0, 60),
+					fullTitle: pr.title,
 					user: pr.user.login,
 					avatar: isValidUrl(pr.user.avatar_url)
 						? pr.user.avatar_url
@@ -161,12 +164,12 @@ const activities = await fetchActivity();
         <li class={`activity-item activity-${activity.type}`}>
           <img 
             src={activity.avatar} 
-            alt={activity.user} 
+            alt=""
             class="avatar"
             loading="lazy"
           />
           <div class="activity-content">
-            <a href={activity.url} target="_blank" rel="noopener noreferrer">
+            <a href={activity.url} target="_blank" rel="noopener noreferrer" title={activity.fullTitle || activity.title}>
               <span class="icon">{activity.icon}</span>
               <span class="title">{activity.title}</span>
             </a>
