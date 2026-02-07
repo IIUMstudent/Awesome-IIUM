@@ -23,6 +23,17 @@ interface Activity {
 	icon: string;
 }
 
+// Security: Validate URLs to prevent XSS (e.g. javascript: schemes)
+function isValidUrl(url: string | undefined): boolean {
+	if (!url) return false;
+	try {
+		const parsed = new URL(url);
+		return parsed.protocol === 'http:' || parsed.protocol === 'https:';
+	} catch {
+		return false;
+	}
+}
+
 async function fetchActivity(): Promise<Activity[]> {
 	const CACHE_DIR = join(
 		process.cwd(),
@@ -68,8 +79,10 @@ async function fetchActivity(): Promise<Activity[]> {
 					type: 'commit',
 					title: commit.commit.message.split('\n')[0].substring(0, 60),
 					user: commit.author?.login || commit.commit.author.name,
-					avatar: commit.author?.avatar_url || 'https://github.com/ghost.png',
-					url: commit.html_url,
+					avatar: isValidUrl(commit.author?.avatar_url)
+						? commit.author?.avatar_url
+						: 'https://github.com/ghost.png',
+					url: isValidUrl(commit.html_url) ? commit.html_url : '#',
 					date: new Date(commit.commit.author.date).toLocaleDateString(),
 					timestamp: new Date(commit.commit.author.date).getTime(),
 					icon: '📝',
@@ -85,8 +98,10 @@ async function fetchActivity(): Promise<Activity[]> {
 					type: 'pr',
 					title: pr.title.substring(0, 60),
 					user: pr.user.login,
-					avatar: pr.user.avatar_url,
-					url: pr.html_url,
+					avatar: isValidUrl(pr.user.avatar_url)
+						? pr.user.avatar_url
+						: 'https://github.com/ghost.png',
+					url: isValidUrl(pr.html_url) ? pr.html_url : '#',
 					date: new Date(pr.created_at).toLocaleDateString(),
 					timestamp: new Date(pr.created_at).getTime(),
 					icon: '🔀',

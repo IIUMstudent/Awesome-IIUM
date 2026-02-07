@@ -25,6 +25,21 @@ interface Contributor {
 	contributions: number;
 }
 
+function isValidContributor(data: any): data is Contributor {
+	return (
+		typeof data === 'object' &&
+		data !== null &&
+		typeof data.login === 'string' &&
+		typeof data.avatar_url === 'string' &&
+		(data.avatar_url.startsWith('http://') ||
+			data.avatar_url.startsWith('https://')) &&
+		typeof data.html_url === 'string' &&
+		(data.html_url.startsWith('http://') ||
+			data.html_url.startsWith('https://')) &&
+		typeof data.contributions === 'number'
+	);
+}
+
 let contributors: Contributor[] = [];
 // biome-ignore lint/correctness/noUnusedVariables: used in template
 let error = false;
@@ -37,7 +52,10 @@ try {
 			const now = Date.now();
 			if (now - stats.mtimeMs < CACHE_DURATION) {
 				const data = fs.readFileSync(CACHE_FILE, 'utf-8');
-				cachedData = JSON.parse(data);
+				const parsed = JSON.parse(data);
+				if (Array.isArray(parsed) && parsed.every(isValidContributor)) {
+					cachedData = parsed;
+				}
 			}
 		}
 	} catch (err) {
@@ -52,15 +70,21 @@ try {
 			`${GITHUB_REPO.apiUrl}/contributors?per_page=12`,
 		);
 		if (response.ok) {
-			contributors = await response.json();
-			// Cache the successful response
-			try {
-				if (!fs.existsSync(CACHE_DIR)) {
-					fs.mkdirSync(CACHE_DIR, { recursive: true });
+			const data = await response.json();
+			if (Array.isArray(data) && data.every(isValidContributor)) {
+				contributors = data;
+				// Cache the successful response
+				try {
+					if (!fs.existsSync(CACHE_DIR)) {
+						fs.mkdirSync(CACHE_DIR, { recursive: true });
+					}
+					fs.writeFileSync(CACHE_FILE, JSON.stringify(contributors));
+				} catch (err) {
+					console.warn('Failed to write leaderboard cache:', err);
 				}
-				fs.writeFileSync(CACHE_FILE, JSON.stringify(contributors));
-			} catch (err) {
-				console.warn('Failed to write leaderboard cache:', err);
+			} else {
+				console.error('Invalid data format from GitHub API');
+				error = true;
 			}
 		} else {
 			console.error(

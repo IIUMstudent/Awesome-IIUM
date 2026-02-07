@@ -46,7 +46,7 @@ const hasInitialData = initialStatus.length > 0;
 
 <div id="status-dashboard" class="not-content">
   <div class="dashboard-header">
-    <span class="last-updated" id="last-updated">
+    <span class="last-updated" id="last-updated" aria-live="polite">
       Last updated: {initialStatus.length > 0 ? new Date().toLocaleString() : 'Loading...'}
     </span>
   </div>
@@ -144,27 +144,31 @@ const hasInitialData = initialStatus.length > 0;
       updateLastUpdatedTimestamp();
     } catch (e) {
       console.error('Failed to fetch status', e);
-   dashboard-header {
+    }
+  }
+
+  // Initial fetch if no SSG data
+  if (!hasInitialData) {
+    fetchStatus();
+  }
+
+  setInterval(fetchStatus, 300000); // Refresh every 5 minutes (matches cache TTL)
+</script>
+
+<style>
+  .dashboard-header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     margin-bottom: 1rem;
   }
+
   .last-updated {
     font-size: 0.85rem;
     color: var(--sl-color-gray-3);
     font-style: italic;
   }
-  .status-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1;
-  }
-  setInterval(fetchStatus, 300000); // Refresh every 5 minutes (matches cache TTL)
-</script>
 
-<style>
   .status-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
