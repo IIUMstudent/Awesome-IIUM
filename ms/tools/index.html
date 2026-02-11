@@ -273,6 +273,8 @@ Data from <a href="https://aladhan.com/" target="_blank" rel="noopener noreferre
 • Method: JAKIM (Malaysia)
 </p> </div> <script>(function(){const campuses = {"gombak":{"name":"Gombak","city":"Gombak","lat":3.2513,"lng":101.7313},"kuantan":{"name":"Kuantan","city":"Kuantan","lat":3.8077,"lng":103.326},"pagoh":{"name":"Pagoh","city":"Pagoh","lat":2.1494,"lng":102.7181}};
 const defaultCampus = "gombak";
+const initialData = {"timings":{"Fajr":"06:16","Sunrise":"07:27","Dhuhr":"13:27","Asr":"16:47","Sunset":"19:27","Maghrib":"19:27","Isha":"20:34","Imsak":"06:06","Midnight":"01:27","Firstthird":"23:27","Lastthird":"03:27"},"date":{"readable":"11 Feb 2026","timestamp":"1770764400","hijri":{"date":"23-08-1447","format":"DD-MM-YYYY","day":"23","weekday":{"en":"Al Arba'a","ar":"الاربعاء"},"month":{"number":8,"en":"Shaʿbān","ar":"شَعْبان","days":29},"year":"1447","designation":{"abbreviated":"AH","expanded":"Anno Hegirae"},"holidays":[],"adjustedHolidays":[],"method":"HJCoSA"},"gregorian":{"date":"11-02-2026","format":"DD-MM-YYYY","day":"11","weekday":{"en":"Wednesday"},"month":{"number":2,"en":"February"},"year":"2026","designation":{"abbreviated":"AD","expanded":"Anno Domini"},"lunarSighting":false}},"meta":{"latitude":3.2513,"longitude":101.7313,"timezone":"Asia/Kuala_Lumpur","method":{"id":3,"name":"Muslim World League","params":{"Fajr":18,"Isha":17},"location":{"latitude":51.5194682,"longitude":-0.1360365}},"latitudeAdjustmentMethod":"ANGLE_BASED","midnightMode":"STANDARD","school":"STANDARD","offset":{"Imsak":0,"Fajr":0,"Sunrise":0,"Dhuhr":0,"Asr":0,"Maghrib":0,"Sunset":0,"Isha":0,"Midnight":0}}};
+const initialDate = "11-2-2026";
 
   // Helper to prevent XSS
   function escapeHtml(unsafe) {
@@ -307,6 +309,22 @@ const defaultCampus = "gombak";
 
     const today = new Date();
     const date = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
+
+    // Check pre-fetched data first
+    if (campusKey === defaultCampus && initialData && date === initialDate) {
+      currentTimes = initialData.timings;
+      renderTimes(initialData);
+
+      // Cache for future visits
+      try {
+        const cacheKey = `iium-prayer-times-${campusKey}-${date}`;
+        localStorage.setItem(cacheKey, JSON.stringify({ code: 200, data: initialData }));
+      } catch (e) {
+        console.warn('Cache write error:', e);
+      }
+      return;
+    }
+
     const cacheKey = `iium-prayer-times-${campusKey}-${date}`;
 
     // Check cache first
