@@ -1,6 +1,6 @@
 ---
 // StatusDashboard.astro
-import fs from 'node:fs';
+import fs from 'node:fs/promises';
 import path from 'node:path';
 
 /**
@@ -26,18 +26,25 @@ let initialStatus: SystemStatus[] = [];
 
 try {
 	const statusPath = path.join(process.cwd(), 'public/api/status.json');
-	if (fs.existsSync(statusPath)) {
-		const parsed = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
-		if (Array.isArray(parsed)) {
-			// Sanitize status to prevent CSS injection or invalid characters
-			initialStatus = parsed.map((sys: SystemStatus) => ({
-				...sys,
-				status: (sys.status || '').replace(/[^a-z0-9-]/gi, ''),
-			}));
-		}
+	const fileContent = await fs.readFile(statusPath, 'utf-8');
+	const parsed = JSON.parse(fileContent);
+
+	if (Array.isArray(parsed)) {
+		// Sanitize status to prevent CSS injection or invalid characters
+		initialStatus = parsed.map((sys: SystemStatus) => ({
+			...sys,
+			status: (sys.status || '').replace(/[^a-z0-9-]/gi, ''),
+		}));
 	}
 } catch (e) {
-	console.error('Failed to load initial status', e);
+	// Ignore file not found errors (ENOENT) to match original behavior, log others
+	if (
+		e instanceof Error &&
+		'code' in e &&
+		(e as { code: string }).code !== 'ENOENT'
+	) {
+		console.error('Failed to load initial status', e);
+	}
 }
 
 // biome-ignore lint/correctness/noUnusedVariables: passed to client script
@@ -95,10 +102,8 @@ const hasInitialData = initialStatus.length > 0;
       const grid = document.getElementById('status-grid');
       if (!grid) return;
 
-      // Clear existing content securely
-      grid.replaceChildren();
-
-      data.forEach((sys) => {
+      // Build all cards at once to avoid layout thrashing
+      const cards = data.map((sys) => {
         const card = document.createElement('div');
         // Validate status class to alphanumeric characters only to prevent CSS injection
         const safeStatus = (sys.status || '').replace(/[^a-z0-9-]/gi, '');
@@ -137,8 +142,11 @@ const hasInitialData = initialStatus.length > 0;
         card.appendChild(header);
         card.appendChild(body);
 
-        grid.appendChild(card);
+        return card;
       });
+
+      // Update grid in a single atomic operation
+      grid.replaceChildren(...cards);
 
       // Update last updated timestamp
       updateLastUpdatedTimestamp();

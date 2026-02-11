@@ -6,6 +6,8 @@ description:
 ---
 
 import NewThisWeek from '../../components/NewThisWeek.astro';
+import { Image } from 'astro:assets';
+import logo from '../../assets/logo.png';
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![License](https://img.shields.io/github/license/iiumstudent/Awesome-IIUM)](/about/license)
@@ -18,12 +20,7 @@ _Read this in other languages: [Bahasa Melayu](/ms/), [中文](/zh/),
 [العربية](/ar/), [日本語](/ja/)_
 
 <div align="center">
-  <img
-    src="/Awesome-IIUM/logo.png"
-    alt="Awesome IIUM Logo"
-    width="200"
-    loading="lazy"
-  />
+  <Image src={logo} alt="Awesome IIUM Logo" width={200} loading="lazy" />
 </div>
 
 ## Table of Contents
