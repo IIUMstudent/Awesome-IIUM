@@ -35,3 +35,6 @@ coverage-final.json
 # Reports
 lychee-report.md
 lighthouse-report.html
+
+# Generated at deploy time
+public/api/status.json

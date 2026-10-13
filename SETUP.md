@@ -136,7 +136,7 @@ pnpm lint-staged
 awesome-iium/
 ├── public/                 # Static files served as-is
 │   ├── api/
-│   │   └── status.json    # System status (auto-updated)
+│   │   └── status.json    # System status (generated at deploy)
 │   └── logo.png           # Main logo
 ├── src/
 │   ├── components/        # Reusable Astro components

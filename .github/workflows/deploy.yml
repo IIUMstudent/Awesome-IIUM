@@ -3,6 +3,10 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [master]
+  schedule:
+    # Rebuild regularly so build-time data (system status, prayer times,
+    # activity feed, contributors) stays fresh without committing to master.
+    - cron: '17 */3 * * *'
   workflow_dispatch:
 
 concurrency:
@@ -12,29 +16,70 @@ concurrency:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # push to gh-pages
+      actions: write # keep scheduled workflows enabled
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'pnpm'
-      
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      
+
+      - name: Check system status
+        run: |
+          mkdir -p public/api
+
+          # Any HTTP response below 500 means the server is up (login pages
+          # and bot blocks still count); timeouts and 5xx mean offline.
+          check_url() {
+            local code status
+            code=$(curl -sL -o /dev/null --max-time 15 -w '%{http_code}' "$2" || true)
+            if [ "${code:-000}" -ge 100 ] && [ "$code" -lt 500 ]; then
+              status=online
+            else
+              status=offline
+            fi
+            jq -n --arg name "$1" --arg status "$status" \
+              --arg timestamp "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+              '{name: $name, status: $status, timestamp: $timestamp}'
+          }
+
+          {
+            check_url "i-Ma'luum" "https://imaluum.iium.edu.my/"
+            check_url "i-Ta'leem" "https://italeem.iium.edu.my/"
+          } | jq -s . > public/api/status.json
+          cat public/api/status.json
+
       - name: Build
         run: pnpm build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_ENV: production
-      
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          force_orphan: true # keep gh-pages to a single commit
+
+      # GitHub disables scheduled workflows after 60 days without commits.
+      # Re-enabling them through the API resets that timer without commits.
+      - name: Keep scheduled workflows enabled
+        if: github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for wf in deploy.yml link-checker.yml security.yml; do
+            gh api --method PUT "repos/${{ github.repository }}/actions/workflows/$wf/enable" \
+              || echo "::warning::Could not keep $wf enabled"
+          done
