@@ -1,7 +1,8 @@
 version: 2
 updates:
-  # npm dependencies. Minor and patch updates are grouped into one PR;
-  # major updates get their own PR.
+  # npm dependencies. Minor and patch updates are grouped into one PR and
+  # merged automatically once checks pass (workflows/dependabot-auto-merge.yml).
+  # Major updates get their own PR and need a human to review them.
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
