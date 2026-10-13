@@ -9,6 +9,10 @@ body:
         ## 📚 Suggest a New Resource
         Thank you for helping us grow Awesome IIUM! Please fill out the form below.
 
+        A bot checks your suggestion and replies with how it will appear. Once a
+        maintainer approves it, it's published to the site automatically. No
+        coding needed.
+
   - type: input
     id: resource-name
     attributes:
@@ -35,15 +39,23 @@ body:
       options:
         - Academics - General
         - Academics - AIKOL (Laws)
-        - Academics - KIRKHS (Islamic Studies)
         - Academics - KAED (Architecture)
-        - Academics - KENMS (Economics)
-        - Academics - KICT (IT)
+        - Academics - KAHS (Allied Health Sciences)
+        - Academics - KENMS (Economics & Management)
+        - Academics - KICT (ICT)
+        - Academics - KIRKHS (Revealed Knowledge & Human Sciences)
+        - Academics - KLM (Languages & Management)
+        - Academics - KOD (Dentistry)
         - Academics - KOE (Engineering)
         - Academics - KOED (Education)
-        - Academics - Medical (KOM/KOD/KON/KOP/KAHS)
+        - Academics - KOM (Medicine)
+        - Academics - KON (Nursing)
+        - Academics - KOP (Pharmacy)
         - Academics - KOS (Science)
         - Campus Life
+        - Campus Life - Clubs & Societies
+        - Campus Life - Mahallah (Residential)
+        - Campus Life - Apps & Software
         - Career & Internships
         - Developers
     validations:
