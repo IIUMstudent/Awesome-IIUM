@@ -108,7 +108,7 @@ try {
             <div class="rank">#{index + 1}</div>
             <img
               src={user.avatar_url}
-              alt={user.login}
+              alt=""
               class="avatar"
               loading="lazy"
               width="45"
@@ -148,10 +148,15 @@ try {
     color: inherit !important;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .contributor-card:hover {
+  .contributor-card:hover,
+  .contributor-card:focus-visible {
     transform: scale(1.03);
     border-color: var(--sl-color-accent);
     background: var(--sl-color-accent-low);
+  }
+  .contributor-card:focus-visible {
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: 2px;
   }
   .rank {
     font-weight: 800;

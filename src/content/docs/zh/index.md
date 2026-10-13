@@ -86,7 +86,7 @@ _阅读其他语言版本：[English](../), [Melayu](../ms/), [العربية](.
 本部分提供与 IIUM 学术界相关的应用程序、工具和服务资源。
 
 - [通用学术资源](../categories/academics/general/) - 基本工具、作品集和图书馆链接。
-- [KICT 资源](../categories/academics/KICT/) - 信息与通信技术资源。
+- [KICT 资源](../categories/academics/kict/) - 信息与通信技术资源。
 - [Gombak 和 Kuantan 预注册](../categories/academics/pre-reg-gombak-kuantan/) - 注册日期和时间表。
 - [Pagoh 预注册](../categories/academics/pre-reg-pagoh/) -
   Pagoh 校区的日期和时间表。

@@ -619,61 +619,18 @@ graph TD
 
 **GitHub Actions Workflow:** `.github/workflows/deploy.yml`
 
-```yaml
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches: [master]
-  workflow_dispatch:
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: Setup Node & pnpm
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 9
-      
-      - name: Install dependencies
-        run: pnpm install
-      
-      - name: Lint
-        run: pnpm run lint
-      
-      - name: Test
-        run: pnpm test && pnpm test:e2e
-      
-      - name: Build
-        run: pnpm build
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_ENV: production
-      
-      - name: Upload to Sentry
-        run: pnpm run sentry:upload
-        env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-      
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-```
+Steps: install dependencies → check system status (writes
+`public/api/status.json`, not committed) → `pnpm build` → publish `dist/`
+to the `gh-pages` branch → on scheduled runs, re-enable the scheduled
+workflows through the GitHub API so GitHub does not disable them after 60
+days without commits.
 
 **Deployment Triggers:**
 
 - ✅ Push to `master` branch (automatic)
+- ✅ Every 3 hours (refreshes system status, prayer times, activity feed and
+  contributors, which are fetched at build time)
 - ✅ Manual workflow dispatch (on-demand)
-- ✅ Pull request preview (optional)
 
 **Deployment Environment:**
 
@@ -708,16 +665,10 @@ graph TD
 
 ### Security Headers
 
-**Configured in Astro:**
-
-```javascript
-// Public/_headers (GitHub Pages doesn't support, use Cloudflare if needed)
-/*
-  X-Frame-Options: DENY
-  X-Content-Type-Options: nosniff
-  Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: geolocation=(), microphone=(), camera=()
-```
+GitHub Pages can't send custom HTTP headers, so the Content Security Policy
+and referrer policy are set as `<meta>` tags in the Starlight `head` config in
+`astro.config.mjs`. When you add a new external script, API, or embed, add its
+origin to the matching CSP directive there.
 
 **Content Security Policy (CSP):**
 

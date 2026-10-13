@@ -108,7 +108,7 @@ const resources = await fetchRecentResources();
       ))}
     </ul>
   ) : (
-    <p class="no-updates">No new resources this week. <a href="/about/contributing">Contribute one!</a></p>
+    <p class="no-updates">No new resources this week. <a href={`${import.meta.env.BASE_URL.replace(/\/$/, "")}/about/contributing/`}>Contribute one!</a></p>
   )}
 </div>
 

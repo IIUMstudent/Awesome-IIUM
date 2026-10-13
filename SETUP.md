@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- **Node.js**: 18.17 or higher
+- **Node.js**: 22.12 or higher
 - **pnpm**: 10.0.0 (automatically installed via corepack - see below)
 
 ## Installation
@@ -136,7 +136,7 @@ pnpm lint-staged
 awesome-iium/
 ├── public/                 # Static files served as-is
 │   ├── api/
-│   │   └── status.json    # System status (auto-updated)
+│   │   └── status.json    # System status (generated at deploy)
 │   └── logo.png           # Main logo
 ├── src/
 │   ├── components/        # Reusable Astro components

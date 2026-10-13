@@ -45,12 +45,12 @@
 
 ### Medium Priority
 
-#### Status Monitor Workflow (PARTIAL FIX)
+#### Status Monitor Workflow (FIXED)
 
-- **Issue**: Git push could fail silently in some scenarios
-- **Fix**: Changed error handling to use `|| true` for robustness
-- **File**: `.github/workflows/status-monitor.yml`
-- **Note**: Monitor updates status.json every 15 minutes
+- **Issue**: The monitor committed `status.json` to `master` every run, flooding
+  history with bot commits, and its `[skip ci]` commits never redeployed the site
+- **Fix**: The status check now runs inside the scheduled deploy
+  (`.github/workflows/deploy.yml`, every 3 hours) and nothing is committed
 
 ### 1. Logo Paths Updated (FIXED)
 

@@ -1,5 +1,5 @@
 <!--lint disable awesome-github-->
-# Awesome IIUM [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![Build Status](https://img.shields.io/github/workflow/status/iiumstudent/Awesome-IIUM/Awesome%20Lint)](https://github.com/iiumstudent/Awesome-IIUM/actions) [![License](https://img.shields.io/github/license/iiumstudent/Awesome-IIUM)](LICENSE.md) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+# Awesome IIUM [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![Build Status](https://img.shields.io/github/actions/workflow/status/iiumstudent/Awesome-IIUM/deploy.yml?branch=master&label=deploy)](https://github.com/iiumstudent/Awesome-IIUM/actions/workflows/deploy.yml) [![License](https://img.shields.io/github/license/iiumstudent/Awesome-IIUM)](LICENSE.md) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 > A curated list of resources, tools, and guides for the **International Islamic
 > University Malaysia (IIUM)** community.
@@ -16,10 +16,10 @@ _Read this in other languages: [Bahasa Melayu](https://iiumstudent.github.io/Awe
 ## Table of Contents
 
 - [Welcome](https://github.com/iiumstudent/Awesome-IIUM#welcome) - Introduction to Awesome IIUM.
-- [Academics](https://github.com/iiumstudent/Awesome-IIUM/blob/main/src/content/docs/categories/academics/index.md) - Academic resources and guides.
-- [Campus Life](https://github.com/iiumstudent/Awesome-IIUM/blob/main/src/content/docs/categories/campus-life/index.md) - Campus facilities and student life.
-- [Career & Internships](https://github.com/iiumstudent/Awesome-IIUM/blob/main/src/content/docs/categories/career/index.md) - Career prospects and internship opportunities.
-- [Developers](https://github.com/iiumstudent/Awesome-IIUM/blob/main/src/content/docs/categories/developers/index.md) - Technical resources for developers.
+- [Academics](https://iiumstudent.github.io/Awesome-IIUM/categories/academics/) - Academic resources and guides.
+- [Campus Life](https://iiumstudent.github.io/Awesome-IIUM/categories/campus-life/) - Campus facilities and student life.
+- [Career & Internships](https://iiumstudent.github.io/Awesome-IIUM/categories/career/) - Career prospects and internship opportunities.
+- [Developers](https://iiumstudent.github.io/Awesome-IIUM/categories/developers/) - Technical resources for developers.
 - [Quick Links](https://github.com/iiumstudent/Awesome-IIUM#quick-links) - Jump directly to frequently used services.
 - [Contributing](https://github.com/iiumstudent/Awesome-IIUM#contributing) - Guidelines on how to contribute to this list.
 

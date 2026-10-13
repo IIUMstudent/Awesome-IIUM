@@ -91,7 +91,7 @@ _他の言語で読む：[English](../), [Melayu](../ms/), [中文](../zh/),
 このセクションでは、IIUMの学術関係者向けのアプリケーション、ツール、サービスに関連するリソースを提供します。
 
 - [一般学術リソース](../categories/academics/general/) - 基本的なツール、ポートフォリオ、図書館リンク。
-- [KICT リソース](../categories/academics/KICT/) - 情報通信技術向けのリソース。
+- [KICT リソース](../categories/academics/kict/) - 情報通信技術向けのリソース。
 - [事前登録（ゴンバック＆クアンタン）](../categories/academics/pre-reg-gombak-kuantan/) - 登録の日程とスケジュール。
 - [事前登録（パゴ）](../categories/academics/pre-reg-pagoh/) - パゴキャンパスの日程とスケジュール。
 

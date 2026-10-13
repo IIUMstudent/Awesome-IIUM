@@ -119,7 +119,7 @@ ahli akademik di UIAM.
 
 - [Sumber Akademik Umum](../categories/academics/general/) - Alat penting,
   portfolio, dan pautan perpustakaan.
-- [Sumber KICT](../categories/academics/KICT/) - Sumber untuk Teknologi Maklumat
+- [Sumber KICT](../categories/academics/kict/) - Sumber untuk Teknologi Maklumat
   & Komunikasi.
 - [Pra-Pendaftaran Gombak & Kuantan](../categories/academics/pre-reg-gombak-kuantan/) -
   Tarikh dan jadual untuk pendaftaran.

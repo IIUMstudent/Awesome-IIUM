@@ -35,21 +35,45 @@ export default defineConfig({
 		// Sentry error tracking (optional, requires PUBLIC_SENTRY_DSN)
 		sentry({
 			enabled: !!process.env.PUBLIC_SENTRY_DSN,
-			dsn: process.env.PUBLIC_SENTRY_DSN,
-			environment: process.env.NODE_ENV || 'production',
-			release: process.env.SENTRY_RELEASE,
-			sourceMapsUploadOptions: {
-				enabled: !!process.env.SENTRY_AUTH_TOKEN,
-				authToken: process.env.SENTRY_AUTH_TOKEN,
-				org: process.env.SENTRY_ORG,
-				project: process.env.SENTRY_PROJECT,
-			},
+			clientInitPath: './src/sentry-client.ts',
+			authToken: process.env.SENTRY_AUTH_TOKEN,
+			org: process.env.SENTRY_ORG,
+			project: process.env.SENTRY_PROJECT,
+			sourcemaps: { disable: !process.env.SENTRY_AUTH_TOKEN },
 		}),
 		starlight({
 			title: 'Awesome IIUM',
 			description:
 				'A curated list of resources for the International Islamic University Malaysia (IIUM) community.',
 			head: [
+				// GitHub Pages can't send security headers, so they go in meta tags.
+				// 'unsafe-inline' is needed for Astro's inline scripts and styles.
+				{
+					tag: 'meta',
+					attrs: {
+						'http-equiv': 'Content-Security-Policy',
+						content: [
+							"default-src 'self'",
+							"script-src 'self' 'unsafe-inline' https://gc.zgo.at https://unpkg.com https://giscus.app",
+							"style-src 'self' 'unsafe-inline' https://unpkg.com https://giscus.app",
+							"img-src 'self' data: blob: https:",
+							"font-src 'self' data:",
+							"connect-src 'self' https://api.github.com https://api.aladhan.com https://*.goatcounter.com https://tile.openstreetmap.org https://*.sentry.io",
+							"worker-src 'self' blob:",
+							'frame-src https://giscus.app https://www.openstreetmap.org',
+							"object-src 'none'",
+							"base-uri 'self'",
+							"form-action 'self'",
+						].join('; '),
+					},
+				},
+				{
+					tag: 'meta',
+					attrs: {
+						name: 'referrer',
+						content: 'strict-origin-when-cross-origin',
+					},
+				},
 				{
 					tag: 'meta',
 					attrs: {
@@ -161,11 +185,12 @@ export default defineConfig({
 					tag: 'script',
 					attrs: {
 						'data-goatcounter': 'https://2217441.goatcounter.com/count',
-						src: '//gc.zgo.at/count.js',
+						src: 'https://gc.zgo.at/count.js',
 						async: true,
 					},
 				},
 			],
+			favicon: '/logo.png',
 			logo: {
 				src: './src/assets/logo.png',
 			},
@@ -190,7 +215,7 @@ export default defineConfig({
 				{ label: '🛠 Tools', link: '/tools' },
 				{
 					label: 'Categories',
-					autogenerate: { directory: 'categories' },
+					items: [{ autogenerate: { directory: 'categories' } }],
 				},
 				{
 					label: 'About',
