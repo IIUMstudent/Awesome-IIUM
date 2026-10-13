@@ -35,15 +35,11 @@ export default defineConfig({
 		// Sentry error tracking (optional, requires PUBLIC_SENTRY_DSN)
 		sentry({
 			enabled: !!process.env.PUBLIC_SENTRY_DSN,
-			dsn: process.env.PUBLIC_SENTRY_DSN,
-			environment: process.env.NODE_ENV || 'production',
-			release: process.env.SENTRY_RELEASE,
-			sourceMapsUploadOptions: {
-				enabled: !!process.env.SENTRY_AUTH_TOKEN,
-				authToken: process.env.SENTRY_AUTH_TOKEN,
-				org: process.env.SENTRY_ORG,
-				project: process.env.SENTRY_PROJECT,
-			},
+			clientInitPath: './src/sentry-client.ts',
+			authToken: process.env.SENTRY_AUTH_TOKEN,
+			org: process.env.SENTRY_ORG,
+			project: process.env.SENTRY_PROJECT,
+			sourcemaps: { disable: !process.env.SENTRY_AUTH_TOKEN },
 		}),
 		starlight({
 			title: 'Awesome IIUM',
@@ -218,7 +214,7 @@ export default defineConfig({
 				{ label: '🛠 Tools', link: '/tools' },
 				{
 					label: 'Categories',
-					autogenerate: { directory: 'categories' },
+					items: [{ autogenerate: { directory: 'categories' } }],
 				},
 				{
 					label: 'About',

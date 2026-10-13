@@ -1,6 +1,7 @@
 version: 2
 updates:
-  # Enable version updates for npm dependencies
+  # npm dependencies. Minor and patch updates are grouped into one PR;
+  # major updates get their own PR.
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
@@ -8,8 +9,6 @@ updates:
       day: "monday"
       time: "03:00"
     open-pull-requests-limit: 5
-    reviewers:
-      - "iiumstudent"
     labels:
       - "dependencies"
       - "automated"
@@ -17,22 +16,13 @@ updates:
       prefix: "chore(deps):"
       prefix-development: "chore(deps-dev):"
       include: "scope"
-    # Allow automatic merging for patch and minor updates
-    auto-merge:
-      enabled: true
-      auto-merge-type: "squash"
-    # Group updates by type
     groups:
-      dev-dependencies:
-        dependency-type: "development"
-        patterns:
-          - "*"
-      production-dependencies:
-        dependency-type: "production"
-        patterns:
-          - "*"
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
 
-  # Enable version updates for GitHub Actions
+  # GitHub Actions versions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -42,3 +32,8 @@ updates:
     labels:
       - "github-actions"
       - "automated"
+    groups:
+      actions:
+        update-types:
+          - "minor"
+          - "patch"

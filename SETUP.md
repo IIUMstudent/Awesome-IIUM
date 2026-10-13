@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- **Node.js**: 18.17 or higher
+- **Node.js**: 22.12 or higher
 - **pnpm**: 10.0.0 (automatically installed via corepack - see below)
 
 ## Installation
