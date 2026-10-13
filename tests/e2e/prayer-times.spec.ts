@@ -133,6 +133,17 @@ test.describe('Prayer Times', () => {
 		// Should show countdown timer (format: HH:MM:SS or --:--:--)
 		const countdown = await page.locator('#countdown').textContent();
 		expect(countdown).toMatch(/\d{2}:\d{2}:\d{2}|--:--:--/);
+
+		// Should have descriptive title for mouse users (e.g. "Next prayer at 5:30 PM")
+		// Using a looser regex to accommodate different locales (HH:MM or H:MM PM)
+		const title = await page.locator('#countdown').getAttribute('title');
+		expect(title).toMatch(/^Next prayer at \d{1,2}:\d{2}(?:\s?[AP]M)?$/);
+
+		// Should have accessible label for screen readers
+		const ariaLabel = await page
+			.locator('#countdown')
+			.getAttribute('aria-label');
+		expect(ariaLabel).toMatch(/^Time remaining until .+$/);
 	});
 
 	test('should highlight current/next prayer', async ({ page }) => {

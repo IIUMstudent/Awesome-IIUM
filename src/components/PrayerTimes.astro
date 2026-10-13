@@ -63,7 +63,7 @@ try {
   <div id="next-prayer" class="next-prayer">
     <span class="label">Next Prayer</span>
     <span id="next-prayer-name" class="name">-</span>
-    <span id="countdown" class="countdown">--:--:--</span>
+    <span id="countdown" class="countdown" role="timer">--:--:--</span>
   </div>
 
   <p class="attribution">
@@ -139,6 +139,11 @@ try {
       console.warn('Cache read error:', e);
     }
     
+    // Set loading state
+    const grid = document.getElementById('prayer-grid');
+    grid.classList.add('is-loading');
+    grid.setAttribute('aria-busy', 'true');
+
     try {
       const res = await fetch(
         `https://api.aladhan.com/v1/timings/${date}?latitude=${campus.lat}&longitude=${campus.lng}&method=3`
@@ -160,6 +165,10 @@ try {
       console.error('Failed to fetch prayer times:', e);
       document.getElementById('prayer-grid').innerHTML = 
         '<p class="error">Failed to load prayer times. Please try again.</p>';
+    } finally {
+      // Remove loading state
+      grid.classList.remove('is-loading');
+      grid.removeAttribute('aria-busy');
     }
   }
 
@@ -237,6 +246,22 @@ try {
         target.setDate(target.getDate() + 1);
       }
       cachedTargetTime = target;
+    }
+
+    // Update countdown accessibility and tooltip
+    if (nextPrayer && cachedTargetTime) {
+      const countdownEl = document.getElementById('countdown');
+      if (countdownEl) {
+        // Format time like "5:30 PM" or "05:30" depending on locale
+        const timeString = cachedTargetTime.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+
+        // Add native tooltip for mouse users
+        countdownEl.title = `Next prayer at ${timeString}`;
+
+        // Add accessible label for screen readers
+        // Note: We don't use aria-live on the countdown itself to avoid spamming every second
+        countdownEl.setAttribute('aria-label', `Time remaining until ${nextPrayer.name}`);
+      }
     }
 
     // Only update DOM if prayer changed
@@ -354,6 +379,13 @@ try {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.5rem;
+    transition: opacity 0.2s ease, filter 0.2s ease;
+  }
+
+  .prayer-grid.is-loading {
+    opacity: 0.5;
+    filter: grayscale(1);
+    pointer-events: none;
   }
 
   @media (max-width: 500px) {
