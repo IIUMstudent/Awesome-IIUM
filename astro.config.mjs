@@ -180,11 +180,14 @@ export default defineConfig({
 						defer: true,
 					},
 				},
-				// GoatCounter - Privacy-first analytics (free for open source)
+				// GoatCounter - Privacy-first analytics (free for open source).
+				// Set the GOATCOUNTER_ENDPOINT repository variable to move it.
 				{
 					tag: 'script',
 					attrs: {
-						'data-goatcounter': 'https://2217441.goatcounter.com/count',
+						'data-goatcounter':
+							process.env.GOATCOUNTER_ENDPOINT ||
+							'https://2217441.goatcounter.com/count',
 						src: 'https://gc.zgo.at/count.js',
 						async: true,
 					},
