@@ -50,6 +50,34 @@ export default defineConfig({
 			description:
 				'A curated list of resources for the International Islamic University Malaysia (IIUM) community.',
 			head: [
+				// GitHub Pages can't send security headers, so they go in meta tags.
+				// 'unsafe-inline' is needed for Astro's inline scripts and styles.
+				{
+					tag: 'meta',
+					attrs: {
+						'http-equiv': 'Content-Security-Policy',
+						content: [
+							"default-src 'self'",
+							"script-src 'self' 'unsafe-inline' https://gc.zgo.at https://unpkg.com https://giscus.app",
+							"style-src 'self' 'unsafe-inline' https://unpkg.com https://giscus.app",
+							"img-src 'self' data: blob: https:",
+							"font-src 'self' data:",
+							"connect-src 'self' https://api.github.com https://api.aladhan.com https://*.goatcounter.com https://tile.openstreetmap.org https://*.sentry.io",
+							"worker-src 'self' blob:",
+							'frame-src https://giscus.app https://www.openstreetmap.org',
+							"object-src 'none'",
+							"base-uri 'self'",
+							"form-action 'self'",
+						].join('; '),
+					},
+				},
+				{
+					tag: 'meta',
+					attrs: {
+						name: 'referrer',
+						content: 'strict-origin-when-cross-origin',
+					},
+				},
 				{
 					tag: 'meta',
 					attrs: {
@@ -161,7 +189,7 @@ export default defineConfig({
 					tag: 'script',
 					attrs: {
 						'data-goatcounter': 'https://2217441.goatcounter.com/count',
-						src: '//gc.zgo.at/count.js',
+						src: 'https://gc.zgo.at/count.js',
 						async: true,
 					},
 				},

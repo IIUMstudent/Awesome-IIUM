@@ -665,16 +665,10 @@ graph TD
 
 ### Security Headers
 
-**Configured in Astro:**
-
-```javascript
-// Public/_headers (GitHub Pages doesn't support, use Cloudflare if needed)
-/*
-  X-Frame-Options: DENY
-  X-Content-Type-Options: nosniff
-  Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: geolocation=(), microphone=(), camera=()
-```
+GitHub Pages can't send custom HTTP headers, so the Content Security Policy
+and referrer policy are set as `<meta>` tags in the Starlight `head` config in
+`astro.config.mjs`. When you add a new external script, API, or embed, add its
+origin to the matching CSP directive there.
 
 **Content Security Policy (CSP):**
 
