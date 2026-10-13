@@ -67,7 +67,7 @@ technologies at IIUM's Gombak campus.
 
 ## 📖 Programming Resources
 
-- [Java Resources](./Language/Java/) - Java programming guides
+- [Java Resources](./language/java/) - Java programming guides
 
 ## 📣 Social Media
 

@@ -24,4 +24,5 @@ Follow these official and community accounts to stay updated.
 
 ## 🏅 Clubs & Societies
 
-- Refer to [../Club/](../Club/) for a list of club-specific Instagram accounts.
+- Refer to the [Club](../../club/) page for a list of club-specific Instagram
+  accounts.

@@ -1,14 +1,22 @@
 name: Link Checker
 
+# Checks links in the built site, the way visitors see them.
+# - Internal links are checked on every push and PR, and fail the run.
+# - External links are checked weekly; broken ones are reported in a single
+#   "[Automated] Broken Links Detected" issue that is updated each week.
+
 on:
-  schedule:
-    # Run weekly on Sundays at 00:00 UTC
-    - cron: '0 0 * * 0'
-  workflow_dispatch: # Allow manual trigger
   push:
-    paths:
-      - 'src/content/**/*.md'
-      - 'src/content/**/*.mdx'
+    branches: [master]
+  pull_request:
+  schedule:
+    # Weekly on Sundays at 00:00 UTC
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
 
 jobs:
   link-checker:
@@ -16,38 +24,66 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Link Checker
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - name: Build site
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm build
+          # Serve dist under the site base so /Awesome-IIUM/... links resolve
+          mkdir _site && cp -r dist _site/Awesome-IIUM
+
+      - name: Check internal links
         uses: lycheeverse/lychee-action@v2
         with:
           args: >
-            --verbose
+            --offline
             --no-progress
-            --exclude-path node_modules
-            --exclude-path dist
-            --exclude '.*localhost.*'
-            --exclude '.*127\.0\.0\.1.*'
-            --exclude-mail
-            --timeout 30
+            --root-dir ${{ github.workspace }}/_site
+            --index-files index.html
+            --exclude-path _site/Awesome-IIUM/pagefind
+            '_site/**/*.html'
+          fail: true
+          jobSummary: true
+
+      - name: Check external links
+        id: external
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # Social networks block automated requests, so they are skipped.
+          args: >
+            --no-progress
+            --root-dir ${{ github.workspace }}/_site
+            --index-files index.html
+            --exclude-path _site/Awesome-IIUM/pagefind
+            --exclude 'iiumstudent\.github\.io|instagram\.com|facebook\.com|linkedin\.com|twitter\.com|x\.com'
+            --accept '200..=299,403,429'
             --max-retries 3
-            --accept 200,301,302,403
-            './src/content/**/*.md'
-            './src/content/**/*.mdx'
-            './*.md'
+            --timeout 30
+            '_site/**/*.html'
           fail: false
           output: ./lychee-report.md
         env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Upload report
-        uses: actions/upload-artifact@v4
-        with:
-          name: link-check-report
-          path: ./lychee-report.md
-
-      - name: Create Issue From File
-        if: failure() && github.event_name == 'schedule'
-        uses: peter-evans/create-issue-from-file@v5
-        with:
-          title: '[Automated] Broken Links Detected'
-          content-filepath: ./lychee-report.md
-          labels: broken-link, maintenance
+      - name: Report broken external links
+        if: steps.external.outputs.exit_code != '' && steps.external.outputs.exit_code != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          title='[Automated] Broken Links Detected'
+          gh label create broken-link --color d73a4a --force
+          existing=$(gh issue list --label broken-link --state open --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue edit "$existing" --body-file lychee-report.md
+          else
+            gh issue create --title "$title" --label broken-link --body-file lychee-report.md
+          fi

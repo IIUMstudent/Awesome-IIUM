@@ -190,6 +190,7 @@ export default defineConfig({
 					},
 				},
 			],
+			favicon: '/logo.png',
 			logo: {
 				src: './src/assets/logo.png',
 			},
