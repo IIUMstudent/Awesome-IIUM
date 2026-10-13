@@ -33,14 +33,11 @@ jobs:
         env:
           NODE_ENV: production
 
-      - name: Start preview server
-        run: pnpm run preview -- --host 0.0.0.0 --port 4321 & sleep 5
 
       - name: Run a11y tests (Playwright + axe)
         run: pnpm run test:a11y
         env:
           CI: true
-          BASE_URL: http://localhost:4321
 
       - name: Upload a11y reports
         if: failure()
