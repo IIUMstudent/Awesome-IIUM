@@ -5,9 +5,12 @@
  */
 
 import { expect, type Page, test } from '@playwright/test';
+import { mockAladhan } from './fixtures/aladhan';
 
 test.describe('Prayer Times', () => {
 	test.beforeEach(async ({ page }) => {
+		await mockAladhan(page);
+
 		// Navigate to tools page where prayer times widget is located
 		await page.goto('/Awesome-IIUM/tools/');
 

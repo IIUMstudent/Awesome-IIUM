@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { mockAladhan } from './fixtures/aladhan';
 
 test.describe('UX Improvements', () => {
 	test('Prayer Times component should show loading state when switching campus', async ({
@@ -11,12 +12,8 @@ test.describe('UX Improvements', () => {
 		const grid = page.locator('#prayer-grid');
 		const selector = page.locator('#campus-selector');
 
-		// 3. Intercept the API call to introduce a delay
-		await page.route('**/api.aladhan.com/v1/timings/**', async (route) => {
-			// Delay the response by 1 second to make loading state observable
-			await new Promise((resolve) => setTimeout(resolve, 1000));
-			await route.continue();
-		});
+		// 3. Delay the API response by 1 second to make loading state observable
+		await mockAladhan(page, 1000);
 
 		// 4. Trigger the fetch by changing the campus
 		// Select a different campus (e.g., 'kuantan')
