@@ -1,6 +1,8 @@
 ---
 title: '🩺 Kulliyyah of Allied Health Sciences (KAHS)'
-description: 'Resources for IIUM allied health sciences students.'
+description:
+  'IIUM Kulliyyah of Allied Health Sciences (KAHS) in Kuantan: departments,
+  programmes, clinical training and official links.'
 resourceType: guide
 tags:
   - health

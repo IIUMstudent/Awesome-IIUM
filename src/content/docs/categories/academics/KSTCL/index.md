@@ -1,6 +1,8 @@
 ---
 title: '🌏 Kulliyyah of Sustainable Tourism and Contemporary Languages (KSTCL)'
-description: 'Resources for KSTCL students at the IIUM Pagoh campus.'
+description:
+  'IIUM Kulliyyah of Sustainable Tourism and Contemporary Languages (KSTCL) at
+  the Pagoh campus: programmes, course registration and official links.'
 resourceType: guide
 tags:
   - languages

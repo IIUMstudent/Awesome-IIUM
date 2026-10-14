@@ -1,7 +1,40 @@
+import { readdirSync } from 'node:fs';
+import sitemap from '@astrojs/sitemap';
 import starlight from '@astrojs/starlight';
 import AstroPWA from '@vite-pwa/astro';
 import { defineConfig } from 'astro/config';
 import { visualizer } from 'rollup-plugin-visualizer';
+import {
+	isIndexableUrl,
+	LOCALES,
+	SITE,
+	slugFromFilePath,
+	websiteJsonLd,
+} from './src/utils/seo.ts';
+
+// Content ids of the pages that have a real translation, e.g. `ms`.
+const translatedIds = new Set(
+	Object.keys(LOCALES)
+		.filter((locale) => locale !== 'root')
+		.flatMap((locale) =>
+			readdirSync(new URL(`./src/content/docs/${locale}`, import.meta.url), {
+				recursive: true,
+			})
+				.filter((file) => /\.mdx?$/.test(file))
+				.map((file) =>
+					slugFromFilePath(`${locale}/${file.replaceAll('\\', '/')}`),
+				),
+		),
+);
+
+// Search engine ownership checks, set as repository variables (MAINTAINING.md).
+const siteVerification = [
+	['google-site-verification', process.env.GOOGLE_SITE_VERIFICATION],
+	['msvalidate.01', process.env.BING_SITE_VERIFICATION],
+	['yandex-verification', process.env.YANDEX_SITE_VERIFICATION],
+]
+	.filter(([, content]) => content)
+	.map(([name, content]) => ({ tag: 'meta', attrs: { name, content } }));
 
 export default defineConfig({
 	site: 'https://iiumstudent.github.io',
@@ -37,10 +70,22 @@ export default defineConfig({
 		],
 	},
 	integrations: [
+		// Starlight adds its own sitemap unless one is already here. This one
+		// leaves out the English copies of pages that have no translation.
+		sitemap({
+			i18n: {
+				defaultLocale: 'root',
+				locales: Object.fromEntries(
+					Object.entries(LOCALES).map(([key, { lang }]) => [key, lang]),
+				),
+			},
+			filter: (url) => isIndexableUrl(url, translatedIds),
+		}),
 		starlight({
-			title: 'Awesome IIUM',
-			description:
-				'A curated list of resources for the International Islamic University Malaysia (IIUM) community.',
+			title: SITE.name,
+			description: SITE.description,
+			// Per-page titles, canonicals, hreflang and structured data.
+			routeMiddleware: './src/routeMiddleware.ts',
 			head: [
 				// GitHub Pages can't send security headers, so they go in meta tags.
 				// 'unsafe-inline' is needed for Astro's inline scripts and styles.
@@ -77,111 +122,35 @@ export default defineConfig({
 						content: '#00918e', // IIUM turquoise, see DESIGN.md
 					},
 				},
+				...siteVerification,
+				// Description, title and URL tags come from each page; the
+				// preview image is the same everywhere.
 				{
 					tag: 'meta',
-					attrs: {
-						name: 'description',
-						content:
-							'A curated list of resources, tools, and guides for the IIUM community.',
-					},
-				},
-				{
-					tag: 'meta',
-					attrs: {
-						property: 'og:title',
-						content: 'Awesome IIUM',
-					},
-				},
-				{
-					tag: 'meta',
-					attrs: {
-						property: 'og:description',
-						content:
-							'A curated list of resources, tools, and guides for the IIUM community.',
-					},
-				},
-				{
-					tag: 'meta',
-					attrs: {
-						property: 'og:type',
-						content: 'website',
-					},
-				},
-				{
-					tag: 'meta',
-					attrs: {
-						property: 'og:url',
-						content: 'https://iiumstudent.github.io/Awesome-IIUM/',
-					},
-				},
-				{
-					tag: 'meta',
-					attrs: {
-						property: 'og:image',
-						content: 'https://iiumstudent.github.io/Awesome-IIUM/og.png',
-					},
+					attrs: { property: 'og:image', content: SITE.image },
 				},
 				{ tag: 'meta', attrs: { property: 'og:image:width', content: '1200' } },
 				{ tag: 'meta', attrs: { property: 'og:image:height', content: '630' } },
 				{
 					tag: 'meta',
-					attrs: {
-						property: 'og:image:alt',
-						content:
-							'Awesome IIUM: resources, tools and guides for the IIUM community',
-					},
+					attrs: { property: 'og:image:alt', content: SITE.imageAlt },
+				},
+				{
+					tag: 'meta',
+					attrs: { name: 'twitter:image', content: SITE.image },
+				},
+				{
+					tag: 'meta',
+					attrs: { name: 'twitter:image:alt', content: SITE.imageAlt },
 				},
 				{
 					tag: 'link',
 					attrs: { rel: 'apple-touch-icon', href: '/Awesome-IIUM/logo.png' },
 				},
 				{
-					tag: 'meta',
-					attrs: {
-						name: 'twitter:card',
-						content: 'summary_large_image',
-					},
-				},
-				{
-					tag: 'meta',
-					attrs: {
-						name: 'twitter:title',
-						content: 'Awesome IIUM',
-					},
-				},
-				{
-					tag: 'meta',
-					attrs: {
-						name: 'twitter:description',
-						content:
-							'A curated list of resources, tools, and guides for the IIUM community.',
-					},
-				},
-				{
-					tag: 'meta',
-					attrs: {
-						name: 'twitter:image',
-						content: 'https://iiumstudent.github.io/Awesome-IIUM/og.png',
-					},
-				},
-				{
 					tag: 'script',
-					attrs: {
-						type: 'application/ld+json',
-					},
-					content: JSON.stringify({
-						'@context': 'https://schema.org',
-						'@type': 'WebSite',
-						name: 'Awesome IIUM',
-						url: 'https://iiumstudent.github.io/Awesome-IIUM/',
-						description:
-							'A curated list of resources, tools, and guides for the IIUM community.',
-						publisher: {
-							'@type': 'Organization',
-							name: 'IIUMstudent',
-							url: 'https://github.com/iiumstudent',
-						},
-					}),
+					attrs: { type: 'application/ld+json' },
+					content: JSON.stringify(websiteJsonLd()),
 				},
 				{
 					tag: 'script',
@@ -216,13 +185,7 @@ export default defineConfig({
 				},
 			],
 			defaultLocale: 'root',
-			locales: {
-				root: { label: 'English', lang: 'en' },
-				ar: { label: 'العربية', lang: 'ar', dir: 'rtl' },
-				ja: { label: '日本語', lang: 'ja' },
-				ms: { label: 'Bahasa Melayu', lang: 'ms' },
-				zh: { label: '中文', lang: 'zh-CN' },
-			},
+			locales: LOCALES,
 			sidebar: [
 				{ label: 'Welcome', link: '/' },
 				{ label: '📊 Dashboard', link: '/dashboard' },
@@ -251,7 +214,9 @@ export default defineConfig({
 			manifest: {
 				name: 'Awesome IIUM',
 				short_name: 'AwesomeIIUM',
-				description: 'The Ultimate Student Platform for IIUM',
+				description: SITE.description,
+				lang: 'en',
+				categories: ['education', 'reference'],
 				theme_color: '#00918e',
 				background_color: '#ffffff',
 				display: 'standalone',

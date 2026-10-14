@@ -1,6 +1,8 @@
 ---
 title: '📘 IIUM Facebook Groups'
-description: Facebook groups for IIUM students and alumni.
+description:
+  'IIUM Facebook groups for students and alumni: the main community group, the
+  campus marketplace and career postings.'
 ---
 
 Join these Facebook communities to connect with students and alumni.

@@ -17,6 +17,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Search engine and link preview improvements: every page now has its own
+  title, description and share link (before, every page shared the home
+  page's), structured data saying the site is about IIUM (also UIA/UIAM), and
+  breadcrumbs. English copies under untranslated languages point to the English
+  page and are left out of the sitemap. Adds `/llms.txt` for AI assistants and
+  optional Google, Bing and Yandex verification (MAINTAINING.md).
 - DESIGN.md, AGENTS.md and a `pnpm lint:design` check that keeps colours and
   fonts on the theme tokens.
 - Dark-mode accessibility tests.

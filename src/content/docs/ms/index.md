@@ -1,5 +1,12 @@
 ---
 title: 'Selamat Datang ke Awesome-IIUM!'
+description:
+  "Panduan pelajar untuk Universiti Islam Antarabangsa Malaysia (UIAM, IIUM):
+  i-Ma'luum, pendaftaran kursus, kulliyyah, mahallah, yuran dan kehidupan kampus
+  di Gombak, Kuantan dan Pagoh."
+head:
+  - tag: title
+    content: 'Awesome IIUM: Panduan Pelajar UIAM (UIA Malaysia)'
 ---
 
 Selamat datang! Kami sangat teruja untuk mempersembahkan koleksi sumber yang

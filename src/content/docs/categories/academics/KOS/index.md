@@ -1,6 +1,8 @@
 ---
 title: '🔬 Kulliyyah of Science (KOS)'
-description: 'Resources for IIUM science students.'
+description:
+  'IIUM Kulliyyah of Science (KOS) in Kuantan: departments, research, science
+  programmes and official links.'
 resourceType: guide
 tags:
   - science

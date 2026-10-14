@@ -1,7 +1,8 @@
 ---
 title: '📜 AbdulHamid AbuSulayman KIRKHS'
 description:
-  'Resources for IIUM Islamic Revealed Knowledge and Human Sciences students.'
+  'IIUM AHAS KIRKHS guide: Islamic Revealed Knowledge and Human Sciences
+  departments, programmes, student society and official links.'
 resourceType: guide
 tags:
   - islamic-studies

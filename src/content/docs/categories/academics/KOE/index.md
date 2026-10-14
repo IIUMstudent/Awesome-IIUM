@@ -1,6 +1,8 @@
 ---
 title: '⚙️ Kulliyyah of Engineering (KOE)'
-description: 'Resources for IIUM engineering students.'
+description:
+  'IIUM Kulliyyah of Engineering (KOE) guide: engineering departments,
+  programmes and official links for students in Gombak.'
 resourceType: guide
 tags:
   - engineering

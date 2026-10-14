@@ -1,6 +1,8 @@
 ---
 title: '💊 Kulliyyah of Pharmacy (KOP)'
-description: 'Resources for IIUM pharmacy students.'
+description:
+  'IIUM Kulliyyah of Pharmacy (KOP) in Kuantan: departments, pharmacy programmes
+  and official links.'
 resourceType: guide
 tags:
   - pharmacy

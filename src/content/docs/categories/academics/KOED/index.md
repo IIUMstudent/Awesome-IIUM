@@ -1,6 +1,8 @@
 ---
 title: '📝 Kulliyyah of Education (KOED)'
-description: 'Resources for IIUM education students.'
+description:
+  'IIUM Kulliyyah of Education (KOED) guide: departments, teaching and education
+  programmes, and official links.'
 resourceType: guide
 tags:
   - education

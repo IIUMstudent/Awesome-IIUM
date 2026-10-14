@@ -1,6 +1,8 @@
 ---
 title: '📸 IIUM Instagram Accounts'
-description: Official and community Instagram accounts for IIUM.
+description:
+  'Official IIUM Instagram accounts, plus student services, labs, clubs and
+  societies to follow.'
 ---
 
 Follow these official and community accounts to stay updated.
