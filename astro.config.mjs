@@ -33,7 +33,7 @@ const siteVerification = [
 	[
 		'google-site-verification',
 		process.env.GOOGLE_SITE_VERIFICATION ||
-			'CYWtroYbk9hzcAP_WC9w-uNvy-KFOvC3P9xjv3fo9Ds',
+			'dEDUhNrtwoJBseR7oJfL_AB55uf8VPJBDYMTKy89iC4',
 	],
 	['msvalidate.01', process.env.BING_SITE_VERIFICATION],
 	['yandex-verification', process.env.YANDEX_SITE_VERIFICATION],
