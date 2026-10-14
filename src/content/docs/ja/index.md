@@ -10,8 +10,6 @@ description: IIUMコミュニティ向けの厳選リソース集。
 _他の言語で読む：[English](../), [Melayu](../ms/), [中文](../zh/),
 [العربية](../ar/)_
 
-![IIUM ロゴ](/Awesome-IIUM/logo.png)
-
 ## 先導者として (LEADING THE WAY)
 
 ## 目的

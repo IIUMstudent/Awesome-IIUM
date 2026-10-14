@@ -137,13 +137,15 @@ awesome-iium/
 ├── public/                 # Static files served as-is
 │   ├── api/
 │   │   └── status.json    # System status (generated at deploy)
-│   └── logo.png           # Main logo
+│   ├── logo.svg, logo.png # Favicon and app icons (pnpm brand:assets)
+│   └── og.png             # Link preview image (pnpm brand:assets)
 ├── src/
+│   ├── assets/logo.svg    # The logo, source for every icon (see DESIGN.md)
 │   ├── components/        # Reusable Astro components
 │   ├── content/
 │   │   └── docs/          # Markdown documentation
 │   ├── styles/
-│   │   └── custom.css     # Custom CSS
+│   │   └── custom.css     # Theme: colours, fonts (see DESIGN.md)
 │   ├── config.ts          # Site configuration
 │   └── content.config.ts  # Content collection schema
 └── astro.config.mjs       # Astro configuration

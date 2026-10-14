@@ -3,54 +3,105 @@ title: Awesome IIUM
 description:
   A curated list of resources, tools, and guides for the International Islamic
   University Malaysia (IIUM) community.
+template: splash
+hero:
+  title: Awesome IIUM
+  tagline:
+    Resources, tools and guides for the International Islamic University
+    Malaysia community, collected by students.
+  image:
+    file: ../../assets/logo.svg
+    alt: ''
+  actions:
+    - text: Browse resources
+      link: /Awesome-IIUM/categories/academics/
+      icon: right-arrow
+    - text: Suggest a resource
+      link: https://github.com/IIUMstudent/Awesome-IIUM/issues/new?template=resource-request.yml
+      icon: external
+      variant: minimal
 ---
 
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 import NewThisWeek from '../../components/NewThisWeek.astro';
-import { Image } from 'astro:assets';
-import logo from '../../assets/logo.png';
-
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![License](https://img.shields.io/github/license/iiumstudent/Awesome-IIUM)](/Awesome-IIUM/about/license/)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-
-> A curated list of resources, tools, and guides for the **International Islamic
-> University Malaysia (IIUM)** community.
 
 _Read this in other languages: [Bahasa Melayu](/Awesome-IIUM/ms/),
 [中文](/Awesome-IIUM/zh/), [العربية](/Awesome-IIUM/ar/),
 [日本語](/Awesome-IIUM/ja/)_
 
-<div align="center">
-  <Image src={logo} alt="Awesome IIUM Logo" width={200} loading="lazy" />
-</div>
+## Find what you need
 
-## Table of Contents
-
-- [Welcome](#welcome)
-- [Admissions](/Awesome-IIUM/categories/admissions/)
-- [Academics](/Awesome-IIUM/categories/academics/)
-- [Postgraduate Studies](/Awesome-IIUM/categories/postgraduate/)
-- [Fees & Financial Aid](/Awesome-IIUM/categories/fees-and-financial-aid/)
-- [Campuses](/Awesome-IIUM/categories/campuses/)
-- [Campus Life](/Awesome-IIUM/categories/campus-life/)
-- [Student Services](/Awesome-IIUM/categories/student-services/)
-- [International Students](/Awesome-IIUM/categories/international-students/)
-- [Career & Internships](/Awesome-IIUM/categories/career/)
-- [Developers](/Awesome-IIUM/categories/developers/)
-- [Official Sources](/Awesome-IIUM/categories/official-sources/)
-- [Quick Links](#quick-links)
-- [Contributing](#contributing)
-- [License](#license)
-
-## Welcome
-
-Whether you are a student, faculty member, or alumni, this repository is your
-one-stop shop for everything IIUM. We aim to collect high-quality resources,
-tools, and guides to make your university life easier and more productive.
+<CardGrid>
+  <LinkCard
+    title="Admissions"
+    description="How to apply as an undergraduate, foundation, postgraduate or international student."
+    href="/Awesome-IIUM/categories/admissions/"
+  />
+  <LinkCard
+    title="Academics"
+    description="Portals, pre-registration and resources for every kulliyyah."
+    href="/Awesome-IIUM/categories/academics/"
+  />
+  <LinkCard
+    title="Postgraduate Studies"
+    description="Applying for and studying a master's or PhD at IIUM."
+    href="/Awesome-IIUM/categories/postgraduate/"
+  />
+  <LinkCard
+    title="Fees & Financial Aid"
+    description="Fee schedules, paying fees, scholarships and zakat."
+    href="/Awesome-IIUM/categories/fees-and-financial-aid/"
+  />
+  <LinkCard
+    title="Campuses"
+    description="Gombak, Kuantan, Pagoh and Gambang, and what is at each one."
+    href="/Awesome-IIUM/categories/campuses/"
+  />
+  <LinkCard
+    title="Campus Life"
+    description="Mahallah, clubs, student groups and everyday life on campus."
+    href="/Awesome-IIUM/categories/campus-life/"
+  />
+  <LinkCard
+    title="Student Services"
+    description="Health, counselling, IT, security and other support."
+    href="/Awesome-IIUM/categories/student-services/"
+  />
+  <LinkCard
+    title="International Students"
+    description="Student pass, insurance, medical check-up and support."
+    href="/Awesome-IIUM/categories/international-students/"
+  />
+  <LinkCard
+    title="Career & Internships"
+    description="Resumes, internships and alumni networks."
+    href="/Awesome-IIUM/categories/career/"
+  />
+  <LinkCard
+    title="Developers"
+    description="IIUM open source projects, APIs and tech communities."
+    href="/Awesome-IIUM/categories/developers/"
+  />
+  <LinkCard
+    title="Official Sources"
+    description="Every official IIUM website, portal and service in one place."
+    href="/Awesome-IIUM/categories/official-sources/"
+  />
+  <LinkCard
+    title="Tools"
+    description="GPA calculator, prayer times and the campus map."
+    href="/Awesome-IIUM/tools/"
+  />
+  <LinkCard
+    title="System status"
+    description="Is i-Ma'luum or i-Ta'leem down? Check here first."
+    href="/Awesome-IIUM/dashboard/"
+  />
+</CardGrid>
 
 <NewThisWeek />
 
-## Quick Links
+## Quick links
 
 | Service              | Description                        | URL                                                 |
 | :------------------- | :--------------------------------- | :-------------------------------------------------- |
@@ -60,13 +111,17 @@ tools, and guides to make your university life easier and more productive.
 | **Pre-Registration** | Course add/drop & schedules        | [prereg1.iium.edu.my](http://prereg1.iium.edu.my/)  |
 | **MyApps**           | All IIUM apps directory            | [myapps.iium.edu.my](https://myapps.iium.edu.my/)   |
 
+Awesome IIUM is run by students and is not an official IIUM website. For
+anything that matters (fees, deadlines, rules), check the
+[official sources](/Awesome-IIUM/categories/official-sources/).
+
 ## Contributing
 
 We welcome contributions! Please read our
 [Contribution Guidelines](/Awesome-IIUM/about/contributing/) before submitting a
 pull request.
 
-## 👥 Contributors
+## Contributors
 
 Thanks goes to these wonderful people
 ([emoji key](https://allcontributors.org/docs/en/emoji-key)):

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+	checkBrandToolkit,
 	checkCoverage,
 	currentSessionStart,
 	discoverSites,
@@ -191,5 +192,60 @@ describe('coverage', () => {
 		expect(report).not.toContain('nothing to do');
 		expect(report).toContain('Topics not covered yet (1)');
 		expect(report).toContain('- Food');
+	});
+});
+
+describe('brand toolkit', () => {
+	const toolkit = {
+		page: 'https://office.iium.edu.my/ocap/official-iium-2/',
+		files: [
+			'https://office.iium.edu.my/ocap/wp-content/uploads/sites/2/2025/07/Corporate-Colours-of-IIUM.pdf',
+			'https://office.iium.edu.my/ocap/wp-content/uploads/sites/2/2025/07/Old.pdf',
+		],
+	};
+	const page = `
+		<a href="/ocap/wp-content/uploads/sites/2/2025/07/Corporate-Colours-of-IIUM.pdf">Colours</a>
+		<a href="https://office.iium.edu.my/ocap/wp-content/uploads/sites/2/2027/01/Brand-Toolkit-V3.pdf">New</a>
+		<a href="https://office.iium.edu.my/ocap/contact/">Contact</a>`;
+
+	it('lists toolkit files added and removed since DESIGN.md was checked', async () => {
+		expect(await checkBrandToolkit(toolkit, async () => page)).toEqual({
+			added: [
+				'https://office.iium.edu.my/ocap/wp-content/uploads/sites/2/2027/01/Brand-Toolkit-V3.pdf',
+			],
+			removed: [
+				'https://office.iium.edu.my/ocap/wp-content/uploads/sites/2/2025/07/Old.pdf',
+			],
+			failed: false,
+			page: toolkit.page,
+		});
+	});
+
+	it('reports a page it could not load without asking for a review', async () => {
+		const brand = await checkBrandToolkit(toolkit, async () => null);
+		expect(brand.failed).toBe(true);
+		const report = renderReport({
+			stale: [],
+			sites: [],
+			failedSeeds: [],
+			staleAfterDays: 180,
+			brand,
+		});
+		expect(report).toContain('nothing to do');
+		expect(report).toContain("Couldn't load the IIUM brand toolkit page");
+	});
+
+	it('asks for a DESIGN.md review when the toolkit changed', async () => {
+		const report = renderReport({
+			stale: [],
+			sites: [],
+			failedSeeds: [],
+			staleAfterDays: 180,
+			brand: await checkBrandToolkit(toolkit, async () => page),
+		});
+		expect(report).not.toContain('nothing to do');
+		expect(report).toContain('IIUM brand toolkit changed');
+		expect(report).toContain('Brand-Toolkit-V3.pdf');
+		expect(report).toContain('Old.pdf');
 	});
 });

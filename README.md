@@ -9,7 +9,7 @@ _Read this in other languages: [Bahasa Melayu](https://iiumstudent.github.io/Awe
 [日本語](https://iiumstudent.github.io/Awesome-IIUM/ja/)_
 
 <div align="center">
-  <img src="logo.png" alt="Awesome IIUM Logo" width="200"/>
+  <img src="src/assets/logo.svg" alt="Awesome IIUM logo" width="120"/>
   <br>
 </div>
 

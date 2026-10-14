@@ -1,15 +1,155 @@
-/* Custom styles for Awesome IIUM */
+/*
+ * Awesome IIUM theme: the only file where raw colour values may appear.
+ * Every component uses the tokens below; `pnpm lint:design` enforces it.
+ * Why each value is what it is lives in DESIGN.md.
+ */
 
 :root {
-	/* Custom theme variables can be added here */
+	/* IIUM corporate colours, exactly as published in the IIUM Brand Toolkit. */
+	--iium-turquoise: #00918e;
+	--iium-gold: #d59f0f;
+
+	/* For things that look the same in both themes, like the campus colours
+	   and the map (whose tiles and popups are always light). */
+	--aw-color-paper: #ffffff;
+	--aw-color-ink: #0f1a1a;
+	--aw-color-ink-muted: #4a5656;
+
+	/* Campus colours (Campus Map). */
+	--aw-campus-gombak: var(--iium-turquoise);
+	--aw-campus-kuantan: var(--iium-gold);
+	--aw-campus-pagoh: #6fa8dc;
+
+	/* Headings: a geometric slab serif in the spirit of IIUM's Rockwell. */
+	--aw-font-heading:
+		"Arvo", "Rockwell", "Rockwell Nova", "Roboto Slab", Georgia, serif;
+
+	/* Dark theme (Starlight's default). */
+	--sl-color-accent-low: #003836;
+	--sl-color-accent: #00a6a2; /* turquoise, lifted to stay AA on dark greys */
+	--sl-color-accent-high: #8fe0dd;
+
+	--aw-color-gold-low: #3d2e05;
+	--aw-color-gold: var(--iium-gold);
+	--aw-color-gold-high: #e9b949;
+
+	/* Starlight's grey ramp, same lightness, hue moved towards turquoise. */
+	--sl-color-white: hsl(0, 0%, 100%);
+	--sl-color-gray-1: hsl(180, 16%, 94%);
+	--sl-color-gray-2: hsl(180, 6%, 77%);
+	--sl-color-gray-3: hsl(180, 5%, 58%);
+	--sl-color-gray-4: hsl(180, 6%, 36%);
+	--sl-color-gray-5: hsl(180, 9%, 23%);
+	--sl-color-gray-6: hsl(180, 12%, 16%);
+	--sl-color-black: hsl(180, 10%, 10%);
 }
 
-/* Ensure offline indicator doesn't conflict with Starlight styles */
+:root[data-theme="light"] {
+	--sl-color-accent-low: #d6f0ef;
+	--sl-color-accent: #00706d;
+	--sl-color-accent-high: #00403f;
+
+	--aw-color-gold-low: #f5ebcf;
+	--aw-color-gold: var(--iium-gold);
+	--aw-color-gold-high: #7a5800;
+
+	--sl-color-white: hsl(180, 10%, 10%);
+	--sl-color-gray-1: hsl(180, 12%, 16%);
+	--sl-color-gray-2: hsl(180, 9%, 23%);
+	--sl-color-gray-3: hsl(180, 6%, 36%);
+	--sl-color-gray-4: hsl(180, 5%, 56%);
+	--sl-color-gray-5: hsl(180, 6%, 77%);
+	--sl-color-gray-6: hsl(180, 16%, 94%);
+	--sl-color-gray-7: hsl(180, 16%, 97%);
+	--sl-color-black: hsl(0, 0%, 100%);
+}
+
+/* Arvo only covers Latin; these scripts read better in the system font. */
+:root:is([lang="ar"], [lang="ja"], [lang^="zh"]) {
+	--aw-font-heading: var(--__sl-font);
+}
+
+/* Headings and the site title use the heading font. */
+.sl-markdown-content :is(h1, h2, h3, h4),
+h1#_top,
+.hero h1,
+.site-title {
+	font-family: var(--aw-font-heading);
+	font-weight: 700;
+	letter-spacing: -0.01em;
+}
+
+.site-title {
+	color: var(--sl-color-white);
+}
+
+/* A gold rule under the header, echoing the ribbon in the IIUM logo. */
+header.header {
+	border-bottom: 3px solid var(--aw-color-gold);
+}
+
+/* Homepage hero: a soft turquoise wash behind the logo and title. */
+[data-has-hero] .hero {
+	padding-inline: clamp(1rem, 4vw, 2.5rem);
+	border-radius: 1rem;
+	background: linear-gradient(
+		160deg,
+		var(--sl-color-accent-low) 0%,
+		transparent 75%
+	);
+}
+
+[data-has-hero] .hero > img {
+	width: min(40%, 9rem);
+}
+
+@media (min-width: 50rem) {
+	[data-has-hero] .hero {
+		padding-block: clamp(2rem, calc(1rem + 6vmin), 5rem);
+	}
+
+	[data-has-hero] .hero > img {
+		width: min(100%, 15rem);
+	}
+}
+
+/* Offline notice (public/pwa-register.js). Hidden until the browser is offline. */
 #offline-indicator {
+	position: fixed;
+	bottom: 1.25rem;
+	left: 50%;
 	z-index: 9999;
+	max-width: calc(100vw - 2rem);
+	padding: 0.75rem 1.5rem;
+	border: 1px solid var(--sl-color-hairline-light);
+	border-radius: 999px;
+	background: var(--sl-color-gray-6);
+	color: var(--sl-color-white);
+	box-shadow: var(--sl-shadow-lg);
+	font-weight: 500;
+	pointer-events: none;
+	visibility: hidden;
+	transform: translate(-50%, calc(100% + 2rem));
+	transition:
+		transform 0.4s ease,
+		visibility 0s linear 0.4s;
 }
 
-/* Custom utility classes */
-.not-content {
-	/* Components that shouldn't be treated as main content */
+#offline-indicator.is-offline {
+	visibility: visible;
+	transform: translate(-50%, 0);
+	transition: transform 0.4s ease;
+}
+
+#offline-indicator .offline-content {
+	display: flex;
+	align-items: center;
+	gap: 0.625rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#offline-indicator,
+	#offline-indicator.is-offline {
+		transition: none;
+	}
 }

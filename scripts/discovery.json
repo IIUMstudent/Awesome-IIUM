@@ -23,5 +23,15 @@
 		"webmail.iium.edu.my",
 		"mail.iium.edu.my"
 	],
-	"staleAfterDays": 180
+	"staleAfterDays": 180,
+	"brandToolkit": {
+		"$comment": "The IIUM Brand Toolkit that DESIGN.md follows. The report lists files added to or removed from 'page' since they were recorded in 'files'. After checking DESIGN.md against a new file, add it here.",
+		"page": "https://office.iium.edu.my/ocap/official-iium-2/",
+		"files": [
+			"https://office.iium.edu.my/ocap/wp-content/uploads/sites/2/2025/07/Corporate-Colours-of-IIUM.pdf",
+			"https://office.iium.edu.my/ocap/wp-content/uploads/sites/2/2025/07/Corporate-IIUM-Logo-Variations-and-Elements.pdf",
+			"https://office.iium.edu.my/ocap/wp-content/uploads/sites/2/2025/07/Corporate-Letterhead.pdf",
+			"https://office.iium.edu.my/ocap/wp-content/uploads/sites/2/2025/07/FULL_BRANDING_IIUM_V2.pdf"
+		]
+	}
 }

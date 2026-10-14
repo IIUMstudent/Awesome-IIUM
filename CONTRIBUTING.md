@@ -23,6 +23,8 @@ To keep this list high-quality, please ensure your contribution:
   - **Description**: Short, clear, and ends with a period.
 - **No Self-Promotion**: If you are the author, please state it in the PR but
   keep the description objective.
+- **Design**: Changing how the site looks (styles, components, images)?
+  Follow [DESIGN.md](DESIGN.md). `pnpm lint` checks the basics.
 
 ## 📦 Dependency Management Policy
 

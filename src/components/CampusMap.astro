@@ -41,7 +41,7 @@ const campuses: Campus[] = [
 		nameMs: 'Kampus Utama (Gombak)',
 		center: [101.7313, 3.2513],
 		zoom: 15,
-		color: '#10b981',
+		color: 'var(--aw-campus-gombak)',
 	},
 	{
 		id: 'kuantan',
@@ -49,7 +49,7 @@ const campuses: Campus[] = [
 		nameMs: 'Kampus Kuantan',
 		center: [103.426, 3.8177],
 		zoom: 15,
-		color: '#3b82f6',
+		color: 'var(--aw-campus-kuantan)',
 	},
 	{
 		id: 'pagoh',
@@ -57,7 +57,7 @@ const campuses: Campus[] = [
 		nameMs: 'Kampus Pagoh',
 		center: [102.7681, 2.1494],
 		zoom: 15,
-		color: '#f59e0b',
+		color: 'var(--aw-campus-pagoh)',
 	},
 ];
 
@@ -423,7 +423,7 @@ const locations: Location[] = [
   .campus-tab.active {
     background: var(--campus-color, var(--sl-color-accent));
     border-color: var(--campus-color, var(--sl-color-accent));
-    color: #0f172a;
+    color: var(--aw-color-ink);
   }
 
   .map-container {
@@ -478,7 +478,7 @@ const locations: Location[] = [
 
   /* Custom marker styles */
   :global(.custom-marker) {
-    background: white;
+    background: var(--aw-color-paper);
     border-radius: 50%;
     width: 32px;
     height: 32px;
@@ -486,7 +486,7 @@ const locations: Location[] = [
     align-items: center;
     justify-content: center;
     font-size: 1rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    box-shadow: var(--sl-shadow-md);
     cursor: pointer;
     transition: transform 0.2s;
     /* Button reset */
@@ -517,7 +517,7 @@ const locations: Location[] = [
 
   :global(.marker-popup .type) {
     font-size: 0.625rem;
-    color: #666;
+    color: var(--aw-color-ink-muted);
     text-transform: capitalize;
   }
 
