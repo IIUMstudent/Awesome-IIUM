@@ -1,54 +1,64 @@
 ---
 title: '🏥 Kulliyyah of Medicine (KOM)'
-description: 'Resources for IIUM Medical students.'
+description: 'Resources for IIUM medical students.'
 resourceType: guide
 tags:
   - medicine
   - medical
   - kuantan
 campus: kuantan
-lastUpdated: 2025-01-30
+kulliyyah: KOM
+lastUpdated: 2026-10-14
 ---
 
-Kulliyyah of Medicine (KOM) offers comprehensive medical education at IIUM's
-Kuantan campus.
+The Kulliyyah of Medicine (KOM) has trained doctors since 1997. It started at a
+campus on Jalan Hospital in Kuantan and moved to the Indera Mahkota campus
+in 2004.
 
 ## 🏛️ Official Links
 
-- [KOM Website](https://kulliyyah.iium.edu.my/kom/) - Official Kulliyyah portal
-
-## 👨‍🏫 Leadership
-
-The current Dean and management team are listed on the
-[official KOM website](https://kulliyyah.iium.edu.my/kom/).
+- [KOM Website](https://kulliyyah.iium.edu.my/kom/) - Programmes, departments,
+  the current management team and announcements, including the MBBS student
+  guidebook for each phase.
 
 ## 📚 Departments
 
-- Basic Medical Sciences
-- Internal Medicine
-- Surgery
-- Paediatrics
-- Obstetrics and Gynaecology
-- Family Medicine
-- Community Medicine
-- Psychiatry
 - Anaesthesiology and Intensive Care
+- Basic Medical Sciences
+- Community Medicine
 - Emergency Medicine
+- Family Medicine
+- Internal Medicine
+- Obstetrics and Gynaecology
+- Ophthalmology
+- Orthopaedics, Traumatology and Rehabilitation
+- Otorhinolaryngology - Head and Neck Surgery
+- Paediatrics
+- Pathology and Laboratory Medicine
+- Psychiatry
 - Radiology
-- Pathology
+- Surgery
+
+The Medical Education and Academic Quality Department supports teaching across
+the kulliyyah.
 
 ## 📖 Academic Programmes
 
-### Undergraduate
+- **Undergraduate**: Bachelor of Medicine and Bachelor of Surgery (MBBS).
+- **Postgraduate**: master's, clinical specialist and PhD programmes; see the
+  [KOM website](https://kulliyyah.iium.edu.my/kom/).
 
-- Bachelor of Medicine, Bachelor of Surgery (MBBS)
+KOM follows its own academic calendar, separate from most other kulliyyahs.
 
-### Postgraduate
+## 🏥 Clinical Training
 
-- Master of Medicine
-- Doctor of Philosophy (PhD) in Medical Sciences
+Clinical years are taught at IIUM's teaching hospital,
+[SASMEC @IIUM](https://sasmec.iium.edu.my/), and Hospital Tengku Ampuan Afzan,
+Kuantan's state general hospital.
 
 ## 🔗 Quick Links
 
-- [i-Ma'luum](https://imaluum.iium.edu.my/) - Student Portal
-- [i-Ta'leem](https://italeem.iium.edu.my/) - Learning Management System
+- [i-Ma'luum](https://imaluum.iium.edu.my/) - Student portal
+- [i-Ta'leem](https://italeem.iium.edu.my/) - Learning management system
+- [Course Registration](../pre-reg-gombak-kuantan/) - How pre-reg works
+- [Kuantan campus](../../campuses/) - Getting there, housing and services

@@ -1,47 +1,45 @@
 ---
 title: '🩺 Kulliyyah of Nursing (KON)'
-description: 'Resources for IIUM Nursing students.'
+description: 'Resources for IIUM nursing students.'
 resourceType: guide
 tags:
   - nursing
-  - medical
+  - health
   - kuantan
 campus: kuantan
-lastUpdated: 2025-01-30
+kulliyyah: KON
+lastUpdated: 2026-10-14
 ---
 
-Kulliyyah of Nursing (KON) prepares professional nurses at IIUM's Kuantan
+The Kulliyyah of Nursing (KON) prepares professional nurses at IIUM's Kuantan
 campus.
 
 ## 🏛️ Official Links
 
-- [KON Website](https://kulliyyah.iium.edu.my/kon/) - Official Kulliyyah portal
-
-## 👨‍🏫 Leadership
-
-The current Dean and management team are listed on the
-[official KON website](https://kulliyyah.iium.edu.my/kon/).
+- [KON Website](https://kulliyyah.iium.edu.my/kon/) - Programmes, staff, the
+  current management team and contacts.
+- [Bachelor of Nursing (Honours)](https://iium.edu.my/programme/show/bachelor-of-nursing-honours) -
+  Programme details on the IIUM website.
 
 ## 📚 Departments
 
-- Medical-Surgical Nursing
-- Community Nursing
-- Maternal and Child Nursing
-- Mental Health Nursing
-- Nursing Management
+- Basic Medical Sciences for Nursing
+- Critical Care Nursing
+- Medical Surgical Nursing
+- Professional Nursing Studies
+- Special Care Nursing
 
 ## 📖 Academic Programmes
 
-### Undergraduate
-
-- Bachelor of Nursing (Hons)
-
-### Postgraduate
-
-- Master of Nursing Science
-- Doctor of Philosophy (PhD) in Nursing
+- **Undergraduate**: a four-year Bachelor of Nursing (Honours) with a large
+  amount of supervised clinical practice in hospitals, plus an open and distance
+  learning (ODL) route for working nurses.
+- **Postgraduate**: Master in Nursing Science, Master of Advanced Practice in
+  several specialties, and a PhD in Nursing.
 
 ## 🔗 Quick Links
 
-- [i-Ma'luum](https://imaluum.iium.edu.my/) - Student Portal
-- [i-Ta'leem](https://italeem.iium.edu.my/) - Learning Management System
+- [i-Ma'luum](https://imaluum.iium.edu.my/) - Student portal
+- [i-Ta'leem](https://italeem.iium.edu.my/) - Learning management system
+- [Course Registration](../pre-reg-gombak-kuantan/) - How pre-reg works
+- [Kuantan campus](../../campuses/) - Getting there, housing and services

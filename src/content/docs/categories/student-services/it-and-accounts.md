@@ -15,6 +15,9 @@ lastUpdated: 2026-10-14
   in to campus Wi-Fi and the library's online databases.
 - **i-Ta'leem** ([italeem.iium.edu.my](https://italeem.iium.edu.my/)) - The
   learning management system for your courses.
+- **IIUM Live email** (`@live.iium.edu.my`) - Your Microsoft 365 account, with
+  free Office. Activate it in i-Ma'luum under _My Services_ → _Office 365 - Self
+  Register_; see [Essential Software](../../campus-life/software/).
 - **Forgot your password?** Reset it at
   [passwordreset.iium.edu.my](https://passwordreset.iium.edu.my/), or contact
   the ICT Help Desk if your account is locked.

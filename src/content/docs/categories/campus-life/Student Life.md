@@ -1,6 +1,7 @@
 ---
 title: '💡 Student Life Tips & Hacks'
 description: Practical tips for living and studying at IIUM.
+lastUpdated: 2026-10-14
 ---
 
 A collection of community-sourced tips for surviving and thriving at IIUM.
@@ -16,13 +17,13 @@ A collection of community-sourced tips for surviving and thriving at IIUM.
 - **SKP (Student Kitchen Project)**: Look out for free food distribution at the
   Mosque Foyer in the evenings (usually after 5:30 PM).
 - **Walk to Class**: A great way to exercise and save money on transporters.
-- **Rapid Student Card**: Apply for a concession card to get a 50% discount on
-  all Rapid public transportation (Bus/LRT/MRT).
+- **Rapid Student Card**: Malaysian students can get a
+  [MyRapid concession card](https://myrapid.com.my/our-products/concession-cards)
+  for 50% off adult fares on Rapid KL trains and buses. Check the page for who
+  is eligible: the rules for non-Malaysian students changed in 2026.
 
 ## 🏃 Health & Sustainability
 
-- **Bathe Early**: Your body temperature can rise after a shower if done in a
-  rush. Bathe earlier to let your body cool down naturally.
 - **Health Preparedness**: Always keep a stock of basic medicine (Panadol, cold
   medicine, plasters) in your room.
 - **Sun Protection**: During hot seasons, avoid direct sunlight and stay

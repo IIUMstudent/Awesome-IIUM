@@ -66,15 +66,15 @@ The definitive reference of official IIUM digital services.
 
 ### Gombak Campus
 
-| Kulliyyah  | Website                                                               | Guide page                               |
-| :--------- | :-------------------------------------------------------------------- | :--------------------------------------- |
-| **AIKOL**  | [kulliyyah.iium.edu.my/aikol](https://kulliyyah.iium.edu.my/aikol/)   | [AIKOL resources](../academics/aikol/)   |
-| **KAED**   | [kulliyyah.iium.edu.my/kaed](https://kulliyyah.iium.edu.my/kaed/)     | [KAED resources](../academics/kaed/)     |
-| **KENMS**  | [kulliyyah.iium.edu.my/kenms](https://kulliyyah.iium.edu.my/kenms/)   | [KENMS resources](../academics/kenms/)   |
-| **KICT**   | [kulliyyah.iium.edu.my/kict](https://kulliyyah.iium.edu.my/kict/)     | [KICT resources](../academics/kict/)     |
-| **KIRKHS** | [kulliyyah.iium.edu.my/kirkhs](https://kulliyyah.iium.edu.my/kirkhs/) | [KIRKHS resources](../academics/kirkhs/) |
-| **KOE**    | [kulliyyah.iium.edu.my/koe](https://kulliyyah.iium.edu.my/koe/)       | [KOE resources](../academics/koe/)       |
-| **KOED**   | [kulliyyah.iium.edu.my/koed](https://kulliyyah.iium.edu.my/koed/)     | [KOED resources](../academics/koed/)     |
+| Kulliyyah  | Website                                                                       | Guide page                               |
+| :--------- | :---------------------------------------------------------------------------- | :--------------------------------------- |
+| **AIKOL**  | [kulliyyah.iium.edu.my/aikol](https://kulliyyah.iium.edu.my/aikol/)           | [AIKOL resources](../academics/aikol/)   |
+| **KAED**   | [kulliyyah.iium.edu.my/kaed](https://kulliyyah.iium.edu.my/kaed/)             | [KAED resources](../academics/kaed/)     |
+| **KENMS**  | [kulliyyah.iium.edu.my/kenms](https://kulliyyah.iium.edu.my/kenms/)           | [KENMS resources](../academics/kenms/)   |
+| **KICT**   | [kulliyyah.iium.edu.my/kict](https://kulliyyah.iium.edu.my/kict/)             | [KICT resources](../academics/kict/)     |
+| **KIRKHS** | [kulliyyah.iium.edu.my/ahaskirkhs](https://kulliyyah.iium.edu.my/ahaskirkhs/) | [KIRKHS resources](../academics/kirkhs/) |
+| **KOE**    | [kulliyyah.iium.edu.my/koe](https://kulliyyah.iium.edu.my/koe/)               | [KOE resources](../academics/koe/)       |
+| **KOED**   | [kulliyyah.iium.edu.my/koed](https://kulliyyah.iium.edu.my/koed/)             | [KOED resources](../academics/koed/)     |
 
 ### Kuantan Campus
 

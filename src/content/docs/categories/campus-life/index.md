@@ -12,7 +12,10 @@ lastUpdated: 2026-10-14
   [Student Affairs and Development Division](https://division.iium.edu.my/stadd/).
   The [Bus Schedules](https://t.me/BUS_SCHEDULES) Telegram channel posts
   timetables.
-- **RapidKL T200**: Connects IIUM Gombak to Gombak LRT Station.
+- **RapidKL T200**: Feeder bus between Gombak LRT station (Kelana Jaya Line) and
+  IIUM Gombak, roughly every 30 minutes from early morning to late evening.
+  Don't confuse it with bus **200**, which goes to central Kuala Lumpur.
+- **Pagoh**: Campus buses run on weekdays only.
 - **Kumpool**: Ride-pooling service available within the campus area.
 
 ## 🗺️ Maps & Navigation
@@ -30,14 +33,12 @@ For each campus's location and how to get there, see [Campuses](../campuses/).
 
 Students live in residential colleges called mahallah. See
 [Mahallahs](./mahallah/) for the full list for each campus and how to apply for
-a room.
+a room, and [Off-Campus Housing](./off-campus-housing/) if you rent outside.
 
 ## 🍔 Food & Dining
 
-- **HS Cafe**: Known for _Roti Canai_ and _Nasi Campur_.
-- **Engineering Cafe**: Popular for its affordable breakfast options.
-- **Mahallah Canteens**: Most Mahallahs have their own cafeterias operating
-  until late night.
+Every mahallah has a cafeteria, and there are cafes near most kulliyyahs. See
+[Food & Dining](./food/) for where to eat and how to save money.
 
 ## 🏟️ Sports & Recreation
 
@@ -67,7 +68,8 @@ a room.
 
 ## 🔗 More
 
-- [Clubs & Societies](./club/) · [Programs & Events](./programs/) ·
+- [Food & Dining](./food/) · [Off-Campus Housing](./off-campus-housing/) ·
+  [Clubs & Societies](./club/) · [Programs & Events](./programs/) ·
   [Student Life Tips](./student-life/) · [Essential Software](./software/)
 - Social media: [Telegram](./social-media/telegramgroups/) ·
   [WhatsApp](./social-media/whatsappgroups/) ·

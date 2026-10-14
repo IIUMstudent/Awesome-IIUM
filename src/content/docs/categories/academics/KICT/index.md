@@ -8,12 +8,14 @@ tags:
   - software
   - gombak
 campus: gombak
-lastUpdated: 2025-01-30
+kulliyyah: KICT
+lastUpdated: 2026-10-14
 ---
 
-Kulliyyah of Information and Communication Technology (KICT) offers
-comprehensive programmes in computing, information technology, and digital
-technologies at IIUM's Gombak campus.
+The Kulliyyah of Information and Communication Technology (KICT) teaches
+computing, information technology and library science at IIUM's Gombak campus.
+The current dean and management team are listed in the
+[Dean's Office](https://kulliyyah.iium.edu.my/kict/deans-office-3/).
 
 ## 🏛️ Official Links
 
@@ -21,41 +23,24 @@ technologies at IIUM's Gombak campus.
   portal
 - [Vision & Mission](https://kulliyyah.iium.edu.my/kict/vision-mission/)
 - [History](https://kulliyyah.iium.edu.my/kict/history-of-kict-2/)
-- [Organisation Chart](https://kulliyyah.iium.edu.my/kict/wp-content/uploads/sites/3/2025/07/KICT-ORG-CHART-2025-2027.png)
 - [Contact Us](https://kulliyyah.iium.edu.my/kict/contact-us/)
-
-## 👨‍🏫 Leadership
-
-The current Dean and management team are listed on the
-[official KICT website](https://kulliyyah.iium.edu.my/kict/).
 
 ## 📚 Departments
 
 - Computer Science
-- Information Technology
+- Information Systems
 - Library and Information Science
-- Protective and Security Management
 
 ## 📖 Academic Programmes
 
-### Undergraduate
+- **Undergraduate**: Bachelor of Computer Science and Bachelor of Information
+  Technology, plus a programme in Protective and Security Management.
+- **Postgraduate**: master's and PhD programmes in computer science, information
+  technology, and library and information science (the Library and Information
+  Science department teaches at postgraduate level only).
 
-- Bachelor of Computer Science
-- Bachelor of Information Technology
-- Bachelor of Library and Information Science
-
-### Postgraduate
-
-- Master of Information Technology
-- Master of Computer Science
-- Master of IT Entrepreneurship
-- Doctor of Philosophy (PhD) in Computer Science
-- Doctor of Philosophy (PhD) in Information Technology
-
-### Future Programmes
-
-- Artificial Intelligence (AI)
-- Applied AI Programs
+Current programmes and study plans are on the
+[KICT website](https://kulliyyah.iium.edu.my/kict/).
 
 ## 🏢 Offices & Centres
 
@@ -79,5 +64,7 @@ The current Dean and management team are listed on the
 
 ## 🔗 Quick Links
 
-- [i-Ma'luum](https://imaluum.iium.edu.my/) - Student Portal
-- [i-Ta'leem](https://italeem.iium.edu.my/) - Learning Management System
+- [i-Ma'luum](https://imaluum.iium.edu.my/) - Student portal
+- [i-Ta'leem](https://italeem.iium.edu.my/) - Learning management system
+- [Course Registration](../pre-reg-gombak-kuantan/) - How pre-reg works
+- [Gombak campus](../../campuses/) - Getting there, housing and services

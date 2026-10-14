@@ -54,9 +54,24 @@ Gombak has 17 mahallat.
 - **Mahallah Ruqayyah**
 - **Mahallah Salahuddin**
 
-## 🌴 Other Campuses
+## 🌴 Pagoh Campus
 
-Kuantan, Pagoh and the Centre for Foundation Studies in Gambang have their own
-mahallat. The [Centre for Foundation Studies](https://centre.iium.edu.my/cfs/)
-lists its mahallat in Gambang and Kuantan, and the
-[mahallah portal](https://mahallah.iium.edu.my/) covers the rest.
+- **Mahallah Zaid bin Harithah** - The residential college for
+  [KSTCL](../../academics/kstcl/) students at Pagoh.
+
+## 📘 Centre for Foundation Studies (Gambang and Kuantan)
+
+Foundation students live in the
+[Centre for Foundation Studies' mahallat](https://centre.iium.edu.my/cfs/mahallah/):
+six at Gambang and two at the Kuantan campus.
+
+## 🏥 Kuantan Campus
+
+Degree students at Kuantan have their own mahallat, run with the campus's
+student affairs office. See the [mahallah portal](https://mahallah.iium.edu.my/)
+for each one.
+
+## 🏘 No Room?
+
+IIUM offers rooms by vacancy, so not everyone gets one. See
+[Off-Campus Housing](../off-campus-housing/) for renting nearby.

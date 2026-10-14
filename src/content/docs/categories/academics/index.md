@@ -16,6 +16,8 @@ lastUpdated: 2026-10-14
   password reset, and account services.
 - [Pre-Registration System](http://prereg1.iium.edu.my/) - Course registration,
   add/drop, and schedule viewing.
+- [Minor Packages & Free Electives](https://iium.edu.my/programme/show/minor-packages-and-free-elective-courses) -
+  Minors you can take alongside your degree.
 
 ## 🧮 Tools & Utilities
 
@@ -40,10 +42,18 @@ lastUpdated: 2026-10-14
   every student.
 - [Course Registration (Pre-Reg)](./pre-reg-gombak-kuantan/) - How course
   registration works ([Pagoh](./pre-reg-pagoh/)).
+- [Academic Rules](./academic-rules/) - Grading, probation, leave of absence and
+  the official regulations.
+- [Student Exchange & Study Abroad](./student-exchange/) - A semester or a
+  summer at a partner university.
 - [Graduation & Convocation](./graduation/) - Finishing your degree.
 - [Postgraduate Studies](../postgraduate/) - Master's and PhD.
 
 ## 🎓 Colleges (Kulliyyahs)
+
+IIUM's own directory lists every kulliyyah by campus:
+[Gombak](https://kulliyyah.iium.edu.my/category/campus-gombak/) ·
+[Kuantan](https://kulliyyah.iium.edu.my/category/campus-kuantan).
 
 ### Gombak Campus
 

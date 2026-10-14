@@ -35,6 +35,7 @@ At Bandar Indera Mahkota, Kuantan: IIUM's health sciences campus.
 - **Teaching hospital**:
   [Sultan Ahmad Shah Medical Centre @IIUM (SASMEC)](https://sasmec.iium.edu.my/),
   where the health sciences kulliyyahs train.
+- **Housing**: The campus's own [mahallat](../campus-life/mahallah/).
 
 ## 🌴 Pagoh (Johor)
 
@@ -42,6 +43,11 @@ Part of the Pagoh Higher Education Hub in Muar, Johor.
 
 - **Kulliyyah**: [KSTCL](../academics/kstcl/), the Kulliyyah of Sustainable
   Tourism and Contemporary Languages (formerly KLM).
+- **Housing**: Mahallah Zaid bin Harithah.
+- **Facilities**: The Education Hub's sports facilities, swimming pool,
+  multi-purpose hall, library and convention hall are shared with the other
+  universities on the hub (UTHM, UTM and Politeknik Tun Syed Nasir).
+- **Getting around**: IIUM campus buses run on weekdays only, not at weekends.
 - **Course registration**: Pagoh's dates can differ; see
   [Course Registration (Pagoh)](../academics/pre-reg-pagoh/).
 
@@ -51,6 +57,12 @@ Home of the
 [Centre for Foundation Studies (CFS)](https://centre.iium.edu.my/cfs/), which
 prepares students, mainly SPM holders, for IIUM degree programmes. CFS also has
 students at the Kuantan campus.
+
+- **Housing**: Six [CFS mahallat](https://centre.iium.edu.my/cfs/mahallah/) at
+  Gambang and two at Kuantan, with cafeterias, convenience stores, laundry,
+  study rooms and a prayer room in each building.
+- **Calendar**: CFS has its own academic calendar, published on the
+  [CFS website](https://centre.iium.edu.my/cfs/).
 
 ## 🔗 Also Useful
 

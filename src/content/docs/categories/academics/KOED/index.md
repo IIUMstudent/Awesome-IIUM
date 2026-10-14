@@ -1,51 +1,44 @@
 ---
 title: '📝 Kulliyyah of Education (KOED)'
-description: 'Resources for IIUM Education students.'
+description: 'Resources for IIUM education students.'
 resourceType: guide
 tags:
   - education
   - teaching
   - gombak
 campus: gombak
-lastUpdated: 2025-01-30
+kulliyyah: KOED
+lastUpdated: 2026-10-14
 ---
 
-Kulliyyah of Education (KOED) prepares future educators and educational leaders
-at IIUM's Gombak campus.
+The Kulliyyah of Education (KOED) at the Gombak campus prepares teachers,
+counsellors and educational leaders.
 
 ## 🏛️ Official Links
 
-- [KOED Website](https://kulliyyah.iium.edu.my/koed/) - Official Kulliyyah
-  portal
-
-## 👨‍🏫 Leadership
-
-The current Dean and management team are listed on the
-[official KOED website](https://kulliyyah.iium.edu.my/koed/).
+- [KOED Website](https://kulliyyah.iium.edu.my/koed/) - Programmes, staff and
+  news.
+- [Dean](https://kulliyyah.iium.edu.my/koed/dean/) - The current dean.
 
 ## 📚 Departments
 
-- Curriculum and Instruction
+- [Curriculum and Instruction](https://kulliyyah.iium.edu.my/koed/doci/)
 - Educational Psychology and Counselling
-- Educational Management, Planning and Policy
-- Language and Literacy Education
-- Social Foundations and Educational Leadership
+- Language and Literacy
+- [Social Foundations and Educational Leadership](https://kulliyyah.iium.edu.my/koed/dosfel/)
+
+KOED also runs the Centre for Teaching and Learning and the Centre for Teaching
+Thinking.
 
 ## 📖 Academic Programmes
 
-### Undergraduate
-
-- Bachelor of Education (TESL)
-- Bachelor of Education (Guidance and Counselling)
-- Bachelor of Education (Information Technology)
-- Bachelor of Education (Arabic)
-
-### Postgraduate
-
-- Master of Education
-- Doctor of Philosophy (PhD) in Education
+Bachelor of Education programmes in several specialisations, plus master's and
+PhD programmes. Postgraduate students get a handbook each semester. Current
+programmes are on the [KOED website](https://kulliyyah.iium.edu.my/koed/).
 
 ## 🔗 Quick Links
 
-- [i-Ma'luum](https://imaluum.iium.edu.my/) - Student Portal
-- [i-Ta'leem](https://italeem.iium.edu.my/) - Learning Management System
+- [i-Ma'luum](https://imaluum.iium.edu.my/) - Student portal
+- [i-Ta'leem](https://italeem.iium.edu.my/) - Learning management system
+- [Course Registration](../pre-reg-gombak-kuantan/) - How pre-reg works
+- [Gombak campus](../../campuses/) - Getting there, housing and services

@@ -51,6 +51,7 @@ _阅读其他语言版本：[English](../), [Melayu](../ms/), [العربية](.
 
 ## 目录
 
+- [指南](#指南)
 - [推荐](#推荐)
 - [IIUM 官方网站和门户](#iium-官方网站和门户)
 - [IIUM 学术资源和工具](#iium-学术资源和工具)
@@ -60,6 +61,21 @@ _阅读其他语言版本：[English](../), [Melayu](../ms/), [العربية](.
 - [IIUM 研究和出版物](#iium-研究和出版物)
 - [IIUM 社区服务和外展](#iium-社区服务和外展)
 - [IIUM 文化和价值观](#iium-文化和价值观)
+
+## 指南
+
+以下指南为英文。
+
+- [入学申请](../categories/admissions/)
+- [学术](../categories/academics/)
+- [研究生课程](../categories/postgraduate/)
+- [学费与经济援助](../categories/fees-and-financial-aid/)
+- [校区](../categories/campuses/)
+- [校园生活](../categories/campus-life/)
+- [学生服务（健康、IT、安全）](../categories/student-services/)
+- [国际学生](../categories/international-students/)
+- [职业与实习](../categories/career/)
+- [IIUM 官方网站](../categories/official-sources/)
 
 ## 推荐
 
@@ -97,8 +113,8 @@ _阅读其他语言版本：[English](../), [Melayu](../ms/), [العربية](.
 
 - [IIUM 校友门户](https://alumni.iium.edu.my/) - 连接校友与母校，并提供信息和服务，如校友 Touch
   n Go 卡、校友回馈活动、校友画廊、校友成功故事等。
-- [校友 - 马来西亚国际伊斯兰大学](https://www.iium.edu.my/alumni) - 为校友提供信息和资源，如校友门户、校友名录、校友活动、校友福利等。
-- [校友关系部](https://www.iium.edu.my/division/alumni) - 管理校友关系和活动以及学生职业服务。它包括校友关系科 (ARS)、学生职业服务科 (SCSS)、IIUM 创业组 (IEU) 等部门。
+- [校友 - 马来西亚国际伊斯兰大学](https://alumni.iium.edu.my/) - 为校友提供信息和资源，如校友门户、校友名录、校友活动、校友福利等。
+- [校友关系部](https://division.iium.edu.my/ard/) - 管理校友关系和活动以及学生职业服务。它包括校友关系科 (ARS)、学生职业服务科 (SCSS)、IIUM 创业组 (IEU) 等部门。
 
 ## IIUM 新闻和媒体
 
@@ -106,29 +122,28 @@ _阅读其他语言版本：[English](../), [Melayu](../ms/), [العربية](.
 
 - [IIUM Today](https://news.iium.edu.my/) - 提供校园最新新闻和活动。涵盖学术、学生生活、激励、生活方式、观点、专题等主题。它还展示了传播学学生和教职员工的作品。
 - [IIUM 新闻报道](https://newsroom.iium.edu.my/) - 收集并展示各来源提及 IIUM 的新闻文章。包括快讯、头条新闻、印刷新闻、官方新闻等类别。
-- [最新新闻 - 马来西亚国际伊斯兰大学](https://www.iium.edu.my/news) - 提供来自 IIUM 官方网站的新闻更新。包括公告、活动、成就等。
+- [最新新闻 - 马来西亚国际伊斯兰大学](https://news.iium.edu.my/) - 提供来自 IIUM 官方网站的新闻更新。包括公告、活动、成就等。
 
 ## IIUM 研究和出版物
 
 本部分提供 IIUM 研究和出版物的信息和服务。
 
-- [IIUM 研究](https://www.iium.edu.my/research) - 提供 IIUM 研究活动的信息和服务。包括研究亮点、研究管理中心、研究集群、研究资助、研究伦理等。
-- [出版物 - 马来西亚国际伊斯兰大学](https://www.iium.edu.my/publications) - 提供 IIUM 教职员工和研究人员的各种出版物信息和访问权限。包括精选出版物、书籍、期刊、会议论文等。
-- [研究管理中心](https://www.iium.edu.my/centre/rmc) - 支持和促进 IIUM 的研究活动。包括研究发展组 (RDU)、研究监测组 (RMU)、研究出版组 (RPU) 等部门。
+- [IIUM 研究](https://research.iium.edu.my/) - 提供 IIUM 研究活动的信息和服务。包括研究亮点、研究管理中心、研究集群、研究资助、研究伦理等。
+- [出版物 - 马来西亚国际伊斯兰大学](https://office.iium.edu.my/iiumpress) - 提供 IIUM 教职员工和研究人员的各种出版物信息和访问权限。包括精选出版物、书籍、期刊、会议论文等。
+- [研究管理中心](https://centre.iium.edu.my/rmc) - 支持和促进 IIUM 的研究活动。包括研究发展组 (RDU)、研究监测组 (RMU)、研究出版组 (RPU) 等部门。
 
 ## IIUM 社区服务和外展
 
 本部分提供 IIUM 社区服务和外展活动的信息和服务。
 
-- [社区参与和服务中心 (CENSERVE)](https://www.iium.edu.my/centre/censerve) - 为教职员工和学生提供规划和执行社区参与活动的平台。包括项目、俱乐部、计划、活动等。
+- [社区参与和服务中心 (CENSERVE)](https://censerve.iium.edu.my/) - 为教职员工和学生提供规划和执行社区参与活动的平台。包括项目、俱乐部、计划、活动等。
 - [CENSERVE – 社区参与和服务中心](https://censerve.iium.edu.my/) - 展示 CENSERVE 的社区参与和服务倡议。包括新闻、画廊、地图、奖项、SDG 重点领域、合作伙伴等。
 
 ## IIUM 文化和价值观
 
 本部分提供有关 IIUM 文化和价值观的信息资源。
 
-- [愿景和使命 - 马来西亚国际伊斯兰大学](https://www.iium.edu.my/office/odrail/vision-and-mission-10) - 提供反映 IIUM 文化和价值观的愿景和使命宣言。包括每个宣言的摘要和阐述。
-- [愿景、使命和核心价值观 - 马来西亚国际伊斯兰大学](https://www.iium.edu.my/centre/rmc/vision-mission-core-values) - 提供与 IIUM 文化和价值观一致的研究管理中心 (RMC) 的愿景、使命和核心价值观。包括负责任、专注和协作作为核心价值观。
+- [愿景和使命 - 马来西亚国际伊斯兰大学](https://office.iium.edu.my/odrai/?p=16) - 提供反映 IIUM 文化和价值观的愿景和使命宣言。包括每个宣言的摘要和阐述。
 
 ## IIUM 社交媒体
 

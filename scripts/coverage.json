@@ -54,7 +54,7 @@
 		},
 		{
 			"topic": "Academic rules: grading, probation, leave of absence, change of programme",
-			"pages": []
+			"pages": ["categories/academics/academic-rules.md"]
 		},
 		{
 			"topic": "Graduation and convocation",
@@ -66,7 +66,7 @@
 		},
 		{
 			"topic": "Off-campus housing near each campus",
-			"pages": []
+			"pages": ["categories/campus-life/off-campus-housing.md"]
 		},
 		{
 			"topic": "Getting around: campus buses, public transport and getting to each campus",
@@ -74,11 +74,14 @@
 		},
 		{
 			"topic": "Food and dining at each campus",
-			"pages": []
+			"pages": ["categories/campus-life/food.md"]
 		},
 		{
 			"topic": "Campus life at Kuantan, Pagoh and Gambang",
-			"pages": []
+			"pages": [
+				"categories/campuses/index.md",
+				"categories/campus-life/Mahallah.md"
+			]
 		},
 		{
 			"topic": "Clubs, societies and student activities",
@@ -88,7 +91,7 @@
 			]
 		},
 		{
-			"topic": "Student representation (Students' Representative Council)",
+			"topic": "Student representation: the Students' Representative Council or students' union",
 			"pages": []
 		},
 		{
@@ -130,7 +133,7 @@
 		},
 		{
 			"topic": "Student exchange and study abroad (outbound mobility)",
-			"pages": []
+			"pages": ["categories/academics/student-exchange.md"]
 		},
 		{
 			"topic": "Directory of official IIUM websites",
