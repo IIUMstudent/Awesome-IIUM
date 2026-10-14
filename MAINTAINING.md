@@ -28,9 +28,11 @@ press ✏️, make the change and commit. The site redeploys in a few minutes.
 | [Deploy](.github/workflows/deploy.yml)                    | Every push and every 3 hours    | Builds and publishes the site, refreshes system status and the GitHub activity widgets.                           |
 | [Resource Submissions](.github/workflows/submissions.yml) | When issues are opened/labelled | Checks suggestions and publishes approved ones.                                                                   |
 | [Content Report](.github/workflows/content-report.yml)    | 1st of every month              | Lists pages due for review and new IIUM sites to cover.                                                           |
-| [Link Checker](.github/workflows/link-checker.yml)        | Every push, and weekly          | Blocks broken internal links; reports dead external links.                                                        |
+| [Link Checker](.github/workflows/link-checker.yml)        | Weekly                          | Reports dead external links in one issue.                                                                         |
 | [Dependabot](.github/dependabot.yml)                      | Weekly                          | Updates dependencies; [minor and patch updates merge automatically](.github/workflows/dependabot-auto-merge.yml). |
-| Quality, E2E, Accessibility, Lighthouse, Security         | Every pull request              | Lint, tests, accessibility and performance checks.                                                                |
+| [CI](.github/workflows/ci.yml)                            | Every push and pull request     | Lint, unit tests, build, internal links, E2E and accessibility tests.                                             |
+| [Security](.github/workflows/security.yml)                | Every pull request, and weekly  | CodeQL and dependency audit.                                                                                      |
+| [Lighthouse](.github/workflows/lighthouse.yml)            | Monthly                         | Performance and SEO audit.                                                                                        |
 
 GitHub turns off scheduled workflows after 60 days without commits; the deploy
 workflow re-enables them, so the site keeps updating even if nobody commits for

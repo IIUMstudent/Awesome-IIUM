@@ -1,0 +1,126 @@
+name: CI
+
+# Every check that guards master, built from a single build of the site:
+# lint, formatting, unit tests and awesome-lint, then internal links and the
+# Playwright E2E + accessibility tests against the built site.
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Lint, test and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # awesome-lint reads git history
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: |
+          pnpm run lint
+          pnpm exec prettier --check 'src/**/*.{md,mdx}'
+          pnpm exec awesome-lint
+
+      - name: Unit tests
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build
+        env:
+          NODE_ENV: production
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: dist/
+          retention-days: 3
+
+  links:
+    name: Internal links
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      # Serve the site under its base path so /Awesome-IIUM/... links resolve
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: _site/Awesome-IIUM
+
+      - name: Check internal links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >
+            --offline
+            --no-progress
+            --root-dir ${{ github.workspace }}/_site
+            --index-files index.html
+            --exclude-path _site/Awesome-IIUM/pagefind
+            '_site/**/*.html'
+          fail: true
+          jobSummary: true
+
+  e2e:
+    name: E2E and accessibility
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm exec playwright install --with-deps chromium
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: dist/
+
+      - name: Run E2E and accessibility tests
+        run: pnpm run test:e2e
+        env:
+          CI: true
+
+      - name: Upload test results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-results
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7

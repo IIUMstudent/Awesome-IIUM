@@ -1,11 +1,10 @@
 name: Lighthouse CI
 
+# Performance audit. Runs monthly rather than on every pull request: it's
+# slow and its scores vary between runs.
 on:
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
-  # Allow manual workflow runs
+  schedule:
+    - cron: '41 3 2 * *' # 2nd of each month, 03:41 UTC
   workflow_dispatch:
 
 jobs:

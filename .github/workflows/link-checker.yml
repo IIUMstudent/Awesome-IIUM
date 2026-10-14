@@ -1,14 +1,11 @@
 name: Link Checker
 
-# Checks links in the built site, the way visitors see them.
-# - Internal links are checked on every push and PR, and fail the run.
-# - External links are checked weekly; broken ones are reported in a single
-#   "[Automated] Broken Links Detected" issue that is updated each week.
+# Checks links in the built site, the way visitors see them, every week.
+# Broken external links are reported in a single
+# "[Automated] Broken Links Detected" issue that is updated each week.
+# Internal links are also checked on every push and PR, in ci.yml.
 
 on:
-  push:
-    branches: [master]
-  pull_request:
   schedule:
     # Weekly on Sundays at 00:00 UTC
     - cron: '0 0 * * 0'
@@ -55,7 +52,6 @@ jobs:
 
       - name: Check external links
         id: external
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         uses: lycheeverse/lychee-action@v2
         with:
           # Social networks block automated requests, so they are skipped.
