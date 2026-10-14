@@ -394,7 +394,9 @@ try {
     }
   }
 
-  .prayer-card {
+  /* The cards are rendered by the script above with innerHTML, so they miss
+     Astro's scope attribute. Anchor their styles to the scoped grid instead. */
+  .prayer-grid :global(.prayer-card) {
     background: var(--sl-color-bg);
     border: 1px solid var(--sl-color-hairline-light);
     border-radius: 8px;
@@ -403,23 +405,29 @@ try {
     transition: all 0.2s;
   }
 
-  .prayer-card.next {
+  .prayer-grid :global(.prayer-card.next) {
     border-color: var(--sl-color-accent);
     background: var(--sl-color-accent-low);
   }
 
-  .prayer-card.loading {
+  /* On the tinted card, accent and grey text drop just under AA in dark mode */
+  .prayer-grid :global(.prayer-card.next .prayer-arabic),
+  .prayer-grid :global(.prayer-card.next .prayer-time) {
+    color: var(--sl-color-accent-high);
+  }
+
+  .prayer-grid :global(.prayer-card.loading) {
     grid-column: 1 / -1;
   }
 
-  .prayer-arabic {
+  .prayer-grid :global(.prayer-arabic) {
     display: block;
     font-size: 0.875rem;
     color: var(--sl-color-gray-3);
     margin-bottom: 0.125rem;
   }
 
-  .prayer-name {
+  .prayer-grid :global(.prayer-name) {
     display: block;
     font-size: 0.75rem;
     font-weight: 600;
@@ -427,7 +435,7 @@ try {
     letter-spacing: 0.025em;
   }
 
-  .prayer-time {
+  .prayer-grid :global(.prayer-time) {
     display: block;
     font-size: 1rem;
     font-weight: 700;
@@ -475,7 +483,7 @@ try {
     color: inherit;
   }
 
-  .error {
+  .prayer-grid :global(.error) {
     color: var(--sl-color-red-high);
     text-align: center;
     padding: 1rem;

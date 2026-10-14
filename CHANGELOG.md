@@ -28,6 +28,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Colour contrast of the "NEW" badge and the next-prayer card.
 - Form fields have borders you can see (3:1), and the error box's details
   panel has a background in dark mode.
+- Prayer time cards were unstyled: they are drawn by script, so the
+  component's scoped styles never reached them.
+- Contrast of the error box heading in light mode and of the highlighted
+  next-prayer card in dark mode.
 
 ### Planned
 
