@@ -19,7 +19,8 @@ Kuantan campus.
 
 ## 👨‍🏫 Leadership
 
-**Dean:** Professor Dr. Mohd Aznan Md. Aris
+The current Dean and management team are listed on the
+[official KOM website](https://kulliyyah.iium.edu.my/kom/).
 
 ## 📚 Departments
 

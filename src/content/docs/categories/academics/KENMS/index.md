@@ -23,7 +23,8 @@ IIUM's Gombak campus.
 
 ## 👨‍🏫 Leadership
 
-**Dean:** Professor Dr. Gairuzazmi Mat Ghani
+The current Dean and management team are listed on the
+[official KENMS website](https://kulliyyah.iium.edu.my/kenms/).
 
 ## 📚 Departments
 

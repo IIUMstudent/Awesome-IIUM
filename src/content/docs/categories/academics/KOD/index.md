@@ -19,7 +19,8 @@ Kuantan campus.
 
 ## 👨‍🏫 Leadership
 
-**Dean:** Assoc. Prof. Dr. Mohd. Haikal Muhammad Halil
+The current Dean and management team are listed on the
+[official KOD website](https://kulliyyah.iium.edu.my/kod/).
 
 ## 📚 Departments
 

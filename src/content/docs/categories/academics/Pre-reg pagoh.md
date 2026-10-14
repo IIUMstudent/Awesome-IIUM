@@ -1,19 +1,13 @@
 ---
-title: 'Pre Reg Pagoh'
-description: Pre-registration schedule for Pagoh campus.
+title: 'Course Registration (Pagoh)'
+description: Course registration at the Pagoh campus.
 ---
 
-> [!WARNING] This schedule is for 2023/2024 and is likely outdated. Verify the
-> current dates in the Pre-Registration System before planning.
+Pagoh students register for courses the same way as students at Gombak and
+Kuantan, and the dates for every campus are in the same _Important Dates_ PDF on
+the [AMAD website](https://division.iium.edu.my/amad/). Check the Pagoh rows:
+Pagoh's windows can differ slightly from the other campuses.
 
-| Semester/Session | Time/Date/Day                                                                 | Level of Study                                         | Campus |
-| ---------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------ | ------ |
-| 2, 2023/2024     | 12.00am: 20th December 2023 (Wednesday) to 11.59pm: 7th March 2024 (Thursday) | 4 and 5                                                | Pagoh  |
-| 2, 2023/2024     | 12.00am: 22nd December 2023 (Friday) to 11.59pm: 7th March 2024 (Thursday)    | 3                                                      | Pagoh  |
-| 2, 2023/2024     | 12.00am: 24th December 2023 (Sunday) to 11.59pm: 7th March 2024 (Thursday)    | 2                                                      | Pagoh  |
-| 2, 2023/2024     | 12.00am: 26th December 2023 (Tuesday) to 11.59pm: 7th March 2024 (Thursday)   | 1                                                      | Pagoh  |
-| 2, 2023/2024     | 12.00am: 28th December 2023 (Thursday) to 11.59pm: 7th March 2024 (Thursday)  | PRSS                                                   | Pagoh  |
-| 2, 2023/2024     | 12.00am: 30th December 2023 (Saturday) to 11.59pm: 7th March 2024 (Thursday)  | All Level                                              | Pagoh  |
-| 2, 2023/2024     | 12.00am: 30th December 2023 (Saturday) to 11.59pm: 7th March 2024 (Thursday)  | Direct Intake : Semester 2, 2023/2024 - UG (Local/Int) | Pagoh  |
-| 2, 2023/2024     | 12.00am: 30th December 2023 (Saturday) to 11.59pm: 7th March 2024 (Thursday)  | Ex-CFS : Semester 2,2023/2024 - UG                     | Pagoh  |
-| 2, 2023/2024     | 12.00am: 20th December 2023 (Wednesday) to 11.59pm: 8th March 2024 (Friday)   | Postgraduate                                           | All    |
+See the full
+[course registration guide](/Awesome-IIUM/categories/academics/pre-reg-gombak-kuantan/)
+for how pre-reg works and what to prepare.

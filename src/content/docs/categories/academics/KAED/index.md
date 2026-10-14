@@ -23,7 +23,8 @@ arts and design at IIUM's Gombak campus.
 
 ## 👨‍🏫 Leadership
 
-**Dean:** Professor TPr. Dr. Mariana Mohamed Osman
+The current Dean and management team are listed on the
+[official KAED website](https://kulliyyah.iium.edu.my/kaed/).
 
 ## 📚 Departments
 

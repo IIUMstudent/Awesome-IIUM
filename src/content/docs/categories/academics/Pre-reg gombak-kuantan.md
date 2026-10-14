@@ -1,27 +1,45 @@
 ---
-title: 'Pre Reg Gombak Kuantan'
-description: Pre-registration schedule for Gombak and Kuantan campuses.
+title: 'Course Registration (Pre-Reg)'
+description:
+  How online course registration works at IIUM and where to find this semester's
+  dates.
 ---
 
-> [!WARNING] This schedule is for 2023/2024 and is likely outdated. Verify the
-> current dates in the Pre-Registration System before planning.
+"Pre-reg" is IIUM's online course registration. You pick and register your
+courses for the coming semester yourself, through the Pre-Registration system.
 
-| Semester/Session | Time/Date/Day                                                                 | Level of Study                                        | Campus             |
-| ---------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------- | ------------------ |
-| 2, 2023/2024     | 12.00am: 20th December 2023 (Wednesday) to 11.59pm: 7th March 2024 (Thursday) | 4 and 5                                               | Gombak and Kuantan |
-| 2, 2023/2024     | 12.00am: 20th December 2023 (Wednesday) to 11.59pm: 8th March 2024 (Friday)   | 4 and 5                                               | Gombak and Kuantan |
-| 2, 2023/2024     | 12.00am: 22nd December 2023 (Friday) to 11.59pm: 7th March 2024 (Thursday)    | 3                                                     | Gombak and Kuantan |
-| 2, 2023/2024     | 12.00am: 22nd December 2023 (Friday) to 11.59pm: 8th March 2024 (Friday)      | 3                                                     | Gombak and Kuantan |
-| 2, 2023/2024     | 12.00am: 24th December 2023 (Sunday) to 11.59pm: 7th March 2024 (Thursday)    | 2                                                     | Gombak and Kuantan |
-| 2, 2023/2024     | 12.00am: 24th December 2023 (Sunday) to 11.59pm: 8th March 2024 (Friday)      | 2                                                     | Gombak and Kuantan |
-| 2, 2023/2024     | 12.00am: 26th December 2023 (Tuesday) to 11.59pm: 7th March 2024 (Thursday)   | 1                                                     | Gombak and Kuantan |
-| 2, 2023/2024     | 12.00am: 26th December 2023 (Tuesday) to 11.59pm: 8th March 2024 (Friday)     | 1                                                     | Gombak and Kuantan |
-| 2, 2023/2024     | 12.00am: 28th December 2023 (Thursday) to 11.59pm: 7th March 2024 (Thursday)  | PRSS                                                  | Gombak and Kuantan |
-| 2, 2023/2024     | 12.00am: 28th December 2023 (Thursday) to 11.59pm: 8th March 2024 (Friday)    | PRSS                                                  | Gombak and Kuantan |
-| 2, 2023/2024     | 12.00am: 30th December 2023 (Saturday) to 11.59pm: 7th March 2024 (Thursday)  | All Level                                             | Gombak and Kuantan |
-| 2, 2023/2024     | 12.00am: 30th December 2023 (Saturday) to 11.59pm: 8th March 2024 (Friday)    | All Level                                             | Gombak and Kuantan |
-| 2, 2023/2024     | 12.00am: 30th December 2023 (Saturday) to 11.59pm: 7th March 2024 (Thursday)  | Direct Intake : Semester 2, 2023/2024 - UG(Local/Int) | Gombak and Kuantan |
-| 2, 2023/2024     | 12.00am: 30th December 2023 (Saturday) to 11.59pm: 8th March 2024 (Friday)    | Direct Intake : Semester 2, 2023/2024 - UG(Local/Int) | Gombak and Kuantan |
-| 2, 2023/2024     | 12.00am: 30th December 2023 (Saturday) to 11.59pm: 7th March 2024 (Thursday)  | Ex-CFS : Semester 2,2023/2024 - UG                    | Gombak and Kuantan |
-| 2, 2023/2024     | 12.00am: 30th December 2023 (Saturday) to 11.59pm: 8th March 2024 (Friday)    | Ex-CFS : Semester 2,2023/2024 - UG                    | Gombak and Kuantan |
-| 2, 2023/2024     | 12.00am: 20th December 2023 (Wednesday) to 11.59pm: 8th March 2024 (Friday)   | Postgraduate                                          | All                |
+## 📅 Find this semester's dates
+
+Dates change every semester, so always check the official sources:
+
+1. **[AMAD website](https://division.iium.edu.my/amad/)**: publishes an
+   _Important Dates_ PDF for undergraduates each semester, covering Gombak,
+   Kuantan and Pagoh. It lists the registration window for every level of study
+   and the add/drop and withdrawal deadlines.
+2. **[i-Ma'luum](https://imaluum.iium.edu.my/)**: announcements and your own
+   registration status.
+3. **Your kulliyyah**: some programmes have extra rules or their own calendar.
+   The Kulliyyah of Medicine and the Kulliyyah of Dentistry follow separate
+   academic calendars.
+
+## 🧭 How it usually works
+
+- Registration opens **by level of study**: senior students get the first
+  window, then each level after them, followed by a window open to all levels.
+- **Reserve and petition requests** (for full or restricted sections) usually
+  close earlier than the main registration window.
+- Registration stays open into the first weeks of the semester for **add/drop**.
+
+## ✅ Before your slot opens
+
+- Check which courses you still need against your programme's study plan.
+- Draft your timetable from the course schedule so you have backup sections
+  ready if your first choice is full.
+
+## 🔗 Links
+
+- [Pre-Registration system](http://prereg1.iium.edu.my/) - Register, add and
+  drop courses.
+- [AMAD](https://division.iium.edu.my/amad/) - Academic calendars and important
+  dates.
+- [i-Ma'luum](https://imaluum.iium.edu.my/) - Student portal.

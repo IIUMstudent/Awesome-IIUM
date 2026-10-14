@@ -20,7 +20,8 @@ disciplines at IIUM's Kuantan campus.
 
 ## 👨‍🏫 Leadership
 
-**Dean:** Professor Dr. Ahmad Aidil Arafat Dzulkarnain
+The current Dean and management team are listed on the
+[official KAHS website](https://kulliyyah.iium.edu.my/kahs/).
 
 ## 📚 Departments
 

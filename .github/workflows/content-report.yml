@@ -37,7 +37,7 @@ jobs:
             --description "Automated monthly content report" 2>/dev/null || true
           existing=$(gh issue list --label content-report --state open \
             --json number --jq '.[0].number')
-          if grep -q 'review (0)' report.md && grep -q 'yet (0)' report.md; then
+          if grep -q 'content-report: nothing to do' report.md; then
             [ -n "$existing" ] && gh issue close "$existing" --reason completed \
               --comment "Nothing left to review this month. 🎉"
             exit 0

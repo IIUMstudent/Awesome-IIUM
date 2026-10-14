@@ -19,7 +19,8 @@ campus.
 
 ## 👨‍🏫 Leadership
 
-**Dean:** Assoc. Prof. Dr. Muhammad Kamil Che Hassan
+The current Dean and management team are listed on the
+[official KON website](https://kulliyyah.iium.edu.my/kon/).
 
 ## 📚 Departments
 

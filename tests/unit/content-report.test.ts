@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import {
+	currentSessionStart,
 	discoverSites,
 	extractLinks,
+	findPastSessions,
 	findStalePages,
 	loadConfig,
 	renderReport,
@@ -114,5 +116,46 @@ describe('report', () => {
 		});
 		expect(report).toContain('Pages to review (0)');
 		expect(report).toContain('IIUM sites not in the guide yet (0)');
+	});
+});
+
+describe('past sessions', () => {
+	it('treats September as the start of a new session', () => {
+		expect(currentSessionStart(Date.parse('2026-10-13'))).toBe(2026);
+		expect(currentSessionStart(Date.parse('2026-08-31'))).toBe(2025);
+	});
+
+	it('flags only sessions that have ended', () => {
+		const text: Record<string, string> = {
+			'old.md': 'Semester 2, 2023/2024 and 2025 / 2026',
+			'current.md': 'Session 2026/2027 dates',
+			'other.md': 'Founded 2020/2030, phone 2019/2024',
+		};
+		expect(
+			findPastSessions(
+				Object.keys(text),
+				Date.parse('2026-10-13'),
+				(f: string) => text[f],
+			),
+		).toEqual([{ file: 'old.md', sessions: ['2023/2024', '2025/2026'] }]);
+	});
+
+	it('marks an empty report so the workflow can close the issue', () => {
+		const empty = renderReport({
+			stale: [],
+			sites: [],
+			failedSeeds: [],
+			staleAfterDays: 180,
+		});
+		expect(empty).toContain('nothing to do');
+		const busy = renderReport({
+			stale: [],
+			pastSessions: [{ file: 'a.md', sessions: ['2023/2024'] }],
+			sites: [],
+			failedSeeds: [],
+			staleAfterDays: 180,
+		});
+		expect(busy).not.toContain('nothing to do');
+		expect(busy).toContain('past semesters (1)');
 	});
 });

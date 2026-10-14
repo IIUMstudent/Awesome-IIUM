@@ -23,7 +23,8 @@ IIUM's Gombak campus.
 
 ## 👨‍🏫 Leadership
 
-**Dean:** Assoc. Prof. Dr. Khairul Azami Sidek
+The current Dean and management team are listed on the
+[official KOE website](https://kulliyyah.iium.edu.my/koe/).
 
 ## 📚 Departments
 

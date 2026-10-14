@@ -54,6 +54,32 @@ export function findStalePages(files, now, staleAfterDays, readDate) {
 	return stale.sort((a, b) => b.age - a.age);
 }
 
+/** First year of the current academic session (sessions start in September). */
+export function currentSessionStart(now) {
+	const date = new Date(now);
+	return date.getUTCMonth() >= 8
+		? date.getUTCFullYear()
+		: date.getUTCFullYear() - 1;
+}
+
+/** Pages that mention academic sessions (e.g. 2023/2024) that have ended. */
+export function findPastSessions(files, now, read) {
+	const sessionStart = currentSessionStart(now);
+	const pages = [];
+	for (const file of files) {
+		const sessions = new Set();
+		for (const [session, start, end] of read(file).matchAll(
+			/\b(20\d\d)\s?\/\s?(20\d\d)\b/g,
+		)) {
+			if (Number(end) === Number(start) + 1 && Number(start) < sessionStart) {
+				sessions.add(session.replace(/\s/g, ''));
+			}
+		}
+		if (sessions.size) pages.push({ file, sessions: [...sessions].sort() });
+	}
+	return pages;
+}
+
 /**
  * Groups a URL into the "site" it belongs to: the hostname, plus the first
  * path segment on hosts that serve many sites (centre.iium.edu.my/ccsc).
@@ -135,11 +161,22 @@ async function fetchText(url) {
 	}
 }
 
-export function renderReport({ stale, sites, failedSeeds, staleAfterDays }) {
+export function renderReport({
+	stale,
+	pastSessions = [],
+	sites,
+	failedSeeds,
+	staleAfterDays,
+}) {
 	const repo = process.env.GITHUB_REPOSITORY ?? 'iiumstudent/Awesome-IIUM';
 	const blob = `https://github.com/${repo}/blob/HEAD`;
+	const pageLink = (file) =>
+		`[${file.replace('src/content/docs/', '')}](${blob}/${file})`;
+	const nothingToDo = !stale.length && !pastSessions.length && !sites.length;
 	const lines = [
-		'<!-- content-report -->',
+		nothingToDo
+			? '<!-- content-report: nothing to do -->'
+			: '<!-- content-report -->',
 		'_This report is updated automatically every month. Work through what you can; anything you fix disappears from the next report._',
 		'',
 		`## 🕰️ Pages to review (${stale.length})`,
@@ -153,11 +190,26 @@ export function renderReport({ stale, sites, failedSeeds, staleAfterDays }) {
 			'| :--- | :--- |',
 			...stale.map(
 				({ file, date, source, age }) =>
-					`| [${file.replace('src/content/docs/', '')}](${blob}/${file}) | ${date ? `${date.toISOString().slice(0, 10)} (${source}, ${age} days ago)` : 'never'} |`,
+					`| ${pageLink(file)} | ${date ? `${date.toISOString().slice(0, 10)} (${source}, ${age} days ago)` : 'never'} |`,
 			),
 		);
 	} else {
 		lines.push('Everything has been reviewed recently. 🎉');
+	}
+	if (pastSessions.length) {
+		lines.push(
+			'',
+			`## 📆 Pages mentioning past semesters (${pastSessions.length})`,
+			'',
+			'These pages mention academic sessions that have ended. Replace dated details with a link to where the current information is published (see CONTENT_GUIDELINES.md, "Link, don\'t copy").',
+			'',
+			'| Page | Mentions |',
+			'| :--- | :--- |',
+			...pastSessions.map(
+				({ file, sessions }) =>
+					`| ${pageLink(file)} | ${sessions.join(', ')} |`,
+			),
+		);
 	}
 	lines.push('', `## 🔎 IIUM sites not in the guide yet (${sites.length})`, '');
 	if (sites.length) {
@@ -192,11 +244,15 @@ async function main() {
 		config.staleAfterDays,
 		(file) => reviewedDate(readFileSync(file, 'utf8'), file),
 	);
+	const pastSessions = findPastSessions(files, Date.now(), (file) =>
+		readFileSync(file, 'utf8'),
+	);
 	const known = knownSites(files, config.multiSiteHosts);
 	const { sites, failedSeeds } = await discoverSites(config, known);
 	console.log(
 		renderReport({
 			stale,
+			pastSessions,
 			sites,
 			failedSeeds,
 			staleAfterDays: config.staleAfterDays,

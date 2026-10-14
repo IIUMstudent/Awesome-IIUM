@@ -19,7 +19,8 @@ at IIUM's Kuantan campus.
 
 ## 👨‍🏫 Leadership
 
-**Dean:** Professor Dr. Kamaruzzaman Yunus
+The current Dean and management team are listed on the
+[official KOS website](https://kulliyyah.iium.edu.my/kos/).
 
 ## 📚 Departments
 
