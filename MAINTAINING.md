@@ -56,9 +56,6 @@ stops working):
 - **Settings → Actions → General → Workflow permissions:** "Read and write
   permissions".
 - **Settings → Pages:** deploy from the `gh-pages` branch.
-- **Settings → Features → Discussions:** on (page comments use
-  [Giscus](https://giscus.app), whose GitHub app must be installed on the
-  organization).
 - If you protect the `master` branch, let **GitHub Actions** bypass the rule,
   otherwise approved submissions can't be published.
 

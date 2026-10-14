@@ -44,13 +44,13 @@ export default defineConfig({
 						'http-equiv': 'Content-Security-Policy',
 						content: [
 							"default-src 'self'",
-							"script-src 'self' 'unsafe-inline' https://gc.zgo.at https://unpkg.com https://giscus.app",
-							"style-src 'self' 'unsafe-inline' https://unpkg.com https://giscus.app",
+							"script-src 'self' 'unsafe-inline' https://gc.zgo.at https://unpkg.com",
+							"style-src 'self' 'unsafe-inline' https://unpkg.com",
 							"img-src 'self' data: blob: https:",
 							"font-src 'self' data:",
 							"connect-src 'self' https://api.github.com https://api.aladhan.com https://*.goatcounter.com https://tile.openstreetmap.org",
 							"worker-src 'self' blob:",
-							'frame-src https://giscus.app https://www.openstreetmap.org',
+							'frame-src https://www.openstreetmap.org',
 							"object-src 'none'",
 							"base-uri 'self'",
 							"form-action 'self'",
@@ -221,7 +221,7 @@ export default defineConfig({
 			],
 			customCss: ['./src/styles/custom.css'],
 			components: {
-				Footer: './src/components/Giscus.astro',
+				Footer: './src/components/Footer.astro',
 			},
 		}),
 		AstroPWA({

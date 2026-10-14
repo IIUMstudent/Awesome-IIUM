@@ -28,7 +28,6 @@ GoatCounter privacy policy: <https://www.goatcounter.com/privacy>
 
 Some components load third-party services:
 
-- **Giscus** (GitHub Discussions comments)
 - **GitHub API** (public repository data)
 - **Aladhan API** (prayer times)
 

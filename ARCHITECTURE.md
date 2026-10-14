@@ -666,7 +666,7 @@ origin to the matching CSP directive there.
 **Content Security Policy (CSP):**
 
 - ✅ No inline scripts (except necessary hydration)
-- ✅ External scripts from trusted CDNs only (goatcounter, giscus)
+- ✅ External scripts from trusted CDNs only (goatcounter)
 - ✅ No eval() or similar dynamic execution
 - ✅ Images from trusted domains
 
