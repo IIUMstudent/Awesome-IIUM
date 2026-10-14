@@ -67,8 +67,6 @@ stops working):
   [GoatCounter](https://www.goatcounter.com) site for the organization and set
   the repository variable `GOATCOUNTER_ENDPOINT` (Settings → Secrets and
   variables → Actions → Variables) to `https://<site>.goatcounter.com/count`.
-- **Sentry (error tracking):** optional and off unless the `PUBLIC_SENTRY_DSN`
-  variable is set.
 
 No other secrets or paid services are needed.
 

@@ -78,7 +78,6 @@ Performance: Lighthouse CI
 ### External Services
 
 ```yaml
-Error Tracking: Sentry (optional, requires DSN)
 Analytics: GoatCounter (privacy-first, no cookies)
 API Data: GitHub API (contributors, commits, PRs)
 Prayer Times: Aladhan.com API
@@ -121,7 +120,6 @@ graph TB
         
         Islands -->|Dynamic Fetch| Cache[Browser Cache<br/>localStorage]
         Islands -->|API Calls| APIS2[External APIs]
-        Islands -->|Error Tracking| Sentry[Sentry.io]
         Islands -->|Analytics| GC[GoatCounter]
     end
     
@@ -153,7 +151,6 @@ graph LR
     subgraph Utilities["Shared Utilities"]
         ErrorUtils[errors.ts<br/>Error Handling]
         APIUtils[github.ts<br/>aladhan.ts<br/>API Clients]
-        SentryUtils[sentry.ts<br/>Monitoring]
         GPAUtils[gpa.ts<br/>Calculations]
     end
     
@@ -214,7 +211,6 @@ sequenceDiagram
     participant SW as Service Worker
     participant Cache as Browser Cache
     participant API as External APIs
-    participant Sentry as Sentry
     
     User->>Browser: Navigate to page
     Browser->>SW: Request page
@@ -244,7 +240,6 @@ sequenceDiagram
     Browser->>Browser: Update UI
     
     alt Error Occurs
-        Browser->>Sentry: Log error
         Browser->>User: Show user-friendly message
     end
 ```
@@ -383,7 +378,7 @@ graph LR
     Utils -->|Retry Logic| API[GitHub API]
     API -->|Rate Limit| Utils
     Utils -->|Fallback| Static[Static Data]
-    Utils -->|Error| Sentry[Sentry Logging]
+    Utils -->|Error| Log[Console Logging]
     
     style Utils fill:#fff3e0
     style API fill:#e3f2fd
@@ -395,7 +390,6 @@ graph LR
 - ✅ Rate limit detection via headers
 - ✅ Automatic fallback to static data
 - ✅ Optional GitHub token support (5000 req/hr vs 60)
-- ✅ Error logging to Sentry (production only)
 
 **Rate Limits:**
 
@@ -469,7 +463,7 @@ graph TD
     Network -->|Network| Retry[Retry with Backoff]
     Network -->|Rate Limit| Wait[Wait for Reset]
     Network -->|Timeout| Retry
-    Network -->|Other| Log[Log to Sentry]
+    Network -->|Other| Log[Log to Console]
     
     Retry --> Success{Success?}
     Success -->|Yes| Return[Return Data]
@@ -604,7 +598,6 @@ graph TD
     Pass -->|No| Fail[❌ Build Failed]
     Pass -->|Yes| Build[⚙️ Astro Build]
     
-    Build --> Sentry[📤 Upload Source Maps<br/>Sentry]
     Build --> Deploy[🚀 Deploy to GitHub Pages]
     
     Deploy --> Lighthouse[📊 Lighthouse CI<br/>Performance Report]
@@ -657,7 +650,7 @@ graph TD
     
     Sanitize --> APIs[External APIs<br/>Rate Limited]
     
-    APIs --> Sentry[Error Monitoring<br/>Sentry.io]
+
     
     style Headers fill:#ffebee
     style Content fill:#e8f5e9
@@ -840,7 +833,7 @@ graph TD
     Wait --> Retry
     Skip --> Fallback[Use Fallback Data]
     
-    Fallback --> Log[Log to Sentry<br/>Production Only]
+    Fallback --> Log[Log to Console]
     Log --> User[Show User Message<br/>User-Friendly]
     
     Return --> User
@@ -849,44 +842,6 @@ graph TD
     style Return fill:#e8f5e9
     style User fill:#fff3e0
 ```
-
-### Sentry Integration
-
-**Purpose:** Production error tracking and monitoring
-
-**Configuration:**
-
-```javascript
-// astro.config.mjs
-sentry({
-  enabled: !!process.env.PUBLIC_SENTRY_DSN,
-  dsn: process.env.PUBLIC_SENTRY_DSN,
-  environment: process.env.NODE_ENV || 'production',
-  release: process.env.SENTRY_RELEASE,
-  sourceMapsUploadOptions: {
-    enabled: !!process.env.SENTRY_AUTH_TOKEN,
-    authToken: process.env.SENTRY_AUTH_TOKEN,
-    org: process.env.SENTRY_ORG,
-    project: process.env.SENTRY_PROJECT,
-  },
-})
-```
-
-**Features:**
-
-- ✅ Automatic error capture
-- ✅ Source map support (debug minified code)
-- ✅ Breadcrumb tracking (user actions before error)
-- ✅ Performance monitoring (10% sample rate)
-- ✅ Session replay (10% normal, 100% on error)
-- ✅ Release tracking (version tagging)
-
-**Filtered Errors:**
-
-- ❌ GitHub API rate limits (handled gracefully)
-- ❌ Network timeout errors (expected, show fallback)
-- ❌ AbortError (intentional cancellations)
-- ✅ Unexpected errors (logged to Sentry)
 
 ### Error Handling Patterns
 
@@ -928,24 +883,6 @@ const errorHTML = createErrorMarkup(errorResponse, {
   includeRetry: true
 });
 ```
-
-### Monitoring Dashboard
-
-**Sentry Dashboard Metrics:**
-
-- Error count by component
-- Error rate over time
-- User affected count
-- Response time percentiles
-- Core Web Vitals
-
-**Alerts:**
-
-- Spike in error rate (>5% increase)
-- New error types
-- Performance regression (LCP > 3s)
-
----
 
 ## Development Workflow
 
@@ -1029,7 +966,6 @@ pnpm preview           # Preview production build
 - [Astro Documentation](https://docs.astro.build/)
 - [Starlight Theme](https://starlight.astro.build/)
 - [Workbox (PWA)](https://developers.google.com/web/tools/workbox)
-- [Sentry Documentation](https://docs.sentry.io/)
 
 ### Related Files
 

@@ -1,5 +1,4 @@
 import starlight from '@astrojs/starlight';
-import sentry from '@sentry/astro';
 import AstroPWA from '@vite-pwa/astro';
 import { defineConfig } from 'astro/config';
 import { visualizer } from 'rollup-plugin-visualizer';
@@ -32,15 +31,6 @@ export default defineConfig({
 		],
 	},
 	integrations: [
-		// Sentry error tracking (optional, requires PUBLIC_SENTRY_DSN)
-		sentry({
-			enabled: !!process.env.PUBLIC_SENTRY_DSN,
-			clientInitPath: './src/sentry-client.ts',
-			authToken: process.env.SENTRY_AUTH_TOKEN,
-			org: process.env.SENTRY_ORG,
-			project: process.env.SENTRY_PROJECT,
-			sourcemaps: { disable: !process.env.SENTRY_AUTH_TOKEN },
-		}),
 		starlight({
 			title: 'Awesome IIUM',
 			description:
@@ -58,7 +48,7 @@ export default defineConfig({
 							"style-src 'self' 'unsafe-inline' https://unpkg.com https://giscus.app",
 							"img-src 'self' data: blob: https:",
 							"font-src 'self' data:",
-							"connect-src 'self' https://api.github.com https://api.aladhan.com https://*.goatcounter.com https://tile.openstreetmap.org https://*.sentry.io",
+							"connect-src 'self' https://api.github.com https://api.aladhan.com https://*.goatcounter.com https://tile.openstreetmap.org",
 							"worker-src 'self' blob:",
 							'frame-src https://giscus.app https://www.openstreetmap.org',
 							"object-src 'none'",
