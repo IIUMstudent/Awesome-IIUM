@@ -113,7 +113,21 @@ header.header {
 	}
 }
 
-/* Offline notice (public/pwa-register.js). Hidden until the browser is offline. */
+/* Asides: note and tip use the brand instead of Starlight's blue and purple.
+   Caution and danger keep Starlight's orange and red. */
+.starlight-aside--note {
+	--sl-color-asides-text-accent: var(--sl-color-accent-high);
+	--sl-color-asides-border: var(--sl-color-accent);
+	background-color: var(--sl-color-accent-low);
+}
+
+.starlight-aside--tip {
+	--sl-color-asides-text-accent: var(--aw-color-gold-high);
+	--sl-color-asides-border: var(--aw-color-gold);
+	background-color: var(--aw-color-gold-low);
+}
+
+/* Offline notice (public/pwa-register.js). Only added while the browser is offline. */
 #offline-indicator {
 	position: fixed;
 	bottom: 1.25rem;
@@ -128,17 +142,8 @@ header.header {
 	box-shadow: var(--sl-shadow-lg);
 	font-weight: 500;
 	pointer-events: none;
-	visibility: hidden;
-	transform: translate(-50%, calc(100% + 2rem));
-	transition:
-		transform 0.4s ease,
-		visibility 0s linear 0.4s;
-}
-
-#offline-indicator.is-offline {
-	visibility: visible;
-	transform: translate(-50%, 0);
-	transition: transform 0.4s ease;
+	transform: translateX(-50%);
+	animation: aw-offline-in 0.4s ease;
 }
 
 #offline-indicator .offline-content {
@@ -147,9 +152,14 @@ header.header {
 	gap: 0.625rem;
 }
 
+@keyframes aw-offline-in {
+	from {
+		transform: translate(-50%, calc(100% + 2rem));
+	}
+}
+
 @media (prefers-reduced-motion: reduce) {
-	#offline-indicator,
-	#offline-indicator.is-offline {
-		transition: none;
+	#offline-indicator {
+		animation: none;
 	}
 }

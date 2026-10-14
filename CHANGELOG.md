@@ -24,6 +24,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Visitors saw the previous deploy until they reloaded, because the service
+  worker served every page from its cache first. Pages and data now come from
+  the network first and fall back to the cache only when offline, and phones no
+  longer download every page on their first visit.
+- The offline notice can no longer show while online: it is only added to the
+  page while the browser is offline.
+- Dashboard: the note box rendered as a raw `[!NOTE]` quote, the update interval
+  was wrong (it's every 3 hours), status times were shown in UTC without a time
+  zone, bots topped the Hall of Fame, and names and activity titles were cut off.
+- Note and tip boxes use the brand turquoise and gold instead of Starlight's
+  blue and purple.
 - The offline notice no longer peeks over the page on phones while online.
 - Colour contrast of the "NEW" badge and the next-prayer card.
 

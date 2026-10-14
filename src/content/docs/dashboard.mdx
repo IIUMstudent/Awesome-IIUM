@@ -1,39 +1,42 @@
 ---
 title: System Status Dashboard
 description:
-  Real-time health monitoring of IIUM official portals and student services.
+  Whether IIUM's student portal and LMS are reachable, plus the people and
+  recent changes behind Awesome IIUM.
 ---
 
+import { Aside } from '@astrojs/starlight/components';
 import StatusDashboard from '../../components/StatusDashboard.astro';
 import Leaderboard from '../../components/Leaderboard.astro';
 import ActivityFeed from '../../components/ActivityFeed.astro';
 
-Monitoring the uptime of key university systems.
+Whether IIUM's main student systems are reachable right now.
 
 <StatusDashboard />
 
+## 📡 Systems monitored
+
+- **i-Ma'luum**: student portal (course registration, exam results).
+- **i-Ta'leem**: the official LMS (learning management system).
+
+Every 3 hours, and whenever the site is updated, a GitHub Actions job requests
+each system's home page. Any reply counts as online. No reply within 15 seconds,
+or a server error, counts as offline.
+
+<Aside title="Unofficial check">
+  This runs from outside IIUM's network. "Offline" means our bot couldn't reach
+  the system, which doesn't always mean it's down for you.
+</Aside>
+
 ## 🏆 Hacker Hall of Fame
 
-Celebrating our top contributors who make Awesome-IIUM possible.
+The people who make Awesome IIUM possible. Bots and automated accounts aren't
+counted. [Contribute](/Awesome-IIUM/about/contributing/) to see your name here.
 
 <Leaderboard />
 
-## 📡 Recent Activity
+## 🔄 Recent activity
 
-See what's happening in the community.
+The latest changes and pull requests on GitHub.
 
 <ActivityFeed />
-
-## 🛠️ About this Dashboard
-
-This dashboard is automatically updated every 15 minutes using GitHub Actions.
-It "pings" official IIUM servers to check if they are responding to requests.
-
-> [!NOTE] This is an unofficial monitor and may not perfectly reflect internal
-> network status. If a system is "OFFLINE", it means our external bot cannot
-> reach it.
-
-## 📡 Systems Monitored
-
-- **i-Ma'luum**: Student Portal (Course registration, exam results).
-- **i-Ta'leem**: Official LMS (Learning Management System).

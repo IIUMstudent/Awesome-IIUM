@@ -176,34 +176,33 @@ This site is a Progressive Web App (PWA) with offline support powered by Workbox
 **Service Worker Generation:**
 
 - Service worker (`sw.js`) is automatically generated during build using `@vite-pwa/astro`
-- Uses Workbox's `generateSW` strategy with automatic precaching
-- All static assets (HTML, CSS, JS, images) are precached for offline access
+- Uses Workbox's `generateSW` strategy (settings in `astro.config.mjs`)
+- Static assets (CSS, JS, images, fonts) are precached
+- Pages (HTML) and data (JSON) are **not** precached. They are fetched
+  network-first and saved as they're visited, so a deploy shows up on the next
+  page load
+
+> Don't add `html` back to `globPatterns`. Precached pages are served
+> cache-first, so every visitor sees the previous deploy until the service
+> worker updates and they reload.
 
 **Cache Versioning:**
 
-- Each file has a content-based hash (revision) in the precache manifest
+- Each precached file has a content-based hash (revision) in the precache manifest
 - When files change, their hashes change, triggering cache updates
-- Example: `workbox-3105ea8d.js` (hash changes with content)
+- Astro's own assets (`_astro/*`) also have the hash in their file name
 
 **Cache Invalidation:**
 
 - Automatic cleanup of outdated caches via `cleanupOutdatedCaches()`
-- New service workers activate immediately with `skipWaiting()`
-- Users get updates on next page load without manual cache clearing
-
-**Update Strategy:**
-
-- `registerType: 'autoUpdate'` in `astro.config.mjs`
-- Service worker checks for updates on page load
-- New versions downloaded in background
-- Changes applied on next visit (no interruption to current session)
+- New service workers activate immediately with `skipWaiting()` and `clientsClaim()`
+- Users never need to clear their cache by hand
 
 **Offline Behavior:**
 
-- All precached pages (226 entries, ~12MB) available offline
-- Navigation fallback to root (`/Awesome-IIUM/`)
-- Offline indicator appears when network is unavailable
-- Users can browse previously visited pages without internet
+- Pages visited before (up to 100) and the latest system status are available offline
+- A page never visited shows the cached home page instead
+- `public/pwa-register.js` adds the offline notice only while the browser is offline
 
 **Development vs Production:**
 
@@ -230,21 +229,17 @@ This site is a Progressive Web App (PWA) with offline support powered by Workbox
    - Open DevTools → Application → Service Workers
    - Verify service worker is active
    - Go offline (toggle in DevTools Network tab)
-   - Refresh page - should work offline
+   - Refresh a page you've visited: it should load, with the offline notice
 
 ### Cache Statistics
 
-From build output:
+The build output prints the size of the precache (static assets only):
 
 ```text
 PWA v1.2.0
 mode      generateSW
-precache  226 entries (12411.08 KiB)
+precache  …  entries
 ```
-
-- 226 pages/assets cached
-- ~12MB total cache size
-- Includes all 5 language versions (en, ar, ja, ms, zh)
 
 ## Troubleshooting
 

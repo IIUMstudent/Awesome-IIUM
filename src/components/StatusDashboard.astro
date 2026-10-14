@@ -47,6 +47,26 @@ try {
 	}
 }
 
+// Checks run on a UTC server; visitors are in Malaysia.
+const TIME_FORMAT: Intl.DateTimeFormatOptions = {
+	day: 'numeric',
+	month: 'short',
+	hour: 'numeric',
+	minute: '2-digit',
+	timeZone: 'Asia/Kuala_Lumpur',
+	timeZoneName: 'short',
+};
+
+function latestCheck(systems: SystemStatus[]): string {
+	const times = systems
+		.map((sys) => new Date(sys.timestamp).getTime())
+		.filter((time) => !Number.isNaN(time));
+	if (times.length === 0) return '';
+	return new Date(Math.max(...times)).toLocaleString('en-MY', TIME_FORMAT);
+}
+
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+const checkedAt = latestCheck(initialStatus);
 // biome-ignore lint/correctness/noUnusedVariables: passed to client script
 const hasInitialData = initialStatus.length > 0;
 ---
@@ -54,7 +74,7 @@ const hasInitialData = initialStatus.length > 0;
 <div id="status-dashboard" class="not-content">
   <div class="dashboard-header">
     <span class="last-updated" id="last-updated" aria-live="polite">
-      Last updated: {initialStatus.length > 0 ? new Date().toLocaleString() : 'Loading...'}
+      {checkedAt ? `Last checked: ${checkedAt}` : ''}
     </span>
   </div>
   <div class="status-grid" id="status-grid">
@@ -68,31 +88,33 @@ const hasInitialData = initialStatus.length > 0;
             </div>
             <div class="status-body">
               <span class="status-label">{sys.status.toUpperCase()}</span>
-              <span class="status-time">
-                Last Checked: {new Date(sys.timestamp).toLocaleTimeString()}
-              </span>
             </div>
           </div>
         ))
       ) : (
-        <div class="loading">Loading system status...</div>
+        <div class="loading" id="status-message">Loading system status...</div>
       )
     }
   </div>
 </div>
 
-<script define:vars={{ BASE_URL, hasInitialData }}>
-  function updateLastUpdatedTimestamp() {
+<script define:vars={{ BASE_URL, hasInitialData, TIME_FORMAT }}>
+  function showCheckedAt(data) {
     const lastUpdated = document.getElementById('last-updated');
-    if (lastUpdated) {
-      lastUpdated.textContent = `Last updated: ${new Date().toLocaleString()}`;
-    }
+    if (!lastUpdated) return;
+    const times = data
+      .map((sys) => new Date(sys.timestamp).getTime())
+      .filter((time) => !Number.isNaN(time));
+    lastUpdated.textContent = times.length
+      ? `Last checked: ${new Date(Math.max(...times)).toLocaleString('en-MY', TIME_FORMAT)}`
+      : '';
   }
 
   async function fetchStatus() {
     try {
       const baseUrl = BASE_URL.endsWith('/') ? BASE_URL : `${BASE_URL}/`;
       const response = await fetch(`${baseUrl}api/status.json`);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
 
       if (!Array.isArray(data)) {
@@ -128,16 +150,7 @@ const hasInitialData = initialStatus.length > 0;
         label.className = 'status-label';
         label.textContent = (sys.status || '').toUpperCase();
 
-        const time = document.createElement('span');
-        time.className = 'status-time';
-        try {
-          time.textContent = `Last Checked: ${new Date(sys.timestamp).toLocaleTimeString()}`;
-        } catch (e) {
-          time.textContent = 'Last Checked: Unknown';
-        }
-
         body.appendChild(label);
-        body.appendChild(time);
 
         card.appendChild(header);
         card.appendChild(body);
@@ -147,11 +160,11 @@ const hasInitialData = initialStatus.length > 0;
 
       // Update grid in a single atomic operation
       grid.replaceChildren(...cards);
-
-      // Update last updated timestamp
-      updateLastUpdatedTimestamp();
+      showCheckedAt(data);
     } catch (e) {
       console.error('Failed to fetch status', e);
+      const message = document.getElementById('status-message');
+      if (message) message.textContent = "System status isn't available right now.";
     }
   }
 
@@ -160,7 +173,8 @@ const hasInitialData = initialStatus.length > 0;
     fetchStatus();
   }
 
-  setInterval(fetchStatus, 300000); // Refresh every 5 minutes (matches cache TTL)
+  // Picks up a newer check (from a later deploy) without a reload
+  setInterval(fetchStatus, 300000);
 </script>
 
 <style>
@@ -227,10 +241,6 @@ const hasInitialData = initialStatus.length > 0;
   .status-grid :global(.online .status-label) { color: var(--sl-color-green-high); }
   .status-grid :global(.offline .status-label) { color: var(--sl-color-red-high); }
   
-  .status-grid :global(.status-time) {
-    font-size: 0.8rem;
-    color: var(--sl-color-gray-3);
-  }
   .loading {
     grid-column: 1 / -1;
     text-align: center;

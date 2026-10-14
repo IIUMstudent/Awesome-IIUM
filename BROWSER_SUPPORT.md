@@ -37,7 +37,7 @@ The site is built with Astro and ships standards-based HTML, CSS, and vanilla JS
 |---------|---------|-------|
 | Service Worker | ✅ Modern browsers | Not supported on older Safari versions |
 | Add to Home Screen | ✅ iOS/Android | iOS requires manual install prompt |
-| Offline Cache | ✅ Modern browsers | Cached pages only, dynamic data not guaranteed |
+| Offline Cache | ✅ Modern browsers | Pages you have visited; dynamic data not guaranteed |
 
 ---
 

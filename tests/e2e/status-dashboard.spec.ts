@@ -83,21 +83,15 @@ test.describe('Status Dashboard', () => {
 		}
 	});
 
-	test('should display last checked timestamp', async ({ page }) => {
-		// Wait for cards
-		const cards = page.locator('.status-card');
-		const count = await cards.count();
+	test('should display when the systems were last checked', async ({
+		page,
+	}) => {
+		await expect(page.locator('.status-card').first()).toBeVisible();
 
-		if (count > 0) {
-			// Should have timestamp
-			await expect(cards.first().locator('.status-time')).toBeVisible();
-
-			const timeText = await cards
-				.first()
-				.locator('.status-time')
-				.textContent();
-			expect(timeText).toContain('Last Checked');
-		}
+		// Checks run on a UTC server, so the time is shown in Malaysian time
+		await expect(page.locator('#last-updated')).toHaveText(
+			/^Last checked: .+ MYT$/,
+		);
 	});
 
 	test('should handle empty status gracefully', async ({ page }) => {
