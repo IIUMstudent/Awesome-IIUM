@@ -56,7 +56,7 @@ jobs:
           fi
           echo "on=true" >> "$GITHUB_OUTPUT"
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         if: steps.enabled.outputs.on
         with:
           fetch-depth: 0 # page history is the fallback review date

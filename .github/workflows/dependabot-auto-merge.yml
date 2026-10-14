@@ -26,7 +26,7 @@ jobs:
         if: steps.meta.outputs.update-type == 'version-update:semver-major'
         run: echo "::notice::Major update - leaving this PR for a human to review."
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         if: steps.meta.outputs.update-type != 'version-update:semver-major'
 
       - name: Setup pnpm
