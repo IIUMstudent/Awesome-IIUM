@@ -52,7 +52,7 @@ GitHub Pages (CDN-distributed static site)
 ```yaml
 Core: Astro 5.17.1 (SSG framework)
 UI: Starlight (Astro documentation theme)
-Styling: CSS Custom Properties + Starlight tokens
+Styling: CSS Custom Properties + Starlight tokens (see DESIGN.md)
 Interactivity: Vanilla JavaScript (islands architecture)
 ```
 

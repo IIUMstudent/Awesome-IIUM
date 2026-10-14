@@ -7,6 +7,8 @@
  *   commit) within `staleAfterDays`.
  * - New IIUM sites: *.iium.edu.my sites linked from official pages
  *   (scripts/discovery.json seeds) that the guide doesn't mention yet.
+ * - Brand toolkit changes: files IIUM added to or removed from its brand
+ *   toolkit page since DESIGN.md was last checked against it.
  *
  *   node scripts/content-report.mjs > report.md
  */
@@ -148,6 +150,30 @@ export async function discoverSites(config, known, fetchPage = fetchText) {
 	};
 }
 
+/**
+ * Compares the files linked from IIUM's brand toolkit page with the ones
+ * DESIGN.md was last checked against (discovery.json `brandToolkit.files`).
+ */
+export async function checkBrandToolkit(toolkit, fetchPage = fetchText) {
+	if (!toolkit?.page) return { added: [], removed: [], failed: false };
+	const body = await fetchPage(toolkit.page);
+	if (body === null) {
+		return { added: [], removed: [], failed: true, page: toolkit.page };
+	}
+	const linked = new Set(
+		extractLinks(body, toolkit.page).filter((link) =>
+			/\/wp-content\/uploads\/.+\.(pdf|zip|png|jpe?g|svg|ai|eps)$/i.test(link),
+		),
+	);
+	const known = new Set(toolkit.files ?? []);
+	return {
+		added: [...linked].filter((link) => !known.has(link)).sort(),
+		removed: [...known].filter((link) => !linked.has(link)).sort(),
+		failed: false,
+		page: toolkit.page,
+	};
+}
+
 async function fetchText(url) {
 	try {
 		const response = await fetch(url, {
@@ -167,12 +193,15 @@ export function renderReport({
 	sites,
 	failedSeeds,
 	staleAfterDays,
+	brand = { added: [], removed: [], failed: false },
 }) {
 	const repo = process.env.GITHUB_REPOSITORY ?? 'iiumstudent/Awesome-IIUM';
 	const blob = `https://github.com/${repo}/blob/HEAD`;
 	const pageLink = (file) =>
 		`[${file.replace('src/content/docs/', '')}](${blob}/${file})`;
-	const nothingToDo = !stale.length && !pastSessions.length && !sites.length;
+	const brandChanged = brand.added.length > 0 || brand.removed.length > 0;
+	const nothingToDo =
+		!stale.length && !pastSessions.length && !sites.length && !brandChanged;
 	const lines = [
 		nothingToDo
 			? '<!-- content-report: nothing to do -->'
@@ -226,6 +255,25 @@ export function renderReport({
 	} else {
 		lines.push('No new sites found.');
 	}
+	if (brandChanged) {
+		lines.push(
+			'',
+			'## 🎨 IIUM brand toolkit changed',
+			'',
+			`IIUM changed the files on its [brand toolkit page](${brand.page}). The site's colours, fonts and logo rules follow that toolkit, so check whether [DESIGN.md](${blob}/DESIGN.md) still matches it (colour codes, fonts, rules about using the IIUM name and logo). Then record the current files in \`brandToolkit.files\` in [\`scripts/discovery.json\`](${blob}/scripts/discovery.json) so this section goes away.`,
+			'',
+			...brand.added.map((link) => `- 🆕 New: <${link}>`),
+			...brand.removed.map(
+				(link) => `- ❌ No longer linked (renamed or replaced?): <${link}>`,
+			),
+		);
+	}
+	if (brand.failed) {
+		lines.push(
+			'',
+			`> ⚠️ Couldn't load the IIUM brand toolkit page <${brand.page}>. If this keeps happening, find its new address on the IIUM website and update \`brandToolkit.page\` in \`scripts/discovery.json\`.`,
+		);
+	}
 	if (failedSeeds.length) {
 		lines.push(
 			'',
@@ -249,6 +297,7 @@ async function main() {
 	);
 	const known = knownSites(files, config.multiSiteHosts);
 	const { sites, failedSeeds } = await discoverSites(config, known);
+	const brand = await checkBrandToolkit(config.brandToolkit);
 	console.log(
 		renderReport({
 			stale,
@@ -256,6 +305,7 @@ async function main() {
 			sites,
 			failedSeeds,
 			staleAfterDays: config.staleAfterDays,
+			brand,
 		}),
 	);
 }

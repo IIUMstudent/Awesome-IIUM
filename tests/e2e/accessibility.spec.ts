@@ -47,6 +47,28 @@ test.describe('Accessibility Tests', () => {
 		expect(accessibilityScanResults.violations).toEqual([]);
 	});
 
+	// DESIGN.md: every colour has to pass in dark mode too.
+	for (const path of [
+		'/Awesome-IIUM/',
+		'/Awesome-IIUM/tools/',
+		'/Awesome-IIUM/dashboard/',
+	]) {
+		test(`${path} should not have accessibility violations in dark mode`, async ({
+			page,
+		}) => {
+			await page.emulateMedia({ colorScheme: 'dark' });
+			await page.goto(path);
+			await page.waitForLoadState('networkidle');
+			await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+
+			const accessibilityScanResults = await new AxeBuilder({ page })
+				.withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+				.analyze();
+
+			expect(accessibilityScanResults.violations).toEqual([]);
+		});
+	}
+
 	test('GPA calculator should be keyboard accessible', async ({ page }) => {
 		await page.goto('/Awesome-IIUM/tools/');
 

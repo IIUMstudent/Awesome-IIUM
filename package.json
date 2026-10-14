@@ -26,8 +26,10 @@
 		"format:md": "prettier --write 'src/**/*.{md,mdx}'",
 		"lint:js": "biome check .",
 		"format:js": "biome format --write .",
-		"lint": "pnpm run lint:js && pnpm run lint:md",
+		"lint:design": "node scripts/check-design.mjs",
+		"lint": "pnpm run lint:js && pnpm run lint:md && pnpm run lint:design",
 		"format": "pnpm run format:js && pnpm run format:md",
+		"brand:assets": "node scripts/brand-assets.mjs",
 		"prepare": "husky"
 	},
 	"lint-staged": {
@@ -65,6 +67,7 @@
 	},
 	"dependencies": {
 		"@astrojs/starlight": "^0.42.6",
+		"@fontsource/arvo": "^5.3.0",
 		"@vite-pwa/astro": "^1.2.0",
 		"astro": "^7.3.8",
 		"sharp": "^0.35.5",

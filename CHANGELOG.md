@@ -5,6 +5,38 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- New look based on the IIUM Brand Toolkit: IIUM turquoise and gold, slab-serif
+  headings, a gold header rule and a landing page with section cards
+  ([DESIGN.md](DESIGN.md)).
+- Replaced the logo, which reused IIUM's official partner banner, with the
+  project's own book logo, plus new app icons and a link preview image.
+
+### Added
+
+- DESIGN.md, AGENTS.md and a `pnpm lint:design` check that keeps colours and
+  fonts on the theme tokens.
+- Dark-mode accessibility tests.
+- The monthly content report flags changes to IIUM's brand toolkit.
+
+### Fixed
+
+- The offline notice no longer peeks over the page on phones while online.
+- Colour contrast of the "NEW" badge and the next-prayer card.
+
+### Planned
+
+- Complete translations for all supported languages
+- Enhanced accessibility features
+- Performance monitoring and optimization
+- Rate limiting for external API calls
+- TypeScript migration for components
+- Comprehensive test suite
+- Developer contribution analytics
+
 ## [1.0.0] - 2026-02-03
 
 ### Added
@@ -43,15 +75,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Markdownlint for documentation standards
 - Workbox service worker for PWA features
 - GoatCounter analytics for privacy-first tracking
-
-## [Unreleased]
-
-### Planned
-
-- Complete translations for all supported languages
-- Enhanced accessibility features
-- Performance monitoring and optimization
-- Rate limiting for external API calls
-- TypeScript migration for components
-- Comprehensive test suite
-- Developer contribution analytics

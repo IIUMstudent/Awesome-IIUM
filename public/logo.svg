@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Awesome IIUM">
+  <rect width="64" height="64" rx="14" fill="#00918E"/>
+  <path fill="#FFFFFF" d="M31 21.5C25.5 17.6 18.6 16.4 11 17v29.5c7.4-.6 14.3.6 20 4.5z"/>
+  <path fill="#FFFFFF" d="M33 21.5c5.5-3.9 12.4-5.1 20-4.5v29.5c-7.4-.6-14.3.6-20 4.5z"/>
+  <path fill="#D59F0F" d="M39 9h7v22l-3.5-3.5L39 31z"/>
+</svg>

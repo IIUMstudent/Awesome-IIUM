@@ -10,8 +10,6 @@ description: 面向 IIUM 社区的精选资源与指南。
 _阅读其他语言版本：[English](../), [Melayu](../ms/), [العربية](../ar/),
 [日本語](../ja/)_
 
-![IIUM Logo](/Awesome-IIUM/logo.png)
-
 ## 引领未来 (LEADING THE WAY)
 
 ## 目的

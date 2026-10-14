@@ -68,7 +68,7 @@ export default defineConfig({
 					tag: 'meta',
 					attrs: {
 						name: 'theme-color',
-						content: '#ffffff',
+						content: '#00918e', // IIUM turquoise, see DESIGN.md
 					},
 				},
 				{
@@ -112,8 +112,22 @@ export default defineConfig({
 					tag: 'meta',
 					attrs: {
 						property: 'og:image',
-						content: 'https://iiumstudent.github.io/Awesome-IIUM/logo.png',
+						content: 'https://iiumstudent.github.io/Awesome-IIUM/og.png',
 					},
+				},
+				{ tag: 'meta', attrs: { property: 'og:image:width', content: '1200' } },
+				{ tag: 'meta', attrs: { property: 'og:image:height', content: '630' } },
+				{
+					tag: 'meta',
+					attrs: {
+						property: 'og:image:alt',
+						content:
+							'Awesome IIUM: resources, tools and guides for the IIUM community',
+					},
+				},
+				{
+					tag: 'link',
+					attrs: { rel: 'apple-touch-icon', href: '/Awesome-IIUM/logo.png' },
 				},
 				{
 					tag: 'meta',
@@ -141,7 +155,7 @@ export default defineConfig({
 					tag: 'meta',
 					attrs: {
 						name: 'twitter:image',
-						content: 'https://iiumstudent.github.io/Awesome-IIUM/logo.png',
+						content: 'https://iiumstudent.github.io/Awesome-IIUM/og.png',
 					},
 				},
 				{
@@ -183,9 +197,10 @@ export default defineConfig({
 					},
 				},
 			],
-			favicon: '/logo.png',
+			favicon: '/logo.svg',
 			logo: {
-				src: './src/assets/logo.png',
+				src: './src/assets/logo.svg',
+				alt: '',
 			},
 			social: [
 				{
@@ -219,7 +234,8 @@ export default defineConfig({
 					],
 				},
 			],
-			customCss: ['./src/styles/custom.css'],
+			// Theme and design rules: DESIGN.md
+			customCss: ['@fontsource/arvo/latin-700.css', './src/styles/custom.css'],
 			components: {
 				Footer: './src/components/Footer.astro',
 			},
@@ -230,12 +246,12 @@ export default defineConfig({
 				name: 'Awesome IIUM',
 				short_name: 'AwesomeIIUM',
 				description: 'The Ultimate Student Platform for IIUM',
-				theme_color: '#ffffff',
+				theme_color: '#00918e',
 				background_color: '#ffffff',
 				display: 'standalone',
 				icons: [
 					{
-						src: '/Awesome-IIUM/logo.png',
+						src: '/Awesome-IIUM/icon-192.png',
 						sizes: '192x192',
 						type: 'image/png',
 					},

@@ -10,12 +10,12 @@ how to code to maintain it.**
 Open the [issues](https://github.com/IIUMstudent/Awesome-IIUM/issues) and work
 through these, newest first:
 
-| Issue                                        | What to do                                                                                                                                                                                                    |
-| :------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **`[Resource]: …`** (label `new resource`)   | A bot has already replied with a check. If it says ✅ and the resource is useful to IIUM students, add the **`approved`** label. It's published to the site and the issue closes by itself. If not, close it. |
-| **`[Automated] Monthly content report`**     | Pick a page or two from "Pages to review", check the facts on it are still right, fix what's wrong and set `lastUpdated` to today. Add useful sites from "IIUM sites not in the guide yet".                   |
-| **`[Automated] Broken Links Detected`**      | Fix or remove the dead links listed (edit the page on GitHub with the ✏️ button).                                                                                                                             |
-| **Dependabot pull requests** (major updates) | Small updates merge themselves. Big ones wait for you: if all checks are green, merge. If something is red and you're unsure, leave it; nothing breaks if it waits.                                           |
+| Issue                                        | What to do                                                                                                                                                                                                                                                                                     |
+| :------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`[Resource]: …`** (label `new resource`)   | A bot has already replied with a check. If it says ✅ and the resource is useful to IIUM students, add the **`approved`** label. It's published to the site and the issue closes by itself. If not, close it.                                                                                  |
+| **`[Automated] Monthly content report`**     | Pick a page or two from "Pages to review", check the facts on it are still right, fix what's wrong and set `lastUpdated` to today. Add useful sites from "IIUM sites not in the guide yet". If it says the IIUM brand toolkit changed, see [DESIGN.md](DESIGN.md#how-this-is-kept-up-to-date). |
+| **`[Automated] Broken Links Detected`**      | Fix or remove the dead links listed (edit the page on GitHub with the ✏️ button).                                                                                                                                                                                                              |
+| **Dependabot pull requests** (major updates) | Small updates merge themselves. Big ones wait for you: if all checks are green, merge. If something is red and you're unsure, leave it; nothing breaks if it waits.                                                                                                                            |
 
 Editing a page: open it under
 [`src/content/docs`](https://github.com/IIUMstudent/Awesome-IIUM/tree/master/src/content/docs),
@@ -27,10 +27,10 @@ press ✏️, make the change and commit. The site redeploys in a few minutes.
 | :-------------------------------------------------------- | :------------------------------ | :---------------------------------------------------------------------------------------------------------------- |
 | [Deploy](.github/workflows/deploy.yml)                    | Every push and every 3 hours    | Builds and publishes the site, refreshes system status and the GitHub activity widgets.                           |
 | [Resource Submissions](.github/workflows/submissions.yml) | When issues are opened/labelled | Checks suggestions and publishes approved ones.                                                                   |
-| [Content Report](.github/workflows/content-report.yml)    | 1st of every month              | Lists pages due for review and new IIUM sites to cover.                                                           |
+| [Content Report](.github/workflows/content-report.yml)    | 1st of every month              | Lists pages due for review, new IIUM sites to cover, and changes to IIUM's brand toolkit.                         |
 | [Link Checker](.github/workflows/link-checker.yml)        | Weekly                          | Reports dead external links in one issue.                                                                         |
 | [Dependabot](.github/dependabot.yml)                      | Weekly                          | Updates dependencies; [minor and patch updates merge automatically](.github/workflows/dependabot-auto-merge.yml). |
-| [CI](.github/workflows/ci.yml)                            | Every push and pull request     | Lint, unit tests, build, internal links, E2E and accessibility tests.                                             |
+| [CI](.github/workflows/ci.yml)                            | Every push and pull request     | Lint (including the [design rules](DESIGN.md)), unit tests, build, internal links, E2E and accessibility tests.   |
 | [Security](.github/workflows/security.yml)                | Every pull request, and weekly  | CodeQL and dependency audit.                                                                                      |
 | [Lighthouse](.github/workflows/lighthouse.yml)            | Monthly                         | Performance and SEO audit.                                                                                        |
 
@@ -80,3 +80,4 @@ No other secrets or paid services are needed.
   `ignore` in [`scripts/discovery.json`](scripts/discovery.json).
 - **Bigger problems:** [OPERATIONS.md](OPERATIONS.md) covers disaster recovery,
   and [ARCHITECTURE.md](ARCHITECTURE.md) explains how the site is built.
+  [DESIGN.md](DESIGN.md) explains how it looks and why.

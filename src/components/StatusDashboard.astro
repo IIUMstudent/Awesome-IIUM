@@ -194,7 +194,7 @@ const hasInitialData = initialStatus.length > 0;
   }
   .status-grid :global(.status-card:hover) {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    box-shadow: var(--sl-shadow-md);
   }
   .status-grid :global(.status-header) {
     display: flex;
@@ -212,8 +212,8 @@ const hasInitialData = initialStatus.length > 0;
     border-radius: 50%;
     display: inline-block;
   }
-  .status-grid :global(.online .status-dot) { background: #047857; box-shadow: 0 0 10px #047857; }
-  .status-grid :global(.offline .status-dot) { background: #ef4444; box-shadow: 0 0 10px #ef4444; }
+  .status-grid :global(.online .status-dot) { background: var(--sl-color-green); box-shadow: 0 0 10px var(--sl-color-green); }
+  .status-grid :global(.offline .status-dot) { background: var(--sl-color-red); box-shadow: 0 0 10px var(--sl-color-red); }
   
   .status-grid :global(.status-body) {
     display: flex;
@@ -224,8 +224,8 @@ const hasInitialData = initialStatus.length > 0;
     font-weight: bold;
     font-size: 0.9rem;
   }
-  .status-grid :global(.online .status-label) { color: #047857; }
-  .status-grid :global(.offline .status-label) { color: #b91c1c; }
+  .status-grid :global(.online .status-label) { color: var(--sl-color-green-high); }
+  .status-grid :global(.offline .status-label) { color: var(--sl-color-red-high); }
   
   .status-grid :global(.status-time) {
     font-size: 0.8rem;

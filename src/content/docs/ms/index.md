@@ -16,8 +16,6 @@ Malaysia (UIAM).
 _Baca ini dalam bahasa lain: [English](../), [中文](../zh/), [العربية](../ar/),
 [日本語](../ja/)_
 
-![Logo IIUM](/Awesome-IIUM/logo.png)
-
 ## MEMIMPIN HALA TUJU
 
 ## Tujuan

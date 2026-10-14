@@ -135,20 +135,14 @@ const resources = await fetchRecentResources();
   }
 
   .badge {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    color: white;
+    background: var(--sl-color-green-low);
+    color: var(--sl-color-green-high);
     font-size: 0.625rem;
     font-weight: 700;
     padding: 0.125rem 0.5rem;
     border-radius: 9999px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
   }
 
   .resource-list {
