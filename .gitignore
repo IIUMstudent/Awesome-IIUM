@@ -39,3 +39,8 @@ lighthouse-report.html
 # Generated at deploy time
 public/api/status.json
 _site/
+
+# Content refresh working files (.github/workflows/content-refresh.yml)
+content-report.md
+broken-links.md
+refresh-summary.md

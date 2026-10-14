@@ -1,6 +1,7 @@
 ---
 title: 'Academics'
 description: Academic portals, tools, and kulliyyah resources for IIUM students.
+lastUpdated: 2026-10-14
 ---
 
 > Resources, tools, and guides for academic success at IIUM.
@@ -27,34 +28,44 @@ description: Academic portals, tools, and kulliyyah resources for IIUM students.
 
 ## 📚 Resources
 
-- [Examination Paper Archive](https://lib.iium.edu.my/) - (Access via Library)
-  Past year examination papers.
+- [Dar al-Hikmah Library](https://division.iium.edu.my/lib/) - Past year
+  examination papers, databases and e-books (log in with your i-Ma'luum
+  account).
 - [Thesis Templates](https://github.com/Ayman-Elfaki/IIUM-Latex-Template) -
   LaTeX templates for IIUM theses and dissertations.
+
+## 🧭 Guides
+
+- [General Academic Resources](./general/) - Portals, library and tools for
+  every student.
+- [Course Registration (Pre-Reg)](./pre-reg-gombak-kuantan/) - How course
+  registration works ([Pagoh](./pre-reg-pagoh/)).
+- [Graduation & Convocation](./graduation/) - Finishing your degree.
+- [Postgraduate Studies](../postgraduate/) - Master's and PhD.
 
 ## 🎓 Colleges (Kulliyyahs)
 
 ### Gombak Campus
 
-- **AIKOL** - Ahmad Ibrahim Kulliyyah of Laws.
-- **AHAS KIRKHS** - AbdulHamid AbuSulayman Kulliyyah of Islamic Revealed
-  Knowledge and Human Sciences.
-- **KAED** - Kulliyyah of Architecture and Environmental Design.
-- **KENMS** - Kulliyyah of Economics and Management Sciences.
-- **KICT** - Kulliyyah of Information and Communication Technology.
-- **KOE** - Kulliyyah of Engineering.
-- **KOED** - Kulliyyah of Education.
+- **[AIKOL](./aikol/)** - Ahmad Ibrahim Kulliyyah of Laws.
+- **[AHAS KIRKHS](./kirkhs/)** - AbdulHamid AbuSulayman Kulliyyah of Islamic
+  Revealed Knowledge and Human Sciences.
+- **[KAED](./kaed/)** - Kulliyyah of Architecture and Environmental Design.
+- **[KENMS](./kenms/)** - Kulliyyah of Economics and Management Sciences.
+- **[KICT](./kict/)** - Kulliyyah of Information and Communication Technology.
+- **[KOE](./koe/)** - Kulliyyah of Engineering.
+- **[KOED](./koed/)** - Kulliyyah of Education.
 
 ### Kuantan Campus
 
-- **KAHS** - Kulliyyah of Allied Health Sciences.
-- **KOD** - Kulliyyah of Dentistry.
-- **KOM** - Kulliyyah of Medicine.
-- **KON** - Kulliyyah of Nursing.
-- **KOP** - Kulliyyah of Pharmacy.
-- **KOS** - Kulliyyah of Science.
+- **[KAHS](./kahs/)** - Kulliyyah of Allied Health Sciences.
+- **[KOD](./kod/)** - Kulliyyah of Dentistry.
+- **[KOM](./kom/)** - Kulliyyah of Medicine.
+- **[KON](./kon/)** - Kulliyyah of Nursing.
+- **[KOP](./kop/)** - Kulliyyah of Pharmacy.
+- **[KOS](./kos/)** - Kulliyyah of Science.
 
 ### Pagoh Campus
 
-- **KLM** - Kulliyyah of Languages and Management.
-- **KSTCL** - Kulliyyah of Sustainable Tourism and Contemporary Languages.
+- **[KSTCL](./kstcl/)** - Kulliyyah of Sustainable Tourism and Contemporary
+  Languages (formerly the Kulliyyah of Languages and Management, KLM).

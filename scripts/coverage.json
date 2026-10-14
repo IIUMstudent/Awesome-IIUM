@@ -1,0 +1,144 @@
+{
+	"$comment": "Everything a complete guide to IIUM should cover. Used by scripts/content-report.mjs (topics with no pages are reported as gaps) and by the monthly content refresh (.github/content-refresh.md), which writes pages for gaps. Paths are relative to src/content/docs. Add a topic with \"pages\": [] to ask for a page about it.",
+	"topics": [
+		{
+			"topic": "Admissions: undergraduate, foundation, international and postgraduate routes",
+			"pages": ["categories/admissions/index.md"]
+		},
+		{
+			"topic": "Fees, payment and financial aid (scholarships, zakat, loans)",
+			"pages": ["categories/fees-and-financial-aid/index.md"]
+		},
+		{
+			"topic": "International students: student pass, insurance, arrival",
+			"pages": ["categories/international-students/index.md"]
+		},
+		{
+			"topic": "Postgraduate study: applying, research support, procedures",
+			"pages": ["categories/postgraduate/index.md"]
+		},
+		{
+			"topic": "Campuses: what is at Gombak, Kuantan, Pagoh and Gambang",
+			"pages": ["categories/campuses/index.md"]
+		},
+		{
+			"topic": "Every kulliyyah: official site, departments and programmes",
+			"pages": [
+				"categories/academics/index.md",
+				"categories/academics/AIKOL/index.md",
+				"categories/academics/KAED/index.md",
+				"categories/academics/KAHS/index.md",
+				"categories/academics/KENMS/index.md",
+				"categories/academics/KICT/index.md",
+				"categories/academics/KIRKHS/index.md",
+				"categories/academics/KOD/index.md",
+				"categories/academics/KOE/index.md",
+				"categories/academics/KOED/index.md",
+				"categories/academics/KOM/index.md",
+				"categories/academics/KON/index.md",
+				"categories/academics/KOP/index.md",
+				"categories/academics/KOS/index.md",
+				"categories/academics/KSTCL/index.md"
+			]
+		},
+		{
+			"topic": "Academic portals, library and study tools",
+			"pages": ["categories/academics/General.mdx"]
+		},
+		{
+			"topic": "Course registration (pre-reg), add/drop and important dates",
+			"pages": [
+				"categories/academics/Pre-reg gombak-kuantan.md",
+				"categories/academics/Pre-reg pagoh.md"
+			]
+		},
+		{
+			"topic": "Academic rules: grading, probation, leave of absence, change of programme",
+			"pages": []
+		},
+		{
+			"topic": "Graduation and convocation",
+			"pages": ["categories/academics/graduation.md"]
+		},
+		{
+			"topic": "Mahallah (on-campus housing) at every campus",
+			"pages": ["categories/campus-life/Mahallah.md"]
+		},
+		{
+			"topic": "Off-campus housing near each campus",
+			"pages": []
+		},
+		{
+			"topic": "Getting around: campus buses, public transport and getting to each campus",
+			"pages": ["categories/campus-life/index.md"]
+		},
+		{
+			"topic": "Food and dining at each campus",
+			"pages": []
+		},
+		{
+			"topic": "Campus life at Kuantan, Pagoh and Gambang",
+			"pages": []
+		},
+		{
+			"topic": "Clubs, societies and student activities",
+			"pages": [
+				"categories/campus-life/Club.md",
+				"categories/campus-life/Programs.md"
+			]
+		},
+		{
+			"topic": "Student representation (Students' Representative Council)",
+			"pages": []
+		},
+		{
+			"topic": "Student community groups and social media",
+			"pages": [
+				"categories/campus-life/Social Media/TelegramGroups.md",
+				"categories/campus-life/Social Media/WhatsAppGroups.md",
+				"categories/campus-life/Social Media/FacebookGroups.md",
+				"categories/campus-life/Social Media/InstagramGroups.md",
+				"categories/campus-life/Social Media/TwitterGroups.md"
+			]
+		},
+		{
+			"topic": "Student life tips",
+			"pages": ["categories/campus-life/Student Life.md"]
+		},
+		{
+			"topic": "Health, counselling, insurance and disability support",
+			"pages": ["categories/student-services/health-and-wellbeing.md"]
+		},
+		{
+			"topic": "IT accounts, Wi-Fi, software and the ICT help desk",
+			"pages": [
+				"categories/student-services/it-and-accounts.md",
+				"categories/campus-life/Software.md"
+			]
+		},
+		{
+			"topic": "Safety, security and emergency contacts",
+			"pages": ["categories/student-services/safety.md"]
+		},
+		{
+			"topic": "Which office handles what",
+			"pages": ["categories/student-services/index.md"]
+		},
+		{
+			"topic": "Careers, internships and alumni",
+			"pages": ["categories/career/index.md"]
+		},
+		{
+			"topic": "Student exchange and study abroad (outbound mobility)",
+			"pages": []
+		},
+		{
+			"topic": "Directory of official IIUM websites",
+			"pages": ["categories/official-sources.md"]
+		},
+		{
+			"topic": "Student-built apps, APIs and developer communities",
+			"pages": ["categories/developers/index.md"]
+		}
+	]
+}

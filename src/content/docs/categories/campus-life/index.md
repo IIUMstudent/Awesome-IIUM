@@ -1,20 +1,23 @@
 ---
 title: 'Campus Life'
 description: Daily life resources for students across IIUM campuses.
+lastUpdated: 2026-10-14
 ---
 
 > Everything you need to know about surviving and thriving on campus.
 
 ## 🚌 Transportation
 
-- **IIUM Bus Services**: Frequent shuttle buses within campus (Gombak).
+- **IIUM Bus Services**: Shuttle buses within the Gombak campus, run by the
+  [Student Affairs and Development Division](https://division.iium.edu.my/stadd/).
+  The [Bus Schedules](https://t.me/BUS_SCHEDULES) Telegram channel posts
+  timetables.
 - **RapidKL T200**: Connects IIUM Gombak to Gombak LRT Station.
 - **Kumpool**: Ride-pooling service available within the campus area.
 
 ## 🗺️ Maps & Navigation
 
-> **Analyst Tip:** For detailed spatial data, use **OpenStreetMap**
-> (community-maintained) or the **Official Map** (admin-verified).
+For each campus's location and how to get there, see [Campuses](../campuses/).
 
 - **[Official IIUM Map](https://www.iium.edu.my/my/page/campus-map)** - Navigate
   Gombak and other campuses.
@@ -25,32 +28,9 @@ description: Daily life resources for students across IIUM campuses.
 
 ## 🏠 Accommodation (Mahallah)
 
-### Male
-
-- **Al-Faruq**
-- **Ali Ibn Abi Talib**
-- **As-Siddiq**
-- **Bilal Ibn Rabah**
-- **Uthman Ibn Affan**
-- **Zubair Al-Awwam**
-
-### Female
-
-- **Aminah**
-- **Asiah**
-- **Asma'**
-- **Hafsah**
-- **Halimatus Saadiah**
-- **Maryam**
-- **Nusaibah**
-- **Safiyyah**
-- **Sumayyah**
-
-### Mixed / Others
-
-- **Ruqayyah**
-- **Salahuddin**
-- **Zaid Harithah** (Pagoh)
+Students live in residential colleges called mahallah. See
+[Mahallahs](./mahallah/) for the full list for each campus and how to apply for
+a room.
 
 ## 🍔 Food & Dining
 
@@ -68,12 +48,29 @@ description: Daily life resources for students across IIUM campuses.
 
 ## 🏥 Health & Wellness
 
-- **IIUM Health & Wellness Centre**: Providing medical services, consultations,
-  and emergency care for students and staff.
+- **IIUM Sejahtera Clinic** and counselling: see
+  [Health & Wellbeing](../student-services/health-and-wellbeing/).
+- **Emergencies**: see [Safety & Emergencies](../student-services/safety/).
 
 ## 📚 Libraries
 
-- **Dar al-Hikmah Library**: The main library offering study spaces, 24/7
-  reading rooms, and extensive collections.
+- **[Dar al-Hikmah Library](https://division.iium.edu.my/lib/)**: The main
+  library at Gombak, with study spaces, reading rooms and online databases.
 - **Kulliyyah Libraries**: Smaller libraries located within specific faculties
   (e.g., Law, IRK, Architecture).
+
+## 🕌 Religious Life
+
+- **[IIUM Mosque](https://office.iium.edu.my/mosque)** - Sultan Haji Ahmad Shah
+  Mosque at Gombak: prayers, classes and events.
+- **[Prayer times](../../tools/)** - Today's prayer times on our Tools page.
+
+## 🔗 More
+
+- [Clubs & Societies](./club/) · [Programs & Events](./programs/) ·
+  [Student Life Tips](./student-life/) · [Essential Software](./software/)
+- Social media: [Telegram](./social-media/telegramgroups/) ·
+  [WhatsApp](./social-media/whatsappgroups/) ·
+  [Facebook](./social-media/facebookgroups/) ·
+  [Instagram](./social-media/instagramgroups/) ·
+  [X/Twitter](./social-media/twittergroups/)

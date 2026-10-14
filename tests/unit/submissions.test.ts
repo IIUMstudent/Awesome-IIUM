@@ -1,4 +1,4 @@
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import {
 	CATEGORY_FILES,
@@ -71,7 +71,6 @@ describe('targetFile', () => {
 				'KENMS',
 				'KICT',
 				'KIRKHS',
-				'KLM',
 				'KOD',
 				'KOE',
 				'KOED',
@@ -79,6 +78,7 @@ describe('targetFile', () => {
 				'KON',
 				'KOP',
 				'KOS',
+				'KSTCL',
 			].map((code) => `Academics - ${code} (Name)`),
 		];
 		for (const category of categories) {
@@ -86,6 +86,30 @@ describe('targetFile', () => {
 			expect(file, category).toBeTruthy();
 			expect(existsSync(file as string), file as string).toBe(true);
 		}
+	});
+
+	it('places every option in the issue form on a page that exists', () => {
+		const form = readFileSync(
+			'.github/ISSUE_TEMPLATE/resource-request.yml',
+			'utf8',
+		);
+		const options = form
+			.split('id: category')[1]
+			.split('validations:')[0]
+			.match(/^ {8}- (.+)$/gm)
+			?.map((line) => line.replace(/^ {8}- /, '').trim());
+		expect(options?.length).toBeGreaterThan(20);
+		for (const option of options ?? []) {
+			const file = targetFile(option);
+			expect(file, option).toBeTruthy();
+			expect(existsSync(file as string), option).toBe(true);
+		}
+	});
+
+	it('still places suggestions that use a former kulliyyah name', () => {
+		expect(targetFile('Academics - KLM (Languages & Management)')).toBe(
+			targetFile('Academics - KSTCL (Sustainable Tourism & Languages)'),
+		);
 	});
 
 	it('sends retired academic options to the academics index', () => {

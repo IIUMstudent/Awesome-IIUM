@@ -7,19 +7,41 @@
  *   commit) within `staleAfterDays`.
  * - New IIUM sites: *.iium.edu.my sites linked from official pages
  *   (scripts/discovery.json seeds) that the guide doesn't mention yet.
+ * - Coverage gaps: topics in scripts/coverage.json with no page yet.
  *
  *   node scripts/content-report.mjs > report.md
  */
 
 import { execFileSync } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { extractUrls, listContentFiles } from './submissions.mjs';
+import { DOCS_DIR, extractUrls, listContentFiles } from './submissions.mjs';
 
 const DAY = 24 * 60 * 60 * 1000;
 
 export function loadConfig(path = 'scripts/discovery.json') {
 	return JSON.parse(readFileSync(path, 'utf8'));
+}
+
+export function loadCoverage(path = 'scripts/coverage.json') {
+	return JSON.parse(readFileSync(path, 'utf8'));
+}
+
+/**
+ * Topics with no page yet, and pages the coverage map lists that don't exist
+ * (renamed or deleted).
+ */
+export function checkCoverage(coverage, exists = (page) => existsSync(page)) {
+	const gaps = [];
+	const missingPages = [];
+	for (const { topic, pages } of coverage.topics) {
+		if (!pages.length) gaps.push(topic);
+		for (const page of pages) {
+			if (!exists(join(DOCS_DIR, page))) missingPages.push({ topic, page });
+		}
+	}
+	return { gaps, missingPages };
 }
 
 /** Date a page was last reviewed, from frontmatter or git history. */
@@ -167,17 +189,19 @@ export function renderReport({
 	sites,
 	failedSeeds,
 	staleAfterDays,
+	gaps = [],
 }) {
 	const repo = process.env.GITHUB_REPOSITORY ?? 'iiumstudent/Awesome-IIUM';
 	const blob = `https://github.com/${repo}/blob/HEAD`;
 	const pageLink = (file) =>
 		`[${file.replace('src/content/docs/', '')}](${blob}/${file})`;
-	const nothingToDo = !stale.length && !pastSessions.length && !sites.length;
+	const nothingToDo =
+		!stale.length && !pastSessions.length && !sites.length && !gaps.length;
 	const lines = [
 		nothingToDo
 			? '<!-- content-report: nothing to do -->'
 			: '<!-- content-report -->',
-		'_This report is updated automatically every month. Work through what you can; anything you fix disappears from the next report._',
+		'_This report is updated automatically every month. When the monthly content refresh is switched on (see MAINTAINING.md), it works through this list and opens a pull request for you to review. Anything fixed disappears from the next report._',
 		'',
 		`## 🕰️ Pages to review (${stale.length})`,
 		'',
@@ -209,6 +233,16 @@ export function renderReport({
 				({ file, sessions }) =>
 					`| ${pageLink(file)} | ${sessions.join(', ')} |`,
 			),
+		);
+	}
+	if (gaps.length) {
+		lines.push(
+			'',
+			`## 🧩 Topics not covered yet (${gaps.length})`,
+			'',
+			`The guide has no page for these topics from [\`scripts/coverage.json\`](${blob}/scripts/coverage.json). Write a page, then list it under the topic.`,
+			'',
+			...gaps.map((topic) => `- ${topic}`),
 		);
 	}
 	lines.push('', `## 🔎 IIUM sites not in the guide yet (${sites.length})`, '');
@@ -249,6 +283,7 @@ async function main() {
 	);
 	const known = knownSites(files, config.multiSiteHosts);
 	const { sites, failedSeeds } = await discoverSites(config, known);
+	const { gaps } = checkCoverage(loadCoverage());
 	console.log(
 		renderReport({
 			stale,
@@ -256,6 +291,7 @@ async function main() {
 			sites,
 			failedSeeds,
 			staleAfterDays: config.staleAfterDays,
+			gaps,
 		}),
 	);
 }

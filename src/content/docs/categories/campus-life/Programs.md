@@ -23,4 +23,4 @@ Stay updated with the latest events and programs happening on campus.
 - **University-wide**: Convocation festivals, sports competitions, and cultural
   nights.
 - **Community Service**: Volunteer opportunities through
-  [CENSERVE](https://www.iium.edu.my/centre/censerve).
+  [CENSERVE](https://censerve.iium.edu.my/).

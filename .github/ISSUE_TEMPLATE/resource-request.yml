@@ -37,6 +37,7 @@ body:
       label: Category
       description: Which category does this resource belong to?
       options:
+        - Admissions
         - Academics - General
         - Academics - AIKOL (Laws)
         - Academics - KAED (Architecture)
@@ -44,7 +45,6 @@ body:
         - Academics - KENMS (Economics & Management)
         - Academics - KICT (ICT)
         - Academics - KIRKHS (Revealed Knowledge & Human Sciences)
-        - Academics - KLM (Languages & Management)
         - Academics - KOD (Dentistry)
         - Academics - KOE (Engineering)
         - Academics - KOED (Education)
@@ -52,10 +52,15 @@ body:
         - Academics - KON (Nursing)
         - Academics - KOP (Pharmacy)
         - Academics - KOS (Science)
+        - Academics - KSTCL (Sustainable Tourism & Languages)
+        - Postgraduate Studies
+        - Fees & Financial Aid
         - Campus Life
         - Campus Life - Clubs & Societies
         - Campus Life - Mahallah (Residential)
         - Campus Life - Apps & Software
+        - Student Services
+        - International Students
         - Career & Internships
         - Developers
     validations:
