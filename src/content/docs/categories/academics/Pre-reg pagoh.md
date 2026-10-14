@@ -1,6 +1,8 @@
 ---
 title: 'Course Registration (Pagoh)'
-description: Course registration at the Pagoh campus.
+description:
+  "How course registration (pre-reg) works at the IIUM Pagoh campus, and where
+  to find this semester's dates."
 ---
 
 Pagoh students register for courses the same way as students at Gombak and

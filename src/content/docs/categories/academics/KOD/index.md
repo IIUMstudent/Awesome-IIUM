@@ -1,6 +1,8 @@
 ---
 title: '🦷 Kulliyyah of Dentistry (KOD)'
-description: 'Resources for IIUM dentistry students.'
+description:
+  'IIUM Kulliyyah of Dentistry (KOD) in Kuantan: departments, dental programmes
+  and official links.'
 resourceType: guide
 tags:
   - dentistry

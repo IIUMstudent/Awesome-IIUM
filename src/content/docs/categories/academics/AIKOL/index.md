@@ -1,6 +1,9 @@
 ---
 title: '⚖️ Ahmad Ibrahim Kulliyyah of Laws (AIKOL)'
-description: 'Resources for IIUM law students.'
+description:
+  "IIUM law students' guide to the Ahmad Ibrahim Kulliyyah of Laws (AIKOL):
+  departments, LLB and postgraduate programmes, moots, official links and
+  socials."
 resourceType: guide
 tags:
   - law

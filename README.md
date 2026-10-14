@@ -2,7 +2,10 @@
 # Awesome IIUM [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![Build Status](https://img.shields.io/github/actions/workflow/status/iiumstudent/Awesome-IIUM/deploy.yml?branch=master&label=deploy)](https://github.com/iiumstudent/Awesome-IIUM/actions/workflows/deploy.yml) [![License](https://img.shields.io/github/license/iiumstudent/Awesome-IIUM)](LICENSE.md) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 > A curated list of resources, tools, and guides for the **International Islamic
-> University Malaysia (IIUM)** community.
+> University Malaysia (IIUM)** community, also known in Malay as Universiti
+> Islam Antarabangsa Malaysia (UIAM or UIA).
+>
+> **Website: [iiumstudent.github.io/Awesome-IIUM](https://iiumstudent.github.io/Awesome-IIUM/)**
 
 _Read this in other languages: [Bahasa Melayu](https://iiumstudent.github.io/Awesome-IIUM/ms/),
 [中文](https://iiumstudent.github.io/Awesome-IIUM/zh/), [العربية](https://iiumstudent.github.io/Awesome-IIUM/ar/),

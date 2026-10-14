@@ -29,7 +29,7 @@ All content files can include these optional metadata fields:
 ```yaml
 ---
 title: 'Page Title'
-description: 'Brief description for SEO'
+description: 'What is on this page, naming IIUM' # Search result snippet
 
 # Optional resource metadata
 resourceType: portal | tool | community | library | app | guide | course
@@ -49,6 +49,12 @@ lastUpdated: 2026-01-19
 maintainer: '@github-username'
 ---
 ```
+
+Every page needs a `description`: search engines show it under the title, and
+link previews on WhatsApp, Telegram and X use it. Keep it to about 160
+characters, say what the page covers, and use the words students search for:
+"IIUM", the kulliyyah or campus name, and names like i-Ma'luum or mahallah.
+Leading emoji in `title` are dropped from search results automatically.
 
 ### Kulliyyah Codes
 

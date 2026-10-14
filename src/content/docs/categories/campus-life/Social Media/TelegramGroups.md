@@ -1,6 +1,8 @@
 ---
 title: '💬 IIUM Telegram Groups'
-description: Telegram channels and groups for the IIUM community.
+description:
+  'IIUM Telegram channels and groups: official news, transport and runners,
+  community support, sports and study resources.'
 ---
 
 A curated list of Telegram groups and channels for the IIUM community.

@@ -1,6 +1,8 @@
 ---
 title: 'Campus Life'
-description: Daily life resources for students across IIUM campuses.
+description:
+  'Campus life at IIUM: mahallahs, food, clubs, events, off-campus housing,
+  software and student social media in Gombak, Kuantan and Pagoh.'
 lastUpdated: 2026-10-14
 ---
 

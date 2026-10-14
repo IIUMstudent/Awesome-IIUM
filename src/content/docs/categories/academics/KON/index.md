@@ -1,6 +1,8 @@
 ---
 title: '🩺 Kulliyyah of Nursing (KON)'
-description: 'Resources for IIUM nursing students.'
+description:
+  'IIUM Kulliyyah of Nursing (KON) in Kuantan: departments, nursing programmes
+  and official links.'
 resourceType: guide
 tags:
   - nursing

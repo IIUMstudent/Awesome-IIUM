@@ -1,6 +1,8 @@
 ---
 title: '🟢 IIUM WhatsApp Groups'
-description: WhatsApp group categories for IIUM students.
+description:
+  'Kinds of WhatsApp groups IIUM students use, and how to find the ones for your
+  kulliyyah, mahallah and courses.'
 ---
 
 Note: WhatsApp groups are mostly private or invite-only. Check with your

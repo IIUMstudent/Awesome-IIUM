@@ -1,6 +1,8 @@
 ---
 title: 'Developers'
-description: IIUM open source projects, APIs, and tech communities.
+description:
+  'IIUM open source projects, APIs, apps and tech communities built by and for
+  IIUM students.'
 lastUpdated: 2026-10-14
 ---
 

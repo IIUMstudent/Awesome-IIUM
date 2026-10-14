@@ -1,6 +1,9 @@
 ---
 title: '🏗️ Kulliyyah of Architecture and Environmental Design (KAED)'
-description: 'Resources for IIUM architecture and built environment students.'
+description:
+  'IIUM KAED guide: departments, architecture, planning, landscape and quantity
+  surveying programmes, and official links for the Kulliyyah of Architecture and
+  Environmental Design.'
 resourceType: guide
 tags:
   - architecture

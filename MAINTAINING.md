@@ -111,6 +111,25 @@ stops working):
   Whoever owns the key pays for it, so give the new maintainers their own key
   and delete yours.
 
+- **Search engines (free):** register the site so IIUM students searching
+  "IIUM", "UIA" or "UIAM" find it, and so you can see which searches bring
+  them in. Do this once, with an account the organization can keep.
+  1. In [Google Search Console](https://search.google.com/search-console), add
+     a **URL prefix** property for `https://iiumstudent.github.io/Awesome-IIUM/`
+     and choose the **HTML tag** method.
+  2. Copy only the `content="..."` value into the repository variable
+     `GOOGLE_SITE_VERIFICATION`, run the deploy workflow, then press
+     **Verify**.
+  3. Under **Sitemaps**, submit `sitemap-index.xml`.
+  4. In [Bing Webmaster Tools](https://www.bing.com/webmasters), import the
+     site from Search Console (or use the `BING_SITE_VERIFICATION` variable
+     the same way). Bing also feeds DuckDuckGo, Yahoo, Ecosia and ChatGPT
+     search. `YANDEX_SITE_VERIFICATION` works the same way for Yandex.
+
+  The sitemap, page titles, descriptions and structured data are built from
+  the pages themselves (`src/routeMiddleware.ts`, `src/utils/seo.ts`); a good
+  frontmatter `description` is the snippet people see in search results.
+
 No other secrets or paid services are needed.
 
 ## When something goes wrong

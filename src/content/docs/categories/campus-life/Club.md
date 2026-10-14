@@ -1,6 +1,8 @@
 ---
 title: '🏀 IIUM Clubs & Societies'
-description: Sports, arts, and community clubs at IIUM.
+description:
+  "IIUM clubs and societies: sports, martial arts, arts and culture, da'wah and
+  entrepreneurship clubs to join on campus."
 ---
 
 Participating in clubs and societies is a great way to enhance your university

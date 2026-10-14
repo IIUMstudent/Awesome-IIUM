@@ -1,6 +1,8 @@
 ---
 title: 'Academics'
-description: Academic portals, tools, and kulliyyah resources for IIUM students.
+description:
+  "IIUM academics: i-Ma'luum and i-Ta'leem, course registration, academic rules,
+  graduation, student exchange and a guide to every kulliyyah."
 lastUpdated: 2026-10-14
 ---
 

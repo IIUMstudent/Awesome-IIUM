@@ -1,7 +1,9 @@
 ---
 title: '💼 Kulliyyah of Economics and Management Sciences (KENMS)'
 description:
-  'Resources for IIUM economics, business, accounting and finance students.'
+  'IIUM KENMS guide: departments, economics, business, accounting and finance
+  programmes, and official links for the Kulliyyah of Economics and Management
+  Sciences.'
 resourceType: guide
 tags:
   - economics

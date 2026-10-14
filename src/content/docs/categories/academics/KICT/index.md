@@ -1,6 +1,9 @@
 ---
 title: '💻 Kulliyyah of Information and Communication Technology (KICT)'
-description: 'Resources for IIUM IT and Computer Science students.'
+description:
+  'IIUM KICT guide for computer science and IT students: departments,
+  programmes, offices, programming resources and official links for the
+  Kulliyyah of ICT.'
 resourceType: guide
 tags:
   - it

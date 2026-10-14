@@ -1,6 +1,7 @@
 {
 	"name": "awesome-iium",
 	"version": "1.0.0",
+	"type": "module",
 	"description": "A curated list of resources for IIUM",
 	"packageManager": "pnpm@10.0.0",
 	"repository": {
@@ -66,6 +67,7 @@
 		"vitest": "^5.0.4"
 	},
 	"dependencies": {
+		"@astrojs/sitemap": "3.7.4",
 		"@astrojs/starlight": "^0.42.6",
 		"@fontsource/arvo": "^5.3.0",
 		"@vite-pwa/astro": "^1.2.0",

@@ -1,6 +1,8 @@
 ---
 title: '🏥 Kulliyyah of Medicine (KOM)'
-description: 'Resources for IIUM medical students.'
+description:
+  'IIUM Kulliyyah of Medicine (KOM) in Kuantan: departments, MBBS and
+  postgraduate programmes, clinical training and official links.'
 resourceType: guide
 tags:
   - medicine
