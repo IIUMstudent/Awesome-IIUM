@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://iiumstudent.github.io/Awesome-IIUM/sitemap-index.xml
