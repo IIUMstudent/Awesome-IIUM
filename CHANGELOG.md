@@ -26,6 +26,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - The offline notice no longer peeks over the page on phones while online.
 - Colour contrast of the "NEW" badge and the next-prayer card.
+- Form fields have borders you can see (3:1), and the error box's details
+  panel has a background in dark mode.
 
 ### Planned
 

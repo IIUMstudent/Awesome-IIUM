@@ -76,6 +76,7 @@ components:
 | `--aw-color-gold`                                 | `#D59F0F` | `#D59F0F` | Decorative gold                                                                                                |
 | `--aw-color-gold-high`                            | `#7A5800` | `#E9B949` | Gold-coloured text (e.g. "Featured", first place)                                                              |
 | `--aw-color-gold-low`                             | `#F5EBCF` | `#3D2E05` | Gold-tinted backgrounds                                                                                        |
+| `--aw-color-border-control`                       | `#7D8C8C` | `#6E7C7C` | Borders of inputs and selects: 3:1 or better on the field and the panel. Not for dividers                      |
 | `--sl-color-gray-1…7`                             |           |           | Starlight's grey ramp, tinted towards turquoise                                                                |
 
 Contrast (WCAG 2.1, measured on the page and sidebar backgrounds): link text is
@@ -153,6 +154,8 @@ Every design choice has to pass [ACCESSIBILITY.md](ACCESSIBILITY.md):
   merging a visual change.
 - Visible focus: `outline: 2px solid var(--sl-color-accent)` on
   `:focus-visible`.
+- Form fields are bordered with `--aw-color-border-control`, not a hairline, so
+  their edges reach 3:1.
 - Touch targets at least 44×44px.
 - Animations respect `prefers-reduced-motion`. Nothing pulses or loops forever,
   and text never fades (`opacity`) below its contrast.
