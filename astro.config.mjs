@@ -27,9 +27,14 @@ const translatedIds = new Set(
 		),
 );
 
-// Search engine ownership checks, set as repository variables (MAINTAINING.md).
+// Search engine ownership checks (MAINTAINING.md). The codes are public; a
+// repository variable overrides the one here.
 const siteVerification = [
-	['google-site-verification', process.env.GOOGLE_SITE_VERIFICATION],
+	[
+		'google-site-verification',
+		process.env.GOOGLE_SITE_VERIFICATION ||
+			'CYWtroYbk9hzcAP_WC9w-uNvy-KFOvC3P9xjv3fo9Ds',
+	],
 	['msvalidate.01', process.env.BING_SITE_VERIFICATION],
 	['yandex-verification', process.env.YANDEX_SITE_VERIFICATION],
 ]

@@ -119,7 +119,9 @@ stops working):
      and choose the **HTML tag** method.
   2. Copy only the `content="..."` value into the repository variable
      `GOOGLE_SITE_VERIFICATION`, run the deploy workflow, then press
-     **Verify**.
+     **Verify**. (The current code is in `astro.config.mjs`; the variable
+     replaces it.) A **Domain** property can't be used: it needs a DNS record
+     on `github.io`, which only GitHub controls.
   3. Under **Sitemaps**, submit `sitemap-index.xml`.
   4. In [Bing Webmaster Tools](https://www.bing.com/webmasters), import the
      site from Search Console (or use the `BING_SITE_VERIFICATION` variable
