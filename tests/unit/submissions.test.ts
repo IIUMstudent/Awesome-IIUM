@@ -6,6 +6,8 @@ import {
 	findDuplicates,
 	formatEntry,
 	insertEntry,
+	isPublicHost,
+	isReachable,
 	normalizeUrl,
 	parseIssueForm,
 	SECTION_HEADING,
@@ -194,6 +196,32 @@ describe('issue form', () => {
 		expect(options.length).toBeGreaterThan(10);
 		for (const option of options) {
 			expect(targetFile(option), option).toBeTruthy();
+		}
+	});
+});
+
+describe('public hosts only', () => {
+	it('rejects addresses on the runner network', async () => {
+		for (const url of [
+			'http://localhost:4321/',
+			'http://127.0.0.1/',
+			'http://2130706433/', // 127.0.0.1 in decimal
+			'http://169.254.169.254/latest/meta-data/',
+			'http://10.1.2.3/',
+			'http://172.20.0.1/',
+			'http://192.168.0.1/',
+			'http://[::1]/',
+			'http://intranet/',
+			'http://printer.local/',
+		]) {
+			expect(isPublicHost(new URL(url).hostname), url).toBe(false);
+			expect(await isReachable(url), url).toBe(false);
+		}
+	});
+
+	it('accepts ordinary websites', () => {
+		for (const host of ['iium.edu.my', 'github.com', '8.8.8.8', '172.32.0.1']) {
+			expect(isPublicHost(host), host).toBe(true);
 		}
 	});
 });

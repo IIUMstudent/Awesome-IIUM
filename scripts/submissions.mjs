@@ -80,10 +80,36 @@ export function targetFile(category) {
 	return null;
 }
 
+/**
+ * False for hosts no public resource lives on: localhost, single-label and
+ * internal names, IP literals in private, loopback and link-local ranges,
+ * and IPv6 literals. Keeps the link check from probing the runner's network.
+ */
+export function isPublicHost(hostname) {
+	const host = hostname.toLowerCase();
+	if (!host.includes('.') || host.startsWith('[')) return false;
+	if (/(^|\.)(localhost|local|internal|lan|home)$/.test(host)) return false;
+	const ip = host.match(/^(\d+)\.(\d+)\.\d+\.\d+$/);
+	if (!ip) return true;
+	const [a, b] = [Number(ip[1]), Number(ip[2])];
+	return !(
+		a === 0 ||
+		a === 10 ||
+		a === 127 ||
+		a >= 224 ||
+		(a === 100 && b >= 64 && b <= 127) ||
+		(a === 169 && b === 254) ||
+		(a === 172 && b >= 16 && b <= 31) ||
+		(a === 192 && b === 168)
+	);
+}
+
+/** The URL if it's an http(s) link to a public host, else null. */
 export function parseUrl(raw) {
 	try {
 		const url = new URL(raw.trim());
-		return url.protocol === 'https:' || url.protocol === 'http:' ? url : null;
+		const web = url.protocol === 'https:' || url.protocol === 'http:';
+		return web && isPublicHost(url.hostname) ? url : null;
 	} catch {
 		return null;
 	}
@@ -182,7 +208,7 @@ export function validate(submission, files) {
 	if (!cleanText(submission.name)) problems.push('The resource name is empty.');
 	if (!parseUrl(submission.url)) {
 		problems.push(
-			'The URL must be a full `http://` or `https://` link (e.g. `https://example.com`).',
+			'The URL must be a full `http://` or `https://` link to a public website (e.g. `https://example.com`).',
 		);
 	}
 	const file = targetFile(submission.category);
@@ -205,13 +231,19 @@ export function validate(submission, files) {
 	return { file, problems, warnings };
 }
 
-/** Any HTTP response below 500 counts as up, matching the status check. */
-export async function isReachable(url, timeoutMs = 15000) {
+/**
+ * Any HTTP response below 500 counts as up, matching the status check.
+ * Redirects aren't followed, so a public URL can't bounce the check to a
+ * private address; a redirect response already shows the site is up.
+ */
+export async function isReachable(raw, timeoutMs = 15000) {
+	const url = parseUrl(raw);
+	if (!url) return false;
 	for (const method of ['HEAD', 'GET']) {
 		try {
 			const response = await fetch(url, {
 				method,
-				redirect: 'follow',
+				redirect: 'manual',
 				signal: AbortSignal.timeout(timeoutMs),
 				headers: { 'user-agent': 'Mozilla/5.0 (Awesome-IIUM link check)' },
 			});
