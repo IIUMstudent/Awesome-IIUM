@@ -35,7 +35,6 @@ const extendedDocsSchema = docsSchema({
 				'KAHS',
 				'KENMS',
 				'KICT',
-				'KLM',
 				'KOD',
 				'KOE',
 				'KOED',
@@ -43,6 +42,7 @@ const extendedDocsSchema = docsSchema({
 				'KON',
 				'KOP',
 				'KOS',
+				'KSTCL',
 				'general',
 			])
 			.optional(),

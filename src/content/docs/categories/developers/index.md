@@ -1,6 +1,7 @@
 ---
 title: 'Developers'
 description: IIUM open source projects, APIs, and tech communities.
+lastUpdated: 2026-10-14
 ---
 
 > Open source projects, APIs, and tech communities within IIUM.
@@ -28,15 +29,14 @@ description: IIUM open source projects, APIs, and tech communities.
 
 ## 👥 Communities
 
-- **GDG on Campus IIUM** - Google Developer Groups student chapter at IIUM.
-  Check social media for current community links.
-- **IIUM DSC (Data Science Club)** - For students interested in data science and
-  AI.
+- **[GDG on Campus IIUM](https://gdg.community.dev/gdg-on-campus-international-islamic-university-malaysia-selangor-malaysia)** -
+  IIUM's Google Developer Groups chapter (formerly Google Developer Student
+  Clubs): workshops, study jams, the Solution Challenge and side projects. Join
+  through the chapter page.
 
-## 🚀 Contributing
+## 🚀 Add Your Project
 
-Want to add your project?
-
-1. Ensure your project is open source.
-2. Add a link above with a short description.
-3. Submit a Pull Request!
+Built something for IIUM students? Make sure it's open source, then
+[suggest it](https://github.com/iiumstudent/Awesome-IIUM/issues/new?template=resource-request.yml)
+with the category **Developers**. No coding needed: it's added automatically
+once a maintainer approves it.

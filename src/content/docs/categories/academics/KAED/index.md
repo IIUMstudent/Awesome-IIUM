@@ -1,56 +1,45 @@
 ---
 title: '🏗️ Kulliyyah of Architecture and Environmental Design (KAED)'
-description: 'Resources for IIUM Architecture and Design students.'
+description: 'Resources for IIUM architecture and built environment students.'
 resourceType: guide
 tags:
   - architecture
+  - planning
   - design
   - gombak
 campus: gombak
-lastUpdated: 2025-01-30
+kulliyyah: KAED
+lastUpdated: 2026-10-14
 ---
 
-Kulliyyah of Architecture and Environmental Design (KAED) offers programmes in
-architecture, landscape architecture, urban and regional planning, and applied
-arts and design at IIUM's Gombak campus.
+The Kulliyyah of Architecture and Environmental Design (KAED) is IIUM's built
+environment faculty at the Gombak campus.
 
 ## 🏛️ Official Links
 
-- [KAED Website](https://kulliyyah.iium.edu.my/kaed/) - Official Kulliyyah
-  portal
-- Email: <kaed_corporate@iium.edu.my>
-- Phone: +603 6196 5221
-
-## 👨‍🏫 Leadership
-
-The current Dean and management team are listed on the
-[official KAED website](https://kulliyyah.iium.edu.my/kaed/).
+- [KAED Website](https://kulliyyah.iium.edu.my/kaed/) - Programmes, staff,
+  contacts and news.
+- [Office Bearers](https://kulliyyah.iium.edu.my/kaed/office-bearers/) - The
+  current dean and heads of department.
 
 ## 📚 Departments
 
+- Applied Arts and Design
 - Architecture
 - Landscape Architecture
-- Urban and Regional Planning
-- Applied Arts and Design
 - Quantity Surveying
+- Urban and Regional Planning
 
 ## 📖 Academic Programmes
 
-### Undergraduate
-
-- Bachelor of Architecture
-- Bachelor of Landscape Architecture
-- Bachelor of Urban and Regional Planning
-- Bachelor of Applied Arts and Design
-- Bachelor of Quantity Surveying
-
-### Postgraduate
-
-- Master of Architecture
-- Master of Urban and Regional Planning
-- Doctor of Philosophy (PhD)
+Each department runs its own bachelor's degree: Architecture, Landscape
+Architecture, Urban and Regional Planning, Quantity Surveying, and Applied Arts
+and Design. Master's and PhD programmes are also offered. Current programme
+details are on the [KAED website](https://kulliyyah.iium.edu.my/kaed/).
 
 ## 🔗 Quick Links
 
-- [i-Ma'luum](https://imaluum.iium.edu.my/) - Student Portal
-- [i-Ta'leem](https://italeem.iium.edu.my/) - Learning Management System
+- [i-Ma'luum](https://imaluum.iium.edu.my/) - Student portal
+- [i-Ta'leem](https://italeem.iium.edu.my/) - Learning management system
+- [Course Registration](../pre-reg-gombak-kuantan/) - How pre-reg works
+- [Gombak campus](../../campuses/) - Getting there, housing and services

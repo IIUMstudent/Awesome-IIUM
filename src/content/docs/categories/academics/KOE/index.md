@@ -1,59 +1,51 @@
 ---
 title: '⚙️ Kulliyyah of Engineering (KOE)'
-description: 'Resources for IIUM Engineering students.'
+description: 'Resources for IIUM engineering students.'
 resourceType: guide
 tags:
   - engineering
-  - technology
   - gombak
 campus: gombak
-lastUpdated: 2025-01-30
+kulliyyah: KOE
+lastUpdated: 2026-10-14
 ---
 
-Kulliyyah of Engineering (KOE) offers accredited engineering programmes at
-IIUM's Gombak campus.
+The Kulliyyah of Engineering (KOE), opened in 1994, is at the Gombak campus. It
+offers nine undergraduate engineering programmes, most of them accredited by the
+Board of Engineers Malaysia.
 
 ## 🏛️ Official Links
 
-- [KOE Website](https://kulliyyah.iium.edu.my/koe/) - Official Kulliyyah portal
+- [KOE Website](https://kulliyyah.iium.edu.my/koe/) - Programmes, news and
+  resources.
+- [Dean's Message](https://kulliyyah.iium.edu.my/koe/deans/) - The current dean.
 - [Academic Programmes](https://kulliyyah.iium.edu.my/koe/academic/)
 - [Resources](https://kulliyyah.iium.edu.my/koe/resources/)
-- [ISO Standard](https://kulliyyah.iium.edu.my/koe/iso-standard/)
 - [Alumni](https://kulliyyah.iium.edu.my/koe/alumni/)
-
-## 👨‍🏫 Leadership
-
-The current Dean and management team are listed on the
-[official KOE website](https://kulliyyah.iium.edu.my/koe/).
 
 ## 📚 Departments
 
-- Electrical and Computer Engineering
-- Mechanical and Aerospace Engineering
-- Manufacturing and Materials Engineering
-- Mechatronics Engineering
-- Biotechnology Engineering
-- Science in Engineering
+Each department has its own website with its programmes, labs and staff:
+
+- [Chemical Engineering and Sustainability](https://engine.iium.edu.my/chemicalengineering/)
+- [Civil Engineering](https://engine.iium.edu.my/cive/)
+- [Electrical and Computer Engineering](https://engine.iium.edu.my/ece/)
+- [Manufacturing and Materials Engineering](https://engine.iium.edu.my/mme/)
+- [Mechanical and Aerospace Engineering](https://engine.iium.edu.my/mec/)
+- [Mechatronics Engineering](https://engine.iium.edu.my/mechatronics/)
+- [Science in Engineering](https://engine.iium.edu.my/deptsci/)
 
 ## 📖 Academic Programmes
 
-### Undergraduate
-
-- Bachelor of Engineering (Electrical)
-- Bachelor of Engineering (Computer)
-- Bachelor of Engineering (Mechanical)
-- Bachelor of Engineering (Mechatronics)
-- Bachelor of Engineering (Biotechnology)
-- Bachelor of Engineering (Materials)
-- Bachelor of Engineering (Manufacturing)
-- Bachelor of Engineering (Aerospace)
-
-### Postgraduate
-
-- Master of Science (Engineering)
-- Doctor of Philosophy (PhD) in Engineering
+Bachelor of Engineering (Honours) programmes include Aerospace, Chemical, Civil,
+Electrical and Electronic, Manufacturing, Materials, Mechanical and Mechatronics
+engineering. Master's and PhD programmes are offered by each department. See the
+[programmes page](https://kulliyyah.iium.edu.my/koe/academic/) for the current
+list.
 
 ## 🔗 Quick Links
 
-- [i-Ma'luum](https://imaluum.iium.edu.my/) - Student Portal
-- [i-Ta'leem](https://italeem.iium.edu.my/) - Learning Management System
+- [i-Ma'luum](https://imaluum.iium.edu.my/) - Student portal
+- [i-Ta'leem](https://italeem.iium.edu.my/) - Learning management system
+- [Course Registration](../pre-reg-gombak-kuantan/) - How pre-reg works
+- [Gombak campus](../../campuses/) - Getting there, housing and services

@@ -67,6 +67,7 @@ dalam folder tersebut.
 
 ## Kandungan
 
+- [Panduan](#panduan)
 - [Cadangan](#cadangan)
 - [Laman Web dan Portal Rasmi UIAM](#laman-web-dan-portal-rasmi-uiam)
 - [Sumber dan Alat Akademik UIAM](#sumber-dan-alat-akademik-uiam)
@@ -76,6 +77,21 @@ dalam folder tersebut.
 - [Penyelidikan dan Penerbitan UIAM](#penyelidikan-dan-penerbitan-uiam)
 - [Khidmat Masyarakat dan Jangkauan UIAM](#khidmat-masyarakat-dan-jangkauan-uiam)
 - [Budaya dan Nilai UIAM](#budaya-dan-nilai-uiam)
+
+## Panduan
+
+Panduan ini ditulis dalam Bahasa Inggeris.
+
+- [Kemasukan](../categories/admissions/)
+- [Akademik](../categories/academics/)
+- [Pengajian Pascasiswazah](../categories/postgraduate/)
+- [Yuran & Bantuan Kewangan](../categories/fees-and-financial-aid/)
+- [Kampus](../categories/campuses/)
+- [Kehidupan Kampus](../categories/campus-life/)
+- [Perkhidmatan Pelajar (kesihatan, IT, keselamatan)](../categories/student-services/)
+- [Pelajar Antarabangsa](../categories/international-students/)
+- [Kerjaya & Latihan Industri](../categories/career/)
+- [Sumber Rasmi UIAM](../categories/official-sources/)
 
 ## Cadangan
 
@@ -133,13 +149,13 @@ di UIAM.
   dengan alma mater mereka dan menyediakan maklumat serta perkhidmatan seperti
   kad touch n go alumni, kempen alumni memberi kembali, galeri alumni, kisah
   kejayaan alumni, dll.
-- [Alumni - Universiti Islam Antarabangsa Malaysia](https://www.iium.edu.my/alumni) -
+- [Alumni - Universiti Islam Antarabangsa Malaysia](https://alumni.iium.edu.my/) -
   Menyediakan maklumat dan sumber untuk alumni seperti portal alumni, direktori
   alumni, acara alumni, faedah alumni, dll.
-- [Bahagian Perhubungan Alumni](https://www.iium.edu.my/division/alumni) -
-  Menguruskan hubungan dan aktiviti alumni serta perkhidmatan kerjaya pelajar.
-  Ia termasuk bahagian seperti Bahagian Perhubungan Alumni (ARS), Bahagian
-  Perkhidmatan Kerjaya Pelajar (SCSS), Unit Keusahawanan UIAM (IEU), dll.
+- [Bahagian Perhubungan Alumni](https://division.iium.edu.my/ard/) - Menguruskan
+  hubungan dan aktiviti alumni serta perkhidmatan kerjaya pelajar. Ia termasuk
+  bahagian seperti Bahagian Perhubungan Alumni (ARS), Bahagian Perkhidmatan
+  Kerjaya Pelajar (SCSS), Unit Keusahawanan UIAM (IEU), dll.
 
 ## Berita dan Media UIAM
 
@@ -153,7 +169,7 @@ UIAM.
 - [UIAM dalam Berita](https://newsroom.iium.edu.my/) - Mengumpul dan memaparkan
   artikel berita dari pelbagai sumber yang menyebut UIAM. Ia termasuk kategori
   seperti berita kilat, berita utama, berita cetak, rasmi, dll.
-- [Berita Terkini - Universiti Islam Antarabangsa Malaysia](https://www.iium.edu.my/news) -
+- [Berita Terkini - Universiti Islam Antarabangsa Malaysia](https://news.iium.edu.my/) -
   Menyediakan kemas kini berita dari laman web rasmi UIAM. Ia termasuk
   pengumuman, acara, pencapaian, dll.
 
@@ -162,25 +178,25 @@ UIAM.
 Bahagian ini menyediakan maklumat dan perkhidmatan untuk penyelidikan dan
 penerbitan di UIAM.
 
-- [Penyelidikan di UIAM](https://www.iium.edu.my/research) - Menyediakan
-  maklumat dan perkhidmatan untuk aktiviti penyelidikan di UIAM. Ia termasuk
-  sorotan penyelidikan, pusat pengurusan penyelidikan, kluster penyelidikan,
-  geran penyelidikan, etika penyelidikan, dll.
-- [Penerbitan - Universiti Islam Antarabangsa Malaysia](https://www.iium.edu.my/publications) -
+- [Penyelidikan di UIAM](https://research.iium.edu.my/) - Menyediakan maklumat
+  dan perkhidmatan untuk aktiviti penyelidikan di UIAM. Ia termasuk sorotan
+  penyelidikan, pusat pengurusan penyelidikan, kluster penyelidikan, geran
+  penyelidikan, etika penyelidikan, dll.
+- [Penerbitan - Universiti Islam Antarabangsa Malaysia](https://office.iium.edu.my/iiumpress) -
   Menyediakan maklumat dan akses kepada pelbagai penerbitan oleh kakitangan dan
   penyelidik UIAM. Ia termasuk penerbitan pilihan, buku, jurnal, kertas
   persidangan, dll.
-- [Pusat Pengurusan Penyelidikan](https://www.iium.edu.my/centre/rmc) -
-  Menyokong dan memudahkan aktiviti penyelidikan di UIAM. Ia termasuk bahagian
-  seperti Unit Pembangunan Penyelidikan (RDU), Unit Pemantauan Penyelidikan
-  (RMU), Unit Penerbitan Penyelidikan (RPU), dll.
+- [Pusat Pengurusan Penyelidikan](https://centre.iium.edu.my/rmc) - Menyokong
+  dan memudahkan aktiviti penyelidikan di UIAM. Ia termasuk bahagian seperti
+  Unit Pembangunan Penyelidikan (RDU), Unit Pemantauan Penyelidikan (RMU), Unit
+  Penerbitan Penyelidikan (RPU), dll.
 
 ## Khidmat Masyarakat dan Jangkauan UIAM
 
 Bahagian ini menyediakan maklumat dan perkhidmatan untuk khidmat masyarakat dan
 jangkauan di UIAM.
 
-- [Pusat Penglibatan dan Perkhidmatan Komuniti (CENSERVE)](https://www.iium.edu.my/centre/censerve) -
+- [Pusat Penglibatan dan Perkhidmatan Komuniti (CENSERVE)](https://censerve.iium.edu.my/) -
   Menyediakan platform untuk kakitangan dan pelajar merancang dan melaksanakan
   aktiviti penglibatan komuniti. Ia termasuk program, kelab, projek, acara, dll.
 - [CENSERVE – Pusat Penglibatan dan Perkhidmatan Komuniti](https://censerve.iium.edu.my/) -
@@ -193,13 +209,9 @@ jangkauan di UIAM.
 Bahagian ini menyediakan sumber yang menawarkan maklumat mengenai budaya dan
 nilai UIAM.
 
-- [Visi dan Misi - Universiti Islam Antarabangsa Malaysia](https://www.iium.edu.my/office/odrail/vision-and-mission-10) -
+- [Visi dan Misi - Universiti Islam Antarabangsa Malaysia](https://office.iium.edu.my/odrai/?p=16) -
   Menyediakan kenyataan visi dan misi UIAM yang mencerminkan budaya dan
   nilainya. Ia termasuk ringkasan dan huraian setiap kenyataan.
-- [Visi, Misi & Nilai Teras - Universiti Islam Antarabangsa Malaysia](https://www.iium.edu.my/centre/rmc/vision-mission-core-values) -
-  Menyediakan visi, misi dan nilai teras Pusat Pengurusan Penyelidikan (RMC)
-  yang selaras dengan budaya dan nilai UIAM. Ia termasuk bertanggungjawab,
-  prihatin dan kolaboratif sebagai nilai teras.
 
 ## Media Sosial UIAM
 

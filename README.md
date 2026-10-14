@@ -16,10 +16,17 @@ _Read this in other languages: [Bahasa Melayu](https://iiumstudent.github.io/Awe
 ## Table of Contents
 
 - [Welcome](https://github.com/iiumstudent/Awesome-IIUM#welcome) - Introduction to Awesome IIUM.
+- [Admissions](https://iiumstudent.github.io/Awesome-IIUM/categories/admissions/) - How to apply to IIUM.
 - [Academics](https://iiumstudent.github.io/Awesome-IIUM/categories/academics/) - Academic resources and guides.
+- [Postgraduate Studies](https://iiumstudent.github.io/Awesome-IIUM/categories/postgraduate/) - Master's and PhD study.
+- [Fees & Financial Aid](https://iiumstudent.github.io/Awesome-IIUM/categories/fees-and-financial-aid/) - Fees, scholarships and zakat.
+- [Campuses](https://iiumstudent.github.io/Awesome-IIUM/categories/campuses/) - Gombak, Kuantan, Pagoh and Gambang.
 - [Campus Life](https://iiumstudent.github.io/Awesome-IIUM/categories/campus-life/) - Campus facilities and student life.
+- [Student Services](https://iiumstudent.github.io/Awesome-IIUM/categories/student-services/) - Health, IT and safety.
+- [International Students](https://iiumstudent.github.io/Awesome-IIUM/categories/international-students/) - Student pass and insurance.
 - [Career & Internships](https://iiumstudent.github.io/Awesome-IIUM/categories/career/) - Career prospects and internship opportunities.
 - [Developers](https://iiumstudent.github.io/Awesome-IIUM/categories/developers/) - Technical resources for developers.
+- [Official Sources](https://iiumstudent.github.io/Awesome-IIUM/categories/official-sources/) - Every official IIUM website.
 - [Quick Links](https://github.com/iiumstudent/Awesome-IIUM#quick-links) - Jump directly to frequently used services.
 - [Contributing](https://github.com/iiumstudent/Awesome-IIUM#contributing) - Guidelines on how to contribute to this list.
 

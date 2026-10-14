@@ -80,7 +80,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          for wf in deploy.yml link-checker.yml security.yml content-report.yml lighthouse.yml; do
+          for wf in deploy.yml link-checker.yml security.yml content-report.yml content-refresh.yml lighthouse.yml; do
             gh api --method PUT "repos/${{ github.repository }}/actions/workflows/$wf/enable" \
               || echo "::warning::Could not keep $wf enabled"
           done

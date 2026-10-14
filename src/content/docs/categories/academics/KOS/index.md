@@ -1,26 +1,23 @@
 ---
 title: '🔬 Kulliyyah of Science (KOS)'
-description: 'Resources for IIUM Science students.'
+description: 'Resources for IIUM science students.'
 resourceType: guide
 tags:
   - science
   - research
   - kuantan
 campus: kuantan
-lastUpdated: 2025-01-30
+kulliyyah: KOS
+lastUpdated: 2026-10-14
 ---
 
-Kulliyyah of Science (KOS) offers programmes in various scientific disciplines
-at IIUM's Kuantan campus.
+The Kulliyyah of Science (KOS), founded in 2000, has been at IIUM's Kuantan
+campus since 2006.
 
 ## 🏛️ Official Links
 
-- [KOS Website](https://kulliyyah.iium.edu.my/kos/) - Official Kulliyyah portal
-
-## 👨‍🏫 Leadership
-
-The current Dean and management team are listed on the
-[official KOS website](https://kulliyyah.iium.edu.my/kos/).
+- [KOS Website](https://kulliyyah.iium.edu.my/kos/) - Programmes, staff, the
+  current management team and the postgraduate prospectus.
 
 ## 📚 Departments
 
@@ -28,26 +25,24 @@ The current Dean and management team are listed on the
 - Chemistry
 - Computational and Theoretical Sciences
 - Marine Science
-- Physics
+- [Physics](https://kulliyyah.iium.edu.my/kos/physics-department/)
 - Plant Science
+
+## 🔬 Research
+
+- **Institute of Oceanography and Maritime Studies (INOCEM)** - Marine and
+  coastal research.
+- **IIUM Photonics and Quantum Centre (IPQC)**
 
 ## 📖 Academic Programmes
 
-### Undergraduate
-
-- Bachelor of Science (Biotechnology)
-- Bachelor of Science (Chemistry)
-- Bachelor of Science (Computational Sciences)
-- Bachelor of Science (Marine Science)
-- Bachelor of Science (Physics)
-- Bachelor of Science (Plant Science)
-
-### Postgraduate
-
-- Master of Science
-- Doctor of Philosophy (PhD) in Science
+Bachelor of Science (Honours) programmes in the departments' fields, plus
+master's and PhD programmes. Current programmes are on the
+[KOS website](https://kulliyyah.iium.edu.my/kos/).
 
 ## 🔗 Quick Links
 
-- [i-Ma'luum](https://imaluum.iium.edu.my/) - Student Portal
-- [i-Ta'leem](https://italeem.iium.edu.my/) - Learning Management System
+- [i-Ma'luum](https://imaluum.iium.edu.my/) - Student portal
+- [i-Ta'leem](https://italeem.iium.edu.my/) - Learning management system
+- [Course Registration](../pre-reg-gombak-kuantan/) - How pre-reg works
+- [Kuantan campus](../../campuses/) - Getting there, housing and services

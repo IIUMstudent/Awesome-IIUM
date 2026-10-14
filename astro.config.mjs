@@ -6,6 +6,12 @@ import { visualizer } from 'rollup-plugin-visualizer';
 export default defineConfig({
 	site: 'https://iiumstudent.github.io',
 	base: '/Awesome-IIUM',
+	// Pages that moved, so old links and search results keep working.
+	redirects: {
+		'/categories/academics/klm': '/Awesome-IIUM/categories/academics/kstcl/',
+		'/categories/campus-life/kuliyyah':
+			'/Awesome-IIUM/categories/academics/#-colleges-kulliyyahs',
+	},
 	// Enable source maps for error debugging in production
 	vite: {
 		build: {

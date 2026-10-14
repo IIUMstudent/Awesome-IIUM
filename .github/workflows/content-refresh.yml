@@ -1,0 +1,175 @@
+name: Content Refresh
+
+# Once a month, Claude works through the content report: fixes broken links,
+# re-checks stale pages against official IIUM sites, files newly discovered
+# IIUM sites and writes pages for topics the guide doesn't cover yet. The
+# result is one "Monthly content refresh" pull request for a maintainer to
+# review and merge. Instructions: .github/content-refresh.md.
+#
+# Off until the ANTHROPIC_API_KEY repository secret is set (see MAINTAINING.md).
+# Claude can only edit files in its checkout; this workflow keeps only content
+# changes, validates them and opens the pull request itself.
+
+on:
+  schedule:
+    - cron: '37 4 3 * *' # 3rd of each month, after the content report
+  workflow_dispatch:
+    inputs:
+      focus:
+        description: 'Optional: something specific to do this run (e.g. "write a page on food at the Kuantan campus")'
+        required: false
+        default: ''
+
+concurrency:
+  group: content-refresh
+  cancel-in-progress: false
+
+permissions:
+  contents: write # push the refresh branch
+  pull-requests: write # open the pull request
+  issues: read # read the broken links issue
+  actions: write # run CI on the pull request
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      BRANCH: automation/content-refresh
+    steps:
+      - name: Check that the refresh is switched on
+        id: enabled
+        env:
+          KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -z "$KEY" ]; then
+            echo "::notice::Content refresh is off. Add the ANTHROPIC_API_KEY secret to switch it on (see MAINTAINING.md)."
+            exit 0
+          fi
+          # One refresh at a time: a new run would start from master and
+          # replace the open pull request's changes.
+          open=$(gh pr list -R "$GITHUB_REPOSITORY" --head "$BRANCH" --state open --json url --jq '.[0].url')
+          if [ -n "$open" ]; then
+            echo "::notice::Last refresh is still waiting for review: $open. Merge or close it first."
+            exit 0
+          fi
+          echo "on=true" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+        if: steps.enabled.outputs.on
+        with:
+          fetch-depth: 0 # page history is the fallback review date
+
+      - name: Setup pnpm
+        if: steps.enabled.outputs.on
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        if: steps.enabled.outputs.on
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - name: Gather this month's work
+        if: steps.enabled.outputs.on
+        id: work
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          pnpm install --frozen-lockfile
+          node scripts/content-report.mjs > content-report.md
+          issue=$(gh issue list --label broken-link --state open --json number --jq '.[0].number')
+          if [ -n "$issue" ]; then
+            gh issue view "$issue" --json body --jq .body > broken-links.md
+          fi
+          echo "today=$(date -u +%F)" >> "$GITHUB_OUTPUT"
+
+      - name: Refresh content with Claude
+        if: steps.enabled.outputs.on
+        # Running out of turns still leaves useful, finished edits; the steps
+        # below validate whatever was done.
+        continue-on-error: true
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          prompt: |
+            Today is ${{ steps.work.outputs.today }}.
+            Follow the instructions in .github/content-refresh.md.
+            ${{ inputs.focus && format('Focus for this run: {0}', inputs.focus) || '' }}
+          claude_args: >-
+            --max-turns 150
+            --allowedTools "Read,Edit,Write,Glob,Grep,WebFetch,WebSearch,Bash(pnpm exec prettier:*),Bash(pnpm run lint:md),Bash(pnpm test),Bash(pnpm build)"
+
+      - name: Keep only content changes
+        if: steps.enabled.outputs.on
+        run: |
+          keep=(':(exclude)src/content/docs' ':(exclude)scripts/coverage.json' ':(exclude)scripts/discovery.json')
+          git restore --source=HEAD --staged --worktree -- . "${keep[@]}"
+          git clean -fd -- . "${keep[@]}"
+          git status --short
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "::notice::Nothing to change this month."
+          fi
+
+      - name: Validate
+        if: steps.enabled.outputs.on
+        run: |
+          pnpm exec prettier --check 'src/**/*.{md,mdx}'
+          pnpm run lint
+          pnpm test
+          pnpm build
+          mkdir _site && cp -r dist _site/Awesome-IIUM
+
+      - name: Check internal links
+        if: steps.enabled.outputs.on
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >
+            --offline
+            --no-progress
+            --root-dir ${{ github.workspace }}/_site
+            --index-files index.html
+            --exclude-path _site/Awesome-IIUM/pagefind
+            '_site/**/*.html'
+          fail: true
+
+      - name: Write the pull request description
+        if: steps.enabled.outputs.on
+        env:
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          {
+            if [ -s refresh-summary.md ]; then cat refresh-summary.md; else echo "Claude didn't write a summary; see the changes below."; fi
+            echo
+            echo '---'
+            echo "Checked by [Content Refresh]($RUN_URL): lint, unit tests, build and internal links passed."
+            echo "Review the changes, then merge. To ask for a change, comment on the line and run the workflow again with a focus, or edit the file here."
+          } > "$RUNNER_TEMP/pr-body.md"
+
+      - name: Open or update the pull request
+        if: steps.enabled.outputs.on
+        id: pr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: ${{ env.BRANCH }}
+          base: ${{ github.event.repository.default_branch }}
+          add-paths: |
+            src/content/docs/**
+            scripts/coverage.json
+            scripts/discovery.json
+          commit-message: 'content: monthly content refresh'
+          title: 'Monthly content refresh (${{ steps.work.outputs.today }})'
+          body-path: ${{ runner.temp }}/pr-body.md
+          labels: content-refresh
+          delete-branch: true
+
+      # Pull requests opened with GITHUB_TOKEN don't start other workflows,
+      # so start CI on the refresh branch explicitly.
+      - name: Run CI on the pull request
+        if: steps.pr.outputs.pull-request-number
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run ci.yml --ref "$BRANCH"

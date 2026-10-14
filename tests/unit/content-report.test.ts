@@ -1,12 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import {
 	checkBrandToolkit,
+	checkCoverage,
 	currentSessionStart,
 	discoverSites,
 	extractLinks,
 	findPastSessions,
 	findStalePages,
 	loadConfig,
+	loadCoverage,
 	renderReport,
 	reviewedDate,
 	siteKey,
@@ -158,6 +160,38 @@ describe('past sessions', () => {
 		});
 		expect(busy).not.toContain('nothing to do');
 		expect(busy).toContain('past semesters (1)');
+	});
+});
+
+describe('coverage', () => {
+	it('lists only pages that exist', () => {
+		const { missingPages } = checkCoverage(loadCoverage());
+		expect(missingPages).toEqual([]);
+	});
+
+	it('reports topics without pages as gaps', () => {
+		const { gaps, missingPages } = checkCoverage(
+			{
+				topics: [
+					{ topic: 'Covered', pages: ['a.md'] },
+					{ topic: 'Food', pages: [] },
+					{ topic: 'Renamed', pages: ['gone.md'] },
+				],
+			},
+			(page: string) => !page.endsWith('gone.md'),
+		);
+		expect(gaps).toEqual(['Food']);
+		expect(missingPages).toEqual([{ topic: 'Renamed', page: 'gone.md' }]);
+		const report = renderReport({
+			stale: [],
+			sites: [],
+			failedSeeds: [],
+			staleAfterDays: 180,
+			gaps,
+		});
+		expect(report).not.toContain('nothing to do');
+		expect(report).toContain('Topics not covered yet (1)');
+		expect(report).toContain('- Food');
 	});
 });
 
