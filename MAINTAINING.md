@@ -93,7 +93,9 @@ stops working):
 
 - **Settings → Actions → General → Workflow permissions:** "Read and write
   permissions".
-- **Settings → Pages:** deploy from the `gh-pages` branch.
+- **Settings → Pages → Source:** "GitHub Actions". `deploy.yml` publishes with
+  `actions/deploy-pages`; with any other source the live site stops updating
+  even though the workflow succeeds.
 - If you protect the `master` branch, let **GitHub Actions** bypass the rule,
   otherwise approved submissions can't be published.
 

@@ -24,6 +24,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- The live site had stopped updating since February: deploys pushed a
+  `gh-pages` branch, but GitHub Pages publishes from GitHub Actions. The deploy
+  workflow now publishes with `actions/deploy-pages`.
 - Visitors saw the previous deploy until they reloaded, because the service
   worker served every page from its cache first. Pages and data now come from
   the network first and fall back to the cache only when offline, and phones no
