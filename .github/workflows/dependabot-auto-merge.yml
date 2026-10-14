@@ -31,7 +31,7 @@ jobs:
 
       - name: Setup pnpm
         if: steps.meta.outputs.update-type != 'version-update:semver-major'
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
 
       - name: Setup Node.js
         if: steps.meta.outputs.update-type != 'version-update:semver-major'
