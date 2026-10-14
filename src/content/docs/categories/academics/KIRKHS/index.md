@@ -1,59 +1,63 @@
 ---
 title: '📜 AbdulHamid AbuSulayman KIRKHS'
 description:
-  'Resources for IIUM students at the Kulliyyah of Islamic Revealed Knowledge
-  and Human Sciences.'
+  'Resources for IIUM Islamic Revealed Knowledge and Human Sciences students.'
 resourceType: guide
 tags:
   - islamic-studies
-  - humanities
-  - social-sciences
+  - human-sciences
   - gombak
 campus: gombak
-lastUpdated: 2025-01-30
+kulliyyah: AHAS-KIRKHS
+lastUpdated: 2026-10-14
 ---
 
-AbdulHamid AbuSulayman Kulliyyah of Islamic Revealed Knowledge and Human
-Sciences (AHAS KIRKHS) is the largest Kulliyyah at IIUM, offering programmes in
-Islamic studies, humanities, and social sciences at the Gombak campus.
+The AbdulHamid AbuSulayman Kulliyyah of Islamic Revealed Knowledge and Human
+Sciences (AHAS KIRKHS) is IIUM's largest kulliyyah, with the most departments
+and majors. It brings Islamic revealed knowledge and the human sciences together
+at the Gombak campus.
 
 ## 🏛️ Official Links
 
-- [KIRKHS Website](https://kulliyyah.iium.edu.my/kirkhs/) - Official Kulliyyah
-  portal
-
-## 👨‍🏫 Leadership
-
-The current Dean and management team are listed on the
-[official KIRKHS website](https://kulliyyah.iium.edu.my/kirkhs/).
+- [AHAS KIRKHS Website](https://kulliyyah.iium.edu.my/ahaskirkhs/) - Programmes,
+  staff and the current management team.
+- [Departments](https://kulliyyah.iium.edu.my/ahaskirkhs/departments/) - Every
+  department and what it offers.
 
 ## 📚 Departments
 
-- Quran and Sunnah Studies
-- Fiqh and Usul al-Fiqh
-- Aqidah and Islamic Thought
-- History and Civilization
+### Islamic Revealed Knowledge
+
 - Arabic Language and Literature
-- English Language and Literature
+- Fiqh and Usul al-Fiqh
+- Fundamental and Inter-Disciplinary Studies
+- Qur'an and Sunnah Studies
+- Usul al-Din and Comparative Religion
+
+### Human Sciences
+
 - Communication
+- English Language and Literature
+- History and Civilization
+- Political Science
 - Psychology
 - Sociology and Anthropology
-- Political Science
 
 ## 📖 Academic Programmes
 
-### Undergraduate
+Undergraduate students take a Bachelor of Islamic Revealed Knowledge and
+Heritage or a Bachelor of Human Sciences, majoring in one of the departments.
+Master's and PhD programmes are also offered. Current programmes are on the
+[AHAS KIRKHS website](https://kulliyyah.iium.edu.my/ahaskirkhs/).
 
-- Bachelor of Human Sciences
-- Bachelor of Islamic Revealed Knowledge
+## 👥 Student Society
 
-### Postgraduate
-
-- Master of Human Sciences
-- Master of Islamic Revealed Knowledge
-- Doctor of Philosophy (PhD)
+- [IRKHS Student Society](https://club.iium.edu.my/irkhsss/) - Events and guides
+  for KIRKHS students.
 
 ## 🔗 Quick Links
 
-- [i-Ma'luum](https://imaluum.iium.edu.my/) - Student Portal
-- [i-Ta'leem](https://italeem.iium.edu.my/) - Learning Management System
+- [i-Ma'luum](https://imaluum.iium.edu.my/) - Student portal
+- [i-Ta'leem](https://italeem.iium.edu.my/) - Learning management system
+- [Course Registration](../pre-reg-gombak-kuantan/) - How pre-reg works
+- [Gombak campus](../../campuses/) - Getting there, housing and services

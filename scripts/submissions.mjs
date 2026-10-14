@@ -20,11 +20,16 @@ const CAMPUS_LIFE = `${DOCS_DIR}/categories/campus-life`;
 
 /** Issue form "Category" option -> page the resource is added to. */
 export const CATEGORY_FILES = {
+	Admissions: `${DOCS_DIR}/categories/admissions/index.md`,
 	'Academics - General': `${ACADEMICS}/General.mdx`,
+	'Postgraduate Studies': `${DOCS_DIR}/categories/postgraduate/index.md`,
+	'Fees & Financial Aid': `${DOCS_DIR}/categories/fees-and-financial-aid/index.md`,
 	'Campus Life': `${CAMPUS_LIFE}/index.md`,
 	'Campus Life - Clubs & Societies': `${CAMPUS_LIFE}/Club.md`,
 	'Campus Life - Mahallah (Residential)': `${CAMPUS_LIFE}/Mahallah.md`,
 	'Campus Life - Apps & Software': `${CAMPUS_LIFE}/Software.md`,
+	'Student Services': `${DOCS_DIR}/categories/student-services/index.md`,
+	'International Students': `${DOCS_DIR}/categories/international-students/index.md`,
 	'Career & Internships': `${DOCS_DIR}/categories/career/index.md`,
 	Developers: `${DOCS_DIR}/categories/developers/index.md`,
 };
@@ -36,7 +41,6 @@ const KULLIYYAHS = [
 	'KENMS',
 	'KICT',
 	'KIRKHS',
-	'KLM',
 	'KOD',
 	'KOE',
 	'KOED',
@@ -44,7 +48,11 @@ const KULLIYYAHS = [
 	'KON',
 	'KOP',
 	'KOS',
+	'KSTCL',
 ];
+
+/** Former kulliyyah codes that older issues may still use. */
+const RENAMED = { KLM: 'KSTCL' };
 
 export const SECTION_HEADING = '## 📥 Community Submissions';
 
@@ -74,7 +82,8 @@ export function toSubmission(fields) {
 /** Page for a category option, or null if it can't be placed automatically. */
 export function targetFile(category) {
 	if (CATEGORY_FILES[category]) return CATEGORY_FILES[category];
-	const code = category.match(/^Academics - ([A-Z]+)\b/)?.[1];
+	const found = category.match(/^Academics - ([A-Z]+)\b/)?.[1];
+	const code = RENAMED[found] ?? found;
 	if (code && KULLIYYAHS.includes(code)) return `${ACADEMICS}/${code}/index.md`;
 	if (category.startsWith('Academics')) return `${ACADEMICS}/index.md`;
 	return null;

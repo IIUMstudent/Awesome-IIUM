@@ -60,7 +60,7 @@ maintainer: '@github-username'
 | `KAHS`        | Kulliyyah of Allied Health Sciences                                               |
 | `KENMS`       | Kulliyyah of Economics and Management Sciences                                    |
 | `KICT`        | Kulliyyah of Information and Communication Technology                             |
-| `KLM`         | Kulliyyah of Languages and Management                                             |
+| `KSTCL`       | Kulliyyah of Sustainable Tourism and Contemporary Languages (formerly KLM)        |
 | `KOD`         | Kulliyyah of Dentistry                                                            |
 | `KOE`         | Kulliyyah of Engineering                                                          |
 | `KOED`        | Kulliyyah of Education                                                            |

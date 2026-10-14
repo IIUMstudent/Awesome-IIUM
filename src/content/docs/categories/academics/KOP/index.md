@@ -1,46 +1,45 @@
 ---
 title: '💊 Kulliyyah of Pharmacy (KOP)'
-description: 'Resources for IIUM Pharmacy students.'
+description: 'Resources for IIUM pharmacy students.'
 resourceType: guide
 tags:
   - pharmacy
-  - medical
+  - health
   - kuantan
 campus: kuantan
-lastUpdated: 2025-01-30
+kulliyyah: KOP
+lastUpdated: 2026-10-14
 ---
 
-Kulliyyah of Pharmacy (KOP) offers pharmaceutical education at IIUM's Kuantan
+The Kulliyyah of Pharmacy (KOP), established in 2000, is at IIUM's Kuantan
 campus.
 
 ## 🏛️ Official Links
 
-- [KOP Website](https://kulliyyah.iium.edu.my/kop/) - Official Kulliyyah portal
-
-## 👨‍🏫 Leadership
-
-The current Dean and management team are listed on the
-[official KOP website](https://kulliyyah.iium.edu.my/kop/).
+- [KOP Website](https://kulliyyah.iium.edu.my/kop/) - Programmes, staff and the
+  current management team.
+- [About KOP](https://kulliyyah.iium.edu.my/kop/about-kop/)
+- [Postgraduate Programmes](https://kulliyyah.iium.edu.my/kop/postgraduate/)
+- [Bachelor of Pharmacy](https://a.iium.edu.my/programme/show/bachelor-of-pharmacy) -
+  Programme details on the IIUM website.
 
 ## 📚 Departments
 
+- Basic Medical Sciences
 - Pharmaceutical Chemistry
 - Pharmaceutical Technology
-- Clinical Pharmacy
 - Pharmacy Practice
 
 ## 📖 Academic Programmes
 
-### Undergraduate
-
-- Bachelor of Pharmacy (BPharm)
-
-### Postgraduate
-
-- Master of Pharmacy
-- Doctor of Philosophy (PhD) in Pharmaceutical Sciences
+- **Undergraduate**: Bachelor of Pharmacy (BPharm).
+- **Postgraduate**: master's and PhD programmes in areas including pharmacy
+  practice, pharmaceutical chemistry, pharmaceutical technology, pharmacology,
+  physiology, clinical pharmacy and cosmetic science.
 
 ## 🔗 Quick Links
 
-- [i-Ma'luum](https://imaluum.iium.edu.my/) - Student Portal
-- [i-Ta'leem](https://italeem.iium.edu.my/) - Learning Management System
+- [i-Ma'luum](https://imaluum.iium.edu.my/) - Student portal
+- [i-Ta'leem](https://italeem.iium.edu.my/) - Learning management system
+- [Course Registration](../pre-reg-gombak-kuantan/) - How pre-reg works
+- [Kuantan campus](../../campuses/) - Getting there, housing and services

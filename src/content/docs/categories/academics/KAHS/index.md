@@ -1,27 +1,25 @@
 ---
 title: '🩺 Kulliyyah of Allied Health Sciences (KAHS)'
-description: 'Resources for IIUM Allied Health Sciences students.'
+description: 'Resources for IIUM allied health sciences students.'
 resourceType: guide
 tags:
   - health
-  - medical
+  - allied-health
   - kuantan
 campus: kuantan
-lastUpdated: 2025-01-30
+kulliyyah: KAHS
+lastUpdated: 2026-10-14
 ---
 
-Kulliyyah of Allied Health Sciences (KAHS) offers programmes in various health
-disciplines at IIUM's Kuantan campus.
+The Kulliyyah of Allied Health Sciences (KAHS), established in 2003, trains
+health professionals at IIUM's Kuantan campus.
 
 ## 🏛️ Official Links
 
-- [KAHS Website](https://kulliyyah.iium.edu.my/kahs/) - Official Kulliyyah
-  portal
-
-## 👨‍🏫 Leadership
-
-The current Dean and management team are listed on the
-[official KAHS website](https://kulliyyah.iium.edu.my/kahs/).
+- [KAHS Website](https://kulliyyah.iium.edu.my/kahs/) - Programmes, staff and
+  the current management team.
+- [About KAHS](https://kulliyyah.iium.edu.my/kahs/kulliyyah-allied-health-sciences/) -
+  Background and programmes.
 
 ## 📚 Departments
 
@@ -29,30 +27,25 @@ The current Dean and management team are listed on the
 - Biomedical Science
 - Diagnostic Imaging and Radiotherapy
 - Nutrition Sciences
-- Optometry and Vision Sciences
+- Optometry and Visual Sciences
 - Physical Rehabilitation Sciences
-- Occupational Therapy
 
 ## 📖 Academic Programmes
 
-### Undergraduate
+- **Undergraduate**: Audiology, Biomedical Science, Dietetics, Medical Imaging,
+  Optometry, Physiotherapy, and Speech-Language Pathology.
+- **Postgraduate**: master's and PhD programmes; see the
+  [KAHS website](https://kulliyyah.iium.edu.my/kahs/).
 
-- Bachelor of Audiology
-- Bachelor of Speech-Language Pathology
-- Bachelor of Biomedical Science
-- Bachelor of Diagnostic Imaging
-- Bachelor of Radiotherapy
-- Bachelor of Nutrition Sciences
-- Bachelor of Optometry
-- Bachelor of Physiotherapy
-- Bachelor of Occupational Therapy
+## 🏥 Clinical Training
 
-### Postgraduate
-
-- Master of Allied Health Sciences
-- Doctor of Philosophy (PhD) in Allied Health Sciences
+Students train at IIUM's teaching hospital,
+[SASMEC @IIUM](https://sasmec.iium.edu.my/), and at partner hospitals and
+clinics.
 
 ## 🔗 Quick Links
 
-- [i-Ma'luum](https://imaluum.iium.edu.my/) - Student Portal
-- [i-Ta'leem](https://italeem.iium.edu.my/) - Learning Management System
+- [i-Ma'luum](https://imaluum.iium.edu.my/) - Student portal
+- [i-Ta'leem](https://italeem.iium.edu.my/) - Learning management system
+- [Course Registration](../pre-reg-gombak-kuantan/) - How pre-reg works
+- [Kuantan campus](../../campuses/) - Getting there, housing and services

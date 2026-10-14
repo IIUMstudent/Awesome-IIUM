@@ -54,6 +54,7 @@ _他の言語で読む：[English](../), [Melayu](../ms/), [中文](../zh/),
 
 ## 目次
 
+- [ガイド](#ガイド)
 - [おすすめ](#おすすめ)
 - [IIUM 公式ウェブサイトとポータル](#iium-公式ウェブサイトとポータル)
 - [IIUM 学術リソースとツール](#iium-学術リソースとツール)
@@ -63,6 +64,21 @@ _他の言語で読む：[English](../), [Melayu](../ms/), [中文](../zh/),
 - [IIUM 研究と出版](#iium-研究と出版)
 - [IIUM 社会奉仕とアウトリーチ](#iium-社会奉仕とアウトリーチ)
 - [IIUM 文化と価値観](#iium-文化と価値観)
+
+## ガイド
+
+以下のガイドは英語です。
+
+- [入学](../categories/admissions/)
+- [学業](../categories/academics/)
+- [大学院](../categories/postgraduate/)
+- [学費と経済支援](../categories/fees-and-financial-aid/)
+- [キャンパス](../categories/campuses/)
+- [キャンパスライフ](../categories/campus-life/)
+- [学生サービス（健康・IT・安全）](../categories/student-services/)
+- [留学生](../categories/international-students/)
+- [キャリアとインターンシップ](../categories/career/)
+- [IIUM 公式サイト一覧](../categories/official-sources/)
 
 ## おすすめ
 
@@ -102,8 +118,8 @@ _他の言語で読む：[English](../), [Melayu](../ms/), [中文](../zh/),
 - [IIUM 同窓会ポータル](https://alumni.iium.edu.my/) - 同窓生と母校をつなぎ、同窓会Touch
   n
   Goカード、同窓会恩返しキャンペーン、同窓会ギャラリー、同窓生の成功事例などの情報やサービスを提供します。
-- [同窓生 - マレーシア国際イスラム大学](https://www.iium.edu.my/alumni) - 同窓会ポータル、同窓会名簿、同窓会イベント、同窓会特典など、同窓生向けの情報とリソースを提供します。
-- [同窓会関係部](https://www.iium.edu.my/division/alumni) - 同窓会関係や活動、学生キャリアサービスを管理します。同窓会関係課（ARS）、学生キャリアサービス課（SCSS）、IIUM起業家ユニット（IEU）などのセクションが含まれます。
+- [同窓生 - マレーシア国際イスラム大学](https://alumni.iium.edu.my/) - 同窓会ポータル、同窓会名簿、同窓会イベント、同窓会特典など、同窓生向けの情報とリソースを提供します。
+- [同窓会関係部](https://division.iium.edu.my/ard/) - 同窓会関係や活動、学生キャリアサービスを管理します。同窓会関係課（ARS）、学生キャリアサービス課（SCSS）、IIUM起業家ユニット（IEU）などのセクションが含まれます。
 
 ## IIUM ニュースとメディア
 
@@ -111,25 +127,25 @@ _他の言語で読む：[English](../), [Melayu](../ms/), [中文](../zh/),
 
 - [IIUM Today](https://news.iium.edu.my/) - キャンパス内の最新ニュースやイベントをお届けします。学術、学生生活、インスピレーション、ライフスタイル、オピニオン、特集などのトピックを扱っています。また、コミュニケーション学部の学生やスタッフの作品も紹介しています。
 - [ニュースに登場する IIUM](https://newsroom.iium.edu.my/) - 様々なソースからIIUMに言及しているニュース記事を収集して表示します。フラッシュストーリー、メインストーリー、印刷ニュース、公式などのカテゴリが含まれます。
-- [最新ニュース - マレーシア国際イスラム大学](https://www.iium.edu.my/news) -
+- [最新ニュース - マレーシア国際イスラム大学](https://news.iium.edu.my/) -
   IIUM公式サイトからのニュース更新を提供します。お知らせ、イベント、成果などが含まれます。
 
 ## IIUM 研究と出版
 
 このセクションでは、IIUMの研究と出版に関する情報とサービスを提供します。
 
-- [IIUMでの研究](https://www.iium.edu.my/research) -
+- [IIUMでの研究](https://research.iium.edu.my/) -
   IIUMでの研究活動に関する情報とサービスを提供します。研究ハイライト、研究管理センター、研究クラスター、研究助成金、研究倫理などが含まれます。
-- [出版物 - マレーシア国際イスラム大学](https://www.iium.edu.my/publications) -
+- [出版物 - マレーシア国際イスラム大学](https://office.iium.edu.my/iiumpress) -
   IIUMのスタッフや研究者による様々な出版物への情報とアクセスを提供します。注目の出版物、書籍、ジャーナル、会議論文などが含まれます。
-- [研究管理センター](https://www.iium.edu.my/centre/rmc) -
+- [研究管理センター](https://centre.iium.edu.my/rmc) -
   IIUMでの研究活動を支援・促進します。研究開発ユニット（RDU）、研究モニタリングユニット（RMU）、研究出版ユニット（RPU）などのセクションが含まれます。
 
 ## IIUM 社会奉仕とアウトリーチ
 
 このセクションでは、IIUMの社会奉仕とアウトリーチに関する情報とサービスを提供します。
 
-- [地域社会参加・サービスセンター (CENSERVE)](https://www.iium.edu.my/centre/censerve) - スタッフや学生が地域社会参加活動を計画・実行するためのプラットフォームを提供します。プログラム、クラブ、プロジェクト、イベントなどが含まれます。
+- [地域社会参加・サービスセンター (CENSERVE)](https://censerve.iium.edu.my/) - スタッフや学生が地域社会参加活動を計画・実行するためのプラットフォームを提供します。プログラム、クラブ、プロジェクト、イベントなどが含まれます。
 - [CENSERVE – 地域社会参加・サービスセンター](https://censerve.iium.edu.my/) -
   CENSERVEによる地域社会参加とサービスの取り組みを紹介します。ニュース、ギャラリー、マッピング、受賞歴、SDG重点分野、パートナーなどが含まれます。
 
@@ -137,10 +153,8 @@ _他の言語で読む：[English](../), [Melayu](../ms/), [中文](../zh/),
 
 このセクションでは、IIUMの文化と価値観に関する情報を提供するリソースを紹介します。
 
-- [ビジョンとミッション - マレーシア国際イスラム大学](https://www.iium.edu.my/office/odrail/vision-and-mission-10) -
+- [ビジョンとミッション - マレーシア国際イスラム大学](https://office.iium.edu.my/odrai/?p=16) -
   IIUMの文化と価値観を反映したビジョンとミッションステートメントを提供します。各ステートメントの要約と詳細が含まれます。
-- [ビジョン、ミッション、コアバリュー - マレーシア国際イスラム大学](https://www.iium.edu.my/centre/rmc/vision-mission-core-values) -
-  IIUMの文化と価値観に一致する研究管理センター（RMC）のビジョン、ミッション、コアバリューを提供します。責任、配慮、協力をコアバリューとしています。
 
 ## IIUM ソーシャルメディア
 

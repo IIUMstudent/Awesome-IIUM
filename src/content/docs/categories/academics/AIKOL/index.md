@@ -1,44 +1,50 @@
 ---
 title: '⚖️ Ahmad Ibrahim Kulliyyah of Laws (AIKOL)'
-description:
-  'Resources for IIUM Law students at Ahmad Ibrahim Kulliyyah of Laws.'
+description: 'Resources for IIUM law students.'
 resourceType: guide
 tags:
   - law
+  - shariah
   - gombak
 campus: gombak
-lastUpdated: 2025-01-30
+kulliyyah: AIKOL
+lastUpdated: 2026-10-14
 ---
 
-The Ahmad Ibrahim Kulliyyah of Laws was previously known as the 'Kulliyyah of
-Laws', one of the two Kulliyyahs formed at the inception of IIUM in 1983. In
-2000, it was proclaimed as Ahmad Ibrahim Kulliyyah of Laws (AIKOL), in honour of
-the late Emeritus Professor Tan Sri Ahmad bin Mohamed Ibrahim, the founding
-father of the Kulliyyah.
+The Ahmad Ibrahim Kulliyyah of Laws (AIKOL) at the Gombak campus teaches both
+civil law and Shariah. It is named after the late Emeritus Professor Tan Sri
+Ahmad bin Mohamed Ibrahim, its founding father.
 
 ## 🏛️ Official Links
 
-- [AIKOL Website](https://kulliyyah.iium.edu.my/aikol/) - Official Kulliyyah
-  portal
+- [AIKOL Website](https://kulliyyah.iium.edu.my/aikol/) - Programmes, staff,
+  news and the current management team.
+- [Departments](https://kulliyyah.iium.edu.my/aikol/departments-2/) - What each
+  department teaches.
 - [Give to AIKOL](https://kulliyyah.iium.edu.my/aikol/give-to-aikol/) -
-  Contribute to the Kulliyyah
+  Contribute to the kulliyyah.
 
-## 👨‍🏫 Leadership
+## 📚 Departments
 
-The current Dean and management team are listed on the
-[official AIKOL website](https://kulliyyah.iium.edu.my/aikol/).
+- Civil Law
+- Islamic Law
 
-## 📚 Academic Programmes
+## 📖 Academic Programmes
 
-### Undergraduate
+- **Undergraduate**: Bachelor of Laws (LL.B) (Honours) and Bachelor of Laws with
+  Shariah (LL.B Shariah) (Honours).
+- **Postgraduate**: master's and PhD programmes in law, plus the Diploma in
+  Syariah Legal Practice (DSLP) and the Diploma in Administration of Islamic
+  Judiciary (DAIJ), professional qualifications for Shariah lawyers, judges and
+  officers.
 
-- Bachelor of Laws (LL.B)(Honours)
-- Bachelor of Laws with Shariah (LL.B Shari'ah)(Honours) — launched in 1989
+Current programme structures are on the
+[AIKOL website](https://kulliyyah.iium.edu.my/aikol/).
 
-### Postgraduate
+## ⚖️ Beyond the Classroom
 
-- Master of Comparative Laws (MCL) — established 1986
-- Doctor of Philosophy (PhD) in Law — established 1986
+- **IIUM Legal Aid Services** - AIKOL's legal aid service gives free legal help
+  to the community, including through the Jalinan Mahabbah project.
 
 ## 📱 Social Media
 
@@ -48,5 +54,7 @@ The current Dean and management team are listed on the
 
 ## 🔗 Quick Links
 
-- [i-Ma'luum](https://imaluum.iium.edu.my/) - Student Portal
-- [i-Ta'leem](https://italeem.iium.edu.my/) - Learning Management System
+- [i-Ma'luum](https://imaluum.iium.edu.my/) - Student portal
+- [i-Ta'leem](https://italeem.iium.edu.my/) - Learning management system
+- [Course Registration](../pre-reg-gombak-kuantan/) - How pre-reg works
+- [Gombak campus](../../campuses/) - Getting there, housing and services
