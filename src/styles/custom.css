@@ -33,6 +33,10 @@
 	--aw-color-gold: var(--iium-gold);
 	--aw-color-gold-high: #e9b949;
 
+	/* Border of inputs and selects. Hairlines are too faint to show where a
+	   field is, so this stays 3:1 or more on the field and on the panel. */
+	--aw-color-border-control: #6e7c7c;
+
 	/* Starlight's grey ramp, same lightness, hue moved towards turquoise. */
 	--sl-color-white: hsl(0, 0%, 100%);
 	--sl-color-gray-1: hsl(180, 16%, 94%);
@@ -52,6 +56,8 @@
 	--aw-color-gold-low: #f5ebcf;
 	--aw-color-gold: var(--iium-gold);
 	--aw-color-gold-high: #7a5800;
+
+	--aw-color-border-control: #7d8c8c;
 
 	--sl-color-white: hsl(180, 10%, 10%);
 	--sl-color-gray-1: hsl(180, 12%, 16%);
