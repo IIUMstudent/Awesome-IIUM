@@ -1,0 +1,51 @@
+name: Content Report
+
+# Once a month, lists pages that are due for review and IIUM sites the guide
+# doesn't mention yet, in a single "[Automated] Monthly content report"
+# issue that is updated in place (and closed when there's nothing to do).
+# See scripts/content-report.mjs and scripts/discovery.json.
+
+on:
+  schedule:
+    - cron: '23 2 1 * *' # 1st of each month, 02:23 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # page history is the fallback review date
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Build report
+        run: node scripts/content-report.mjs > report.md
+
+      - name: Update report issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create content-report --color 5319e7 \
+            --description "Automated monthly content report" 2>/dev/null || true
+          existing=$(gh issue list --label content-report --state open \
+            --json number --jq '.[0].number')
+          if grep -q 'content-report: nothing to do' report.md; then
+            [ -n "$existing" ] && gh issue close "$existing" --reason completed \
+              --comment "Nothing left to review this month. 🎉"
+            exit 0
+          fi
+          if [ -n "$existing" ]; then
+            gh issue edit "$existing" --body-file report.md
+            gh issue comment "$existing" --body "Report updated for $(date -u +'%B %Y')."
+          else
+            gh issue create --title '[Automated] Monthly content report' \
+              --label content-report --body-file report.md
+          fi

@@ -24,23 +24,10 @@ We use GoatCounter, a privacy-friendly analytics tool.
 
 GoatCounter privacy policy: <https://www.goatcounter.com/privacy>
 
-### 2. Error Monitoring (Sentry) - Optional
-
-Sentry is enabled only when maintainers configure a DSN in production. If enabled, Sentry may collect:
-
-- JavaScript error messages and stack traces
-- Browser and OS version
-- Page URL where the error occurred
-
-We do not intentionally collect personal data through Sentry. Source maps are used to improve debugging.
-
-Sentry privacy policy: <https://sentry.io/privacy/>
-
-### 3. Third-Party Services
+### 2. Third-Party Services
 
 Some components load third-party services:
 
-- **Giscus** (GitHub Discussions comments)
 - **GitHub API** (public repository data)
 - **Aladhan API** (prayer times)
 
@@ -62,7 +49,6 @@ You can clear this data at any time via your browser settings.
 ## Data Retention
 
 - Analytics data is retained by GoatCounter per their default retention policy.
-- Error logs (Sentry) are retained per Sentry account settings.
 - LocalStorage data remains until cleared by the user.
 
 ---

@@ -28,7 +28,6 @@ The site is built with Astro and ships standards-based HTML, CSS, and vanilla JS
 | Component | Requirement | Compatibility Note |
 |-----------|------------|-------------------|
 | CampusMap | WebGL | Requires WebGL support; older devices may show fallback state |
-| Giscus Comments | Third-party script | Requires access to `giscus.app` and GitHub Discussions |
 | PrayerTimes | Fetch API + localStorage | Supported in all modern browsers |
 | GPA Calculator | ES2017+ | No external dependencies |
 
@@ -45,7 +44,6 @@ The site is built with Astro and ships standards-based HTML, CSS, and vanilla JS
 ## Known Limitations
 
 - **MapLibre GL**: Requires WebGL; fails gracefully on older or restricted devices.
-- **Giscus**: Uses GitHub Discussions; blocked in environments that disallow third-party scripts.
 - **Older Safari (< 15.4)**: Some CSS features (e.g., `:focus-visible`) may not render as intended.
 
 ---

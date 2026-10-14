@@ -19,7 +19,8 @@ campus.
 
 ## 👨‍🏫 Leadership
 
-**Dean:** Assoc. Prof. Dr. Nor Ilyani Mohamed Nazar
+The current Dean and management team are listed on the
+[official KOP website](https://kulliyyah.iium.edu.my/kop/).
 
 ## 📚 Departments
 

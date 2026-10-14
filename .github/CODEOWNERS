@@ -1,16 +1,4 @@
-# Default code owners
+# Maintainers are the members of the IIUMstudent "maintainers" team.
+# Add or remove people there, not here: see MAINTAINING.md.
 
-* @IIUMstudent
-
-# GitHub config and workflows
-
-/.github/ @IIUMstudent
-
-# Core source and content
-
-/src/ @IIUMstudent
-/src/content/ @IIUMstudent
-
-# Documentation
-
-/*.md @IIUMstudent
+* @IIUMstudent/maintainers

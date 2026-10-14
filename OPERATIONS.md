@@ -57,7 +57,6 @@ Awesome IIUM is a static site hosted on GitHub Pages. The primary source of trut
    - Enable Pages in repository settings
    - Set build and deployment from `master` (or updated branch)
 3. **Reconfigure secrets**
-   - `SENTRY_AUTH_TOKEN` (if used)
    - Any analytics or deployment secrets
 4. **Run full build**
    - `pnpm install`

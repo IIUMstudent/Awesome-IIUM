@@ -210,21 +210,6 @@ async function fetchWithRetry<T>(
 		}
 	}
 
-	// All retries failed - capture error in production
-	if (lastError && import.meta.env.PROD) {
-		try {
-			const { captureError } = await import('./sentry');
-			captureError(lastError, {
-				url,
-				context: 'GitHub API fetch',
-				maxRetries,
-				timeout,
-			});
-		} catch {
-			// Sentry import failed, continue without logging
-		}
-	}
-
 	console.error(
 		`Failed to fetch ${url} after ${maxRetries} attempts:`,
 		lastError,

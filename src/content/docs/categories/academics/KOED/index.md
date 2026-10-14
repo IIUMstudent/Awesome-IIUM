@@ -20,7 +20,8 @@ at IIUM's Gombak campus.
 
 ## 👨‍🏫 Leadership
 
-**Dean:** Assoc. Prof. Dr. Suhailah Hussien
+The current Dean and management team are listed on the
+[official KOED website](https://kulliyyah.iium.edu.my/koed/).
 
 ## 📚 Departments
 

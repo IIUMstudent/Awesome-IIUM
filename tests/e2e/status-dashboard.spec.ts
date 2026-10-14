@@ -5,9 +5,12 @@
  */
 
 import { expect, test } from '@playwright/test';
+import { mockStatus } from './fixtures/status';
 
 test.describe('Status Dashboard', () => {
 	test.beforeEach(async ({ page }) => {
+		await mockStatus(page);
+
 		// Navigate to dashboard page
 		await page.goto('/Awesome-IIUM/dashboard/');
 
@@ -25,10 +28,9 @@ test.describe('Status Dashboard', () => {
 
 	test('should load and display system statuses', async ({ page }) => {
 		// Wait for status cards to load
-		await expect(page.locator('.status-card')).toHaveCount(
-			await page.locator('.status-card').count(),
-			{ timeout: 10000 },
-		);
+		await expect(page.locator('.status-card').first()).toBeVisible({
+			timeout: 10000,
+		});
 
 		// Should have at least one status card
 		const cardCount = await page.locator('.status-card').count();

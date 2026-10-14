@@ -40,8 +40,14 @@ tools, and guides to make your university life easier and more productive.
 
 ## Contributing
 
-We welcome contributions! Please read our
-[Contribution Guidelines](CONTRIBUTING.md) before submitting a pull request.
+We welcome contributions! The easiest way is to
+[suggest a resource](https://github.com/iiumstudent/Awesome-IIUM/issues/new?template=resource-request.yml):
+fill in the form, and once a maintainer approves it, it's added to the site
+automatically. No coding needed. To edit pages directly, read our
+[Contribution Guidelines](CONTRIBUTING.md).
+
+Maintainers: see [MAINTAINING.md](MAINTAINING.md) for the weekly routine and
+how to hand the project over.
 
 ## ♿ Accessibility
 

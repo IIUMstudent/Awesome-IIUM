@@ -44,13 +44,11 @@ export default defineConfig({
 		},
 	],
 
-	// Run your local dev server before starting the tests
-	webServer: process.env.CI
-		? undefined
-		: {
-				command: 'pnpm run preview -- --host 0.0.0.0 --port 4321',
-				url: 'http://localhost:4321/Awesome-IIUM/',
-				reuseExistingServer: true,
-				timeout: 180000, // 3 minutes to start server
-			},
+	// Serve the built site (run `pnpm build` first) and wait until it responds
+	webServer: {
+		command: 'pnpm run preview --host 0.0.0.0 --port 4321',
+		url: 'http://localhost:4321/Awesome-IIUM/',
+		reuseExistingServer: !process.env.CI,
+		timeout: 180000, // 3 minutes to start server
+	},
 });

@@ -25,7 +25,8 @@ father of the Kulliyyah.
 
 ## 👨‍🏫 Leadership
 
-**Dean:** Professor Dr. Ida Madieha Abdul Ghani Azmi
+The current Dean and management team are listed on the
+[official AIKOL website](https://kulliyyah.iium.edu.my/aikol/).
 
 ## 📚 Academic Programmes
 

@@ -117,16 +117,6 @@ void (fallback ?? componentName ?? showDetails ?? id);
 			if (boundary) {
 				boundary.innerHTML = errorHtml;
 			}
-
-			// Log to Sentry in production
-			if (import.meta.env.PROD && typeof window !== 'undefined' && window.Sentry) {
-				window.Sentry.captureException(error, {
-					extra: {
-						component: componentName,
-						boundary: 'ErrorBoundary',
-					},
-				});
-			}
 		}
 	}
 </script>

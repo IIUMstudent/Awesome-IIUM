@@ -1,0 +1,146 @@
+name: Resource Submissions
+
+# Publishes "Resource Suggestion" issues without anyone touching code:
+# 1. When the issue is opened or edited, a bot checks it (valid link, not
+#    already listed, known category) and replies with a preview.
+# 2. A maintainer adds the "approved" label. The resource is added to the
+#    right page, the site is built and link-checked, the change is committed
+#    to master, the site is redeployed and the issue is closed.
+#
+# Issue text is untrusted: it's only read by scripts/submissions.mjs from the
+# event payload, never interpolated into shell commands.
+
+on:
+  issues:
+    types: [opened, edited, labeled]
+
+permissions:
+  contents: write # commit the new resource
+  issues: write # comment, label and close
+  actions: write # trigger the deploy
+
+jobs:
+  check:
+    if: >
+      (github.event.action == 'opened' || github.event.action == 'edited') &&
+      (contains(github.event.issue.labels.*.name, 'new resource') ||
+       startsWith(github.event.issue.title, '[Resource]')) &&
+      github.event.issue.state == 'open'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Check the suggestion
+        run: node scripts/submissions.mjs check > comment.md
+
+      - name: Reply on the issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          # Labels the issue form and this workflow rely on.
+          gh label create "new resource" --color 1d76db \
+            --description "Resource suggestion from the issue form" 2>/dev/null || true
+          gh label create triage --color fbca04 \
+            --description "Waiting for a maintainer to look at it" 2>/dev/null || true
+          gh label create approved --color 0e8a16 \
+            --description "Publish this resource suggestion" 2>/dev/null || true
+          gh issue edit "$ISSUE" --add-label "new resource"
+          existing=$(gh api "repos/$GITHUB_REPOSITORY/issues/$ISSUE/comments" --paginate \
+            --jq '[.[] | select(.user.login == "github-actions[bot]" and (.body | startswith("<!-- submission-check -->")))][0].id // empty' | head -n1)
+          if [ -n "$existing" ]; then
+            gh api --method PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$existing" \
+              -F body=@comment.md > /dev/null
+          else
+            gh issue comment "$ISSUE" --body-file comment.md
+          fi
+
+  publish:
+    if: >
+      github.event.action == 'labeled' &&
+      github.event.label.name == 'approved' &&
+      (contains(github.event.issue.labels.*.name, 'new resource') ||
+       startsWith(github.event.issue.title, '[Resource]')) &&
+      github.event.issue.state == 'open'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: submissions-publish
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - name: Add the resource
+        id: add
+        run: |
+          pnpm install --frozen-lockfile
+          file=$(node scripts/submissions.mjs apply)
+          pnpm exec prettier --write "$file"
+          echo "file=$file" >> "$GITHUB_OUTPUT"
+          git diff
+
+      - name: Lint and build
+        run: |
+          pnpm run lint:md
+          pnpm build
+          mkdir _site && cp -r dist _site/Awesome-IIUM
+
+      - name: Check internal links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >
+            --offline
+            --no-progress
+            --root-dir ${{ github.workspace }}/_site
+            --index-files index.html
+            --exclude-path _site/Awesome-IIUM/pagefind
+            '_site/**/*.html'
+          fail: true
+
+      - name: Commit and deploy
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE: ${{ github.event.issue.number }}
+          FILE: ${{ steps.add.outputs.file }}
+          BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$FILE"
+          git commit -m "content: add community submission from #$ISSUE"
+          pushed=false
+          for attempt in 1 2 3; do
+            if git push origin "HEAD:$BRANCH"; then pushed=true; break; fi
+            sleep $((attempt * 5))
+            git pull --rebase origin "$BRANCH"
+          done
+          $pushed || { echo "::error::Could not push to $BRANCH"; exit 1; }
+          # Pushes made with GITHUB_TOKEN don't trigger other workflows.
+          gh workflow run deploy.yml --ref "$BRANCH"
+          gh issue close "$ISSUE" --reason completed --comment \
+            "🎉 Added to \`$FILE\` in $(git rev-parse --short HEAD). It will be live on https://iiumstudent.github.io/Awesome-IIUM/ in a few minutes. Thank you!"
+
+      - name: Report failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE: ${{ github.event.issue.number }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh issue edit "$ISSUE" --remove-label approved
+          gh issue comment "$ISSUE" --body \
+            "⚠️ Couldn't publish this automatically ([details]($RUN_URL)). Fix the issue (or the page) and add the \`approved\` label again to retry."

@@ -1,0 +1,27 @@
+{
+	"$comment": "Used by scripts/content-report.mjs. 'seeds' are official pages (or sitemaps) whose links are scanned for IIUM sites the guide doesn't list yet. Add a site to 'ignore' (as shown in the report) to stop it being reported.",
+	"seeds": [
+		"https://www.iium.edu.my/v2/",
+		"https://www.iium.edu.my/sitemap.xml",
+		"https://centre.iium.edu.my/",
+		"https://division.iium.edu.my/",
+		"https://office.iium.edu.my/",
+		"https://kulliyyah.iium.edu.my/",
+		"https://myapps.iium.edu.my/",
+		"https://news.iium.edu.my/"
+	],
+	"multiSiteHosts": [
+		"centre.iium.edu.my",
+		"division.iium.edu.my",
+		"office.iium.edu.my",
+		"kulliyyah.iium.edu.my"
+	],
+	"ignore": [
+		"iium.edu.my",
+		"news.iium.edu.my",
+		"newsroom.iium.edu.my",
+		"webmail.iium.edu.my",
+		"mail.iium.edu.my"
+	],
+	"staleAfterDays": 180
+}

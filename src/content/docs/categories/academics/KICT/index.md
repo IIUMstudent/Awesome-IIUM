@@ -26,7 +26,8 @@ technologies at IIUM's Gombak campus.
 
 ## 👨‍🏫 Leadership
 
-**Dean:** Professor Emeritus Dato' Ts. Dr. Tengku Mohd Tengku Sembok
+The current Dean and management team are listed on the
+[official KICT website](https://kulliyyah.iium.edu.my/kict/).
 
 ## 📚 Departments
 

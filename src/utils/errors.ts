@@ -2,10 +2,8 @@
 
 /**
  * Centralized error handling utilities
- * Provides standardized error messages, retry logic, and Sentry integration
+ * Provides standardized error messages and retry logic
  */
-
-import { captureError as sentryCaptureError } from './sentry';
 
 /**
  * Error categories for better error handling
@@ -112,7 +110,7 @@ export function createErrorResponse(
 }
 
 /**
- * Handle error with logging and Sentry capture
+ * Handle error with logging
  */
 export function handleError(
 	error: unknown,
@@ -126,15 +124,6 @@ export function handleError(
 		console.error(`Error in ${context || 'application'}:`, {
 			category: errorResponse.category,
 			message: errorResponse.message,
-			...additionalData,
-		});
-	}
-
-	// Capture in Sentry (production only, filters applied in sentry.ts)
-	if (import.meta.env.PROD && errorResponse.error) {
-		sentryCaptureError(errorResponse.error, {
-			context,
-			category: errorResponse.category,
 			...additionalData,
 		});
 	}

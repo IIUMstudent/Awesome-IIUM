@@ -270,33 +270,6 @@
 
 ---
 
-### 8. Giscus Comments Component
-
-**Interactive Elements:**
-
-- Comment form (loaded via iframe)
-- Comment threads
-
-**Keyboard Navigation Tests:**
-
-- [ ] **Tab** enters iframe
-- [ ] All Giscus controls keyboard accessible
-- [ ] **Tab** can exit iframe
-- [ ] Focus not trapped
-
-**ARIA Attributes:**
-
-- [x] Giscus handles accessibility internally
-- [x] IFrame has proper title (handled by Giscus)
-
-**Screen Reader Compatibility:**
-
-- [x] Giscus is GitHub's accessible commenting system
-
-**Status:** ✅ PASS (delegated to Giscus)
-
----
-
 ## Focus Indicators
 
 ### Visual Inspection
@@ -407,8 +380,7 @@ a:focus-visible {
 11. NewThisWeek resource links
 12. CampusMap campus tabs
 13. CampusMap map controls
-14. Comments (Giscus iframe)
-15. Footer links (Starlight)
+14. Footer links (Starlight)
 
 **Verification Method:**
 
@@ -542,7 +514,6 @@ Minimum 44×44 CSS pixels for touch targets.
 | ActivityFeed | ✅ | ✅ | ✅ | ✅ | PASS |
 | Leaderboard | ✅ | ✅ | ✅ | ✅ | PASS |
 | StatusDashboard | ✅ | ✅ | ✅ | ✅ | PASS |
-| Giscus | ✅ | ✅ | ✅ | ✅ | PASS |
 
 ### Compliance Level
 
@@ -564,7 +535,6 @@ Minimum 44×44 CSS pixels for touch targets.
 2. ✅ Continue using semantic HTML
 3. ✅ Keep ARIA live regions for dynamic content
 4. ⚠️ Consider increasing Remove button size to 44×44px (AAA)
-5. ✅ Monitor Giscus updates for accessibility improvements
 
 ---
 

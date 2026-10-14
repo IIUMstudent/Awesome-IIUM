@@ -52,23 +52,23 @@ maintainer: '@github-username'
 
 ### Kulliyyah Codes
 
-| Code | Full Name |
-|------|-----------|
-| `AIKOL` | Ahmad Ibrahim Kulliyyah of Laws |
+| Code          | Full Name                                                                         |
+| ------------- | --------------------------------------------------------------------------------- |
+| `AIKOL`       | Ahmad Ibrahim Kulliyyah of Laws                                                   |
 | `AHAS-KIRKHS` | AbdulHamid AbuSulayman Kulliyyah of Islamic Revealed Knowledge and Human Sciences |
-| `KAED` | Kulliyyah of Architecture and Environmental Design |
-| `KAHS` | Kulliyyah of Allied Health Sciences |
-| `KENMS` | Kulliyyah of Economics and Management Sciences |
-| `KICT` | Kulliyyah of Information and Communication Technology |
-| `KLM` | Kulliyyah of Languages and Management |
-| `KOD` | Kulliyyah of Dentistry |
-| `KOE` | Kulliyyah of Engineering |
-| `KOED` | Kulliyyah of Education |
-| `KOM` | Kulliyyah of Medicine |
-| `KON` | Kulliyyah of Nursing |
-| `KOP` | Kulliyyah of Pharmacy |
-| `KOS` | Kulliyyah of Science |
-| `general` | Cross-kulliyyah resources |
+| `KAED`        | Kulliyyah of Architecture and Environmental Design                                |
+| `KAHS`        | Kulliyyah of Allied Health Sciences                                               |
+| `KENMS`       | Kulliyyah of Economics and Management Sciences                                    |
+| `KICT`        | Kulliyyah of Information and Communication Technology                             |
+| `KLM`         | Kulliyyah of Languages and Management                                             |
+| `KOD`         | Kulliyyah of Dentistry                                                            |
+| `KOE`         | Kulliyyah of Engineering                                                          |
+| `KOED`        | Kulliyyah of Education                                                            |
+| `KOM`         | Kulliyyah of Medicine                                                             |
+| `KON`         | Kulliyyah of Nursing                                                              |
+| `KOP`         | Kulliyyah of Pharmacy                                                             |
+| `KOS`         | Kulliyyah of Science                                                              |
+| `general`     | Cross-kulliyyah resources                                                         |
 
 ---
 
@@ -83,8 +83,10 @@ maintainer: '@github-username'
 **Good Examples:**
 
 ```markdown
-- [i-Ma'luum](https://imaluum.iium.edu.my/) - Access course registration, exam results, and generate your timetable.
-- [IIUM Schedule Maker](https://github.com/iiumschedule/iium-schedule-maker) - Visualize and plan your semester timetable before registration opens.
+- [i-Ma'luum](https://imaluum.iium.edu.my/) - Access course registration, exam
+  results, and generate your timetable.
+- [IIUM Schedule Maker](https://github.com/iiumschedule/iium-schedule-maker) -
+  Visualize and plan your semester timetable before registration opens.
 ```
 
 **Bad Examples:**
@@ -100,9 +102,13 @@ Organize resources under clear headings:
 
 ```markdown
 ## 🏛 Official Portals
+
 ## 🛠 Tools & Utilities
+
 ## 📚 Learning Resources
+
 ## 👥 Communities
+
 ## 📱 Mobile Apps
 ```
 
@@ -126,7 +132,8 @@ To request verification:
 
 ## ✅ Content Review Process
 
-All content submissions go through a lightweight review to protect quality and avoid duplicates.
+All content submissions go through a lightweight review to protect quality and
+avoid duplicates.
 
 ### Review Checklist
 
@@ -143,9 +150,12 @@ Before approving a resource, reviewers verify:
 
 ### Reviewers & Approval
 
-- **Who can approve:** Repository maintainers and collaborators with write access
-- **Verification badge approvals:** Maintainers only (official/featured/verified)
-- **Fast path:** Clear, high-quality resources may be approved without further questions
+- **Who can approve:** Repository maintainers and collaborators with write
+  access
+- **Verification badge approvals:** Maintainers only
+  (official/featured/verified)
+- **Fast path:** Clear, high-quality resources may be approved without further
+  questions
 
 ### Quality Assurance Steps
 
@@ -160,7 +170,9 @@ Before approving a resource, reviewers verify:
 
 ### Submission Paths
 
-- **Recommended:** Open a Resource Suggestion issue (template below)
+- **Recommended:** Open a Resource Suggestion issue (template below). A bot
+  checks it, and it's published automatically once a maintainer adds the
+  `approved` label.
 - **Alternative:** Submit a PR directly with the resource added
 
 ---
@@ -191,20 +203,39 @@ See [TRANSLATION_GUIDE.md](./TRANSLATION_GUIDE.md) for detailed instructions.
 
 ## 🔄 Keeping Content Updated
 
-- Check your contributed links periodically
+### Link, don't copy
+
+Facts that IIUM changes on its own schedule go stale here the moment they change
+there. Don't copy them into pages; explain what they are and link to the
+official page that publishes them:
+
+- ❌ Names of deans, directors and office holders
+- ❌ Semester dates, registration windows and deadlines (e.g. "2023/2024")
+- ❌ Fees, quotas and other figures
+- ✅ What something is, how it works, and where the current version is published
+
+The [monthly content report](MAINTAINING.md) flags pages that mention academic
+sessions that have ended, and pages whose `lastUpdated` is more than 6 months
+old.
+
+### Reviewing a page
+
+- Check the facts and links on the page are still right
+- Set `lastUpdated: YYYY-MM-DD` in the frontmatter to today
+- Mark deprecated resources with a note, or remove them
 - Report broken links via GitHub Issues
-- Update descriptions when resources change significantly
-- Mark deprecated resources with a note
 
 ---
 
 ## 🔗 Link Verification Process
 
-All links in content files are checked regularly to ensure quality and accessibility.
+All links in content files are checked regularly to ensure quality and
+accessibility.
 
 ### Automated Link Checking
 
-We use [lychee](https://github.com/lycheeverse/lychee) to validate all links in the repository.
+We use [lychee](https://github.com/lycheeverse/lychee) to validate all links in
+the repository.
 
 **Run link checker locally:**
 
@@ -242,14 +273,16 @@ pnpm run format:md        # Auto-fix formatting
 #### ✅ DO
 
 - Use **relative paths** for internal links: `../categories/academics/`
-- Remove `.md` extensions from links: `../about/license` not `../about/license.md`
+- Remove `.md` extensions from links: `../about/license` not
+  `../about/license.md`
 - Use HTTPS URLs when available
 - Test links before submitting PR
 - Document known timeouts (e.g., IIUM subdomain issues)
 
 #### ❌ DON'T
 
-- Use absolute paths `/` for internal links (breaks on GitHub Pages with base path)
+- Use absolute paths `/` for internal links (breaks on GitHub Pages with base
+  path)
 - Hardcode the base URL `/Awesome-IIUM/` in links
 - Link to localhost or development URLs
 - Use outdated or archived resources without warnings
@@ -262,10 +295,13 @@ Some IIUM services may timeout during link checking:
 - `censerve.iium.edu.my` - CENSERVE (timeout issues)
 - Kulliyyah subdomains (varies by campus)
 
-These are institutional infrastructure issues and cannot be fixed externally. If a link consistently times out but is known to work, add a note in the description:
+These are institutional infrastructure issues and cannot be fixed externally. If
+a link consistently times out but is known to work, add a note in the
+description:
 
 ```markdown
-- [IIUM Library](https://lib.iium.edu.my/) - Digital library access (may be slow to load).
+- [IIUM Library](https://lib.iium.edu.my/) - Digital library access (may be slow
+  to load).
 ```
 
 ### Reporting Broken Links

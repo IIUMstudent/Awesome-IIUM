@@ -24,7 +24,8 @@ Islamic studies, humanities, and social sciences at the Gombak campus.
 
 ## 👨‍🏫 Leadership
 
-**Dean:** Professor Dr. Hafiz Zakariya
+The current Dean and management team are listed on the
+[official KIRKHS website](https://kulliyyah.iium.edu.my/kirkhs/).
 
 ## 📚 Departments
 
