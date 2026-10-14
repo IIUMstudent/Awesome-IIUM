@@ -16,9 +16,16 @@ concurrency:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    # Settings → Pages → Source is "GitHub Actions": only deployments made with
+    # actions/deploy-pages go live. Pushing a gh-pages branch does nothing.
     permissions:
-      contents: write # push to gh-pages
+      contents: read
+      pages: write # deploy to GitHub Pages
+      id-token: write # verify the deployment came from this repository
       actions: write # keep scheduled workflows enabled
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v7
 
@@ -66,12 +73,14 @@ jobs:
           GOATCOUNTER_ENDPOINT: ${{ vars.GOATCOUNTER_ENDPOINT }}
           NODE_ENV: production
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          force_orphan: true # keep gh-pages to a single commit
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 
       # GitHub disables scheduled workflows after 60 days without commits.
       # Re-enabling them through the API resets that timer without commits.

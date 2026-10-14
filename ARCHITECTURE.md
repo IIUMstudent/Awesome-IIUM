@@ -613,8 +613,9 @@ graph TD
 **GitHub Actions Workflow:** `.github/workflows/deploy.yml`
 
 Steps: install dependencies → check system status (writes
-`public/api/status.json`, not committed) → `pnpm build` → publish `dist/`
-to the `gh-pages` branch → on scheduled runs, re-enable the scheduled
+`public/api/status.json`, not committed) → `pnpm build` → upload `dist/`
+and publish it with `actions/deploy-pages` (Pages source: "GitHub Actions")
+→ on scheduled runs, re-enable the scheduled
 workflows through the GitHub API so GitHub does not disable them after 60
 days without commits.
 
