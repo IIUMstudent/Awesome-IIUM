@@ -268,9 +268,39 @@ export default defineConfig({
 					},
 				],
 			},
+			// Pages and data come from the network first, so a deploy shows up on
+			// the next load; the cache is only used offline. Precaching HTML
+			// served every page cache-first, so visitors saw the previous deploy.
 			workbox: {
-				globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,json}'],
-				navigateFallback: '/Awesome-IIUM/',
+				globPatterns: ['**/*.{js,css,ico,png,svg,webp,woff2}'],
+				navigateFallback: null,
+				runtimeCaching: [
+					{
+						urlPattern: ({ request }) => request.mode === 'navigate',
+						handler: 'NetworkFirst',
+						options: {
+							cacheName: 'pages',
+							networkTimeoutSeconds: 5,
+							expiration: { maxEntries: 100 },
+							plugins: [
+								{
+									// Offline on a page never visited: show the cached home page.
+									handlerDidError: () =>
+										caches.match('/Awesome-IIUM/', { cacheName: 'pages' }),
+								},
+							],
+						},
+					},
+					{
+						urlPattern: ({ url }) => url.pathname.endsWith('.json'),
+						handler: 'NetworkFirst',
+						options: {
+							cacheName: 'data',
+							networkTimeoutSeconds: 5,
+							expiration: { maxEntries: 20 },
+						},
+					},
+				],
 			},
 		}),
 	],

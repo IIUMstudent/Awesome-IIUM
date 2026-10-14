@@ -23,6 +23,18 @@ interface Contributor {
 	avatar_url: string;
 	html_url: string;
 	contributions: number;
+	type?: string;
+}
+
+// Automated accounts that GitHub lists as ordinary users.
+const AUTOMATED_ACCOUNTS = new Set(['claude', 'copilot', 'imgbotapp']);
+
+function isPerson(user: Contributor): boolean {
+	return (
+		user.type !== 'Bot' &&
+		!user.login.endsWith('[bot]') &&
+		!AUTOMATED_ACCOUNTS.has(user.login.toLowerCase())
+	);
 }
 
 // biome-ignore lint/suspicious/noExplicitAny: validating unknown external data
@@ -67,9 +79,9 @@ try {
 	if (cachedData) {
 		contributors = cachedData;
 	} else {
-		// Use a higher limit to ensure we get enough active contributors, but slice later if needed
+		// Fetch extra so there are still enough people once bots are removed
 		const response = await fetch(
-			`${GITHUB_REPO.apiUrl}/contributors?per_page=12`,
+			`${GITHUB_REPO.apiUrl}/contributors?per_page=30`,
 		);
 		if (response.ok) {
 			const data = await response.json();
@@ -97,6 +109,8 @@ try {
 	console.error('Failed to fetch contributors', e);
 	error = true;
 }
+
+contributors = contributors.filter(isPerson).slice(0, 12);
 ---
 
 <div id="leaderboard" class="not-content">
@@ -116,7 +130,9 @@ try {
             />
             <div class="info">
               <span class="username">{user.login}</span>
-              <span class="contributions">{user.contributions} Contributions</span>
+              <span class="contributions">
+                {user.contributions.toLocaleString('en')} {user.contributions === 1 ? 'contribution' : 'contributions'}
+              </span>
             </div>
           </a>
         ))
@@ -169,6 +185,7 @@ try {
   .rank-3 .rank { color: var(--sl-color-orange-high); }
   
   .avatar {
+    flex-shrink: 0;
     width: 45px;
     height: 45px;
     border-radius: 50%;
@@ -178,10 +195,12 @@ try {
   .info {
     display: flex;
     flex-direction: column;
+    min-width: 0;
   }
   .username {
     font-weight: 600;
     font-size: 0.95rem;
+    overflow-wrap: anywhere;
   }
   .contributions {
     font-size: 0.8rem;

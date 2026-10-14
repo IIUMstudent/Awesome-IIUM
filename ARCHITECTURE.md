@@ -87,8 +87,8 @@ Prayer Times: Aladhan.com API
 
 ```yaml
 Service Worker: Workbox (via @vite-pwa/astro)
-Strategy: Network-first with cache fallback
-Offline: Static assets cached, dynamic content cached on visit
+Strategy: Static assets precached; pages and JSON network-first with cache fallback
+Offline: Pages and status data cached on visit
 ```
 
 ---

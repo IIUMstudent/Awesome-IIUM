@@ -28,4 +28,16 @@ test.describe('UX Improvements', () => {
 		await expect(grid).not.toHaveClass(/is-loading/);
 		await expect(grid).not.toHaveAttribute('aria-busy', 'true');
 	});
+
+	test('Offline notice only shows while offline', async ({ page, context }) => {
+		await page.goto('/Awesome-IIUM/');
+		const notice = page.locator('#offline-indicator');
+		await expect(notice).toHaveCount(0);
+
+		await context.setOffline(true);
+		await expect(notice).toBeVisible();
+
+		await context.setOffline(false);
+		await expect(notice).toHaveCount(0);
+	});
 });

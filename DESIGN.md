@@ -89,6 +89,8 @@ are 5.5:1 or better. Filled buttons are 5.9:1 (light) and 8.6:1 (dark).
   which already adapt to light and dark mode: `--sl-color-green|orange|red|blue`
   for dots, borders and icons, `-high` for text and `-low` for backgrounds.
   Don't invent new reds and greens.
+- **Asides** (`<Aside>`): `note` is turquoise (`accent`) and `tip` is gold,
+  set in `custom.css`. `caution` and `danger` keep Starlight's orange and red.
 - **Campus colours** (Campus Map): `--aw-campus-gombak` (turquoise),
   `--aw-campus-kuantan` (gold) and `--aw-campus-pagoh`. Text on them is
   `--aw-color-ink`.

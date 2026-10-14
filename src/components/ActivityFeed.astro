@@ -15,7 +15,6 @@ import { GITHUB_REPO } from '../config';
 interface Activity {
 	type: 'commit' | 'pr' | 'issue';
 	title: string;
-	fullTitle?: string;
 	user: string;
 	avatar: string;
 	url: string;
@@ -68,7 +67,7 @@ async function fetchActivity(): Promise<Activity[]> {
 	try {
 		// Parallelize API fetches
 		const [commitsRes, prsRes] = await Promise.all([
-			fetch(`${GITHUB_REPO.apiUrl}/commits?per_page=3`),
+			fetch(`${GITHUB_REPO.apiUrl}/commits?per_page=6`),
 			fetch(`${GITHUB_REPO.apiUrl}/pulls?state=all&per_page=2`),
 		]);
 
@@ -76,10 +75,11 @@ async function fetchActivity(): Promise<Activity[]> {
 		if (commitsRes.ok) {
 			const commits = await commitsRes.json();
 			for (const commit of commits) {
+				// Merge commits repeat the pull request listed below
+				if (commit.parents?.length > 1) continue;
 				activities.push({
 					type: 'commit',
-					title: commit.commit.message.split('\n')[0].substring(0, 60),
-					fullTitle: commit.commit.message.split('\n')[0],
+					title: commit.commit.message.split('\n')[0],
 					user: commit.author?.login || commit.commit.author.name,
 					avatar: isValidUrl(commit.author?.avatar_url)
 						? commit.author?.avatar_url
@@ -98,8 +98,7 @@ async function fetchActivity(): Promise<Activity[]> {
 			for (const pr of prs) {
 				activities.push({
 					type: 'pr',
-					title: pr.title.substring(0, 60),
-					fullTitle: pr.title,
+					title: pr.title,
 					user: pr.user.login,
 					avatar: isValidUrl(pr.user.avatar_url)
 						? pr.user.avatar_url
@@ -153,11 +152,22 @@ async function fetchActivity(): Promise<Activity[]> {
 
 // biome-ignore lint/correctness/noUnusedVariables: used in template
 const activities = await fetchActivity();
+
+// Built on a UTC server, read in Malaysia: format dates in Malaysian time.
+const dateFormat = new Intl.DateTimeFormat('en-GB', {
+	day: 'numeric',
+	month: 'short',
+	year: 'numeric',
+	timeZone: 'Asia/Kuala_Lumpur',
+});
+// biome-ignore lint/correctness/noUnusedVariables: used in template
+function formatDate(activity: Activity): string {
+	const time = activity.timestamp ?? new Date(activity.date).getTime();
+	return Number.isNaN(time) ? activity.date : dateFormat.format(time);
+}
 ---
 
 <div class="activity-feed not-content">
-  <h3>📡 Recent Activity</h3>
-  
   {activities.length > 0 ? (
     <ul class="activity-list">
       {activities.map((activity) => (
@@ -171,14 +181,14 @@ const activities = await fetchActivity();
             height="32"
           />
           <div class="activity-content">
-            <a href={activity.url} target="_blank" rel="noopener noreferrer" title={activity.fullTitle || activity.title}>
+            <a href={activity.url} target="_blank" rel="noopener noreferrer">
               <span class="icon">{activity.icon}</span>
               <span class="title">{activity.title}</span>
             </a>
             <div class="meta">
               <span class="user">@{activity.user}</span>
               <span class="dot">•</span>
-              <span class="date">{activity.date}</span>
+              <span class="date">{formatDate(activity)}</span>
             </div>
           </div>
         </li>
@@ -200,12 +210,6 @@ const activities = await fetchActivity();
     border-radius: 12px;
     padding: 1.25rem;
     margin: 1.5rem 0;
-  }
-
-  .activity-feed h3 {
-    margin: 0 0 1rem 0;
-    font-size: 1rem;
-    font-weight: 600;
   }
 
   .activity-list {
@@ -239,7 +243,7 @@ const activities = await fetchActivity();
 
   .activity-content a {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.25rem;
     text-decoration: none;
     color: inherit;
@@ -256,9 +260,7 @@ const activities = await fetchActivity();
   }
 
   .title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow-wrap: anywhere;
     transition: color 0.15s;
   }
 

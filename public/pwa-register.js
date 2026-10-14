@@ -4,33 +4,30 @@ if ('serviceWorker' in navigator) {
 	});
 }
 
+// The offline notice only exists while the browser is offline, so it can't
+// show up on a page that is online, even if its styles fail to load.
+// Styles live in src/styles/custom.css.
 function updateOnlineStatus() {
-	const statusEl = document.getElementById('offline-indicator');
-	if (!statusEl) return;
+	const existing = document.getElementById('offline-indicator');
 
 	if (navigator.onLine) {
-		statusEl.classList.remove('is-offline');
-	} else {
-		statusEl.classList.add('is-offline');
+		existing?.remove();
+		return;
 	}
-}
+	if (existing) return;
 
-globalThis.addEventListener('online', updateOnlineStatus);
-globalThis.addEventListener('offline', updateOnlineStatus);
-
-globalThis.addEventListener('DOMContentLoaded', () => {
 	const banner = document.createElement('div');
 	banner.id = 'offline-indicator';
 	banner.setAttribute('role', 'status');
 	banner.innerHTML = `
       <div class="offline-content">
         <span class="offline-icon" aria-hidden="true">📡</span>
-        <span class="offline-text">Offline Mode Enabled — Browsing Cached Version</span>
+        <span class="offline-text">You're offline. Showing saved pages.</span>
       </div>
     `;
 	document.body.appendChild(banner);
+}
 
-	// Styles live in src/styles/custom.css.
-
-	updateOnlineStatus();
-});
+globalThis.addEventListener('online', updateOnlineStatus);
+globalThis.addEventListener('offline', updateOnlineStatus);
+globalThis.addEventListener('DOMContentLoaded', updateOnlineStatus);
