@@ -84,7 +84,7 @@ jobs:
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 
       # GitHub disables scheduled workflows after 60 days without commits.
       # Re-enabling them through the API resets that timer without commits.
