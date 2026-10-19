@@ -152,7 +152,7 @@ jobs:
       - name: Open or update the pull request
         if: steps.enabled.outputs.on
         id: pr
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           branch: ${{ env.BRANCH }}
           base: ${{ github.event.repository.default_branch }}
