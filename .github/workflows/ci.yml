@@ -65,7 +65,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Serve the site under its base path so /Awesome-IIUM/... links resolve
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: site
           path: _site/Awesome-IIUM
@@ -105,7 +105,7 @@ jobs:
           pnpm install --frozen-lockfile
           pnpm exec playwright install --with-deps chromium
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: site
           path: dist/
